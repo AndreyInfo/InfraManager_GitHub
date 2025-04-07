@@ -1,0 +1,22 @@
+﻿<div class="simpleValueFilter-wrapper" data-bind="template: { afterRender: AfterRender }">
+    <div class="simpleValueFilter-operations"></div>
+    <div class="simpleValueFilter-values" data-bind="visible: ValueSelectorVisible">
+        <div class="treeAndSearch"  />
+        <div class="treeAndSearchExtendedParams" data-bind="visible: ShowExtendedFields">
+            <div class="searchControlForTree-item">
+                <input class="searchControlForTree-itemCheckbox" type="checkbox" data-bind="click: FilterElementIsEmptyCheckedChanged, checked: FilterElementIsEmptyChecked()">
+                <label class="searchControlForTree-itemText" data-bind="restext:'FilterElementIsEmpty'"></label>
+            </div>
+
+            <div class="searchControlForTree-item" data-bind="visible: CurrentUserIsVisible">
+                <input class="searchControlForTree-itemCheckbox" type="checkbox" data-bind="click: CurrentUserCheckedChanged, checked: CurrentUserChecked()">
+                <label class="searchControlForTree-itemText" data-bind="restext:'CurrentUser'"></label>
+            </div>
+
+            <div class="searchControlForTree-item">
+                <input class="searchControlForTree-itemCheckbox" type="checkbox" data-bind="click: MyUserOrQueueCheckedChanged, checked: MyUserOrQueueChecked()">
+                <label class="searchControlForTree-itemText" data-bind="text: GetMyUserOrQueueTextResource()"></label>
+            </div>
+        </div>
+    </div>
+</div>

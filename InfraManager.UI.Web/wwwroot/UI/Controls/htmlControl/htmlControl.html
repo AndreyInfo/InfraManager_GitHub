@@ -1,0 +1,38 @@
+﻿<div class="htmlEditor-menu">
+    <!--ko ifnot: browser_edgeOrFirefox-->
+    <button class="cmd-cut" data-bind="tooltip: getTextResource('Command_Cut'), click: cmdCutClick" />
+    <button class="cmd-copy" data-bind="tooltip: getTextResource('Command_Copy'), click: cmdCopyClick" />
+    <button class="cmd-paste" data-bind="tooltip: getTextResource('Command_Paste'), click: cmdPasteClick" />
+    <div class="cmd-separator" />
+    <!--/ko-->
+    <button class="cmd-undo" data-bind="tooltip: getTextResource('Command_Undo'), click: cmdUndoClick" />
+    <button class="cmd-redo" data-bind="tooltip: getTextResource('Command_Redo'), click: cmdRedoClick" />
+    <div class="cmd-separator" />
+    <button class="cmd-bullets" data-bind="tooltip: getTextResource('Command_UnOrderedList'), click: cmdBulletsClick" />
+    <button class="cmd-numbers" data-bind="tooltip: getTextResource('Command_OrderedList'), click: cmdNumbersClick" />
+    <!--ko ifnot: browser_ie11-->
+    <div class="cmd-separator" />
+    <div class="fontFamily combobox" data-bind="combobox: { dataSource: getFontFamilyList, rowTemplate: 'SelectControl/CombBoxRowFontFamily' }, comboboxValue: selectedFontFamily" />
+    <div class="fontSize combobox" data-bind="combobox: { dataSource: getFontSizeList, rowTemplate: 'SelectControl/CombBoxRowFontSize' }, comboboxValue: selectedFontSize" />
+    <!--/ko-->
+    <div class="cmd-separator" />
+    <button class="cmd-bold" data-bind="tooltip: getTextResource('Command_Bold'), click: cmdBoldClick" />
+    <button class="cmd-italic" data-bind="tooltip: getTextResource('Command_Italic'), click: cmdItalicClick" />
+    <button class="cmd-underline" data-bind="tooltip: getTextResource('Command_Underline'), click: cmdUnderlineClick" />
+    <button class="cmd-background" data-bind="tooltip: getTextResource('Command_SetBackground'), click: cmdSetBackgroundClick, visible: !browser_ie11" />
+    <button class="cmd-color" data-bind="tooltip: getTextResource('Command_SetColor'), click: cmdSetColorClick, visible: !browser_ie11" />
+    <div class="cmd-separator" />
+    <button class="cmd-align-justify" data-bind="tooltip: getTextResource('Command_AlignJustify'), click: cmdAlignJustifyClick" />
+    <button class="cmd-align-left" data-bind="tooltip: getTextResource('Command_AlignLeft'), click: cmdAlignLeftClick" />
+    <button class="cmd-align-center" data-bind="tooltip: getTextResource('Command_AlignCenter'), click: cmdAlignCenterClick" />
+    <button class="cmd-align-right" data-bind="tooltip: getTextResource('Command_AlignRight'), click: cmdAlignRightClick" />
+
+    <!--ko ifnot: browser_edgeOrFirefox -->
+    <div class="cmd-separator" />
+    <button class="cmd-right" data-bind="tooltip: getTextResource('Command_Right'), click: cmdRightClick" />
+    <button class="cmd-left" data-bind="tooltip: getTextResource('Command_Left'), click: cmdLeftClick" />
+    <!--/ko-->
+</div>
+<div class="hiddenContainer" data-bind="template: {name : '../UI/Controls/htmlControl/htmlControl.Palette'}" />
+<div class="htmlEditor-frameContainer">
+</div>

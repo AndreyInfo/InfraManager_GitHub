@@ -1,0 +1,12 @@
+﻿<div class="b-requestDetail-menu__item b-requestDetail-menu__iniciation leftToolbarButtons workflowBlock" data-bind="tooltip: $tooltip, css: {'invalid' : $control.EntityWithoutState, 'workflowControl-container': $control.AvailableStateList().length > 0 && $control.ReadOnly() == false}, click: $control.MenuClick">
+    <div class="menuBlock">
+        <img data-bind="attr: {src: $entity.WorkflowImageSource}, visible: $entity.WorkflowImageSource" />
+        <span data-bind="text: $entity.EntityStateName"></span>
+    </div>
+    <div class="workflowControl-part" data-bind="visible: $control.AvailableStateList().length > 0 && $control.ReadOnly() == false">
+        <a class="workflowControl-expander" />
+        <ul class="workflowControl-menu" data-bind="foreach: $control.AvailableStateList">
+            <li data-bind="click: StateClick, css: {'special': StateID == null}"><img data-bind="attr: {src : this.ImageBase64src}, visible: ImageBase64" /><a data-bind="text: Text, longNameTooltip: Text" /></li>
+        </ul>
+    </div>
+</div>

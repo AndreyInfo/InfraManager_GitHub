@@ -1,0 +1,4 @@
+﻿<div class="sc_serviceCatalogContent" data-bind="if: SelectedServiceCategory() != null && VisibleServiceCategoryList().length > 0, style: { top: ServiceCategoryControlHeight() + 'px'}">
+    <div class="sc_serviceCatalogueHierarchy" data-bind="template: { name: 'ServiceCatalogue/ServiceCatalogueHierarchy' }" />
+    <div class="sc_serviceView" data-bind="template: { name: SelectedObjectTemplate }" />
+</div>

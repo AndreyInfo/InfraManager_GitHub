@@ -1,0 +1,33 @@
+﻿<div class="tabPage assetForm b-requestDetail im-base-text" data-bind="with: tabActive, afterUpdateBlock: tabActive().AfterRender">
+
+    <div class="tabGeneral" tabindex="0">
+        <!-- Информация -->
+        <div class="information-div">
+            <!--Описание-->
+            <span class="fieldCaption" data-bind="restext:'LicenceScheme_Form_Description'" />
+
+            <!--<div class="fieldControl border multiline" data-bind="text: $parent.object().Description, click: editDescription, css: {'clickable': $parent.CanEdit()}"></div>-->
+            <!-- ko if: $parent.isAddNewLicenceScheme -->
+            <div class="fieldControl border multiline">
+                <textarea maxlength="255" data-bind="textInput: $parent.object().Description" />
+            </div>
+            <!-- /ko -->           
+            <!-- ko ifnot: $parent.isAddNewLicenceScheme -->
+            <div class="fieldControl border multiline" data-bind="text: $parent.object().Description, click: editDescription, css: {'clickable': $parent.CanEdit()}"></div>
+            <!-- /ko -->
+        </div>
+
+
+
+        <!-- Виды схемы лицензирования -->
+        <div class="schemeTypee-div">
+            <span class="fieldCaption" data-bind="restext:'LicenceScheme_Form_General_Type'" />
+
+            <div class="combobox">
+                <div class="control">
+                    <input type="text" class="textField" data-bind="value: $parent.object().SchemeTypeLabel" readonly="" tabindex="0">
+                    <span class="dropdownButton" disabled></span>
+                </div>
+            </div>
+        </div>
+    </div>

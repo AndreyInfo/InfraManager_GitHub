@@ -1,0 +1,39 @@
+﻿<div class="al-list-choosen" data-bind="foreach: ChoosenObjectsList">
+    <div class="al-list-item" data-bind="css: { 'active': Selected }">
+        <div class="al-list-item-chb-column">
+            <input type="checkbox" data-bind="checked: Selected" />
+        </div>
+        <div class="al-list-item-icon-column">
+            <div data-bind="css: CssIconClass"><span></span></div>
+        </div>
+        <div class="al-list-item-main-column" data-bind="click: $parent.ShowForm">
+            <div class="al-list-item-main-firstrow" data-bind="">
+                <span class="al-main-header" data-bind="text: Name, longNameTooltip: Name"></span>
+            </div>
+            <div class="al-list-item-main-secondrow">
+                <span class="al-main-text"><span data-bind="text: Model, longNameTooltip: Model"></span></span>
+            </div>
+            <div class="al-list-item-main-thirdrow">
+                <span class="al-secondary-text"><span data-bind="text: State, longNameTooltip: State"></span></span>
+            </div>
+        </div>
+        <div class="al-list-item-info-column">
+            <span class="al-list-info-item">
+                <span class="al-property-header" data-bind="restext: 'UserRoom'"></span>
+                <span class="al-property-text" data-bind="text: Room, longNameTooltip: Room"></span>
+            </span>
+            <span class="al-list-info-item">
+                <span class="al-property-header" data-bind="restext: 'UserFloor'"></span>
+                <span class="al-property-text" data-bind="text: Floor, longNameTooltip: Floor"></span>
+            </span>
+            <span class="al-list-info-item">
+                <span class="al-property-header" data-bind="restext: 'UserBuilding'"></span>
+                <span class="al-property-text" data-bind="text: Building, longNameTooltip: Building"></span>
+            </span>
+            <span class="al-list-info-item">
+                <span class="al-property-header" data-bind="restext: 'UserOrganization'"></span>
+                <span class="al-property-text" data-bind="text: Organization, longNameTooltip: Organization"></span>
+            </span>
+        </div>
+    </div>
+</div>

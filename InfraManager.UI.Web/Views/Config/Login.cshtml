@@ -1,0 +1,80 @@
+﻿@model InfraManager.UI.Web.Models.ConfigLoginModel
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@using Resources = InfraManager.ResourcesArea.Resources
+@inject IHtmlLocalizer<Resources> localizer
+
+
+@{
+    Layout = "~/Views/Shared/LiteLayout.cshtml";
+}
+
+@using (Html.BeginForm("SetLanguage", "Config", FormMethod.Post))
+{
+    <div id="languageSet" class="languageSet-auth">
+        <button type="submit" class="language-ru" name="cultureName" value="ru-RU" onclick="onStartRequest();" />
+        <button type="submit" class="language-en" name="cultureName" value="en-US" onclick="onStartRequest();" />
+    </div>
+}
+
+
+
+@using (Html.BeginForm("Login", "Config", FormMethod.Post))
+{
+    <style>
+        .b-main div label {
+            width: 150px;
+            margin-right: 10px;
+            display: inline-block;
+            text-align: right;
+        }
+
+        .b-main div input {
+            width: 200px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .b-main div .ui-button {
+            margin-top: 10px;
+        }
+    </style>
+    <br />
+    <center>
+        <h3>
+            <label id="configLoginPrompt">@localizer[Resources.ConfigLoginPrompt]</label>
+        </h3>
+        @if (Model.Invalid)
+        {
+            <label id="userLoginPasswordNotFound" style=" color:red">@localizer[Resources.UserLoginPasswordNotFound]</label>
+        }
+        <div>
+            <div>
+                <label id="userLogin">@(localizer[Resources.UserLogin].Value + ":")</label>
+                @Html.TextBoxFor(model => model.Login)
+            </div>
+            <div>
+                <label id="passw">@(localizer[Resources.UserPassword].Value + ":")</label>
+                @Html.PasswordFor(model => model.Password)
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="ui-button ui-button-text-only" onclick="onStartRequest();">
+                <span id="signIn" class="ui-button-text">@localizer[Resources.SignIn]</span>
+            </button>
+        </div>
+    </center>
+}
+
+<script type="text/javascript">document.onkeydown = function (evt) {
+        var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+        if (keyCode == 13) {
+            document.getElementsByTagName("button")[0].click();
+        };
+
+    };</script>
+
+
+

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "IM.Core.DAL.Migrations": {
+      "commandName": "Project",
+      "commandLineArgs": "-\"Data Source=.\\SQLEXPRESS;Initial Catalog=im;Integrated Security=True\" -\"60\""
+    }
+  }
+}

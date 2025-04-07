@@ -1,0 +1,37 @@
+﻿<div class="tabPage" data-bind="with: tabActive">
+    <div class="tabGeneral">
+        <div class="rightSide">
+            <div class="fieldCaption" data-bind="restext: 'Name'"></div>
+            <input type="text" class="textField border" maxlength="255" data-bind="textInput: $parent.object().Name, longNameTooltip: $parent.object().Name" />
+
+            <div class="fieldCaption" data-bind="restext: 'Supplier_ContactPhone'"></div>
+            <input type="text" class="textField border" maxlength="255" data-bind="textInput: $parent.object().Phone, longNameTooltip: $parent.object().Phone" />
+
+            <div class="fieldCaption" data-bind="restext: 'Supplier_Email'"></div>
+            <input type="text" class="textField border" maxlength="255" data-bind="textInput: $parent.object().Email, longNameTooltip: $parent.object().Email" />
+
+            <div class="fieldCaption" data-bind="restext: 'Supplier_Address'"></div>
+            <input type="text" class="textField border" maxlength="255" data-bind="textInput: $parent.object().Address, longNameTooltip: $parent.object().Address" />
+
+            <div class="fieldCaption" data-bind="restext: 'Supplier_RegisteredAddress'"></div>
+            <input type="text" class="textField border" maxlength="255" data-bind="textInput: $parent.object().RegisteredAddress, longNameTooltip: $parent.object().RegisteredAddress" />
+
+            <div class="fieldCaption" data-bind="restext: 'Supplier_INN'"></div>
+            <input type="text" class="textField border" maxlength="50" data-bind="textInput: $parent.object().INN, longNameTooltip: $parent.object().INN" />
+
+            <div class="fieldCaption" data-bind="restext: 'Supplier_KPP'"></div>
+            <input type="text" class="textField border" maxlength="50" data-bind="textInput: $parent.object().KPP, longNameTooltip: $parent.object().KPP" />
+
+            <div class="fieldCaption" data-bind="restext: 'SupplierType'"></div>
+            <div class="types" data-bind="foreach: $parent.object().TypeList">
+                <div class="type">
+                    <input class="type-chbx" type="checkbox" data-bind="checked: $data.IsChecked" />
+                    <span data-bind="text: $data.Name" />
+                </div>
+            </div>
+
+            <div class="fieldCaption" data-bind="restext: 'AssetNumber_Note'"></div>
+            <textarea class="textArea border" maxlength="255"  data-bind="value: $parent.object().Notice"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+insert into role_operation
+values ('00000000-0000-0000-0000-000000000001', 1122)
+ON CONFLICT DO NOTHING;

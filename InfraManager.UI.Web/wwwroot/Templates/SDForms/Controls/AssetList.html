@@ -1,0 +1,64 @@
+﻿<div class="tabCaption" data-bind="restext: 'ReferenceAsset', css: {'im-client-search-header ': $header == 'clientSearch'}"></div>
+<!-- ko if: $header == 'clientSearch' -->
+<span class="caption-arrow">
+    <span data-bind="css: $control.IsExpanded() == true ? 'arrow-up-white' : 'arrow-down-white', click: $control.ExpandCollapseClick, tooltip: $control.IsExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+        <span></span>
+    </span>
+</span>
+<!-- /ko -->
+<!-- ko if: $control.IsExpanded() == true -->
+<div class="asset-list tabContent im-list" data-bind="style: {height: $control.IsExpanded() == true ? 'foundClientCalls.height' : '0'}">
+    <!-- ko foreach: $control.imList.List -->
+    <div class="im-list-item">
+        <div class="im-list-item-chb-column">
+            <input type="checkbox" class="im-list-item__chb" />
+        </div>
+        <div class="im-list-item-icon-column-asset">
+            <div data-bind="css: CssIconClass"><span></span></div>
+        </div>
+        <div class="im-list-item-main-column">
+            <div class="im-list-item-main-firstcolumn" data-bind="css: { 'cursor-pointer': $root.CanEdit, 'cursor-pointer': $root.CanShow }, click: $parent.$control.ShowObjectForm">
+                <span class="asset-main-header" data-bind="text: Name, longNameTooltip: Name"></span>
+            </div>
+            <div class="im-list-asset-main-secondrow">
+                <span class="im-list-row-item reference-object-mode-text"><span data-bind="text: Type, longNameTooltip: Type"></span></span>
+                <span class="im-list-row-item reference-object-status-textwrap "><span class="reference-object-status-icon"></span><span class="reference-object-status-text" data-bind="text: State, longNameTooltip: State"></span></span>
+            </div>
+        </div>
+        <div class="im-list-item-asset-info-column">
+            <span class="asset-info-item">
+                <span class="asset-reference-text" data-bind="restext: 'Model'"></span>
+                <span class="asset-reference-info" data-bind="text: Model"></span>
+            </span>
+            <span class="asset-info-item">
+                <span class="asset-reference-text" data-bind="restext: 'InventarNumber'"></span>
+                <span class="asset-reference-info" data-bind="text: InvNumber"></span>
+            </span>
+            <span class="asset-info-item">
+                <span class="asset-reference-text" data-bind="restext: 'SerialNumber'"></span>
+                <span class="asset-reference-info" data-bind="text: SerialNumber"></span>
+            </span>
+            <span class="asset-info-item">
+                <span class="asset-reference-text" data-bind="restext: 'Code'"></span>
+                <span class="asset-reference-info" data-bind="text: Code, click: ExpandCollapseClick"></span>
+            </span>
+        </div>
+        <div class="im-list-item-asset-arrow">
+            <!-- ko if: AdapterList().length != 0 -->
+            <span data-bind="visible: AdapterList().length != 0, css: IsExpanded() == true ? 'arrow-up-gray' : 'arrow-down-gray', click: ExpandCollapseClick, tooltip: IsExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+            </span>
+            <!-- /ko -->
+        </div>
+    </div>
+    <div class="asset-reference-adapterlist" data-bind="visible: IsExpanded, foreach: AdapterList">
+        <div class="adapter-info-item">
+            <input type="checkbox" />
+            <span class="adapter-info-item-name" data-bind="text: Name"></span>
+        </div>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: $control.imList.List().length == 0 -->
+    <center><span class="im-list-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+    <!-- /ko -->
+</div>
+<!-- /ko -->

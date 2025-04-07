@@ -1,0 +1,8 @@
+﻿<div class="treeNodeWrapper">
+    <div class="treeNode" data-bind="css: { 'selectedNode': $root.IsSelected($data), 'clickableMode': $root.IsClickable($data) }">
+        <div class="treeNodeHeaderWrapper" data-bind="event: {'contextmenu' : $root.ContextMenuRequested }">
+            <div class="treeNodeText" data-bind="text: Name, click: $root.ClickItem, clickBubble: false"></div>
+            <div class="treeNodeContextMenuButton" data-bind="visible: $root.IsSelected($data), click: $root.ContextMenuRequested"></div>
+        </div>
+    </div>
+</div>

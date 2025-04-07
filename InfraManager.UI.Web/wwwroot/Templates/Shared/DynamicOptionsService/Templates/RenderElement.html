@@ -1,0 +1,77 @@
+﻿<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.Header  -->
+<li class="dynamic-options__list-item dynamic-options__title" data-bind="text: SpecialFields.Label"></li>
+<!-- /ko -->
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.Separator  -->
+<li class="dynamic-options__list-item">
+    <hr class="dynamic-options__separator" data-bind="style: { height: SpecialFields.Value + 'px' }" />
+</li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.User  -->
+    <li
+        class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/User', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"
+    ></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.Position   -->
+    <li
+        class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/Position', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"
+    ></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.Subdivision  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/Subdivision', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.Service  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/Service', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.EnumComboBox  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/EnumComboBox', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.EnumRadioButton  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/EnumRadioButton', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.DateTime  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/DateTime', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.Password  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/Password', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.Number  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/Number', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.String  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/String', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.TextArea  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/TextArea', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.Boolean  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/Boolean', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->
+
+<!-- ko if: Type == $root.DynamicOptionsService.TypesFields.Table  -->
+    <li class="dynamic-options__list-item"
+        data-bind="template: { name: '/Shared/DynamicOptionsService/Templates/Items/Table', afterRender: KoUseLoadItem }, visible: KoUseDynamicShow"></li>
+<!-- /ko -->

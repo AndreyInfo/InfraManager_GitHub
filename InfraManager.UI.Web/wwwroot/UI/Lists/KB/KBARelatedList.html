@@ -1,0 +1,12 @@
+﻿<!-- ko foreach: $data.kbaList -->
+<div class="b-base-content__item-list" data-bind="click: $parent.SelectKBArticle">
+    <div class="KbHeaderBlock-list">
+        <!--<div class="cap_academicSingleToList cap_academicList" />-->
+        <h3 data-bind="text: Caption"></h3>
+        <div class="KBAItemListDep" data-bind="visible: Icon == true"></div>
+    </div>
+    <div class="blockContent">
+
+    </div>
+</div>
+<!-- /ko -->

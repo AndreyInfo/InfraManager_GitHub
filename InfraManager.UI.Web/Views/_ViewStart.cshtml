@@ -1,0 +1,115 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<noscript>
+    <center>
+        <h1>@InfraManager.ResourcesArea.Resources.NoJavaScript</h1>
+    </center>
+</noscript>
+
+<script type="text/javascript">
+    //for cache r.js
+    var applicationVersion = '@InfraManager.Core.ApplicationManager.Instance.ApplicationVersion';
+    //
+    //set current url
+    var setLocation = function (redirectUrl) {
+        var url = '@Url.Content("~/")' + redirectUrl;
+        document.location.href = url;
+    };
+    //
+    //check ie
+    var getIEVersion = function () {
+        var ver = -1; //if failure
+        if (!!window.chrome === true)
+            return ver;
+        //
+        if (navigator.appName == 'Microsoft Internet Explorer') {
+            var re = new RegExp("MSIE ([0-9]{1,}[\\.0-9]{0,})");
+            if (re.exec(navigator.userAgent) !== null) 
+                ver = parseFloat(RegExp.$1);
+        }
+        else if (navigator.appName == "Netscape") {
+            if (navigator.appVersion.indexOf('Trident') === -1)
+                ver = 12;
+            else
+                ver = 11;
+        }
+        return ver;
+    }
+    if (window.location.href.toLowerCase().indexOf('browsernotsupported') == -1) {//check user agent
+        var ieVer = getIEVersion();
+        if (ieVer > 0 && ieVer < 10)
+            setLocation('Errors/BrowserNotSupported');
+    }
+    //
+    //get logo by name from cache or from server
+    var getLogoPath = function (name) {
+        function Deferred() {
+            this._callbacks = [];
+            this._isResolved = false;
+            this._resolvedValue = null;
+        };
+        Deferred.prototype = {
+            resolve: function (value) {
+                this._isResolved = true;
+                this._resolvedValue = value;
+                //
+                var i = this._callbacks.length;
+                while (i--)
+                    this._callbacks[i](value);
+            },
+            done: function (callback) {
+                if (this._isResolved)
+                    callback(this._resolvedValue);
+                else
+                    this._callbacks.push(callback);
+            }
+        };
+        //
+        //
+        var retval = new Deferred();
+        //
+        var expiresInName = 'imagePath_expiresIn'
+        var fullName = 'imagePath_' + name;
+        //
+        var expiresIn = localStorage.getItem(expiresInName);
+        if (!expiresIn)
+            expiresIn = 0;
+        //
+        var path = null;
+        if (expiresIn >= Date.now())
+            path = localStorage.getItem(fullName);
+        else {
+            var removedKeys = [];
+            for (var key in localStorage)
+                if (key.indexOf('imagePath_') != -1)
+                    removedKeys.push(key);
+            for (var i = 0; i < removedKeys.length; i++)
+                localStorage.removeItem(removedKeys[i]);
+            //
+            localStorage.setItem(expiresInName, Date.now() + (1000 * 60 * 60)); //one hour!
+        }
+        //
+        if (path) {
+            retval.resolve(path);
+            return retval;
+        }
+        //
+        var url = '/configApi/GetImagePath?name=' + encodeURIComponent(name);
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                path = xhr.responseText.replace(/\"/g, "");
+                //
+                localStorage.setItem(fullName, path);
+                retval.resolve(path);
+            }
+        };
+        xhr.open("GET", url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('Accept', '');
+        xhr.send();
+        //
+        return retval;
+    };    
+</script>

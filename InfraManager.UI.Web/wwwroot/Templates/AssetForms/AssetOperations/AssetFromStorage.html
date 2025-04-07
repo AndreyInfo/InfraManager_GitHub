@@ -1,0 +1,72 @@
+﻿<div data-bind="click: formClick" style="height: 100%;width: 100%;">
+    <div class="asset-operations-header">
+        <div class="asset-operation-border asset-operations-mainTab-parameters" data-bind="click:mainClick, css: { 'acc-tab-active' : mode() == modes.main, 'acc-tab' : mode() == modes.links }">
+            <div data-bind="text:'Параметры'"></div>
+        </div>
+        <div class="asset-operation-border asset-operations-mainTab-links" data-bind="click:linksClick, css: { 'acc-tab-active' : mode() == modes.links, 'acc-tab' : mode() == modes.main }">
+            <div data-bind="text:SelectedObjText"></div>
+        </div>
+    </div>
+    <div class="asset-operations-params-tab asset-operation-border-top" data-bind="visible: mode() == modes.main">
+        <table class="asset-operations-table">
+            <colgroup>
+                <col span="1" style="width: 50%;">
+                <col span="1" style="width: 50%;">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td id="column1" class="asset-operations-verticall-offset">
+                        <span data-bind="text:'Местоположение'" />
+                        <span style="padding-right:30px;" class="im-red-text" data-bind="text:'*'" />
+                    </td>
+                    <td class="asset-operations-table-float">
+                        <span style="padding-right:60px;" data-bind="text:'МОЛ'" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="asset-operations-verticall-offset c-lite-gray" style="padding-bottom:10px;">
+                        <span data-bind="text: LocationName"></span>
+                        <span class="asset-operations-arrow-down" style="margin-left: 8px;margin-top: 3px;" data-bind="click: ClickNav" />
+                        <span class="asset-operations-clear-btn" style="margin-left: 36px;margin-top: 2px;" data-bind="visible: IsCrearLocVisible, click: ClickClearLocation"></span>
+                    </td>
+                    <td class="asset-operations-verticall-offset c-lite-gray asset-operations-table-float" style="padding-bottom:10px;">
+                        <span data-bind="text: MolName"></span>
+                        <span class="asset-operations-arrow-down" style="margin-left: 8px;margin-top: 3px;" data-bind="click: ClickMolNav" />
+                        <span class="asset-operations-clear-btn" style="margin-left: 36px;margin-top: 2px;" data-bind="visible: IsCrearMolVisible, click: ClickClearMol"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="asset-registration-founding-container">
+            <span data-bind="text:'Причина (номер объекта)'" />
+            <span class="tabCaption-icon-plus active" style="position: relative;top: 7px;" data-bind="click: LinkSdObjectClick"></span>
+            <div data-bind="text: FoundingNumberStr"></div>
+            <div class="contextMenu-inner-asset" style="position: relative;top: 5px;left: 395px;" data-bind="visible: ContextMenuVisible">
+                <div class="contextline" data-bind="text: 'Заявка', click: LinkCall"></div>
+                <div class="contextline" data-bind="text: 'Задание', click: LinkWorkorder"></div>
+                <div class="contextline" data-bind="text: 'Проблема', click: LinkProblem"></div>
+            </div>
+        </div>
+
+        <div class="asset-operation-border" style="position: absolute;top: 37px;left: 10px;background-color: white;" data-bind="visible: IsNavVisible">
+            <div style="position: relative;left: 20px;top: 4px;margin-bottom: 20px;">
+                <span class="im-blue-text" data-bind="text:'Открыть в отдельном окне'"></span>
+                <span class="asset-operations-arrow-down" style="right: 37px;margin-top: 2px;" data-bind="click: ClickNav"></span>
+            </div>
+            <div id="navig" style="position: relative;height:300px;" data-bind="template: {name: 'AssetForms/AssetOperations/Navigator', afterRender: AfterRender}"></div>
+        </div>
+
+        <div class="asset-operation-border" style="position: absolute;top: 37px;right: 30px;background-color: white;" data-bind="visible: IsMolNavVisible">
+            <div style="position: relative;left: 20px;top: 4px;margin-bottom: 20px;">
+                <span class="im-blue-text" data-bind="text:'Открыть в отдельном окне'"></span>
+                <span class="asset-operations-arrow-down" style="right: 37px;margin-top: 2px;" data-bind="click: ClickMolNav"></span>
+            </div>
+            <div id="mol-navig" style="position: relative;height:300px;" data-bind="template: {name: 'AssetForms/AssetOperations/MolNavigator', afterRender: AfterRender}"></div>
+        </div>
+    </div>
+
+    <div class="device-list-tab asset-operation-border-top" data-bind="visible: mode() == modes.links">
+        <div class="links__b" data-bind="visible: mode() == modes.links, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/LinkList', data: { $serviceButtonVisible: true, $control: $root.linkList } }" />
+    </div>
+</div>

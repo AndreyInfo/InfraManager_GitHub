@@ -1,0 +1,34 @@
+﻿<!-- ko if:  $model() != null -->
+<div data-bind="if: $model().OBJ_Peripheral_Printer">
+    <div class="network-device-header-text" data-bind="restext: 'Asset_ModelCharacteristics'" />
+    <div class="network-device-header-text" data-bind="restext: 'Asset_Printer'" />
+    <table class="network-device-table-margineTop">
+        <tbody>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_MaxPageCount'" /></td>
+                <td class="network-device-table-row">
+                    <div class="asset-text-field-readonly" data-bind="text: $model().Printer_MaxPageCount" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_NomPageCount'" /></td>
+                <td class="network-device-table-row">
+                    <div class="asset-text-field-readonly" data-bind="text: $model().Printer_NomPageCount" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_Color'" /></td>
+                <td class="network-device-table-row">
+                    <input class="asset-model-checkbox" type="checkbox" readonly data-bind="checked: $model().Printer_Color, disable: true" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_Photo'" /></td>
+                <td class="network-device-table-row">
+                    <input class="asset-model-checkbox" type="checkbox" readonly data-bind="checked: $model().Printer_Photo, disable: true" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- /ko -->

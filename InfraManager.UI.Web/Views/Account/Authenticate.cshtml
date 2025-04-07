@@ -1,0 +1,19 @@
+﻿<style>
+    .b-main {
+        top: 0;
+    }
+</style>
+<span id="auth" data-bind="template: {name: 'Account/Login', afterRender: AfterRender}"></span>
+
+<script type="text/javascript">
+    @section MainScript {
+    require(['jquery', 'knockout', 'models/Account/Login'], function ($, ko, vm) {
+            var mod = new vm.ViewModel(@ViewBag.LoginPasswordAuthenticationEnabled.ToString().ToLower());
+            ko.applyBindings(mod, document.getElementById('auth'));
+            //
+            hideSpinner($('.b-main')[0]);
+    });
+    }
+    var returnUrl = '@ViewBag.ReturnUrl';
+    var disableEventManager = true;
+</script>

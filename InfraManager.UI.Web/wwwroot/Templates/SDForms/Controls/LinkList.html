@@ -1,0 +1,63 @@
+﻿<div class="tabCaption im-big-header im-list-header">
+    <span data-bind="restext: 'Links'"></span>
+    <span class="tabCaption-icon-chain" data-bind="click: function() { $control.imList.ExecuteOperation('reference') },  css: { 'active' : $control.imList.IsGranted('reference') }, tooltip: getTextResource('Reference')"></span>
+</div>
+<div class="links__list tabContent im-list" data-bind="style: {bottom: $control.imList.SelectedItemsCount() > 0 ? '60px' : '0'}">
+    <!-- ko foreach: $control.imList.List -->
+    <div class="im-list-item links-list-item">
+        <div class="im-list-item-chb-column">
+            <input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected, visible: $root.CanEdit" />
+        </div>
+        <div class="im-list-item-icon-column">
+            <div data-bind="css: CssIconClass"><span></span></div>
+        </div>
+        <div class="im-list-item-main-column">
+            <div class="im-list-item-main-firstrow links-object-main-firstrow" data-bind="css: { 'cursor-pointer': $root.CanEdit, 'cursor-pointer': $root.CanShow,  'cursor-pointer': $parent.$control.CanEdit }, click: $parent.$control.ShowObjectForm">
+                <span class="links-object-main-header" data-bind="text: Name, longNameTooltip: Name"></span>
+            </div>
+            <div class="links-info-item" data-bind="longNameTooltip: ClassName">
+                <span class="links-reference-text" data-bind="restext: 'LinkCategory'"></span>
+                <span class="links-reference-info" data-bind="text: ClassName"></span>
+            </div>
+            <!-- ko if: Location -->
+            <div class="links-info-item">
+                <span class="links-reference-text" data-bind="restext: 'Asset_Location'"></span>
+                <span class="links-reference-info" data-bind="text: Location"></span>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: Note -->
+            <span class="links-info-item" data-bind="longNameTooltip: Note">
+                <span class="links-reference-text" data-bind="restext: 'LinkNote'"></span>
+                <span class="links-reference-info" data-bind="text: Note"></span>
+            </span>
+            <!-- /ko -->
+        </div>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: $control.imList.List().length == 0 -->
+    <center><span class="im-list-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+    <!-- /ko -->
+</div>
+<!--когда панели появятся автоматом должен установиться отступ tabContent от нижнего края посредствам ko-->
+<div class="links__buttons" style="display:none;">
+    <!-- ko if: $root.CanEdit -->
+    <button class="button button_b-ctrl_note button_size_M button_type_normal links__buttons-btn"><span class="button__label" data-bind="restext: 'LinksBtnAsset'"></span></button>
+    <button class="button button_b-ctrl_note button_size_M button_type_normal links__buttons-btn"><span class="button__label" data-bind="restext: 'LinkBtnModel'"></span></button>
+    <!-- ko if: $serviceButtonVisible == true -->
+    <button class="button button_b-ctrl_note button_size_M button_type_normal links__buttons-btn"><span class="button__label" data-bind="restext: 'LinkBtnService'"></span></button>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<div class="links__actions im-list__actions" data-bind="visible: $control.imList.SelectedItemsCount() > 0">
+    <div class="im-list__actions-wrapper">
+        <div class="cRef__actions-list im-list__actions-list" data-bind="foreach: $control.imList.OperationList">
+            <button class="button button_b-ctrl_note button_size_M button_type_normal im-list__actions-button" data-bind="visible: IsVisible, click: OnClick ">
+                <div class="button__label" data-bind="text: Text"></div>
+            </button>
+        </div>
+        <div class="im-list__right-panel">
+            <div class="links__actions-count im-list__actions-count"><span data-bind="restext: 'Choosen'"></span>: <span data-bind="text: $control.imList.SelectedItemsCount"></span></div>
+            <div class="links__actions-close im-list__actions-close"><a data-bind="restext: 'UndoCheck', click: $control.imList.UncheckAll"></a></div>
+        </div>
+    </div>
+</div>

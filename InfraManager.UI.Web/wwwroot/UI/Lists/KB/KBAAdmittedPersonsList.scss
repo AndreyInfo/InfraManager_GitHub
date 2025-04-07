@@ -1,0 +1,135 @@
+﻿.kbaList {
+        height: 60%;
+    }
+
+    .b-content-kba-container {
+        width: 65%;
+        height: 70%;
+        overflow: auto;
+        background: $white-background-color;
+        position: relative;
+    }
+      
+    .b-content-kba-container-header {
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        display: -ms-flexbox;
+        flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-direction: row;
+        -ms-flex-direction: row;
+        justify-content: flex-start;
+        -ms-flex-pack: start;
+        align-items: flex-end;
+        -ms-flex-align: end;
+    }
+
+    .b-content-kba-container-body {
+        height: 250px;
+        right: 0;
+        left: 0;
+        top: 60px;
+        bottom: 0;
+        overflow: auto;
+        padding-right: 3px;
+        margin: 10px 10px 10px 10px;
+    }
+
+    .kba-text_ {
+        margin-left: 20px;
+        font-family: Arial;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+    }
+
+    .kba-line_ {
+        margin-left: 20px;
+    }
+
+    .kba-header_list-divider {
+        border-bottom: 1px solid $border-gray-color;
+        min-width: 15px;
+        height: 44px;
+        flex-grow: 0;
+    }
+
+    .kba-header_list-divider-last {
+        @extend .substitution-header_list-divider;
+        flex-grow: 1;
+        -ms-flex-positive: 1;
+    }
+
+    .kba-header_list {
+        height: 36px;
+        background-color: $lightblue-background-color;
+        text-align: center;
+        border-bottom: 1px solid $border-gray-color;
+        padding: 8px;
+    }
+
+    .kba-header_list.active {
+        border: 1px solid $border-gray-color;
+        border-bottom: 0px;
+        background-color: $white-background-color;
+        height: 44px;
+        padding: 12px;
+    }
+
+    .kba-header-text {
+        line-height: 20px;
+        @extend .im-base-text;
+        color: $service-catalog-light-gray;
+    }
+
+    .kba-header_list.active .kba-header-text {
+        color: $blue-text-color;
+    }
+
+    .kba-withFinishedWorkflowWrapper {
+        display: flex;
+        display: -ms-flexbox;
+        flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-direction: row;
+        -ms-flex-direction: row;
+        justify-content: flex-start;
+        -ms-flex-pack: start;
+        align-items: center;
+        -ms-flex-align: center;
+        margin: 20px 0 20px 30px;
+    }
+
+    .kba-withFinishedWorkflowHeader-grey {
+        margin-left: 10px;
+        color: darkgrey;
+        margin: 10px 0 5px 30px;
+    }
+
+    .kba-withFinishedWorkflowHeader {
+        margin-left: 10px;
+        margin: 0 0 0 30px;
+    }
+
+.kba-text-bolder {
+    font-weight: bold;
+}
+
+.kba-text-list {
+    font-size: 12px;
+    text-overflow: ellipsis;
+    width: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.kba-text-forlist {
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+    
+

@@ -1,0 +1,9 @@
+﻿<div class="frmSoftwareLicenceLink">
+    <div class="searchText">
+        <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, event: { keypress: SearchKeyPressed }">
+        <div class="clearfield cursor-pointer" data-bind="click: EraseTextClick, visible: !IsSearchTextEmpty()"></div>
+    </div>
+    <div class="tableWrapper">
+        <div class="list" data-bind="template: {name: './../UI/Forms/Asset/Controls/SoftwareLicenceList'}" />
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿<div class="tabPage ml h100" data-bind="with: tabActive">
+    <div class="im-big-header caption" data-bind="restext: 'Asset_History'" />
+    <div style="height: calc(92% - 40px);" class="h100WithoutCaption historyList" data-bind="foreach: historyList">
+        <div class="tape__history__i">
+            <div class="tape__history__icon tape__history__icon_status"></div>
+            <div class="tape__history__text" data-bind="text: Text"></div>
+            <div class="tape__history__info">
+                <span class="tape__history__user" data-bind="text: AuthorFullName"></span>
+                <span class="tape__history__date" data-bind="text: LocalDate"></span>
+            </div>
+        </div>
+    </div>
+</div>

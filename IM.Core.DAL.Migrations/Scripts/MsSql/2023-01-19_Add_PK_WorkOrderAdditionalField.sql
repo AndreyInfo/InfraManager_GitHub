@@ -1,0 +1,9 @@
+if NOT EXISTS (SELECT 1
+					FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS C
+					WHERE C.TABLE_NAME = 'WorkOrderAdditionalField'
+						AND C.CONSTRAINT_SCHEMA = 'dbo' 
+						AND C.CONSTRAINT_NAME = 'PK_WorkOrderAdditionalField')
+BEGIN 
+	ALTER TABLE WorkOrderAdditionalField
+		ADD CONSTRAINT PK_WorkOrderAdditionalField PRIMARY KEY CLUSTERED (id);
+END 

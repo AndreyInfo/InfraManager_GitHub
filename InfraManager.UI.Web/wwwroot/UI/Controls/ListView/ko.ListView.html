@@ -1,0 +1,118 @@
+﻿<div class="ko_ListView">
+    <div class="columnsPanel">
+        <div class="columnsHeader">
+            <a class="close-icon" data-bind="click: settingsCloseClick" />
+            <span class="nub"></span>
+        </div>
+        <div class="columnsData">
+            <table>
+                <colgroup>
+                    <col class="colVisible" />
+                    <col class="colText" />
+                    <col class="colArrow" />
+                    <col class="colArrow" />
+                </colgroup>
+                <tbody id="showEntityModel" data-bind="visible: columnViewModel.showEntityModel.isShow">
+                    <tr>
+                        <td class="fieldControl slider-checkbox">
+                            <input type="checkbox" class="limits-input" data-bind="checked: columnViewModel.showEntityModel.Visible" />
+                            <label class="label">Предпросмотр объекта</label>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody data-bind="foreach: columnViewModel.sortedColumnList">
+                    <tr>
+                        <td><input type="checkbox" data-bind="checked: Visible"></td>
+                        <td data-bind="text: Text"></td>
+                        <td><div class="arrow_up" data-bind="click: $parent.columnViewModel.moveUp"><span></span></div></td>
+                        <td><div class="arrow_down" data-bind="click: $parent.columnViewModel.moveDown"><span></span></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="exportPanel">
+        <span class="nub"></span>
+        <div data-bind="restext: 'ListView_ExportLoadedData', click: exportLoadedData"></div>
+        <div data-bind="restext: 'ListView_ExportAllData', click: exportAllData, visible: allDataLoaded() == false"></div>
+    </div>
+    <div class="tableContainer" data-bind="css: css">
+        <div class="tableControlPanel">
+            <div class="contentPanel"></div>
+            <div class="exportButton" data-bind="tooltip: getTextResource('ListView_ExportButtonTooltip'), click: exportDataClick"><span></span></div>
+            <div class="settingsButton" data-bind="tooltip: getTextResource('ListView_OptionsButtonTooltip'), click: settingsClick"><span></span></div>
+            <div class="counter">
+                <span data-bind="restext: 'ListView_CountItems'"></span>
+                <div class="combobox" data-bind="combobox: { dataSource: getCounterItems }, comboboxValue: counterValue"></div>
+            </div>
+        </div>
+        <div class="tableHeader" data-bind="if: columnViewModel.sortedVisibleColumnList().length > 0, css: {'_emptyData' : rowViewModel.rowList().length == 0 }">
+            <table class="table" data-bind="style: {width: columnViewModel.totalWidth() + 'px'}">
+                <colgroup>
+                    <!-- ko if: options.multiSelect() == true -->
+                    <col class="colCheck" />
+                    <!-- /ko -->
+                    <!-- ko foreach: columnViewModel.sortedVisibleColumnList -->
+                    <col data-bind="style: {width: Width()+'px'}" />
+                    <!-- /ko -->
+                </colgroup>
+                <thead>
+                    <tr>
+                        <!-- ko if: options.multiSelect() == true -->
+                        <th class="checkBoxContainer">
+                            <input class="checkbox" type="checkbox" data-bind="checked: rowViewModel.allItemsChecked" />
+                        </th>
+                        <!-- /ko -->
+                        <!-- ko foreach: columnViewModel.sortedVisibleColumnList-->
+                        <th data-bind="dragDropColumnListView: {target: $data, dropAction: $parent.columnViewModel.moveColumn}, event: { mouseenter: $parent.columnViewModel.checkShowTooltip}, click: $parent.columnViewModel.columnClick, css: {'move' : $parent.columnViewModel.moveThumbData() != null, 'active' : SortAsc() != null, 'numeric' : IsNumeric == true}">
+                            <div class="captionContainer">
+                                <div class="captionText" data-bind="text: Text" />
+                                <div class="captionSortArrow" data-bind="if: SortAsc() != null, css: {'asc': SortAsc() == true, 'desc': SortAsc() == false}" />
+                            </div>
+                            <div class="columnResizeThumb" data-bind="css: {'visible': showResizeThumb() == true}, event: { mouseenter: $parent.columnViewModel.enableResizeThumb, mouseout: $parent.columnViewModel.disableResizeThumb, mousedown: $parent.columnViewModel.thumbResizeCatch }" />
+                        </th>
+                        <!-- /ko -->
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="messageContainer" data-bind="visible: message().length > 0, event: {'contextmenu' : rowViewModel.contextMenuRequested }">
+            <span data-bind="text: message" />
+        </div>
+        <div class="tableData" tabindex="0" data-bind="event: {'keydown': rowViewModel.keyDown, 'contextmenu' : rowViewModel.contextMenuRequested }">
+            <div class="unvisibleData" data-bind="style: {'height' : unvisibleRowsBeforeHeight() + 'px'}" />
+            <table class="table" data-bind="style: {width: columnViewModel.totalWidth() + 'px'}, css: {'appendAvailable' : allDataLoaded() == false}">
+                <colgroup>
+                    <!-- ko if: options.multiSelect() == true -->
+                    <col class="colCheck" />
+                    <!-- /ko -->
+                    <!-- ko foreach: columnViewModel.sortedVisibleColumnList -->
+                    <col data-bind="style: {width: Width()+'px'}, css: {'numeric' : IsNumeric == true}" />
+                    <!-- /ko -->
+                </colgroup>
+                <tbody data-bind="foreach: visibleRowList">
+                    <tr data-bind="css: css, element: domElement, event: {'mousedown': $parent.rowViewModel.mouseDown }">
+                        <!-- ko if: $parent.options.multiSelect() == true -->
+                        <td class="checkBoxContainer"><input class="checkbox" type="checkbox" data-bind="checked: checked" /></td>
+                        <!-- /ko -->
+                        <!-- ko foreach: cells -->
+                        <td data-bind="click: row.listView.rowViewModel.rowClick, longNameTooltip: text, css: {'numeric' : column.IsNumeric == true, 'onlyImage' : imageSource != null && text == null}">
+                            <!-- ko if: imageSource -->
+                            <img data-bind="attr: {src: imageSource}" />
+                            <!-- /ko -->
+                            <!--ko if: column.IsEdit() -->
+                            <div data-bind="template: {name: column.Template, if: column.Template, data: { NumberValueStr: value } }"></div>
+                            <!-- /ko -->
+                            <!--ko if: !column.IsEdit() -->
+                            <span data-bind="text: text"></span>
+                            <!-- /ko -->
+                        </td>
+                        <!-- /ko -->
+                    </tr>
+                </tbody>
+            </table>
+            <div class="unvisibleData" data-bind="style: {'height' : unvisibleRowsAfterHeight() + 'px'}" />
+            <div class="loadingFooter" data-bind="visible: allDataLoaded() == false" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿<style>
+    .b-main {
+        overflow: hidden;
+    }
+</style>
+
+<span id="dashboardTree" data-bind="template: {name: 'Dashboard/DashboardSearch', afterRender: AfterRender}"></span>
+
+<script type="text/javascript">
+ @section MainScript {
+    require(['jquery', 'knockout', 'models/Dashboard/DashboardSearch'], function ($, ko, vm) {
+            var mod = new vm.ViewModel();
+            var loadD = mod.Load();
+            $.when(loadD).done(function () {
+                ko.applyBindings(mod, document.getElementById('dashboardTree'));
+                hideSpinner($('.b-main')[0]);
+            });
+    });
+    }
+</script>
+
+@*<div>
+    <div class="knowlegdeBase-module" data-bind="template: {name: '../UI/Lists/KB/KBASearch', afterRender: AfterRender}"></div>
+</div>
+
+<script type="text/javascript">
+    @section MainScript {
+    require(['jquery', 'knockout'], function ($, ko) {
+        require(['ui_lists/KB/KBASearch'], function (vm) {
+            hideSpinner($('.b-main')[0]);
+            //
+            var mod = new vm.ViewModel();
+            ko.applyBindings(mod, document.getElementsByClassName('knowlegdeBase-module')[0]);
+            mod.Load();
+        });
+    });
+    }
+</script>*@
+
+

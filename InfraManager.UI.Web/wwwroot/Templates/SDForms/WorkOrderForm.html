@@ -1,0 +1,431 @@
+﻿<div class="b-requestDetail im-base-text">
+    <div class="b-requestDetail-left" data-bind="with: workOrder, afterUpdateBlock: renderWorkOrderComplete">
+        <div class="b-requestDetail-menu clearfix" data-request-menu>
+            <div class="b-requestDetail-menu__item b-requestDetail-menu__priority leftToolbarButtons" data-bind="css: { 'b-requestDetail-menu__priority-readonly' : $parent.IsReadOnly() == true }">
+                <div class="priority-header" data-bind="tooltip: getTextResource('WorkOrderPriority')">
+                    <div class="menuBlock">
+                        <span data-bind="text: PriorityName"></span>
+                    </div>
+                    <!-- ko ifnot: $parent.IsReadOnly -->
+                    <span class="priority-expander"></span>
+                    <!-- /ko -->
+                </div>
+                <span class="priority-workorder-panel" data-bind="stopBinding: true"></span>
+            </div>
+            <!-- ko if: $parent.workflowControl() != null -->
+            <div class="workflow" data-bind="template: {name: '../UI/Controls/WorkflowControl', data: { $tooltip: getTextResource('WorkOrderState'), $entity: $data, $control: $parent.workflowControl() }, afterRender: $parent.SizeChanged }" />
+            <!-- /ko -->
+            <div class="b-requestDetail-menu____menucontrol_item-icon b-requestDetail-menu__item-icon1 b-requestDetail-menu__item-control cursor-pointer leftToolbarButtons" data-bind="click: $parent.CustomControlClick, css: {active : $parent.CustomControl() == true}, tooltip: getTextResource('OnControl')"><span></span></div>
+            <div class="b-requestDetail-menu__item-icon menucontrol b-requestDetail-menu__menucontrol-icon b-requestDetail-menu__item-control cursor-pointer leftToolbarButtons" data-bind="click: $parent.showContextMenu">
+                <span></span>
+                <div data-bind="koContextMenu: {controlInitialized: $parent.contextMenuInit, opening: $parent.contextMenuOpening}"></div>
+            </div>
+            <div class="b-requestDetail-menu__item-icon messagepro b-requestDetail-menu__item-control cursor-pointer leftToolbarButtons" data-bind="click: $parent.SendMail"><span></span></div>
+            <!-- ko ifnot: $parent.IsReadOnly -->
+            <div class="b-requestDetail-menu__item-icon b-requestDetail-menu__item-icon2 b-requestDetail-menu__item-actions cursor-pointer leftToolbarButtons" data-bind="click: $parent.additionalClick" style="display:none;"><span></span></div>
+            <!-- /ko -->
+            <div class="b-requestDetail-menu__item b-requestDetail-menu__modified rightToolbarButtons im-gray-text" data-bind="text: getTextResource('LastChange') + ' ' + $parent.DateModifyCalculated()" />
+        </div>
+        <div class="fieldPair b-requestDetail__title-header">
+            <div class="icon fieldWorkOrderName" data-bind="css: { 'active' : $parent.CanEdit }, click: $parent.EditName, tooltip: getTextResource('Name')"><span /></div>
+            <div class="editor border nowrap im-big-header" data-bind="text: Name, longNameTooltip: Name" />
+        </div>
+        <div class="form-tabs" data-form-tabs>
+            <div class="b-requestDetail__mainParameters" data-bind="visible: $parent.mode() == $parent.modes.main, style: {height: $root.TabHeight}, click: $root.OnFormClick">
+                <div class="horizontalContainer">
+                    <div class="horizontalContainer-leftPart">
+                        <div class="b-requestDetail__descr im-big-header"><span data-bind="restext: 'Description'" /><span data-bind="css: $parent.IsDescriptionContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $parent.ToggleDescriptionContainer, tooltip: $parent.IsDescriptionContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span></div>
+                        <div data-bind="visible: $parent.IsDescriptionContainerVisible">
+                            <div class="fieldPair">
+                                <div class="icon fieldDescription active" data-bind="click: $parent.EditDescription, tooltip: getTextResource('Description')"><span /></div>
+                                <div class="editor border html slide" data-bind="html: Description" />
+                                <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')" />
+                            </div>
+                            <div class="fieldPair">
+                                <div class="icon b-requestDetail__files-addBtn" data-bind="css: { 'active' : $parent.CanEdit }"><span /></div>
+                                <div class="editor b-requestDetail__files documentList" />
+                            </div>
+                            <div class="wo-cause" data-bind="visible: WorkOrderTypeClass() != null && WorkOrderTypeClass() !== 0">
+                                <span class="b-requestDetail__descr im-big-header" data-bind="restext: 'Cause'" />
+                                <span class="wo-cause-object-icon-plus" data-bind="click: $root.LinkObjectClick, visible: $root.CanEdit"></span>
+                                <div class="wo-contextMenu-inner" data-bind="visible: $root.ContextMenuVisible">
+                                    <div class="contextline" data-bind="restext: 'Call', click: $root.LinkCall"></div>
+                                    <div class="contextline" data-bind="restext: 'Project', click: $root.LinkProject"></div>
+                                </div>
+                                <!-- ko if: CauseObject() != null -->
+                                <div class="fieldPair woRef__b wo-causeObject" data-bind="with: CauseObject">
+                                    <!-- ko if: ClassID() == 701 -->
+                                    <div class="im-list-item">
+                                        <div class="im-list-item-chb-column">
+                                            <input type="checkbox" class="im-list-item__chb" data-bind="visible: false" />
+                                        </div>
+                                        <div class="im-list-item-icon-column">
+                                            <div data-bind="css: CssIconClass"></div>
+                                        </div>
+                                        <div class="im-list-item-main-column im-list-item-main-not-fixed-column" style="flex-grow: unset">
+                                            <div class="im-list-item-main-firstrow" data-bind="css: { 'cursor-pointer': $root.CanEdit }, click: $root.ShowReferenceObjectForm">
+                                                <span class="reference-object-main-header" data-bind="text: NumberName, longNameTooltip: NumberName"></span>
+                                            </div>
+                                            <div class="im-list-item-main-secondrow">
+                                                <span class="im-list-row-item reference-object-mode-text"><span data-bind="restext: 'Before'"></span>: <span data-bind="text: UtcDatePromised"></span></span>
+                                            </div>
+                                        </div>
+                                        <div class="im-list-item-status-column">
+                                            <span class="im-list-row-item reference-object-status-textwrap"><span class="reference-object-status-icon"></span> <span class="reference-object-status-text" data-bind="text: EntityStateName, longNameTooltip: EntityStateName"></span></span>
+                                        </div>
+                                        <div class="im-list-item-end-column">
+                                            <span class="im-list-row-item reference-object-ended-text"><span data-bind="text: Modify, longNameTooltip: Modify"></span></span>
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                    <!-- ko if: ClassID() == 371 -->
+                                    <div class="im-list-item">
+                                        <div class="im-list-item-chb-column">
+                                            <input type="checkbox" class="im-list-item__chb" data-bind="visible: false" />
+                                        </div>
+                                        <div class="im-list-item-icon-column">
+                                            <div data-bind="css: CssIconClass"></div>
+                                        </div>
+                                        <div class="im-list-item-main-column im-list-item-main-not-fixed-column" style="flex-grow: unset">
+                                            <div class="im-list-item-main-firstrow" data-bind="css: { 'cursor-pointer': $root.CanEdit }, click: $root.ShowReferenceObjectForm">
+                                                <span class="reference-object-main-header" data-bind="text: NumberName, longNameTooltip: NumberName"></span>
+                                            </div>
+                                            <div class="im-list-item-main-secondrow">
+                                                <span class="im-list-row-item reference-object-mode-text"><span data-bind="restext: 'Before'"></span>: <span data-bind="text: UtcDatePlanEnd"></span></span>
+                                            </div>
+                                        </div>
+                                        <div class="im-list-item-status-column">
+                                            <span class="im-list-row-item reference-object-status-textwrap"><span class="reference-object-status-icon"></span> <span class="reference-object-status-text" data-bind="text: StateName, longNameTooltip: StateName"></span></span>
+                                        </div>
+                                        <div class="im-list-item-end-column">
+                                            <span class="im-list-row-item reference-object-ended-text"><span></span></span>
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                            <div data-bind="operationID: 652">
+                                <div data-bind="visible: WorkOrderTypeClassString() == 'ActivesRequest'">
+                                    <div id="activesRequestFields" class="actives-request-finanses">
+                                        <span class="b-requestDetail__descr im-big-header" data-bind="restext:'TooltipFinance'" />
+                                        <table class="actives-request-table-margine">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext:'ActiveRequestSum'" /></td>
+                                                    <td class="actives-request-table-row"><span data-bind="text: TotalCostWithNDSString" /></td>
+                                                </tr>
+                                                <!--<tr>
+                                                <td class="actives-request-table-row"><span data-bind="restext:'Budget'" /></td>
+                                                <td class="actives-request-table-row"><input style="border:none; background: inherit;" type="text" data-bind="value: ''" /></td>
+                                                <td class="actives-request-table-row"><span data-bind="restext: 'BudgetDeficit'" /></td>
+                                                <td class="actives-request-table-row"><input style="border:none; background: inherit;" type="text" data-bind="value: ''" /></td>
+                                            </tr>-->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: WorkOrderTypeClass() == 2">
+                                    <div id="purchaseFields" class="actives-request-finanses" data-bind="style: { paddingTop: CauseObject() == null ? '30px' : '110px' }">
+                                        <span class="b-requestDetail__descr im-big-header noPaddingLeft" data-bind="restext:'FinancePurchase_Conditions'" />
+                                        <table class="actives-request-table-margine">
+                                            <colgroup>
+                                                <col span="1" style="width: 200px">
+                                                <col span="1">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'FinancePurchase_Supplier'" /></td>
+                                                    <td class="actives-request-table-row">
+                                                        <div class="finance-purchase-field" data-bind="text: CounterPartyName, click: $root.EditCounterParty, css: { 'cursor-pointer': $root.CanEdit }" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'FinancePurchase_Concord'" /></td>
+                                                    <td class="actives-request-table-row">
+                                                        <div class="finance-purchase-field" data-bind="text: PurchaseConcord, click: $root.EditPurchaseConcord, css: { 'cursor-pointer': $root.CanEdit }" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'FinancePurchase_SupplyDate'" /></td>
+                                                    <td class="actives-request-table-row">
+                                                        <div class="finance-purchase-field" data-bind="text: UtcDateDelivered, click: $root.EditDateDelivered, css: { 'cursor-pointer': $root.CanEdit }" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'FinancePurchase_Bill'" /></td>
+                                                    <td class="actives-request-table-row">
+                                                        <div class="finance-purchase-field" data-bind="text: PurchaseBill, click: $root.EditPurchaseBill, css: { 'cursor-pointer': $root.CanEdit }" />
+                                                    </td>
+                                                </tr>
+                                                <!--ko if: isBudgetEnabled == true-->
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'FinancePurchase_DetailBudget'" /></td>
+                                                    <td class="actives-request-table-row">
+                                                        <div class="finance-purchase-field" data-bind="text: $root.PurchaseDetailBudgetString, click: $root.EditPurchaseDetailBudget, css: { 'cursor-pointer': $root.CanEdit() == true && $root.PurchaseDetailBudgetReadOnly() == false }" />
+                                                    </td>
+                                                </tr>
+                                                <!--/ko-->
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'FinancePurchase_Sum'" /></td>
+                                                    <td class="actives-request-table-row"><span class="purchase-field-padding" data-bind="text: TotalCostWithNDSString" /></td>
+                                                </tr>
+                                                <tr data-bind="if: PurchaseDetailBudget() == false && isBudgetEnabled == true, operationID: 856">
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'FinanceBudgetRow_Financed'" /></td>
+                                                    <td class="actives-request-table-row"><span class="purchase-field-padding" data-bind="text: $parent.PurchaseFinanceBudgetRowList_SumString" /></td>
+                                                </tr>
+                                                <tr data-bind="if: PurchaseDetailBudget() == false && isBudgetEnabled == true, operationID: 856">
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'PurchaseSpecification_Financed'" /></td>
+                                                    <td class="actives-request-table-row"><span class="purchase-field-padding" data-bind="text: $parent.PurchaseFinanceBudgetRowList_PercentString" /></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="actives-request-finanses">
+                                        <span class="b-requestDetail__descr im-big-header noPaddingLeft" data-bind="restext:'Execution'" />
+                                        <table class="actives-request-table-margine">
+                                            <colgroup>
+                                                <col span="1" style="width: 200px">
+                                                <col span="1">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'FinancePurchase_PurchasedAndPlaced'" /></td>
+                                                    <td class="actives-request-table-row"><span data-bind="text: PurchasedAndPlacedCostWithNDS" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'FinancePurchase_WaitPurchase'" /></td>
+                                                    <td class="actives-request-table-row"><span data-bind="text: WaitPurchaseCostWithNDS" /></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div data-bind="visible: WorkOrderTypeClass() == 3">
+                                    <div id="inventoryFields" class="actives-request-finanses" data-bind="style: { paddingTop: CauseObject() == null ? '30px' : '110px' }">
+                                        <span class="b-requestDetail__descr im-big-header noPaddingLeft" data-bind="restext:'AssetInventory'" />
+                                        <table class="actives-request-table-margine">
+                                            <colgroup>
+                                                <col span="1" style="width: 200px">
+                                                <col span="1">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'AssetInventory_Document'" /></td>
+                                                    <td class="actives-request-table-row">
+                                                        <div class="finance-purchase-field" data-bind="text: InventoryDocument, tooltip: InventoryDocument, click: $root.EditInventoryDocument, css: { 'cursor-pointer': $root.CanEdit }" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="actives-request-table-row"><span data-bind="restext: 'AssetInventory_Founding'" /></td>
+                                                    <td class="actives-request-table-row">
+                                                        <div class="finance-purchase-field" data-bind="text: InventoryFounding, tooltip: InventoryFounding, click: $root.EditInventoryFounding, css: { 'cursor-pointer': $root.CanEdit }" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontalContainer-rightPart">
+                        <div class="fieldPair">
+                            <div class="icon fieldWorkOrderType" data-bind="css: { 'active' : $parent.CanEdit }, click: $parent.EditWorkOrderType, tooltip: getTextResource('WorkOrderType')"><span /></div>
+                            <div class="editor nowrap" data-bind="text: TypeName, tooltip: getTextResource('WorkOrderType')" />
+                        </div>
+                        <div class="fieldPair">
+                            <div class="icon fieldDatePromised" data-bind="css: { 'active' : $parent.CanEdit }, click: $parent.EditDatePromised, tooltip: getTextResource('WorkOrderDatePromise')"><span /></div>
+                            <div class="editor nowrap" data-bind="text: getTextResource('Before') + ' ' + $parent.DatePromisedCalculated(), tooltip: getTextResource('WorkOrderDatePromise')" />
+                        </div>
+                        <div class="fieldPair">
+                            <div class="icon fieldManhours active" data-bind="operationID: 317, click: $parent.EditManhoursWork, tooltip: getTextResource('ManhoursWorkTooltip')"><span /></div>
+                            <div class="editor nowrap">
+                                <div style="float:left" data-bind="tooltip: getTextResource('Spent')">
+                                    <span data-bind="text: ManHours" />
+                                </div>
+                                <div class="manhoursNorm im-gray-text" style="float:right;margin-right:5px;" data-bind="css: { 'cursor-pointer' : $parent.CanEdit }, click: $parent.EditManhoursNorm">
+                                    <span data-bind="restext: 'Norm'" /> <span data-bind="text: ManhoursNormString" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="b-requestDetail__table">
+                            <div class="form-users-block">
+                                <!-- ko if: CauseObject() != null -->
+                                <div data-bind="template: { name: 'User/FormUser', if: ClientLoaded(), data: Client }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !ClientLoaded(), data: Client }"></div>
+                                <!-- /ko -->
+                                <!---->
+                                <div data-bind="template: { name: 'User/FormUser', if: InitiatorLoaded(), data: Initiator }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !InitiatorLoaded(), data: Initiator }"></div>
+                                <!---->
+                                <div data-bind="template: { name: 'User/FormUser', if: QueueLoaded(), data: Queue }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !QueueLoaded(), data: Queue }"></div>
+                                <!---->
+                                <div data-bind="template: { name: 'User/FormUser', if: ExecutorLoaded(), data: Executor }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !ExecutorLoaded(), data: Executor }"></div>
+                                <!---->
+                                <div data-bind="template: { name: 'User/FormUser', if: AssignorLoaded(), data: Assignor }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !AssignorLoaded(), data: Assignor }"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fieldPair woRef__b" data-bind="visible: WorkOrderTypeClass() === 0,  with: ReferenceObject">
+                    <div class="im-big-header woRef-title"><span data-bind="restext: 'ReferenceWith'"></span></div>
+                    <!-- ko if: $parent.ReferenceClassID() != 371 -->
+                    <div class="im-list-item">
+                        <div class="im-list-item-chb-column">
+                            <input type="checkbox" class="im-list-item__chb" data-bind="visible: false" />
+                        </div>
+                        <div class="im-list-item-icon-column">
+                            <div data-bind="css: CssIconClass"></div>
+                        </div>
+                        <div class="im-list-item-main-column im-list-item-main-not-fixed-column" style="flex-grow: unset">
+                            <div class="im-list-item-main-firstrow" data-bind="css: { 'cursor-pointer': $root.CanEdit }, click: $root.ShowReferenceObjectForm">
+                                <span class="reference-object-main-header" data-bind="text: NumberName, longNameTooltip: NumberName"></span>
+                            </div>
+                            <div class="im-list-item-main-secondrow">
+                                <span class="im-list-row-item reference-object-mode-text"><span data-bind="restext: 'Before'"></span>: <span data-bind="text: UtcDatePromised"></span></span>
+                            </div>
+                        </div>
+                        <!-- ko if: $parent.ReferenceClassID() == 701 -->
+                        <div class="im-list-item-user-column">
+                            <!-- ko if: ClientObj != null -->
+                            <span data-bind="template: { name: 'User/FormUser', data: ClientObj }"></span>
+                            <!-- /ko -->
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if: $parent.ReferenceClassID() == 702 || $parent.ReferenceClassID() == 703 || $parent.ReferenceClassID() == 823 -->
+                        <div class="im-list-item-user-column">
+                            <!-- ko if: InitiatorObj != null -->
+                            <span data-bind="template: { name: 'User/FormUser', data: InitiatorObj }"></span>
+                            <!-- /ko -->
+                        </div>
+                        <!-- /ko -->
+                        <div class="im-list-item-status-column">
+                            <span class="im-list-row-item reference-object-status-textwrap"><span class="reference-object-status-icon"></span> <span class="reference-object-status-text" data-bind="text: EntityStateName, longNameTooltip: EntityStateName"></span></span>
+                        </div>
+                        <div class="im-list-item-end-column">
+                            <span class="im-list-row-item reference-object-ended-text"><span data-bind="text: Modify, longNameTooltip: Modify"></span></span>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: $parent.ReferenceClassID() == 371 -->
+                    <div class="im-list-item">
+                        <div class="im-list-item-chb-column">
+                            <input type="checkbox" class="im-list-item__chb" data-bind="visible: false" />
+                        </div>
+                        <div class="im-list-item-icon-column">
+                            <div data-bind="css: CssIconClass"></div>
+                        </div>
+                        <div class="im-list-item-main-column im-list-item-main-not-fixed-column" style="flex-grow: unset">
+                            <div class="im-list-item-main-firstrow" data-bind="css: { 'cursor-pointer': $root.CanEdit }, click: $root.ShowReferenceObjectForm">
+                                <span class="reference-object-main-header" data-bind="text: Name, longNameTooltip: Name"></span>
+                            </div>
+                            <div class="im-list-item-main-secondrow">
+                                <span class="im-list-row-item reference-object-mode-text"><span data-bind="restext: 'Before'"></span>: <span data-bind="text: UtcDatePlanEnd"></span></span>
+                            </div>
+                        </div>
+                        <div class="im-list-item-status-column">
+                            <span class="im-list-row-item reference-object-status-textwrap"><span class="reference-object-status-icon"></span> <span class="reference-object-status-text" data-bind="text: StateName, longNameTooltip: StateName"></span></span>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- ko if: $parent.CanShowActiveRequestsTabs() -->
+            <div class="ar_specifications__b" data-bind="visible: $parent.mode() == $parent.modes.ar_specifications, style: {height: $root.TabHeight}, template: {name: 'FinanceForms/Controls/ActiveRequestSpecificationList', data: { $control: $root.ar_specificationsList } }" />
+            <!-- /ko -->
+            <!-- ko if: $parent.CanShowPurchaseTabs() -->
+            <div class="pu_specifications__b" data-bind="visible: $parent.mode() == $parent.modes.pu_specifications, style: {height: $root.TabHeight}, template: {name: 'FinanceForms/Controls/PurchaseSpecificationList', data: { $control: $root.pu_specificationsList } }" />
+            <!--ko if: PurchaseDetailBudget() == false && isBudgetEnabled == true -->
+            <div class="pu_financeBudgetRows__b" data-bind="visible: $parent.mode() == $parent.modes.pu_financeBudgetRows, style: {height: $root.TabHeight}, template: {name: 'FinanceForms/Controls/FinanceBudgetRowList', data: { $control: $root.pu_FinanceBudgetRowList } }" />
+            <!-- /ko -->
+            <div class="pu_goodsInvoices__b" data-bind="visible: $parent.mode() == $parent.modes.supplies, style: {height: $root.TabHeight}, template: {name: 'FinanceForms/Controls/GoodsInvoiceList', data: { $control: $root.pu_invoiceList } }" />
+            <div class="pu_assetlocation__b" data-bind="visible: $parent.mode() == $parent.modes.accommodation, style: {height: $root.TabHeight}, template: {name: 'FinanceForms/Controls/ActivesLocation', data: { $control: $root.pu_activesLocation } }" />
+            <!-- /ko -->
+            <div class="tape__b" data-bind="visible: $parent.mode() == $parent.modes.tape, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/Tape', data: { $control: $root.tapeControl } }" />
+            <div class="links__b" data-bind="visible: $parent.mode() == $parent.modes.links, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/LinkList', data: { $serviceButtonVisible: false, $control: $root.linkList } }" />
+            <div class="negotiations__b" data-bind="visible: $parent.mode() == $parent.modes.negotiation, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/NegotiationList', data: { $control: $root.negotiationList } }" />
+
+            <!--ko foreach: $root.DynamicOptionsService.FormTabs -->
+            <div data-bind="visible: $root.mode() == $root.modes.parameterPrefix + $data.Tab.ID,
+                 template: {name: './Shared/DynamicOptionsService/Index', afterRender: $root.DynamicOptionsService.AfterRender }">
+            </div>
+            <!-- /ko -->
+        </div>
+
+        <!-- ko if:$root.inventory_specificationControl() != null -->
+        <div class="pu_specifications__b" data-bind="visible: $parent.mode() == $parent.modes.inventory_specifications, style: {height: $root.TabHeight}, template: {name: '../UI/Forms/SD/InventorySpecificationControl', data:  $root.inventory_specificationControl() }" />
+        <!-- /ko -->
+        <div class="userFields__b" data-bind="visible: $parent.mode() == $parent.modes.userFields, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/UserFields', data: $root.UserFields() }" />
+    </div>
+    <div class="b-requestDetail-right">
+        <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.main); $root.SizeChanged(); }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : mode() != modes.main, 'b-requestDetail__icon1-active' : mode() == modes.main }, click: ClickMain"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabGeneral'"></div>
+        </div>
+        <!--ko foreach: DynamicOptionsService.FormTabs -->
+        <div class="b-requestDetail__icon-wrap b-requestDetail__tab dynamic-options-icon-wrap" data-bind="click: $parent.SetTab.bind($data), css: {'dynamic-options-icon-wrap_active': $parent.mode() == $parent.modes.parameterPrefix + $data.Tab.ID}">
+            <a class="dynamic-options-icon" data-bind="text: $index() + 1"></a>
+            <div class="b-content-table__workplaceIcon-header dynamic-options-icon-title" data-bind="text: $data.Tab.Name"></div>
+        </div>
+        <!-- /ko -->
+        <div class="b-requestDetail__icon-wrap" data-bind="click: TapeClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon2' : mode() != modes.tape, 'b-requestDetail__icon2-active' : mode() == modes.tape }">
+                <span class="b-requestDetail__icon-itemscount" data-bind="text: tapeControl.UnreadNoteCount, visible: tapeControl.UnreadNoteCount() != null, css: { 'b-requestDetail__icon-itemscount-attention' : tapeControl.HaveUnread() }"></span>
+            </a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabTape'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.negotiation); $root.SizeChanged(); }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon5' : mode() != modes.negotiation, 'b-requestDetail__icon5-active' : mode() == modes.negotiation }">
+                <span class="b-requestDetail__icon-itemscount" data-bind="text: negotiationList.ItemsCount, visible: negotiationList.ItemsCount() != null, css: { 'b-requestDetail__icon-itemscount-attention' : negotiationList.HaveUnvoted() }"></span>
+            </a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabNegotiations'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.inventory_specifications); $root.SizeChanged(); }, visible: CanShowInventoryTabs()">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__iconInventory' : mode() != modes.inventory_specifications, 'b-requestDetail__iconInventory-active' : mode() == modes.inventory_specifications }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'InventorySpecification'"></div>
+        </div>
+        <div data-bind="operationID: 650">
+            <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.links); $root.SizeChanged(); }, visible: !CanShowPurchaseTabs() && !CanShowInventoryTabs()">
+                <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon6' : mode() != modes.links, 'b-requestDetail__icon6-active' : mode() == modes.links }">
+                    <span class="b-requestDetail__icon-itemscount" data-bind="text: linkList.ItemsCount, visible: linkList.ItemsCount() != null"></span>
+                </a>
+                <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabInfrastructure'"></div>
+            </div>
+        </div>
+        <div data-bind="operationID: 652">
+            <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.ar_specifications); $root.SizeChanged(); }, visible: CanShowActiveRequestsTabs()">
+                <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__iconDataSheet' : mode() != modes.ar_specifications, 'b-requestDetail__iconDataSheet-active' : mode() == modes.ar_specifications }"></a>
+                <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabBill'"></div>
+            </div>
+            <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.pu_specifications); $root.SizeChanged(); }, visible: CanShowPurchaseTabs()">
+                <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__iconDataSheet' : mode() != modes.pu_specifications, 'b-requestDetail__iconDataSheet-active' : mode() == modes.pu_specifications }"></a>
+                <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabBill'"></div>
+            </div>
+            <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.pu_financeBudgetRows); $root.SizeChanged(); }, visible: CanShowPurchaseTabs() == true && workOrder() != null && workOrder().PurchaseDetailBudget() == false && isBudgetEnabled == true">
+                <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__iconFinance' : mode() != modes.pu_financeBudgetRows, 'b-requestDetail__iconFinance-active' : mode() == modes.pu_financeBudgetRows }"></a>
+                <div class="b-content-table__workplaceIcon-header" style="word-break: normal;" data-bind="restext: 'Tab_Finance'"></div>
+            </div>
+            <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.supplies); $root.SizeChanged(); }, visible: CanShowPurchaseTabs">
+                <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__iconSupply' : mode() != modes.supplies, 'b-requestDetail__iconSupply-active' : mode() == modes.supplies }"></a>
+                <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabSuppllies'"></div>
+            </div>
+            <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.accommodation); $root.SizeChanged(); }, visible: CanShowPurchaseTabs">
+                <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__iconLocate' : mode() != modes.accommodation, 'b-requestDetail__iconLocate-active' : mode() == modes.accommodation }"></a>
+                <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabLocation'"></div>
+            </div>
+            <div class="b-requestDetail__icon-wrap b-requestDetail__icon-problems" data-bind="click: function() { mode(modes.userFields); $root.SizeChanged(); }">
+                <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : mode() != modes.userFields, 'b-requestDetail__icon1-active' : mode() == modes.userFields }">
+                </a>
+                <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'UserFieldsGroupName'"></div>
+            </div>
+        </div>
+    </div>
+</div>

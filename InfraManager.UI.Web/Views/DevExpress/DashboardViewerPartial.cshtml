@@ -1,0 +1,78 @@
+﻿@using DevExpress.AspNetCore
+@using DevExpress.DashboardWeb
+@using DevExpress.DashboardAspNetCore
+@*@Html.DevExpress().Dashboard(settings =>
+{
+    settings.Name = "Dashboard";
+    settings.AllowExportDashboard = true;
+    settings.WorkingMode = DevExpress.DashboardWeb.WorkingMode.ViewerOnly;
+    settings.ClientSideEvents.ItemClick = "function(s, e) { showObjectForm(s, e); }";
+    settings.InitialDashboardId = "dashboard_" + Request.Unvalidated.QueryString["dashboardID"];
+    settings.Height = System.Web.UI.WebControls.Unit.Percentage(100);
+}).GetHtml()
+
+@(Html.DevExpress().*@
+    <link href="~/DevexpCss/dx.light.css" rel="stylesheet"/>
+    <link href="~/DevexpCss/dx-analytics.common.css" rel="stylesheet"/>
+    <link href="~/DevexpCss/dx-analytics.light.css" rel="stylesheet"/>
+    <link href="~/DevexpCss/dx-querybuilder.css" rel="stylesheet"/>
+    <link href="~/DevexpCss/dx-dashboard.light.min.css" rel="stylesheet"/>
+    <!--JS-->
+   <script src="~/DevexpJS/jquery.min.js"></script>
+   <script src="~/DevexpJS/jquery-ui.min.js"></script>
+   <script src="~/DevexpJS/knockout-latest.js"></script>
+   <script src="~/DevexpJS/ace.js"></script>
+   <script src="~/DevexpJS/ext-language_tools.js"></script>
+   <script src="~/DevexpJS/theme-dreamweaver.js"></script>
+   <script src="~/DevexpJS/theme-ambiance.js"></script>
+   <script src="~/DevexpJS/dx.all.js"></script>
+   <script src="~/DevexpJS/dx-analytics-core.min.js"></script>
+   <script src="~/DevexpJS/dx-querybuilder.min.js"></script>
+   <script src="~/DevexpJS/dx-dashboard.min.js"></script>  
+
+
+<script type="text/javascript">
+    function showObjectForm(itemData) {
+        var axisPoint = itemData.getAxisPoint("Default");
+        var measures = itemData.getData().getMeasures();
+        var classID, objectID;
+        
+        if (measures.length === 1) {
+            var measureId = measures[0].id;
+            var parameterName = itemData.dashboardItem.name();
+            var parameters = JSON.parse(this.getDashboardState()).Parameters;
+         
+            objectID = itemData.getData().getSlice(axisPoint).getMeasureValue(measureId).getValue();
+            classID = parameters[parameterName];   
+        }
+        
+        if (measures.length === 2) {
+            measures.forEach(function (measure) {
+                var measureValue = itemData.getData().getSlice(axisPoint).getMeasureValue(measure.id).getValue();
+                if (typeof measureValue == "number") {
+                    classID = measureValue;
+                }
+                if (typeof measureValue == "string")//guid
+                {
+                   objectID = measureValue;
+                }
+            });
+        }
+        
+        document.showObjectForm(classID, objectID);
+    }
+</script>
+<div style="position: absolute; left:0;top:0;right:0;bottom:0;">
+    @(Html.DevExpress().Dashboard("Dashboard")
+        .ControllerName("DevExpressCore")
+        .WorkingMode(WorkingMode.ViewerOnly)
+        .Width("100%")
+        .Height("100%")
+        .Extensions(ext =>
+        {
+            ext.DashboardExport(options => { options.AllowExportDashboard(true); });
+            ext.ViewerApi(options => { options.OnItemClick("showObjectForm"); });
+        })
+        .InitialDashboardId(@Context.Request.Query["dashboardID"])
+    )
+</div>

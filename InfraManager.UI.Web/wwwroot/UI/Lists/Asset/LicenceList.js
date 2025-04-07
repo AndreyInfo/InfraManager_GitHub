@@ -1,0 +1,688 @@
+﻿define(['knockout',
+    'jquery',
+    'ajax',
+    'dateTimeControl',
+    'ui_controls/ListView/ko.ListView.Cells',
+    'ui_controls/ListView/ko.ListView.Helpers',
+    'ui_controls/ListView/ko.ListView.LazyEvents',
+    'models/Table/FiltrationBlock',
+    'ui_controls/ListView/ko.ListView',
+    'ui_controls/ContextMenu/ko.ContextMenu'],
+    function (ko,
+        $,
+        ajaxLib,
+        dtLib,
+        m_cells,
+        m_helpers,
+        m_lazyEvents,
+        filter) {
+        var module = {
+            List: function (vm, parentID, parentClassID) {
+                var self = this;
+                self.ajaxControl = new ajaxLib.control()                
+                //
+                self.SelectedItemsChanged = null;//set in frmSoftwareLicenceList.js
+                self.subscriptionList = [];
+                self.viewName = vm.viewName();
+                self.hasFilter = ko.observable(true);
+                self.parentID = parentID;
+                self.parentClassID = parentClassID;
+
+                var filterD = $.Deferred();
+                var oldTableModel = {
+                    ScrollUp: function () { },                      //ignore it
+                    columnList: ko.observableArray([]),             //ignore it
+                    rowList: ko.observableArray([]),                //ignore it
+                    isLoading: ko.observable(false),                //ignore it
+                    Reload: null,                                   //wrapper to reload
+                    load: null,                                     //wrapper to load
+                    filtersBlockModel: null,                        //set in filtrationBlock, ignore it
+                    selectedItemsTemplate: 'AssetTable/TableSelectedItems',//using to get currentView in Filter! Ah!
+                    listViewRendered: $.Deferred(),                 //using to put into listview filtration panel
+                }
+
+                function setFilterVisibility() {
+                    self.filter.filterLocationVisible(vm.viewName() !== "SoftwareLicenseDistribution");
+                    self.filter.filterOrgstructureVisible(vm.viewName() !== "SoftwareLicenseDistribution");
+                    self.filter.filterProductCatalogueVisible(vm.viewName() !== "SoftwareLicenseDistribution");
+                }
+                vm.viewName.subscribe(setFilterVisibility);
+                self.filter = new filter.ViewModel(oldTableModel, filterD);
+                self.filter.filterSoftCatalogueVisible(true);
+                setFilterVisibility();
+                self.filter.topButtonsModel = new filter.ViewModelTopButtons(self.filter);
+                self.filter.currentFilterModel = new filter.ViewModelCurrentFilter(self.filter);   
+                
+                self.listViewRender = function (listView, elements) {
+                    oldTableModel.listViewRendered.resolve(elements);
+                };
+                //
+                //when tab unload
+                self.dispose = function () {
+                    $(document).unbind('objectInserted', self.onObjectInserted);
+                    $(document).unbind('local_objectInserted', self.onObjectInserted);
+                    $(document).unbind('objectUpdated', self.onObjectModified);
+                    $(document).unbind('local_objectUpdated', self.onObjectModified);
+                    $(document).unbind('objectDeleted', self.onObjectDeleted);
+                    $(document).unbind('local_objectDeleted', self.onObjectDeleted);
+                    //
+                    self.ajaxControl.Abort();
+                    //
+                    for (var i in self.subscriptionList) {
+                        self.subscriptionList[i].dispose();
+                    }
+                    //
+                    if (self.listViewContextMenu() != null)
+                        self.listViewContextMenu().dispose();
+                    if (self.listView != null)
+                        self.listView.dispose();
+                };
+                //
+                {//events of listView
+                    self.listView = null;
+                    self.listViewID = 'listView_' + ko.getNewID();//bind same listView to another template instance (when tab changed), without reload list
+                    //
+                    self.listViewInit = function (listView) {
+                        if (self.listView != null)
+                            throw 'listView inited already';
+                        //
+                        self.listView = listView;
+                        m_helpers.init(self, listView);//extend self
+                        oldTableModel.Reload = function () {
+                            //calls when filter changed
+                            return listView.load();
+                        };
+                        //
+                        self.listView.load();
+                        //
+                        var subscription = self.listView.rowViewModel.checkedItems.subscribe(function () {
+                            var checkedItemsCount = self.listView.rowViewModel.checkedItems().length;
+                            self.SelectedItemsChanged(checkedItemsCount);
+                        });
+                        //
+                        self.subscriptionList.push(subscription);
+                    };
+                    self.listViewRetrieveVirtualItems = function (startRecordIndex, countOfRecords) {
+                        var retvalD = $.Deferred();
+                        $.when(self.getObjectList(startRecordIndex, countOfRecords, null, true)).done(function (objectList) {
+                            if (objectList) {
+                                if (startRecordIndex === 0)//reloaded
+                                {
+                                    self.clearAllInfos();
+                                }
+                                else
+                                    objectList.forEach(function (obj) {
+                                        var id = self.getObjectID(obj);
+                                        self.clearInfoByObject(id);
+                                    });
+                            }
+                            retvalD.resolve(objectList);
+                        });
+                        return retvalD.promise();
+                    };
+                    self.listViewRowClick = function (obj) {
+                        var id = self.getObjectID(obj);
+                        //
+                        var row = self.getRowByID(id);
+                        if (row != null)
+                            self.setRowAsLoaded(row);
+                        //
+                        self.showObjectForm(id);
+                    };
+                }
+                //
+                {//identification      
+                    self.getObjectID = function (obj) {
+                        return obj.ID.toUpperCase();
+                    };
+                    self.isObjectClassVisible = function (objectClassID) {
+                        return objectClassID == 223;//OBJ_SOFTWARE_LICENSE
+                    };
+                }
+                //
+                {//contextMenu
+                    {//granted operations
+                        self.grantedOperations = [];
+                        $.when(userD).done(function (user) {
+                            self.grantedOperations = user.GrantedOperations;
+                        });
+                        self.operationIsGranted = function (operationID) {
+                            for (var i = 0; i < self.grantedOperations.length; i++)
+                                if (self.grantedOperations[i] === operationID)
+                                    return true;
+                            return false;
+                        };
+                    }
+                    //
+                    self.getSelectedItems = function (IsLsCircle) {
+                        var selectedItems = self.listView.rowViewModel.checkedItems();                       
+                            
+                        return selectedItems;
+                    };
+                    //
+                    self.listViewContextMenu = ko.observable(null);
+                    //
+                    self.contextMenuInit = function (contextMenu) {
+                        self.listViewContextMenu(contextMenu);
+
+                        self.properties(contextMenu);
+                        contextMenu.addSeparator();
+                        self.issueRights(contextMenu);
+                        self.returnRight(contextMenu);
+                        self.transferRights(contextMenu);
+                    };
+                    self.properties = function (contextMenu) {
+                        var isEnable = function () {
+                            return self.getSelectedItems().length === 1;
+                        };
+                        var isVisible = function () {
+                            return self.operationIsGranted(441) && (
+                                self.viewName === "SoftwareSublicenseReferencesPool"
+                                || self.viewName === "SoftwareSublicenseReferences");//OPERATION_SOFTWARELICENCE_PROPERTIES
+                        };
+                        //
+                        var cmd = contextMenu.addContextMenuItem();
+                        cmd.restext('Properties');
+                        cmd.isEnable = isEnable;
+                        cmd.isVisible = isVisible;
+                        cmd.click(self.showDetails);
+                    };
+
+                    self.add = function (contextMenu) {
+                        var isEnable = function () {
+                            return true;
+                        };
+                        var isVisible = function () {
+                            return self.operationIsGranted(440);//OPERATION_SOFTWARELICENCE_ADD
+                        };
+                        var action = function () {
+                            self.showObjectForm(null);
+                        };
+                        //
+                        var cmd = contextMenu.addContextMenuItem();
+                        cmd.restext('Add');
+                        cmd.isEnable = isEnable;
+                        cmd.isVisible = isVisible;
+                        cmd.click(action);
+                    };
+
+                    self.transferRights = function (contextMenu) {
+                        var isEnable = function () {
+                            return true;
+                        };
+                        isVisible = function () {
+                            return self.viewName === 'SoftwareSublicenseReferencesPool';
+                        };
+                        var action = function () {
+                            if (self.getSelectedItems().length != 1)
+                                return false;
+                            //
+                            var selected = self.getSelectedItems()[0];
+
+                            require(['assetForms'], function (assetForms) {
+                                new assetForms
+                                    .formHelper(false)
+                                    .ShowSoftwareSublicenseTransferForm(selected.ID, function () { self.listView.load(); });
+                            });
+                        };
+                        //
+                        var cmd = contextMenu.addContextMenuItem();
+                        cmd.restext('Sublicense_SDCTransfer');
+                        cmd.isEnable = isEnable;
+                        cmd.isVisible = isVisible;
+                        cmd.click(action);
+                    };
+
+                    //IssueRights
+                    self.issueRights = function (contextMenu) {
+                        var isEnable = function () {
+                            return self.getSelectedItems().length === 1;
+                        };
+                        isVisible = function () {
+                             var selected = self.getSelectedItems()[0];
+
+                            return (self.viewName === 'SoftwareSublicenseReferencesPool'  || self.viewName === 'SoftwareSublicenseReferences')
+                                && selected
+                                && selected.AllowIssueRights;
+                        };
+                        var action = function () {
+                            var pool = self.getPoolObject();
+                            console.log('pool',pool)
+                            require(['assetForms'], function (module) {
+                                var fh = new module.formHelper(true);
+                                fh.ShowLicenceConsumption([pool], getTextResource('IssueRights'), null, self.getSelectedItems()[0].IsEquip, true);
+                            });
+                        };
+                        //
+                        var cmd = contextMenu.addContextMenuItem();
+                        cmd.restext('IssueRights');
+                        cmd.isEnable = isEnable;
+                        cmd.isVisible = isVisible;
+                        cmd.click(action);
+                    };
+                    //
+                    self.returnRight = function (contextMenu) {
+                        var isEnable = function () {
+                            return self.getSelectedItems().length == 1;
+                        };
+                        isVisible = function () {
+                            var selected = self.getSelectedItems()[0];
+
+                            return (self.viewName === 'SoftwareSublicenseReferencesPool'  || self.viewName === 'SoftwareSublicenseReferences')
+                                && selected
+                                && selected.AllowReturnRights;
+                        };
+                        var action = function () {
+                            var pool = self.getPoolObject();
+                            require(['assetForms'], function (module) {
+                                var fh = new module.formHelper(true);
+                                fh.ShowLicenceReturning([pool], getTextResource('ReturnRight'), null, 1);
+                            });
+                        };
+                        //
+                        var cmd = contextMenu.addContextMenuItem();
+                        cmd.restext('ReturnRight');
+                        cmd.isEnable = isEnable;
+                        cmd.isVisible = isVisible;
+                        cmd.click(action);
+                    };
+
+                    self.getItemName = function (item) {
+                        return item.Name;
+                    };
+
+                    self.getConcatedItemNames = function (items) {
+                        var retval = '';
+                        items.forEach(function (item) {
+                            if (retval.length < 200) {
+                                retval += (retval.length > 0 ? ', ' : '') + self.getItemName(item);
+                                if (retval.length >= 200)
+                                    retval += '...';
+                            }
+                        });
+                        return retval;
+                    };
+
+                    self.getItemInfos = function (items) {
+                        var retval = [];
+                        items.forEach(function (item) {
+                            retval.push({
+                                ClassID: 116,
+                                ID: self.getObjectID(item)
+                            });
+                        });
+                        return retval;
+                    };
+
+                    self.clearSelection = function () {
+                        self.listView.rowViewModel.checkedItems([]);
+                    };
+
+                    self.remove = function (contextMenu) {
+                        var isEnable = function () {
+                            return self.getSelectedItems().length > 0;
+                        };
+                        var isVisible = function () {
+                            return self.operationIsGranted(443);//OPERATION_SOFTWARELICENCE_DELETE
+                        };
+                        var action = function () {
+                            var list = self.getSelectedItems();
+                            if (list.length == 0)
+                                return;
+                            //     
+                            var question = self.getConcatedItemNames(list);
+                            require(['sweetAlert'], function (swal) {
+                                swal({
+                                    title: getTextResource('Removing') + ': ' + question,
+                                    text: getTextResource('ConfirmRemoveQuestion'),
+                                    showCancelButton: true,
+                                    closeOnConfirm: false,
+                                    closeOnCancel: true,
+                                    confirmButtonText: getTextResource('ButtonOK'),
+                                    cancelButtonText: getTextResource('ButtonCancel')
+                                },
+                                    function (value) {
+                                        swal.close();
+                                        //
+                                        if (value == true) {
+                                            var data = {
+                                                'ObjectList': self.getItemInfos(list)
+                                            };
+                                            self.ajaxControl.Ajax(null,
+                                                {
+                                                    dataType: "json",
+                                                    method: 'POST',
+                                                    data: data,
+                                                    url: '/sdApi/RemoveObjectList'
+                                                },
+                                                function (newVal) {
+                                                    data.ObjectList.forEach(function (info) {
+                                                        $(document).trigger('local_objectDeleted', [info.ClassID, info.ID]);
+                                                    });
+                                                    self.clearSelection();
+                                                });
+                                        }
+                                    });
+                            });
+                        };
+                        //
+                        var cmd = contextMenu.addContextMenuItem();
+                        cmd.restext('ActionRemove');
+                        cmd.isEnable = isEnable;
+                        cmd.isVisible = isVisible;
+                        cmd.click(action);
+                    };
+
+                    self.getPoolObject = function () {
+                        var item = self.getSelectedItems()[0];                        
+                        if (!item) {
+                            return null;
+                        }
+
+                        return {
+                                ID: item.ID,
+                                SoftwareLicenceID: item.SoftwareLicenceID,
+                                SoftwareModelID: item.SoftwareModelID,
+                                SoftwareLicenceModelID: item.SoftwareLicenceModelID,
+                                ManufacturerID: item.ManufacturerID,
+                                SoftwareTypeID: item.SoftwareTypeID,
+                                SoftwareLicenceScheme: item.SoftwareLicenceSchemeID,
+                                Type: item.SoftwareLicenseType,
+                                SoftwareDistributionCentreID: item.SoftwareDistributionCentreID,
+                                Balance: item.Balance
+                        };
+
+                    };                  
+
+                    self.contextMenuOpening = function (contextMenu) {
+                        contextMenu.items().forEach(function (item) {
+                            if (item.isEnable && item.isVisible) {
+                                item.enabled(item.isEnable());
+                                item.visible(item.isVisible());
+                            }
+                        });
+                    };
+                }
+                //
+                {//geting data             
+                    self.loadObjectListByIDs = function (idArray, unshiftMode) {
+                        var retvalD = $.Deferred();
+                        for (var i = 0; i < idArray.length; i++)
+                            idArray[i] = idArray[i].toUpperCase();
+                        //
+                        
+                        if (idArray.length > 0) {
+                            $.when(self.getObjectList(0, 0, idArray, false)).done(function (objectList) {
+                                if (objectList) {
+                                    var rows = self.appendObjectList(objectList, unshiftMode);
+                                    rows.forEach(function (row) {
+                                        self.setRowAsNewer(row);
+                                        //
+                                        var obj = row.object;
+                                        var id = self.getObjectID(obj);
+                                        self.clearInfoByObject(id);
+                                        //
+                                        var index = idArray.indexOf(id);
+                                        if (index != -1)
+                                            idArray.splice(index, 1);
+                                    });
+                                }
+                                idArray.forEach(function (id) {
+                                    self.removeRowByID(id);
+                                    self.clearInfoByObject(id);
+                                });
+                                retvalD.resolve(objectList);
+                            });
+                        }
+                        else
+                            retvalD.resolve([]);
+                        return retvalD.promise();
+                    };
+                    self.getObjectListByIDs = function (idArray, unshift) {
+                        var retvalD = $.Deferred();
+                        if (idArray.length > 0) {
+                            $.when(self.getObjectList(0, 0, idArray, false)).done(function (objectList) {
+                                retvalD.resolve(objectList);
+                            });
+                        }
+                        else
+                            retvalD.resolve([]);
+                        return retvalD.promise();
+                    };
+                    //
+                    self.ajaxControl = new ajaxLib.control();
+                    self.isAjaxActive = function () {
+                        return self.ajaxControl.IsAcitve() == true;
+                    };
+
+                    self.reload = function () {
+                        //ko.listView reload data itself when settingsName changed
+                        if (self.listView != null) {
+                            self.listView.options.settingsName(vm.viewName());
+                            //self.listView.columnsLoaded = false;
+                            self.listView.load();
+                        }
+                    };
+                    
+                    //
+
+                    self.isMultiSelect = function () {
+                        if (vm.isMultiSelect != null) {                            
+                            return vm.isMultiSelect;
+                        } else {
+                            return true;
+                        }
+                    }
+
+                    self.getObjectList = function (startRecordIndex, countOfRecords, idArray, showErrors) {
+                        var retvalD = $.Deferred();
+                        //
+                        if (self.filter) {
+                            treeParams = {
+                                FiltrationObjectID: self.filter.SelectedObjectID(),
+                                FiltrationObjectClassID: self.filter.SelectedObjectClassID(),
+                                FiltrationTreeType: self.filter.SelectedInModeConverted(),
+                                FiltrationField: self.filter.SelectedField() ? self.filter.SelectedField().ID : ''
+                            };
+                        }
+                        var requestInfo = {
+                            StartRecordIndex: idArray ? 0 : startRecordIndex,
+                            CountRecords: idArray ? idArray.length : countOfRecords,
+                            IDList: idArray ? idArray : [],
+                            ViewName: vm.viewName(),
+                            TreeSettings: treeParams,
+                            SearchRequest: vm.searchPhraseObservable ? vm.searchPhraseObservable() : null,
+                            TimezoneOffsetInMinutes: new Date().getTimezoneOffset(),//not used in this request   
+                            CurrentFilterID: self.filter.filtersModel ? ko.toJS(self.filter.filtersModel.currentFilter()).ID : null,
+                            ParentID: self.parentID || null,
+                            ParentClassID: self.parentClassID || null,
+                            SoftwarePoolSettings: self.softwarePoolSettings || null
+                        };
+                        self.ajaxControl.Ajax(null,
+                            {
+                                dataType: "json",
+                                method: 'POST',
+                                data: requestInfo,
+                                url: '/assetApi/GetListForAssetObject'
+                            },
+                            function (newVal) {
+                                if (newVal && newVal.Result === 0) {
+                                    retvalD.resolve(newVal.Data);//can be null, if server canceled request, because it has a new request                               
+                                    return;
+                                }
+                                else if (newVal && newVal.Result === 1 && showErrors === true) {
+                                    require(['sweetAlert'], function () {
+                                        swal(getTextResource('ErrorCaption'), getTextResource('NullParamsError') + '\n[SoftwareLicenceList.js getObjectList]', 'error');
+                                    });
+                                }
+                                else if (newVal && newVal.Result === 2 && showErrors === true) {
+                                    require(['sweetAlert'], function () {
+                                        swal(getTextResource('ErrorCaption'), getTextResource('BadParamsError') + '\n[SoftwareLicenceList.js getObjectList]', 'error');
+                                    });
+                                }
+                                else if (newVal && newVal.Result === 3 && showErrors === true) {
+                                    require(['sweetAlert'], function () {
+                                        swal(getTextResource('AccessError_Table'));
+                                    });
+                                }
+                                else if (newVal && newVal.Result === 7 && showErrors === true) {
+                                    require(['sweetAlert'], function () {
+                                        swal(getTextResource('OperationError_Table'));
+                                    });
+                                }
+                                else if (newVal && newVal.Result === 9 && showErrors === true) {
+                                    require(['sweetAlert'], function () {
+                                        swal(getTextResource('ErrorCaption'), getTextResource('FiltrationError'), 'error');
+                                    });
+                                }
+                                else if (newVal && newVal.Result === 11 && showErrors === true) {
+                                    require(['sweetAlert'], function () {
+                                        swal(getTextResource('SqlTimeout'));
+                                    });
+                                }
+                                else if (showErrors === true) {
+                                    require(['sweetAlert'], function () {
+                                        swal(getTextResource('ErrorCaption'), getTextResource('AjaxError') + '\n[SoftwareLicenceList.js getObjectList]', 'error');
+                                    });
+                                }
+                                //
+                                retvalD.resolve([]);
+                            },
+                            function (XMLHttpRequest, textStatus, errorThrown) {
+                                if (showErrors === true)
+                                    require(['sweetAlert'], function () {
+                                        swal(getTextResource('ErrorCaption'), getTextResource('AjaxError') + '\n[SoftwareLicenceList.js getObjectList]', 'error');
+                                    });
+                                //
+                                retvalD.resolve([]);
+                            },
+                            null
+                        );
+                        //
+                        return retvalD.promise();
+                    };
+                }
+                //
+                {//open object form
+                    self.showDetails = function () {
+                        if (self.getSelectedItems().length != 1)
+                            return false;
+                        //
+                        var selected = self.getSelectedItems()[0];
+                        //     
+                        self.showObjectForm(selected.ID, self.viewName === "SoftwareSublicenseReferencesPool" || self.viewName === "SoftwareSublicenseReferences" ? 24 : selected.ClassID);
+                    };
+
+                    self.showObjectForm = function (id, classId) {
+                        showSpinner();
+                        require(['assetForms'], function (module) {
+                            var fh = new module.formHelper(true);
+
+                            switch (classId) {
+                                case 24: fh.ShowSoftwareSublicenseForm(id);
+                                default: fh.ShowSoftwareLicence(id);
+                            }                            
+                        });
+                    };
+                }
+                //            
+                {//server and local(only this browser tab) events                               
+                    self.onObjectInserted = function (e, objectClassID, objectID, parentObjectID) {
+                        if (!self.isObjectClassVisible(objectClassID))
+                            return;//в текущем списке измененный объект присутствовать не может
+                        //
+                        objectID = objectID.toUpperCase();
+                        //
+                        var loadOjbect = true;//будем загружать
+                        var row = self.getRowByID(objectID);
+                        if (row != null) {
+                            //используем грязное чтение, поэтому такое возможно
+                            self.setRowAsOutdated(row);
+                        }
+                        //
+                        if (loadOjbect == true) {
+                            if (self.isAjaxActive() === true)
+                                self.addToModifiedObjectIDs(objectID);
+                            else
+                                self.reloadObjectByID(objectID);
+                        }
+                    };
+                    //
+                    self.onObjectModified = function (e, objectClassID, objectID, parentObjectID) {
+                        if (!self.isObjectClassVisible(objectClassID))
+                            return;//в текущем списке измененный объект присутствовать не может
+                        //
+                        objectID = objectID.toUpperCase();
+                        //
+                        var row = self.getRowByID(objectID);
+                        if (row == null) {
+                            var viewName = self.viewName;
+                            //
+                            self.checkAvailabilityID(objectID);
+                        } else {
+                            self.setRowAsOutdated(row);
+                            //
+                            if (self.isAjaxActive() === true)
+                                self.addToModifiedObjectIDs(objectID);
+                            else
+                                self.reloadObjectByID(objectID);
+                        }
+                    };
+                    //
+                    self.onObjectDeleted = function (e, objectClassID, objectID, parentObjectID) {
+                        if (!self.isObjectClassVisible(objectClassID))
+                            return;//в текущем списке удаляемый объект присутствовать не может
+                        //
+                        objectID = objectID.toUpperCase();
+                        //
+                        self.removeRowByID(objectID);
+                        self.clearInfoByObject(objectID);
+                    };
+                    //
+                    $(document).bind('objectInserted', self.onObjectInserted);
+                    $(document).bind('local_objectInserted', self.onObjectInserted);
+                    $(document).bind('objectUpdated', self.onObjectModified);
+                    $(document).bind('local_objectUpdated', self.onObjectModified);
+                    $(document).bind('objectDeleted', self.onObjectDeleted);
+                    $(document).bind('local_objectDeleted', self.onObjectDeleted);
+                }
+                //
+                m_lazyEvents.init(self);//extend self
+                //Переопределяем функцию, т.к. в этом списке нет информации о новых объектах
+                self.addToModifiedObjectIDs = function (objectID) {
+                    self.reloadObjectByID(objectID);
+                };
+
+                self.AfterRender = function () {
+                };
+                self.filterBlockRendered = function () {
+                    self.filter.initOrgSearcherControl();
+                    self.filter.startLoading();
+                    $.when(oldTableModel.listViewRendered).done(function (elements) {
+                        $('#placeForListViewPanel .tableContainer').append($('.tableControlPanel').addClass('big'));
+                    });
+                };
+                self.filterButtonsRendered = function () {
+                    self.filter.topButtonsModel.AfterRender();
+                };
+                self.filterToolbarRendered = function () {
+                    self.filter.currentFilterModel.AfterRender();
+                }
+            },
+            LifeCycleObject: function (classID, ID, name, lifeCycleStateID, userID, ownerClassID, ownerID, utilizerID, utilizerClassID, isLogical) {
+                var self = this;
+                //
+                self.ClassID = classID,
+                    self.ID = ID,
+                    self.Name = name,
+                    self.LifeCycleStateID = lifeCycleStateID,
+                    self.UserID = userID,
+                    self.OwnerClassID = ownerClassID,
+                    self.OwnerID = ownerID,
+                    self.UtilizerID = utilizerID,
+                    self.UtilizerClassID = utilizerClassID,
+                    self.IsLogical = isLogical
+            }
+        };
+        return module;
+    });

@@ -1,0 +1,28 @@
+﻿<!--<div class="ars-link_searchText">
+    <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, event: { keypress: SearchKeyPressed }">
+    <div class="ars-link_searchText-clearfield cursor-pointer" data-bind="click: EraseTextClick, visible: !IsSearchTextEmpty()"></div>
+</div>-->
+<div class="ars-link_tableWrapper">
+    <span class="ars-link_tableSearchColumns" data-bind="if: startLoadingColumns">
+        <span data-bind="template: { name: 'Table/Columns', afterRender: columnsModel.AfterRender, data: columnsModel }"></span>
+    </span>
+    <div class="ars-link_paramsColumn">
+        <!--<div class="ars-link_columnsButton b-content-table__icon gray-btn b-content-table__icon3 cursor-pointer"><span /></div>-->
+        <div class="ars-link_paramsColumnType"></div>
+        <div class="ars-link_paramsColumnVendor"></div> <!--data-bind="visible: IsTypeSelected"-->
+        <div class="ars-link_paramsColumnModel" data-bind="visible: IsTypeSelected"></div>
+        <div class="ars-link_paramsColumnNumbers"></div>
+        <!--<div class="ars-link_paramsColumnCustomers"></div>-->
+        <div class="ars-link_paramsColumnLifeCycleStates"></div>
+        <!--<div class="ars-link_dtpDatePromised"></div>-->
+        <!--<div class="ars-link_LocationSearcher"></div>-->
+        <div class="purchase_located"></div>
+        <!--<div class="invoice-locatedAsset-table-control">
+            <input type="text" class="searcherInput ars-link_paramsColumnLocation" data-bind="textInput: LocationName, longNameTooltip: LocationName" />
+        </div>-->
+    </div>
+    <div class="ars-link_tableColumn">
+        <div id="regionActivesLocatedTable" class="region-Table" data-bind="koListView: {settingsName: 'LocatedActivesSearch', controlInitialized: listViewInit, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false }"></div>
+    </div>
+</div>
+

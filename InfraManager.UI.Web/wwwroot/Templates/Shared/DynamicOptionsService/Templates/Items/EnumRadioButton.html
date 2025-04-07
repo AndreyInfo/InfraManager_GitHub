@@ -1,0 +1,30 @@
+﻿<div class="ui-input-wrapper">
+    <!-- ko if: SpecialFields.Label  -->
+    <div class="ui-input-wrapper__title" data-bind="text: SpecialFields.Label, tooltip: ShowTooltipByHoverTitle(), tooltipDelay: TooltipDelay"></div>
+    <!-- /ko -->
+
+    <div class="dynamic-options__more-values" data-templates-wrapper>
+        <ul class="dynamic-options__wrapper-inputs" data-inputs-wrapper data-bind="foreach: KoUseValues">
+            <li class="dynamic-options__wrapper-input-radio dynamic-options__wrapper-item" data-wrapper-value>
+                <div data-bind="foreach: $parent.KoUseSelectList, css: { 'ui-dynamic-readonly': $parent.KoUseDynamicReadonly }">
+                    <div class="input-checkbox-wrapper">
+                        <input class="input-checkbox-wrapper__input" type="radio" data-bind="checkedValue: ID() + $parents[1].Model,
+                                        checked: $parent.Value().ID() + $parents[1].Model,
+                                        attr: {
+                                            name: $parents[1].Model,
+                                            id: ID() + $parents[1].Model,
+                                            disabled: $parents[1].KoUseDynamicReadonly,
+                                            'data-custom-id': $parent.ID
+                                            },
+                                        event: {
+                                            change: $parents[1].KoUseChecked.bind($data, $parent.Index)
+                                        }" />
+                        <label class="input-checkbox-wrapper__text"
+                               data-bind="text: Name, attr: { for: ID() + $parents[1].Model }">
+                        </label>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

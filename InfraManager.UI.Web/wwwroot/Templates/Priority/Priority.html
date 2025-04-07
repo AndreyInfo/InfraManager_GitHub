@@ -1,0 +1,36 @@
+﻿<div class="priority-table-wrap">
+    <div class="b-priority-dropdown__topLabel">
+        <span class="b-priority-dropdown__topLabel-icon" />
+        <span data-bind="restext: 'Influence'" />
+    </div>
+    <div class="b-priority-dropdown__leftLabel">
+        <span class="b-priority-dropdown__leftLabel-icon" />
+        <span class="b-priority-dropdown__leftLabel-text" data-bind="restext: 'Urgency'" />
+    </div>
+    <div class="b-priority-table__wrapper">
+        <div class="b-priority-table">
+            <!-- ko if: $root.UrgencyList().length > 0 -->
+            <div class="table-row">
+                <div class="table-cell"></div>
+                <!-- ko foreach: $root.InfluenceList -->
+                <div class="table-cell b-priority-table__header-top" data-bind="text: Name, css: { 'b-priority-table__header-selected': $root.CheckSelectedInfluence($data) }"></div>
+                <!-- /ko -->
+            </div>
+            <!-- ko foreach: { data: $root.UrgencyList, as: 'urg' } -->
+            <div class="table-row">
+                <div class="table-cell b-priority-table__header-left" data-bind="text: Name, css: { 'b-priority-table__header-selected': $root.CheckSelectedUrgency($data) }"></div>
+                <!-- ko foreach: { data: $root.InfluenceList, as: 'infl' } -->
+                <div class="table-cell">
+                <span class="b-priority-table__label x-priority__item" 
+                      data-bind=
+                      "style: { background: $root.CheckColor(infl, urg), border: $root.CheckColor(infl, urg) == '#FFFFFF' ? '1px dashed gray' : 'none' }, 
+                      click: $root.SelectPriority(infl, urg), css: $root.CheckClass(infl, urg), 
+                      event: { mouseenter: function(data, event) { $root.CheckShowTooltipPriority(infl, urg, data, event) } }">
+                </span></div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

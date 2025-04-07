@@ -1,0 +1,1 @@
+alter table [SupplierContactPerson] add default NEWID() FOR ID;

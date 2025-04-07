@@ -1,0 +1,221 @@
+﻿@using InfraManager.UI.Web.Helpers
+@using InfraManager.Web.Helpers
+@using System.Globalization
+
+@inject IUserLanguageChecker userLanguageChecker
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <base href="@Url.Action()">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>@Html.Raw(ViewBag.Title)</title>
+    <link id="favicon" rel="shortcut icon" type="image/x-icon" />
+    <link href="@Url.Content("/Styles/redesign.min.css")?uniqueVector=im_@InfraManager.Core.ApplicationManager.Instance.ApplicationVersion" type="text/css" rel="stylesheet">
+    <meta class="foundation-data-attribute-namespace">
+    <meta class="foundation-mq-xxlarge">
+    <meta class="foundation-mq-xlarge">
+    <meta class="foundation-mq-large">
+    <meta class="foundation-mq-medium">
+    <meta class="foundation-mq-small">
+    <meta class="foundation-mq-topbar">
+    <script src="@Url.Content("/scripts/vendor/require.js")?uniqueVector=im_@InfraManager.Core.ApplicationManager.Instance.ApplicationVersion"></script>
+    <meta name="version" content="@InfraManager.Core.ApplicationManager.Instance.ApplicationVersion" />
+</head>
+
+<body>
+    @if (Context.User.Identity != null && Context.User.Identity.IsAuthenticated && !Context.Request.Path.Value.Contains("Authenticate"))
+    {
+        <div id="mainMenu" data-bind="template: {name: '../UI/Controls/MainMenu/MainMenu', afterRender: AfterRender}"></div>
+    }
+    <div class="b-main">
+        @RenderBody()
+    </div>
+    <div class="b-footer"></div>
+    <div class="b-connection-error"></div>
+    <script type="text/javascript">
+        var functionsAvailability = {};
+        var resourceArrayFromServer = [];
+        var initializeResources = function() {
+            var retval = @Html.Raw(await InfraManager.Web.Controllers.ResourceApiController.GetResourceSetAsync(Context, userLanguageChecker));
+            return retval;
+        };
+        resourceArrayFromServer = initializeResources();
+        var locale = '@Context.GetCurrentCulture()';//ko extension
+        var getTextResource = function (resourceName) {
+            try {
+                return resourceArrayFromServer[resourceName];
+            }
+            catch(e) {
+                console.log('get resource failed: ' + resourceName + ', locale: ' + locale);
+                throw e;
+            }
+        };
+        var isBudgetEnabled = @InfraManager.Web.BLL.Global.IsBudgetEnabled.ToString().ToLower();
+        //
+        getLogoPath('browser').done(function (path) {
+            document.getElementById('favicon').href = path;
+        });
+        //
+        var getRichEditUrl = function () {
+            //TODO var url = '@Url.Action("Index", "DevExpress")';
+            var url = '@Url.Content("~/")' + 'DevExpress/Index';
+            return url;
+        };
+        var getDashboardViewerUrl = function (userID, dashboardID) {
+            //TODO var url = '@Url.Action("DashboardIndex", "DevExpress")';
+            var base = '@(Url.Content("~/").Contains('?') ?  Url.Content("~/").Split('?')[0] : Url.Content("~/"))';
+            var url = base + 'DevExpress/DashboardIndex?userID=' + userID + '&dashboardID=' + dashboardID;
+            return url;
+        };
+        var getPageContentHeight = function () {
+            return Math.max($(window).height() - $('.mainMenuWrapper').height() - $('.mainMenuCurrentPage').height() - $('.b-footer').height(), 0);
+        };
+        var extendAjaxData = function (data) {
+            if (data && $.connection && $.connection.hub && $.connection.hub.id)
+                data['signalR_connectionID'] = $.connection.hub.id;//use in baseObject context
+        };
+        //
+        var operationIsGrantedD = undefined;
+        var userD = undefined;//DTL.AuthenticationInfo
+        //
+        require(['@Url.Content("/scripts/reqstart.js?uniqueVector=im_")@InfraManager.Core.ApplicationManager.Instance.ApplicationVersion'], function () {
+            require(['domReady', 'knockout', 'jquery', 'spin', 'ajax', 'localization', 'knockout_amd_helpers', 'foundation', 'text', 'koToolTip', 'koHelper', 'koSplitter', 'autoClosedRegions', 'typeHelper', 'spinner'],
+                function (domReady, ko, $, spinLib, ajaxLib) {
+                    Spinner = spinLib;//_viewStart call new Spinner, but spin.js not included - use requiere
+                    showSpinner($('.b-main')[0]);
+                    //
+                    userD = $.Deferred();
+                    if (@Context.User.Identity.IsAuthenticated.ToString().ToLower())
+                    {
+                        var ajaxControl = new ajaxLib.control();
+                        ajaxControl.Ajax(null,
+                            {
+                                url: '/api/accounts/my',
+                                method: 'GET'
+                            },
+                            function (response) {
+                                if (response) {
+                                    userD.resolve(response);
+                                    document.canDisconnect = !response.HasRoles;
+                                }
+                                else if (@Context.Request.Path.Value.Contains("Authenticate").ToString().ToLower() == false)
+                                    setLocation('Account/Authenticate');
+                            },
+                            function () {
+                                setLocation('Account/Authenticate');
+                            });
+                        //
+                        operationIsGrantedD = function (operationID) {
+                            var retval = $.Deferred();
+                            $.when(userD).done(function (info) {
+                                if (info && info.GrantedOperations) {
+                                    for (var i = 0; i < info.GrantedOperations.length; i++)
+                                        if (info.GrantedOperations[i] == operationID) {
+                                            retval.resolve(true);
+                                            return;
+                                        }
+                                    retval.resolve(false);
+                                }
+                                else
+                                    retval.resolve(false);
+                            });
+                            return retval.promise();
+                        };
+                    }
+                    //
+                    domReady(function () {
+                        ko.bindingHandlers.module.baseDir = 'modules';
+                        ko.bindingHandlers.module.templateProperty = 'embeddedTemplate';
+                        ko.amdTemplateEngine.defaultPath = '../Templates';
+                        ko.amdTemplateEngine.defaultSuffix = '.html';
+                        ko.amdTemplateEngine.defaultRequireTextPluginName = 'text';
+                        ko.bindingHandlers.stopBinding = {
+                            init: function () {
+                                return { controlsDescendantBindings: true };
+                            }
+                        };
+                        ko.virtualElements.allowedBindings.stopBinding = true;
+                        //
+                        $(document).foundation();
+                        //
+                        window.onerror = function (msg, url, line, col, error) {
+                            require(['localStorage', 'sweetAlert'], function (ls) {
+                                var text = '\n' + (new Date()).toUTCString() + '\ntext: "';
+                                text += msg ? msg : 'some error';
+                                text += '"\nurl: "' + (url ? url : 'some url');
+                                text += '"\nposition: "' + (line && col ? 'line: ' + line + ' column: ' + col : 'no chance') + '"\n';
+                                console.log(text);
+                                ls.log(text);
+                                //
+                                var shortMsg = msg.length > 200 ? msg.substr(0, 200) + '...' : msg;
+                                swal('@Html.Raw(InfraManager.ResourcesArea.Resources.ErrorCaption)', '@Html.Raw(InfraManager.ResourcesArea.Resources.UnhandledErrorClient)' + '\n\n' + shortMsg, 'error');
+                            });
+                        };
+                        //
+
+                        //
+                        if ($('#mainMenu').length > 0) {
+                            showSpinner($('#mainMenu')[0]);
+                            require(['ui_controls/MainMenu/MainMenu'], function (vm) {
+                                var mod = new vm.ViewModel();
+                                ko.applyBindings(mod, document.getElementById('mainMenu'));
+                                hideSpinner($('#mainMenu')[0]);
+                            });
+                        }
+                        //
+                        @RenderSection("MainScript", false); //in other cshtml
+                        if (@IsSectionDefined("MainScript").ToString().ToLower() == false)
+                            hideSpinner();
+                        //
+                        $(document.body).on('dragover', function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            //
+                            try {
+                                if (e.originalEvent.dataTransfer)
+                                    e.originalEvent.dataTransfer.dropEffect = 'none';
+                            }
+                            catch (e) { }
+                        });
+                        //
+                        //
+                        //check url => open forms
+                        require(['urlManager'], function (m) {
+                            m.processUrl();
+                        });
+                        //
+                        //signalR
+                        if(typeof disableEventManager == 'undefined' || disableEventManager === false)
+                            require(['eventManager'], function (m) {
+                                m.init();
+                            });
+                        //
+                        //plugins initialization
+                        {
+                            var customPlugins = [];
+                            @foreach(var pName in InfraManager.Web.Helpers.JsPluginHelper.GetPlugins())
+                        {
+                            @:customPlugins.push('@pName');
+                                                                                                                                                                                                                                                    }
+                            for(var i=0;i<customPlugins.length;i++) {
+                                var pluginName = customPlugins[i];
+                                require(['plugins/' + pluginName], function (plugin) {
+                                    if (plugin && typeof plugin.init === "function")
+                                        plugin.init();
+                                });
+                            }
+                        }
+                    });
+                });
+        });
+    </script>
+    <span id="controlsContainer"></span>
+    <span id="fakeContainers" style="display: none">
+        <div class="longTooltipFakeDiv"></div>
+    </span>
+</body>
+</html>

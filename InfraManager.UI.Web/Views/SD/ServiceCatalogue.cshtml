@@ -1,0 +1,41 @@
+﻿<style>
+    .b-main {
+        overflow: hidden;
+    }
+</style>
+
+<div id="scModule" class="scModule">
+    <div class="sc-views" data-bind="template: { name: 'ServiceCatalogue/scMode', afterRender: AfterRenderMode }"></div>
+    <div class="sc-search" data-bind="template: { name: 'ServiceCatalogue/SearchControl' }, visible: VisibleServiceCategoryList().length > 0, style: {'padding-left': IsFullCatalogueActive() || IsSLACatalogueActive() ? '337px' : '120px' }"></div>
+    <div class="sc-categories" data-bind="template: {name: 'ServiceCatalogue/scCategories' }, visible: IsFullCatalogueActive() || IsSLACatalogueActive()"></div>
+    <div class="sc-path-text" data-bind="text: SelectedItemPath(), visible: !CategoryListVisible() && !IsFavoritesActive()"></div>
+    <div class="sc-main" data-bind="template: { name: ViewTemplateName }, visible: ViewTemplateVisible(), style: {bottom: IsHelpVisible() ? '100px' : '0'}"></div>
+    <div class="sc-help" data-bind="template: { name: 'ServiceCatalogue/HelpPanel' }, visible: IsHelpActive"></div>
+</div>
+<div id="sc-call" data-bind="template: { name: 'SDForms/CallRegistrationLite', afterRender: AfterRender }"></div>
+
+<script type="text/javascript">
+ @section MainScript {
+    require(['jquery', 'knockout', 'models/ServiceCatalogue/ServiceCatalogue'], function ($, ko, vm) {
+        hideSpinner($('.b-main')[0]);        
+        //
+        var mod = new vm.ServiceCatalogue();
+        var rootElement = document.getElementById('scModule');
+        mod.$Region = $(rootElement);
+        //
+        showSpinner($('.scModule')[0]);        
+        $.when(mod.Load()).done(function () {
+            mod.SelectedViewMode(vm.Modes.serviceCatalogueBySLA);
+            mod.LoadCallTypeInfoList();
+            hideSpinner($('.scModule')[0]);            
+        });
+        ko.applyBindings(mod, rootElement);
+        //
+        $(window).resize(function () {
+            if (mod && mod.UpdateScrollButtonsVisibility)
+                mod.UpdateScrollButtonsVisibility();//показываем или скрываем кнопки скролла
+        });
+    });
+    }
+</script>
+

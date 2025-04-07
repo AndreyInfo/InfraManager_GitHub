@@ -1,0 +1,55 @@
+﻿<div class="assetOffForm" data-bind="click: formClick">
+    <div class="asset-operations-header">
+        <div class="asset-operation-border asset-operations-mainTab-parameters" data-bind="click:mainClick, css: mode() == modes.main ? 'acc-tab-active' : 'acc-tab' ">
+            <div data-bind="restext:'TabPage_Parameters'"></div>
+        </div>
+        <div class="asset-operation-border asset-operations-mainTab-links" data-bind="click:linksClick, css: mode() == modes.links ? 'acc-tab-active' : 'acc-tab' ">
+            <div data-bind="text:TabLinksCaption"></div>
+        </div>
+    </div>
+    <div class="asset-operations-params-tab asset-operation-border-top" data-bind="visible: mode() == modes.main">
+        <div class="assetReg-dataBlock">
+            <div class="bold" data-bind="restext:'AssetNumber_DateAnnuled'" />
+            <div class="writeOff-date marginBottom"></div>
+
+            <div class="assetReg-causeHeader" data-bind="restext:'WrittenOff_FoundingOff'" />
+            <div class="marginBottom">
+                <input type="text" class="assetRepair-cause" maxlength="250" data-bind="textInput: Founding, longNameTooltip: Founding, resattr: { placeholder : 'EnterText' }" />
+            </div>
+
+            <div class="assetReg-mResponsible">
+                <div data-bind="template: { name: 'User/FormUser', if: UserLoaded(), data: User }"></div>
+                <div class="hideUserIcon" data-bind="template: { name: 'User/FormUserEmpty', if: !UserLoaded(), data: User }"></div>
+            </div>
+
+            <div class="asset-registration-founding-container">
+                <span class="bold" data-bind="restext:'Repair_Founding'" />
+                <span class="tabCaption-icon-plus active plus" data-bind="click: LinkSdObjectClick"></span>
+                <div class="contextMenu-inner-asset" data-bind="visible: ContextMenuVisible">
+                    <div class="contextline" data-bind="restext: 'Call', click: LinkCall"></div>
+                    <div class="contextline" data-bind="restext: 'WorkOrder', click: LinkWorkorder"></div>
+                    <div class="contextline" data-bind="restext: 'Problem', click: LinkProblem"></div>
+                </div>
+            </div>
+            <div class="marginBottom" data-bind="text: FoundingNumberStr"></div>
+
+            <div class="withAdapters" data-bind="click: withAdaptersClick, visible: withAdaptersVisible">
+                <input class="withAdapters-checkbox" type="checkbox" data-bind="disable: HasLogicalDevice()"/>
+                <span data-bind="restext:'AssetToRepair_WithAdapters'"></span>
+            </div>
+
+            <div class="withPeripherals" data-bind="click: withPeripheralsClick, visible: withPeripheralsVisible">
+                <input class="withPeripherals-checkbox" type="checkbox"  data-bind="disable: HasLogicalDevice()"/>
+                <span data-bind="restext:'AssetToRepair_WithPeripherals'"></span>
+            </div>
+
+            <div class="report" data-bind="click: printReportClick">
+                <input class="reportPrint-checkbox" type="checkbox" />
+                <span data-bind="restext:'Asset_PrintReport'"></span>
+            </div>
+        </div>
+    </div>
+    <div class="device-list-tab asset-operation-border-top" data-bind="visible: mode() == modes.links">
+        <div class="links__b" data-bind="visible: mode() == modes.links, template: {name: 'SDForms/Controls/LinkList', data: { $serviceButtonVisible: true, $control: $root.linkList } }" />
+    </div>
+</div>

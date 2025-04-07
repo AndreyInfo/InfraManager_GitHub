@@ -1,0 +1,14 @@
+﻿<div class="b-content-executor-container" data-bind="with: ExecutorSelector, afterUpdateBlock: ExecutorSelector().ModelAfterRender">    
+    <div class="b-content-executor-container-header">        
+        <div class="executor-header_list-divider"></div>
+        <div class="executor-header_list" data-bind="css: { 'active' : IsExecutorTabActive }, click: ShowExecutorTab">
+            <span class="executor-header-text" data-bind="restext: 'ExecutorByPeople'"></span>
+        </div>
+        <div class="substitution-header_list-divider"></div>
+        <div class="substitution-header_list" data-bind="css: { 'active' : IsQueueTabActive }, click: ShowQueueTab">
+            <span class="substitution-header-text" data-bind="restext: 'ExecutorByGroups'"></span>
+        </div>
+        <div class="substitution-header_list-divider-last"></div>
+    </div>
+    <div class="b-content-executor-container-body" data-bind="template: {name: ViewTemplateName}"></div>
+</div>

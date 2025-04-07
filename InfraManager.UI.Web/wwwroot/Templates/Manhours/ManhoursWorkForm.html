@@ -1,0 +1,81 @@
+﻿<div class="manhoursWorkForm">
+    <div class="manhoursWorkForm-description-block">
+        <div class="manhoursWorkForm-description-header" data-bind="restext: 'ManhourWorkDescription'"></div>
+        <div class="manhoursWorkForm-description">
+            <input type="text" maxlength="250" class="text-input manhoursWorkForm-textinput" data-bind="value: Description, valueUpdate: 'input', disable: !CanEditComputed(), longNameTooltip: Description, css: {'invalid' : Description().length == 0}">
+        </div>
+    </div>
+    <div class="manhoursWorkForm-manhours-block">
+        <div class="manhoursWorkForm-manhours-header">
+            <span class="manhoursWorkForm-manhours-header-text" data-bind="restext: 'ManhoursListCaption'"></span>
+            <!-- ko if: CanEditComputed() -->
+            <div class="manhoursWorkForm-manhours-list-add" data-bind="click: $root.AddManhour, clickBubble: false, tooltip: getTextResource('AddManhours')"></div>
+            <!-- /ko -->
+        </div>
+        <div class="manhoursWorkForm-manhours-list"  data-bind="foreach: SortedManhoursList">
+            <div class="manhoursWorkForm-manhours-row" data-bind="click: $root.EditManhour, clickBubble: false, style: { cursor: $root.CanEditComputed() ? 'pointer' : 'default' }">
+                <div class="manhoursWorkForm-manhour-date-group">
+                    <div class="manhoursWorkForm-manhour-calendar-icon"></div>
+                    <!-- ko if: $root.ManhoursWorkShowFullInterval() == true -->
+                    <div class="manhoursWorkForm-manhour-date" data-bind="text: DateStringSinceTo"></div>
+                    <!-- /ko -->
+                    <!-- ko if: $root.ManhoursWorkShowFullInterval() == false -->
+                    <div class="manhoursWorkForm-manhour-date" data-bind="text: DateStringSimple"></div>
+                    <!-- /ko -->
+                </div>
+                <div class="manhoursWorkForm-manhour-value-group">
+                    <div class="manhoursWorkForm-manhour-time-icon"></div>
+                    <div class="manhoursWorkForm-manhour-value" data-bind="text: ValueString"></div>
+                    <!-- ko if: $root.CanEditComputed() -->
+                    <div class="manhoursWorkForm-manhour-item-remove" data-bind="click: $root.DeleteManhour, clickBubble: false, tooltip: getTextResource('RemoveManhours')"></div>
+                    <!-- /ko -->
+                </div>                
+            </div>
+        </div>
+        <div class="manhoursWorkForm-total-container" data-bind="if: ManhoursList().length > 0">
+            <div class="manhoursWorkForm-total-header" data-bind="restext: 'TotalManhours'"></div>
+            <div class="manhoursWorkForm-total-value" data-bind="text: TotalManhoursString"></div>
+        </div>
+    </div>
+    <!-- ko if: $root.ShowLinkBlock() -->
+    <div class="manhoursWorkForm-linkObject-block">
+        <div class="manhoursWorkForm-linkObject-header" data-bind="restext: 'ManhoursWorkLinkHeader'"></div>
+        <div class="manhoursWorkForm-linkObject">            
+            <div class="manhoursWorkForm-linkObject-row">
+                <span class="manhoursWorkForm-linkObject-text-bold" data-bind="restext: 'ManhoursWorkLinkNumber'"></span>
+                <span class="manhoursWorkForm-linkObject-button" data-bind="click: ShowObjectForm">
+                    <span class="manhoursWorkForm-linkObject-text-value" data-bind="text: $root.LinkObjectType"></span>
+                    №<span class="manhoursWorkForm-linkObject-text-value" data-bind="text: $root.LinkObjectNumber"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+    <div class="manhoursWorkForm-userActivity-block">
+        <div class="manhoursWorkForm-userActivity-header" data-bind="restext: 'UserActivityType'"></div>
+        <div class="manhoursWorkForm-userActivity">
+            <input type="text" class="text-input searcherInput" data-bind="textInput: UserActivityTypeName, disable: !CanEditComputed()" />
+        </div>
+    </div>    
+    <div class="manhoursWorkForm-initiator-block">
+        <div data-bind="template: { name: 'User/FormUser', if: InitiatorLoaded(), data: Initiator }"></div>
+        <div class="manhoursWorkForm-initiator-header" data-bind="visible: !$root.InitiatorLoaded() && $root.CanEditComputed(), restext: 'ManhourWorkInitiator'"></div>
+        <div class="manhoursWorkForm-initiator-editor" data-bind="visible: !$root.InitiatorLoaded() && $root.CanEditComputed()">
+            <input type="text" class="text-input manhoursWorkForm-textinput" data-bind="value: Initiator() ? Initiator().FullName : '', valueUpdate: 'input', disable: !CanEditComputed()">
+        </div>
+    </div>
+    <div class="manhoursWorkForm-executor-block">
+        <div class="manhoursWorkForm-executor-header" data-bind="visible: !ExecutorExpanded()">
+            <span data-bind="restext: 'ManhourWorkExecutor'"></span>
+            <span class="manhoursWorkForm-executor-arrow" data-bind="css: ExecutorExpanded() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleExecutorContainer, tooltip: ExecutorExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+        </div>
+        <span data-bind="visible: ExecutorExpanded()">
+            <span class="manhoursWorkForm-executor-arrow" data-bind="css: ExecutorExpanded() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleExecutorContainer, tooltip: ExecutorExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+            <div data-bind="template: { name: 'User/FormUser', if: ExecutorLoaded(), data: Executor }"></div>
+            <div class="manhoursWorkForm-executor-header" data-bind="visible: !$root.ExecutorLoaded() && $root.CanEditComputed(), restext: 'ManhourWorkExecutor'"></div>
+            <div class="manhoursWorkForm-executor-editor" data-bind="visible: !$root.ExecutorLoaded() && $root.CanEditComputed()">
+                <input type="text" class="text-input manhoursWorkForm-textinput" data-bind="value: Executor() ? Executor().FullName : '', valueUpdate: 'input', disable: !CanEditComputed()">
+            </div>
+        </span>
+    </div>
+</div>

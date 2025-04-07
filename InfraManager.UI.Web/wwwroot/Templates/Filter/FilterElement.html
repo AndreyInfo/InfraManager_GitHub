@@ -1,0 +1,16 @@
+﻿<div class="fElem-name-wrapper">
+    <span class="fElem-name_header"><span data-bind="restext: 'Name'"></span>:</span>
+    <input type="text" class="fElem-name_textField" data-bind="resattr: { placeholder : 'FilterNamePlaceholder' }, attr: { maxlength: MaxNameSize }, textInput: filterName, longNameTooltip: filterName" />
+</div>
+<div class="fElem-list-wrapper" data-bind="foreach: editorCollection">
+    <div class="fElem-list-element">
+        <div class="fElem-body" data-bind="template: { afterRender: $parent.EditorAddCallback }">
+            <div class="fElem-remove-btn" data-bind="click: $parent.RemoveEditor"></div>
+            <div class="fElem-parameters-wrapper"></div>
+        </div>
+        <!-- ko if: filterElementObject() != null -->
+        <div class="fElem-template-wrapper" data-bind="template: { name: filterElementTemplate, data: filterElementObject }"></div>
+        <!-- /ko -->
+    </div>
+</div>
+<div class="fElem-add-btn" data-bind="click: CreateEditor"></div>

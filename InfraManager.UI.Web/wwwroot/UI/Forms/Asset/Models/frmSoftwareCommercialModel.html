@@ -1,0 +1,143 @@
+﻿<div class="softwareCommercialFieldForm b-requestDetail im-base-text" style="overflow-x: hidden;">
+    <div class="b-requestDetail-left" data-bind="with: SoftwareCommercialModel">
+        <div class="fieldPair b-requestDetail__title-header-nd">
+            <div class="network-device-title">
+                <div class="field-pair">
+                    <div class="icon-container" data-bind="css: {'cursor-pointer': $root.CanEdit() && CanEditName()}, click: $root.EditName">
+                        <div data-bind="css: IconCss()" />
+                    </div>
+                    <span class="im-big-header asset-text-field-header" data-bind="text: Name, css: { 'cursor-pointer': $root.CanEdit(), 'asset-border': CanEditName() }, click: $root.EditName" />
+                    <div class="network-device-model-header">
+                        <div class="network-device-category" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="b-requestDetail__mainParameters" data-bind="visible: $parent.mode() == $parent.modes.main, style: {height: $root.TabHeight}">
+            <div class="network-device-mainTab">
+                <div class="network-device-mainTab-left-side">
+                    <div class="network-device-characteristics">
+                        <div class="im-big-header" data-bind="restext: 'TabGeneral'" />
+                        <div class="network-device-table-margineTop scm-table-fixed">
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ModelTemplate'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="cursor-pointer" data-bind="text: Template" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ModelVersion'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field cursor-pointer" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: Version, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditVersion" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'WrittenOff_Licensing'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field-readonly fieldControl border nowrap clickable" data-bind="text: SoftwareLicenceSchemeName, css: { 'cursor-pointer': $root.CanEdit },  click: $root.EditLicenceScheme" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'WrittenOff_VendorName'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: ManufacturerName, css: { 'cursor-pointer': $root.CanEdit },  click: $root.EditManufacturer" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'SoftwareType'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field-readonly fieldControl border nowrap clickable" data-bind="text: SoftwareTypeName, css: { 'cursor-pointer': $root.CanEdit },  click: $root.EditSoftwareType" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'UsingAsset'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field-readonly fieldControl border nowrap clickable" data-bind="text: SoftwareModelUsingTypeName, css: { 'cursor-pointer': $root.CanEdit },  click: $root.EditUsingModel" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'AssetNumber_Note'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field asset-note " data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: Note, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditNote" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="network-device-mainTab-right-side">
+                    <div class="network-device-table-margineTop-left scm-table-fixed">
+                        <div class="td-width">
+                            <div class="fieldHeader" data-bind="restext:'AssetNumber_Code'" />
+                            <div class="assetReg-locationControl">
+                                <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: Code, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditCode" />
+                            </div>
+                        </div>
+                        <div class="td-width">
+                            <div class="fieldHeader" data-bind="restext:'ExternalID'" />
+                            <div class="assetReg-locationControl">
+                                <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: ExternalID , css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditExternal" />
+                            </div>
+                        </div>
+                        <div class="td-width">
+                            <div class="fieldHeader" data-bind="restext:'ModelRedaction'" />
+                            <div class="assetReg-locationControl">
+                                <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: ModelRedaction , css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditRedaction" />
+                            </div>
+                        </div>
+                        <div class="td-width">
+                            <div class="fieldHeader" data-bind="restext:'ModelLanguage'" />
+                            <div class="assetReg-locationControl">
+                                <div class="asset-text-field-readonly fieldControl border nowrap clickable" data-bind="text: SoftwareLicenceLanguageName, css: { 'cursor-pointer': $root.CanEdit },  click: $root.EditLanguage" />
+                            </div>
+                        </div>
+                        <div class="network-device-code-header">
+                            <div class="td-width">
+                                <div class="fieldHeader fieldHeader-blue" data-bind="text:getTextResource('ModelOwner')" />
+                                <div class="assetReg-locationControl td-width form-user-header">
+                                    <div data-bind="template: { name: 'User/FormUser', if: OwnerModelLoaded(), data: OwnerModel }"></div>
+                                    <div data-bind="template: { name: 'User/FormUserEmpty', if: !OwnerModelLoaded(), data: OwnerModel }"></div>
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader fieldHeader-blue" data-bind="text:getTextResource('ModelSupportGroup')" />
+                                <div class="assetReg-locationControl td-width form-user-header">
+                                    <div data-bind="template: { name: 'User/FormUser', if: ModelSupportQueueLoaded(), data: ModelSupportQueue }"></div>
+                                    <div data-bind="template: { name: 'User/FormUserEmpty', if: !ModelSupportQueueLoaded(), data: ModelSupportQueue }"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="links__b" data-bind="visible: $parent.mode() == $parent.modes.softwareModelRecognition, style: {height: $root.TabHeight}, template: {name: $root.softwareModelRecognition.Template, data: { $control: $root.softwareModelRecognition }}" />
+        <div class="links__b" data-bind="visible: $parent.mode() == $parent.modes.softwareModelUpdate, style: {height: $root.TabHeight}, template: {name: $root.softwareModelUpdateForTable.Template, data: { $control: $root.softwareModelUpdateForTable }}" />
+        <div class="links__b" data-bind="visible: $parent.mode() == $parent.modes.softwareModelLicenses, style: {height: $root.TabHeight}, template: {name: $root.softwareModelLicensesForTable.Template, data: { $control: $root.softwareModelLicensesForTable }}" />
+        <div class="ndRef__b" data-bind="visible: $parent.mode() == $parent.modes.history, style: {height: $root.TabHeight}, template: {name: 'AssetForms/History', data: { $control: $root.assetHistory } }" />
+    </div>
+    <div class="b-requestDetail-right" data-bind="with: SoftwareCommercialModel">
+        <div class="b-requestDetail__icon-wrap" data-bind="click: $root.MainClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : $parent.mode() != $parent.modes.main, 'b-requestDetail__icon1-active' : $parent.mode() == $parent.modes.main }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabGeneral'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click:  $root.RecognitionModelListClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'asset-recognition-icon' : $parent.mode() != $parent.modes.softwareModelRecognition, 'asset-recognition-icon-active' : $parent.mode() == $parent.modes.softwareModelRecognition }"></a>
+            <div class="b-content-table__workplaceIcon-header Htext" data-bind="restext: 'ModelRecognition'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click:  $root.UpdateModelListClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'asset-update-icon' : $parent.mode() != $parent.modes.softwareModelUpdate, 'asset-update-icon-active' : $parent.mode() == $parent.modes.softwareModelUpdate }"></a>
+            <div class="b-content-table__workplaceIcon-header Htext" data-bind="restext: 'SoftwareLicence_UpdatesTab_ListCaption'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click:  $root.LicensesModelListClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'asset-licenses-icon' : $parent.mode() != $parent.modes.softwareModelLicenses, 'asset-licenses-icon-active' : $parent.mode() == $parent.modes.softwareModelLicenses }"></a>
+            <div class="b-content-table__workplaceIcon-header Htext" data-bind="restext: 'SoftwareLicenceList'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click:  $root.HistoryClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon2' : $parent.mode() != $parent.modes.history, 'b-requestDetail__icon2-active' : $parent.mode() == $parent.modes.history }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'Contract_HistoryTab'"></div>
+        </div>
+    </div>
+</div>
+
+
+

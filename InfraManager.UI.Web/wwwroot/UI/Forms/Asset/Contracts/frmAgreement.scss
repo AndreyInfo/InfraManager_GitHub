@@ -1,0 +1,485 @@
+﻿@import "../../../../Styles/general";
+
+.frmAgreement {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    outline:none;
+
+    .icon > span.descriptionIcon {
+        background: url(../images/fields/description.png) no-repeat;
+    }
+
+    .icon.active {
+        & > span.descriptionIcon {
+            background: url(../images/fields/description_active.png) no-repeat;
+        }
+    }
+
+    .content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 120px;
+
+        .outerIconAndControl {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+            margin-bottom: 0;
+            overflow: hidden;
+            float: none;
+            position: relative;
+
+            .productCatalogTypeField {
+                height: 20px;
+                line-height: 20px;
+            }
+
+            & > .icon {
+                cursor: pointer;
+                pointer-events: none;
+                float: left;
+                position: relative;
+                margin-right: 10px;
+                border-radius: 20px;
+                padding: 6px;
+
+                &:hover {
+                    background-color: whitesmoke;
+                }
+
+                &.active {
+                    pointer-events: all;
+                }
+
+                span {
+                    width: 24px;
+                    height: 24px;
+                    background-size: cover !important;
+                    display: block;
+                }
+            }
+
+            & > .control {
+                position: relative;
+                overflow: auto;
+                min-height: 36px;
+                padding-top: 9px;
+                word-break: break-all;
+
+                &.border {
+                    border: 1px solid $border-gray-color;
+                    padding: 7px;
+                }
+
+                > input {
+                    width: 100%;
+                    /*padding: 4px 7px;*/
+                    border: none;
+                    outline: none;
+                }
+
+                &.nowrap {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        .stateRow {
+            border-bottom: 1px solid $control_border_color;
+
+            .item {
+                display: inline-block;
+                border-right: 1px solid $border-gray-color;
+                font-size: 11px;
+                font-weight: bold;
+                height: 30px;
+                min-width: 50px;
+                line-height: 30px;
+                text-align: center;
+                padding: 0 15px;
+                vertical-align: middle;
+
+                span {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    display: inline-block;
+                }
+            }
+        }
+
+        .identificationRow {
+            .productCatalogTypeField {
+                color: $gray-text-color;
+                margin-left: 46px;
+            }
+        }
+
+        .tabGeneral {
+            overflow: hidden;
+            position: relative;
+            display: table;
+            width: 100%;
+            outline: none;
+
+            > .leftSide {
+                width: 200px;
+                min-width: 200px;
+                max-width: 500px;
+                height: 100%;
+                display: table-cell;
+                vertical-align: top;
+            }
+
+            > .rightSide {
+                height: 100%;
+                display: table-cell;
+                min-width: 300px;
+                vertical-align: top;
+            }
+
+            .fieldCaption {
+                color: $gray-text-color;
+                font-size: 11px;
+                margin-left: 25px;
+                margin-right: 25px;
+
+                &.blue {
+                    color: $blue-text-color;
+                    font-size: inherit;
+                }
+
+                &.text {
+                    color: $black-text-color;
+                    font-size: inherit;
+                }
+            }
+
+            .caption {
+                margin-left: 25px;
+                margin-right: 25px;
+
+                &.mt10 {
+                    margin-top: 10px;
+                }
+            }
+
+            .inline {
+                display: inline-block;
+            }
+
+            .btnEdit {
+                display: inline-block;
+                width: 13px;
+                height: 13px;
+                background: url(../images/listButtons.png) -273px -45px no-repeat;
+                cursor: pointer;
+                vertical-align: middle;
+                opacity: .6;
+                margin-left: 10px;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            .btnLink {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                background: url(../images/controls/chain.png) no-repeat;
+                background-size: cover;
+                cursor: pointer;
+                vertical-align: middle;
+                opacity: 1;
+                margin-left: 10px;
+
+                &:hover {
+                    opacity: 1;
+                    background: url(../images/controls/chain_active.png) no-repeat;
+                    background-size: cover;
+                }
+            }
+
+            .btnRemove {
+                display: inline-block;
+                width: 13px;
+                height: 13px;
+                background: url(../images/listButtons.png) -238px -46px no-repeat;
+                cursor: pointer;
+                vertical-align: middle;
+                opacity: .4;
+                margin-left: 10px;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            .fieldControl {
+                margin-left: 25px;
+                margin-right: 25px;
+                margin-bottom: 10px;
+                position: relative;
+                overflow: auto;
+                word-break: break-word;
+
+                &.border {
+                    border: 1px solid $border-gray-color;
+                    padding: 2px 7px;
+                    line-height: 22px;
+                    height: 26px;
+                    overflow: hidden;
+
+                    .dateStart, .dateEnd {
+                        border: none;
+                        outline: none;
+                    }
+
+                    &.typeOfAgreement {
+                        padding: 0;
+                        border: none;
+                        overflow: none;
+                        height: 28px;
+                    }
+                }
+
+                &.nowrap {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                &.multiline {
+                    min-height: 80px;
+                    max-height: 120px;
+                }
+
+                &.bold {
+                    font-weight: bold;
+                }
+
+                &.blue {
+                    color: $blue-text-color;
+                }
+
+                &.clickable {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .tabActive {
+            margin-top: 10px;
+            margin-right: 0;
+            margin-bottom: 10px;
+            overflow: auto;
+            position: relative;
+
+            .tabPage {
+                &.ml {
+                    margin-left: 25px;
+                }
+
+                &.h100 {
+                    height: 100%;
+                    overflow: hidden;
+                }
+
+                .caption {
+                    margin-bottom: 10px;
+                }
+
+                &.noscroll {
+                    overflow: hidden;
+                }
+
+                .tabCaption {
+                    margin: 0;
+                    height: 20px;
+                }
+
+                .tabContent {
+                    top: 35px;
+                }
+
+                .b-requestDetail_table {
+                    margin-right: 0;
+                    width: calc(100% - 10px);
+                }
+
+                .h100WithoutCaption {
+                    height: calc(100% - 30px);
+                    overflow: auto;
+                }
+
+                .firstConditionsBlock {
+                    margin-bottom: 10px;
+
+                    item {
+                        display: inline-block;
+                        margin-right: 25px;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        .fieldCaption {
+                            color: $gray-text-color;
+                            font-size: 11px;
+                            height: 20px;
+                        }
+
+                        .fieldValue {
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tabPages {
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+        width: 120px;
+        height: 100%;
+
+        .tabButton {
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 15px;
+            margin-top: 5px;
+
+            .tabButtonIcon {
+                display: inline-block;
+                width: 38px;
+                height: 38px;
+                background-size: cover !important;
+                position: relative;
+
+
+                &.licenceMaintenanceListTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/soft_passive.svg') no-repeat;
+                }
+
+                &.generalTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/main_passive.svg') no-repeat;
+                }
+
+                &.contactPersonTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/contacts_passive.svg') no-repeat;
+                }
+
+                &.assetMaintenanceTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/equipment_passive.svg') no-repeat;
+                }
+
+                span {
+                    color: #bdd1db;
+                    font-size: 16px;
+                    width: 38px;
+                    height: 38px;
+                    text-align: center;
+                    line-height: 38px;
+                    vertical-align: middle;
+                }
+            }
+
+            .tabButttonCaption {
+                line-height: 11px;
+                font-size: 11px;
+                white-space: normal;
+                word-break: break-word;
+                max-height: 22px;
+                overflow: hidden;
+                color: $left-menu-gray-color;
+            }
+        }
+
+        .tabButton.active, .tabButton:hover {
+            .tabButtonIcon {
+
+                &.licenceMaintenanceListTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/soft_active.svg') no-repeat;
+                }
+
+                &.generalTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/main_active.svg') no-repeat;
+                }
+
+                &.contactPersonTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/contacts_active.svg') no-repeat;
+                }
+
+                &.assetMaintenanceTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/equipment_active.svg') no-repeat;
+                }
+
+
+                span {
+                    color: $blue-text-color;
+                }
+            }
+
+            .tabButttonCaption {
+                color: $blue-text-color;
+            }
+        }
+
+        .tabButton:hover {
+            .tabButtonIcon {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .columnContact {
+        float: left;
+        width: 50%;
+        height: 100%;
+    }
+
+    .xx {
+        height: calc(100%-50px);
+        overflow: auto;
+        margin-top: 20px;
+    }
+
+    .tabCaption-icon-chain {
+        width: 26px;
+        height: 26px;
+        background: url("../images/controls/chain.png") no-repeat;
+        display: inline-block;
+        margin-left: 10px;
+        cursor: pointer;
+        pointer-events: none;
+        position: relative;
+        top: 5px;
+    }
+
+    .tabCaption-icon-chain.active {
+        width: 26px;
+        height: 26px;
+        background: url("../images/controls/chain_active.png") no-repeat;
+        display: inline-block;
+        margin-left: 10px;
+        cursor: pointer;
+        pointer-events: auto;
+        position: relative;
+        top: 5px;
+    }
+
+    .h30 {
+        height: 30px;
+    }
+}

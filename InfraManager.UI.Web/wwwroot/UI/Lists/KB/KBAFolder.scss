@@ -1,0 +1,17 @@
+﻿#knowlegdeBase {
+    .sc_hieararchyServiceHeaderText {
+    width: calc(100% - 60px);
+}
+
+.treeNodeContextMenuButton {
+    width: 18px;
+    height: 18px;
+    background: url(../UI/Lists/Settings/Icons/context_menu.svg) no-repeat;
+    background-size: 18px 18px;
+    visibility: inherit;
+    margin-right: 5pt;
+    display: inline-block;
+    vertical-align: middle;
+}
+}
+

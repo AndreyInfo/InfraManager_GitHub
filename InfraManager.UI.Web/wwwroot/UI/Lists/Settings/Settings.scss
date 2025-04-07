@@ -1,0 +1,52 @@
+﻿@import "../../../Styles/general";
+
+.settingsModule {
+    background: $white-background-color;
+    height: 100%;
+}
+
+.settings-views {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-right: 1px solid $table-border-gray-color;
+    width: 105px;
+    min-height: 250px;
+}
+
+.settings-main {
+    position: absolute;
+    left: 106px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.settings_viewMode {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: 5px auto;
+}
+
+.settings_viewMode.dictionaries {
+    background: url(../UI/Lists/Settings/Icons/orgstructure_passive.svg) no-repeat;
+    background-size: 36px 36px
+}
+
+.b-content-table__workplaceIconGroup:hover .settings_viewMode.dictionaries {
+    opacity: .50;
+    background: url(../UI/Lists/Settings/Icons/orgstructure_active.svg) no-repeat;
+    background-size: 36px 36px
+}
+
+.settings_viewMode.dictionaries.active {
+    background: url(../UI/Lists/Settings/Icons/orgstructure_active.svg) no-repeat;
+    background-size: 36px 36px
+}
+
+.settings_viewMode.dictionaries.active + div {
+    @extend .b-content-table__base-highlihted-text;
+}

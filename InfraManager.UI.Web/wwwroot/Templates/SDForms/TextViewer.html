@@ -1,0 +1,6 @@
+﻿<!-- ko if: isHTML -->
+<p class="textViewer" data-bind="html: text" style="margin:20px 5px 5px 20px; white-space: pre-wrap;" />
+<!-- /ko -->
+<!-- ko ifnot: isHTML -->
+<p class="textViewer" data-bind="text: text" style="margin:20px 5px 5px 20px; white-space: pre-wrap;" />
+<!-- /ko -->

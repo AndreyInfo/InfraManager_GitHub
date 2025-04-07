@@ -1,0 +1,21 @@
+﻿<div class="tabCaption im-big-header im-list-header">
+    <span data-bind="restext: 'PurchaseSpecifications'"></span>
+    <span class="tabCaption-icon-plus" data-bind="click: $control.add_operationClick, css: { 'active' : $root.CanEdit() && $control.add_operation() }, tooltip: getTextResource('AddPurchaseSpecificationFromCatalog')"></span>
+    <span class="tabCaption-icon-chain" data-bind="click: $control.addFromARS_operationClick, css: { 'active' : $root.CanEdit() && $control.add_operation() }, tooltip: getTextResource('AddPurchaseSpecificationFromARS')"></span>
+    <span class="tabCaption-rightChb">
+        <input type="checkbox" data-bind="checked: $control.ShowWithDeclined" /> <span class="tabCaption-rightChb_header" data-bind="restext: 'SpecList_ShowDeclined'" />
+    </span>
+</div>
+<div>
+    <div data-bind="template: { name: 'FinanceForms/PurchaseSpecificationTable', data: $control }"></div>
+</div>
+<div class="ndsTotalValues">
+    <span class="im-bold-text paddingRight" style="text-align: right" data-bind="restext: 'TotalSummaryHeader'"></span>
+    <span class="im-bold-text" data-bind="restext: 'ActivesRequestSpecification_CostWithNDS'"></span>
+    <span class="imList-rightCell paddingRight" data-bind="text: $control.TotalCostWithNDSString()"></span>
+    <span class="im-bold-text" data-bind="restext: 'ActivesRequestSpecification_CostWithoutNDS'"></span>
+    <span class="imList-rightCell paddingRight" data-bind="text: $control.TotalCostWithoutNDSString()"></span>
+    <span class="im-bold-text" data-bind="restext: 'ActivesRequestSpecification_SumNDS'"></span>
+    <span class="imList-rightCell" data-bind="text: $control.TotalSumNDSString()"></span>
+    <span></span>
+</div>

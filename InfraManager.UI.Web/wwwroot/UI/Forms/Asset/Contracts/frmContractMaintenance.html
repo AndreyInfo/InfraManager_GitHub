@@ -1,0 +1,29 @@
+﻿<div class="frmContractMaintenance">
+    <div class="fieldCaption" data-bind="text: object().IdentifierCaption"></div>
+    <div class="fieldControl border nowrap clickable" data-bind="text: object().ObjectIdentifier,css: {'clickable': true}, click: OpenSoftwareLicenceProperties"></div>
+
+    <div class="fieldCaption" data-bind="text: object().TypeCaption"></div>
+    <div class="fieldControl border nowrap" data-bind="text: object().ObjectType"></div>
+
+    <div data-bind="visible: object().ObjectModelVisible()">
+        <div class="fieldCaption" data-bind="text: object().ModelCaption"></div>
+        <div class="fieldControl border nowrap" data-bind="text: object().ObjectModel"></div>
+    </div>
+        <div data-bind="visible: object().TypeModelCaptionVisible()">
+            <div class="fieldCaption" data-bind="text: object().TypeModelCaption"></div>
+            <div class="fieldControl border nowrap" data-bind="text: object().ObjectSoftwareType"></div>
+        </div>
+
+        <div class="fieldCaption" data-bind="restext:'Contract_StartDate'" />
+        <div class="fieldControl date-start"></div>
+
+        <div data-bind="visible: !object().OnMaintenance()">
+            <div class="fieldCaption" data-bind="restext:'Contract_EndDate', visible: !object().OnMaintenance()" />
+            <div class="fieldControl date-end"></div>
+        </div>
+
+        <div class="fieldControl slider-checkbox">
+            <input type="checkbox" class="pronongation-input" data-bind="checked: object().OnMaintenance, style:{ 'pointer-events' : CanEdit() == false ? 'none' : 'auto'}" />
+            <label class="label" data-bind="text: object().OnMaintenance() == true ? getTextResource('OnMaintenance_Valid') : getTextResource('OnMaintenance_Terminated')"></label>
+        </div>
+    </div>

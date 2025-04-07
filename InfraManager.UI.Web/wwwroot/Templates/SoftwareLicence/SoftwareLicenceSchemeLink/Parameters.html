@@ -1,0 +1,15 @@
+﻿<div class="asset-link_searchText">
+    <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, event: { keypress: SearchKeyPressed }">
+    <div class="asset-link_searchText-clearfield cursor-pointer" data-bind="click: EraseTextClick, visible: !IsSearchTextEmpty()"></div>
+</div>
+
+<div class="asset-link_tableWrapper">
+    <span class="asset-link_tableSearchColumns" data-bind="if: startLoadingColumns">
+        <span data-bind="template: { name: 'Table/Columns', afterRender: columnsModel.AfterRender, data: columnsModel }"></span>
+    </span>
+    <div class="asset-link_tableColumn">
+        <div id="regionAssetSearch" style="height:100%" class="region-Table" data-bind="koListView: {settingsName: 'AssetSearch', controlInitialized: listViewInit, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false }"></div>
+    </div>
+
+</div>
+

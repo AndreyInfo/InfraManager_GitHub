@@ -1,0 +1,60 @@
+﻿<div class="assetFromRepairForm" data-bind="click: formClick">
+    <div class="asset-operations-header">
+        <div class="asset-operation-border asset-operations-mainTab-parameters" data-bind="click:mainClick, css: mode() == modes.main ? 'acc-tab-active' : 'acc-tab' ">
+            <div data-bind="restext:'TabPage_Parameters'"></div>
+        </div>
+        <div class="asset-operation-border asset-operations-mainTab-links" data-bind="click:linksClick, css: mode() == modes.links ? 'acc-tab-active' : 'acc-tab' ">
+            <div data-bind="text:TabLinksCaption"></div>
+        </div>
+    </div>
+    <div class="asset-operations-params-tab asset-operation-border-top" data-bind="visible: mode() == modes.main">
+        <div class="assetReg-dataBlock">
+            <div class="bold" data-bind="restext:'Repair_FinishDate'" />
+            <div class="repair-date-end"></div>
+
+            <div class="assetReg-causeHeader" data-bind="restext:'AssetFromRepair_Type'" />
+            <div class="marginBottom">
+                <input type="text" class="assetRepair-cause" maxlength="250" data-bind="textInput: RepairType, longNameTooltip: RepairType, resattr: { placeholder : 'EnterText' }" />
+            </div>
+
+            <div class="assetReg-causeHeader" data-bind="restext:'AssetFromRepair_Quality'" />
+            <div class="marginBottom">
+                <input type="text" class="assetRepair-cause" maxlength="250" data-bind="textInput: RepairQuality, longNameTooltip: RepairQuality, resattr: { placeholder : 'EnterText' }" />
+            </div>
+
+            <div class="assetReg-causeHeader" data-bind="restext:'AssetFromRepair_Bill'" />
+            <div class="marginBottom">
+                <input type="text" class="assetRepair-cause" maxlength="250" data-bind="textInput: Agreement, longNameTooltip: Agreement, resattr: { placeholder : 'EnterText' }" />
+            </div>
+
+            <div class="assetReg-causeHeader" data-bind="restext:'AssetFromRepair_Cost'" />
+            <div class="marginBottom">
+                <input type="text" class="assetRepair-cause cost" data-bind="value: Cost, valueUpdate: 'input', longNameTooltip: Cost" />
+            </div>
+
+            <div class="bold required" data-bind="restext:'Repair_NewLocation'" />
+            <div class="assetReg-locationControl">
+                <input type="text" class="searcherInput assetReg-location" data-bind="textInput: LocationFullName, longNameTooltip: LocationFullName, resattr: { placeholder : 'ChooseNewValue' }" />
+            </div>
+
+            <div class="asset-registration-founding-container">
+                <span class="bold" data-bind="restext:'Repair_Founding'" />
+                <span class="tabCaption-icon-plus active plus" data-bind="click: LinkSdObjectClick"></span>
+                <div class="contextMenu-inner-asset" data-bind="visible: ContextMenuVisible">
+                    <div class="contextline" data-bind="restext: 'Call', click: LinkCall"></div>
+                    <div class="contextline" data-bind="restext: 'WorkOrder', click: LinkWorkorder"></div>
+                    <div class="contextline" data-bind="restext: 'Problem', click: LinkProblem"></div>
+                </div>
+            </div>
+            <div data-bind="text: FoundingNumberStr"></div>
+
+            <div class="report" data-bind="click: printReportClick">
+                <input class="reportPrint-checkbox" type="checkbox" />
+                <span data-bind="restext:'Asset_PrintReport'"></span>
+            </div>
+        </div>
+    </div>
+    <div class="device-list-tab asset-operation-border-top" data-bind="visible: mode() == modes.links">
+        <div class="links__b" data-bind="visible: mode() == modes.links, template: {name: 'SDForms/Controls/LinkList', data: { $serviceButtonVisible: true, $control: $root.linkList } }" />
+    </div>
+</div>

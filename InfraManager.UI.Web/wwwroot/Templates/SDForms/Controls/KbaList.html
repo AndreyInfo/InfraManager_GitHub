@@ -1,0 +1,22 @@
+﻿<div class="tabCaption im-big-header im-list-header" data-bind="restext: 'KBArticles'"></div>
+<div class="asset-list tabContent im-list">
+    <!-- ko foreach: $control.imList.List -->
+    <div class="im-list-item">
+        <div class="im-list-item-chb-column">
+            <input type="checkbox" class="im-list-item__chb" style="display:none;" />
+        </div>
+        <div class="im-list-item-icon-column">
+            <div class="kba-icon"><span></span></div>
+        </div>
+        <div class="im-list-item-main-column">
+            <div class="im-list-item-main-firstcolumn" data-bind="css: { 'cursor-pointer': $root.CanEdit, 'cursor-pointer': $root.CanShow }, click: $parent.$control.ShowObjectForm">
+                <span class="reference-object-main-header" data-bind="text: Name"></span>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: $control.imList.List().length == 0 -->
+    <center><span class="im-list-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+    <!-- /ko -->
+</div>
+

@@ -1,0 +1,23 @@
+﻿.frmFinanceBudgetRowSearcher {
+    .treeControlHeader-text {
+        font-weight: bold;
+    }
+
+    .searchControlForTree-wrapper {
+        padding: 0;
+    }
+
+    .financeCenterFilter_content .treeAndSearchControl-firstRow, .budgetArticleFilter_content .treeAndSearchControl-firstRow, .treeAndSearchControl-newWindowBtn {
+        display: none;
+    }
+
+    .financeCenterFilter, .budgetArticleFilter, .initiatorFilter {
+        margin-top: 10px;
+        margin-left: 20px;
+        margin-right: 10px;
+    }
+
+    .financeCenterFilter {
+        margin-top: 15px;
+    }
+}

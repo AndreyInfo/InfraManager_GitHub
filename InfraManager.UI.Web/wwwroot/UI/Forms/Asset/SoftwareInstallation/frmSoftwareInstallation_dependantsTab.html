@@ -1,0 +1,14 @@
+﻿<div class="tabPage assetForm b-requestDetail im-base-text" data-bind="with: tabActive, afterUpdateBlock: tabActive().AfterRender">
+
+    <div class="tabDependants" tabindex="0">
+        <!-- Информация -->
+        <div class="dependant-installations">
+            <div class="label label-vert-padding">
+                <span data-bind="restext: 'SoftwareInstallation_Form_DependantInstallations'" />
+            </div>
+
+            <div data-bind="attr: {'id': dependantListViewID}, koListView: {settingsName: 'SoftwareInstallation', controlInitialized: dependantListViewInit, retrieveItems: dependantRetrieveItems, virtualMode: false, contextMenu: dependantContextMenu, autoDispose: false, itemClick: null}"></div>
+            <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+        </div>
+    </div>
+</div>

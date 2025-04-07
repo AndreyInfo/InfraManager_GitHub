@@ -1,0 +1,4 @@
+﻿<div class="supplierList" data-bind="with: list">
+    <div style="height: 100%;" data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'Supplier', controlInitialized: listViewInit, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false}"></div>
+    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+</div>

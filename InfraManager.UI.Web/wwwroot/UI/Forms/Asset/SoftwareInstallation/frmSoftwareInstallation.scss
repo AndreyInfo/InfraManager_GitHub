@@ -1,0 +1,502 @@
+﻿@import "../../../../Styles/general";
+
+
+.frmSoftwareInstallation {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    .input_clickable {
+        cursor: pointer;
+    }
+
+    .label_bold {
+        font-weight: bold;
+    }
+
+    .input_radio {
+        /* margin-top: -16px;*/
+        vertical-align: middle;
+    }
+
+    .inline_block {
+        display: inline-block;
+    }
+
+    .content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 120px;
+
+
+
+        .identificationRow {
+            margin-top: 25px;
+
+            .outerIconAndControl {
+                margin-left: 25px;
+                margin-right: 0;
+                margin-bottom: 0;
+                overflow: hidden;
+                float: none;
+                position: relative;
+
+
+                & > .icon {
+                    cursor: pointer;
+                    pointer-events: none;
+                    float: left;
+                    position: relative;
+                    margin-right: 10px;
+                    border-radius: 20px;
+                    padding: 6px;
+
+                    &:hover {
+                        background-color: whitesmoke;
+                    }
+
+                    &.active {
+                        pointer-events: all;
+                    }
+
+                    span {
+                        width: 24px;
+                        height: 24px;
+                        background-size: cover !important;
+                        display: block;
+                    }
+                }
+
+                & > .control {
+                    position: relative;
+                    overflow: auto;
+                    height: 36px;
+                    line-height: 26px;
+                    word-break: break-all;
+
+                    > input {
+                        width: 100%;
+                        padding: 4px 7px;
+                        border: none;
+                        outline: none;
+                    }
+
+                    &.border {
+                        border: 1px solid $border-gray-color;
+                    }
+
+                    &.nowrap {
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+
+                    &.invalid input {
+                        background-color: $invalid-background-color;
+                    }
+                }
+            }
+        }
+
+        .icon > span.nameIcon {
+            background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/name.svg') no-repeat;
+            width: 36px;
+            height: 36px;
+            margin-top: -6px;
+        }
+
+        .icon.active {
+            & > span.nameIcon {
+                background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/name.svg') no-repeat;
+                width: 36px;
+                height: 36px;
+                margin-top: -6px;
+            }
+        }
+
+
+
+        .fieldControl {
+            position: relative;
+            word-break: break-word;
+            white-space: normal;
+            height: 26px;
+            margin-bottom: 10px;
+
+            &.border {
+                border: 1px solid $border-gray-color;
+                padding: 2px 7px;
+                line-height: 22px;
+            }
+
+            &.nowrap {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            &.bold {
+                font-weight: bold;
+            }
+
+            &.blue {
+                color: $blue-text-color;
+            }
+
+            &.white {
+                background-color: white;
+            }
+
+            &.clickable {
+                cursor: pointer;
+                //width: 100%
+            }
+
+            &.number_box {
+                width: 130px;
+            }
+
+            .arrow_grey_dark {
+                position: static;
+                width: 16px;
+                height: 16px;
+                left: 462px;
+                top: 5px;
+                /* Inside Auto Layout */
+
+                flex: none;
+                order: 1;
+                flex-grow: 0;
+                margin: 0px 10px;
+                position: absolute;
+                width: 12px;
+                height: 5px;
+                left: calc(50% - 12px/2);
+                top: calc(50% - 5px/2 + 0.5px);
+                /* Grey/Grey night */
+
+                border: 1px solid #8394A5;
+            }
+
+            &.nud {
+                /* overflow: hidden;*/
+
+                > .stepper-wrap {
+                    width: calc(100% - 15px);
+
+                    > input {
+                        width: 100%;
+                        border: 1px solid $border-gray-color;
+                        line-height: 26px;
+                        padding: 0 7px;
+                        outline: none;
+                        height: 28px;
+                    }
+                }
+            }
+        }
+
+        .fieldCaption {
+            color: $gray-text-color;
+            font-size: 11px;
+
+            &.text {
+                color: $black-text-color;
+                font-size: inherit;
+            }
+        }
+
+        .sectionCaption {
+            color: black;
+            font-size: 12px;
+        }
+
+        .combobox {
+            width: 100%;
+        }
+
+        .tabGeneral {
+            position: relative;
+            display: table;
+            width: 100%;
+            outline: none;
+
+            .information-div-main {
+                padding-left: 25px;
+                display: table-cell;
+            }
+
+            .information-div-right {
+                padding-left: 10px;
+                display: table-cell;
+                background-color: #F2FAFD;
+
+                .date-field {
+                    width: 61px;
+                    height: 14px;
+                }
+
+                .dateitem {
+                    display: table-row;
+                }
+            }
+
+            .information-div-dates {
+                color: #F2FAFD;
+            }
+
+            .vendorSelet-div {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                background-color: #F2FAFD;
+
+
+                .radio_two {
+
+                    input {
+                        cursor: pointer;
+                    }
+
+                    label {
+                        cursor: pointer;
+                        font-weight: normal;
+                    }
+                }
+
+                .radio_block {
+                    margin-top: 20px;
+                }
+            }
+        }
+
+        .part_left_25 {
+            margin-left: 25px;
+        }
+
+        .part_right_25 {
+            margin-right: 25px;
+        }
+
+        .tabActive {
+            margin-top: 20px;
+            overflow: auto;
+            margin-right: 0;
+            position: relative;
+            max-height: 700px;
+
+            .tabPage {
+                &.ml {
+                    margin-left: 25px;
+                    height: calc(100% - 87px);
+                }
+
+                &.tabHistory {
+                    height: calc(100% - 87px);
+                }
+
+                &.h100 {
+                    height: 100%;
+                    overflow: hidden;
+                }
+
+                .caption {
+                    margin-bottom: 10px;
+                }
+
+                &.noscroll {
+                    overflow: hidden;
+                }
+
+                .tabCaption {
+                    margin: 0;
+                    height: 20px;
+                }
+
+                .tabContent {
+                    top: 35px;
+                }
+
+                .b-requestDetail_table {
+                    margin-right: 0;
+                    width: calc(100% - 10px);
+                }
+
+                .h100WithoutCaption {
+                    height: calc(100% - 30px);
+                    overflow: auto;
+                }
+
+                .firstConditionsBlock {
+                    margin-bottom: 10px;
+
+                    item {
+                        display: inline-block;
+                        margin-right: 25px;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        .fieldCaption {
+                            color: $gray-text-color;
+                            font-size: 11px;
+                            height: 20px;
+                        }
+
+                        .fieldValue {
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tabPages {
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+        width: 120px;
+        height: 100%;
+
+        .tabButton {
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 15px;
+            margin-top: 5px;
+
+            .tabButtonIcon {
+                display: inline-block;
+                width: 38px;
+                height: 38px;
+                background-size: cover !important;
+                position: relative;
+
+                &.generalTab {
+                    background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/main_passive.svg') no-repeat;
+                }
+
+                &.licencesTab {
+                    background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/licences_passive.svg') no-repeat;
+                }
+
+                &.dependantsTab {
+                    background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/dependant_passive.svg') no-repeat;
+                }
+
+                span {
+                    color: #bdd1db;
+                    font-size: 16px;
+                    width: 38px;
+                    height: 38px;
+                    text-align: center;
+                    line-height: 38px;
+                    vertical-align: middle;
+                }
+            }
+
+            .tabButttonCaption {
+                line-height: 11px;
+                font-size: 11px;
+                white-space: normal;
+                word-break: break-word;
+                max-height: 22px;
+                overflow: hidden;
+                color: $left-menu-gray-color;
+            }
+        }
+
+        .tabButton.active, .tabButton:hover {
+            .tabButtonIcon {
+
+
+                &.generalTab {
+                    background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/main_active.svg') no-repeat;
+                }
+
+                &.licencesTab {
+                    background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/licences_active.svg') no-repeat;
+                }
+
+                &.dependantsTab {
+                    background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/dependant_active.svg') no-repeat;
+                }
+
+                span {
+                    color: $blue-text-color;
+                }
+            }
+
+            .tabButttonCaption {
+                color: $blue-text-color;
+            }
+        }
+
+        .tabButton:hover {
+            .tabButtonIcon {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    div:empty:before {
+        content: attr(placeholder);
+        color: darkgray;
+    }
+
+    .callObjectIcon span {
+        background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/call_object_icon_passive.svg') no-repeat;
+        width: 26px;
+        margin-left: 10px;
+    }
+
+    .callObjectIcon.active span {
+        background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/call_object_icon_active.svg') no-repeat;
+        cursor: pointer;
+    }
+
+    .selectDateIcon span {
+        background: url('../UI/Forms/Asset/SoftwareInstallation/Icons/Calendar.svg') no-repeat;
+        width: 26px;
+        height: 26px;
+        display: inline-block;
+    }
+    .selectDateIcon {
+        width: 26px;
+        height: 26px;
+        cursor:pointer;
+    }
+
+
+    .callObject {
+        width: 85%;
+    }
+
+    .selectDate {
+        width: 78px;
+        height:26px;
+    }
+
+    .callObjectIcon {
+        height: 26px;
+        display: flex;
+        width: 15%;
+        float: right;
+    }
+
+    .pairFields {
+        margin-bottom: 0;
+        overflow: hidden;
+        float: none;
+        position: relative;
+        display: flex;
+    }
+}
+

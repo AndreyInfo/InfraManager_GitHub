@@ -1,0 +1,40 @@
+﻿@import "../../../Styles/general";
+
+.orgstructure-attachments {
+    position: relative;
+
+    .singleColumn {
+        min-width: 20px;
+    }
+
+    .header_buttons {
+        position: absolute;
+        top: -4px;
+        right: 0px;
+        transform: translateY(-100%);
+    }
+
+    .link-text {
+        @extend .im-base-text;
+        color: #ADB9CA !important;
+    }
+
+    .link-text.active {
+        @extend .cursor-pointer;
+        @extend .im-base-text;
+        color: $blue-text-color !important;
+    }
+
+    .nopadding {
+        display: inline-block;
+        padding: 0;
+    }
+
+    table {
+        margin: 4px 0px;
+    } 
+    
+    th, td {
+        padding: 4px 0px;
+    }
+}

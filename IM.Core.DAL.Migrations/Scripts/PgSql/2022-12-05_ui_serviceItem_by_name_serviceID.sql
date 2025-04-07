@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX if not exists ui_service_item_name_into_service on service_item(name, service_id);

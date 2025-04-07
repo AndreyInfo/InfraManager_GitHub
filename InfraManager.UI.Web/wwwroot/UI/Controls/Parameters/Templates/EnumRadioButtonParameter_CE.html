@@ -1,0 +1,5 @@
+﻿<div class="b-requestCreate-extra__input b-requestCreate-extra__input-checkbox" data-bind="foreach: $data.EnumValueList, tooltip: $data.ValidationError, css: {'b-requestCreate-extra__input-error' : $data.IsInvalid() == true}">
+    <div class="b-requestCreate-extra__input-checkbox-item">
+        <label><input type="radio" data-bind="checkedValue: $data.ID, checked: $parent.Value, attr: {name: $parent.UniqueValueIdentifier}, disable: $parent.Parameter.ReadOnly || !$parent.IsLoaded"><span data-bind="text: $data.Name" /></label>
+    </div>
+</div>

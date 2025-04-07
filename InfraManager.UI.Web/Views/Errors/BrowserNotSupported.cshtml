@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="../images/favicon.ico" />
+    <style>
+        body {
+            background: #666666;
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 450px;
+            height: 120px;
+            background: #292929;
+            margin-left: -250px;
+            margin-top: -60px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+            .modal a {
+                color: goldenrod;
+                margin: 5px;
+            }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <p>
+            @InfraManager.ResourcesArea.Resources.BrowserNotSupportedText
+        </p>
+        <p>
+            @InfraManager.ResourcesArea.Resources.UpgradeYourBrowserText
+        </p>
+        <a href="http://www.google.com/chrome/">Chrome</a>
+        <a href="http://www.mozilla-europe.org/">Firefox</a>
+        <a href="http://www.opera.com/">Opera</a>
+    </div>
+</body>
+</html>

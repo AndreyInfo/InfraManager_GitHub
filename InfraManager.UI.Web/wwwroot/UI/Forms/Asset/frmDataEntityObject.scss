@@ -1,0 +1,508 @@
+﻿@import "../../../Styles/general";
+
+.none-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dataEntityFieldForm {
+    .parameters__b .tabCaption {
+        margin: 0;
+    }
+
+    .callObjectIcon {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/call_object_icon_passive.svg') no-repeat;
+        width: 25px;
+        height: 25px;
+    }
+
+    .callObjectIcon.active {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/call_object_icon_active.svg') no-repeat;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .dateTimeControlImage {
+        margin-left: 10px;
+        margin-top: 5px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        background: url(../images/controls/dateTimeControl/calendar_active.png) no-repeat;
+        display: inline-block;
+    }
+
+    .asset-text-field.device-width {
+        width: calc(100% - 40px);
+        margin-right: 10px;
+        margin-bottom: 15px;
+    }
+
+    .asset-text-field.device-width-right {
+        width: 120px;
+        margin-left: 10px;
+        margin-bottom: 15px;
+    }
+
+    .floatLeft {
+        float: left;
+    }
+
+    .show-asset-icon {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/call_object_icon_active.svg') no-repeat;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .form-user-rightside, .form-user-empty-tb, .td-width {
+        width: 100%;
+    }
+
+    .parameters__b .tabContent {
+        top: 20px;
+    }
+
+    .b-content-table__workplaceIcon-header {
+        @extend .im-small-text;
+        color: $left-menu-gray-color;
+        text-align: center;
+        white-space: normal;
+        word-break: break-word;
+        display: block;
+    }
+
+    .text {
+        max-height: 35px;
+    }
+
+
+    .b-requestDetail-left {
+        word-wrap: break-word;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 105px;
+    }
+
+    .b-requestDetail-right {
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+        width: 105px;
+        height: 100%;
+    }
+
+    .b-requestDetail__table {
+        width: 100%;
+        position: relative;
+        padding-right: 1px;
+        padding-bottom: 10px;
+    }
+
+    .b-requestDetail__icon-wrap_dataEntity {
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 8px;
+    }
+
+    .b-requestDetail__icon-wrap_dataEntity {
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 8px;
+    }
+
+    .asset-utilize-icon {
+        background: url(../images/AssetForms/Property_pass.png) no-repeat;
+        width: 38px;
+        height: 38px;
+    }
+
+    .asset-utilize-icon:hover {
+        background: url(../images/AssetForms/Property_act.png) no-repeat;
+        width: 38px;
+        height: 38px;
+        opacity: .50;
+    }
+
+    .asset-utilize-icon-active {
+        background: url(../images/AssetForms/Property_act.png) no-repeat;
+        width: 38px;
+        height: 38px;
+    }
+
+    .asset-utilize-icon-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .asset-dependency-icon {
+        background: url(../images/controls/tabPages/dataEntityDependency.svg) no-repeat;
+        width: 38px;
+        height: 38px;
+        background-size: cover !important;
+    }
+
+    .asset-dependency-icon:hover {
+        background: url(../images/controls/tabPages/dataEntityDependency_active.svg) no-repeat;
+        width: 38px;
+        height: 38px;
+        background-size: cover !important;
+        opacity: .50;
+    }
+
+    .asset-dependency-icon-active {
+        background: url(../images/controls/tabPages/dataEntityDependency_active.svg) no-repeat;
+        width: 38px;
+        height: 38px;
+        background-size: cover !important;
+    }
+
+    .asset-dependency-icon-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+
+    .b-requestDetail__icon1-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+
+
+    .active .b-content-table__workplaceIcon-header {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .asset-links-icon-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .b-requestDetail__icon2-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .b-requestDetail__icon-wrap:hover {
+
+        .b-content-table__workplaceIcon-header {
+            @extend .b-content-table__base-highlihted-text;
+            cursor: pointer;
+        }
+
+        .asset-dependency-icon {
+            background: url('../images/controls/tabPages/dataEntityDependency_active.svg') no-repeat;
+            opacity: .50;
+            background-size: cover !important;
+        }
+    }
+
+    .network-device-title .network_unit_blue-icon {
+        display: inline-block;
+        position: relative;
+        top: 16px;
+        left: 8px;
+    }
+
+    .network-device-title .host_blue-icon {
+        display: inline-block;
+        position: relative;
+        top: 7px;
+        left: 0px;
+    }
+
+    .menu__item-header .menuBlockIsWorking {
+        max-width: unset;
+    }
+
+    .icon-container {
+        width: 43px;
+        height: 34px;
+        display: inline-block;
+        position: relative;
+        top: 10px;
+        left: 0px;
+    }
+
+
+    .clear-fix {
+        clear: both;
+    }
+
+    .assetReg-locationControl {
+        margin-bottom: 15px;
+        min-height: 27px;
+    }
+
+    .b-requestDetail__title-header-nd {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        margin-right: 0px;
+    }
+
+    .network-device-title .field-pair {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .network-device-title {
+        margin-left: 10px;
+    }
+
+
+    .network-device-title .model-network-icon {
+        display: inline-block;
+        position: relative;
+        top: 8px;
+    }
+
+
+    .fieldHeader {
+        font-family: $base-font;
+        font-weight: normal;
+        padding-top: 5px;
+        font-size: 12px;
+        color: $orgstructure-text-header-color;
+    }
+
+    .fieldHeader-blue {
+        color: #61D6F2 !important;
+    }
+
+    .asset-text-field-header {
+        position: absolute;
+        padding: 5px;
+        width: calc(100% - 67px);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        top: 11px;
+        height: 32px;
+    }
+
+    .network-deivce-classifier {
+        position: relative;
+    }
+
+    .network-device-category {
+        @extend .im-base-text;
+        color: $service-catalog-light-gray;
+        padding-top: 5px;
+        padding-left: 60px;
+        display: inline-block;
+        position: relative;
+        //
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    .network-device-location {
+        color: $service-catalog-light-gray;
+        padding-left: 60px;
+        display: inline-block;
+        position: relative;
+        //
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+
+    .network-device-model {
+        display: inline-block;
+        color: $blue-text-color;
+        //font-size: 15px;
+    }
+
+
+    .network-device-mainTab-left-side {
+        display: inline-block;
+        width: calc(50% - 20px);
+    }
+
+
+
+    .network-device-mainTab-right-side {
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        width: calc(50% - 10px);
+    }
+
+    .network-device-location-header {
+        margin-top: 25px;
+        position: relative;
+    }
+
+
+
+    .network-device-code-header {
+        background: $lightblue-background-color;
+        padding-top: 10px;
+        padding-bottom: 40px;
+        padding-left: 20px;
+        padding-right: 25px;
+    }
+
+    .network-device-table-editable-row {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .network-device-table-row {
+        @extend .network-device-table-editable-row;
+        width: 120px;
+    }
+
+    .network-device-table-margineTop {
+        margin-top: 5px;
+    }
+
+
+    .asset-text-field {
+        border: 1px solid $border-gray-color;
+        line-height: 25px;
+        min-height: 25px;
+        position: relative;
+        padding-left: 10px;
+        /*white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;*/
+        background: $white-background-color;
+        width: 100%;
+    }
+
+    .asset-text-field-readonly {
+        @extend .asset-text-field;
+        border: unset;
+        background: unset;
+    }
+
+    .network-device-table-margineTop .form-user-container {
+        padding: 0;
+    }
+
+    .network-device-table-margineTop .form-user-empty-tb {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .network-device-table-margineTop .form-user-info {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .network-device-table-margineTop .form-user-phone {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .network-device-table-margineTop .form-user-dopinfo {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .b-requestDetail-menu__inqury-date {
+        position: relative;
+        padding-left: 10px;
+        max-width: 350px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .searcherInput {
+        background-image: url(../images/controls/searchPlaceHolder.png);
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+        text-indent: 20px;
+        color: darkgray;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    div:empty:before {
+        content: attr(placeholder);
+        color: darkgray;
+    }
+
+    span:empty:before {
+        content: attr(placeholder);
+        color: darkgray;
+    }
+
+    .searcherInput:not(:empty) {
+        background-image: none;
+        text-indent: 3px;
+        @extend .im-base-text;
+    }
+
+    .outerIconAndControl {
+        margin-left: 10px;
+        margin-right: 0;
+        margin-top: 10px;
+        margin-bottom: 0;
+        overflow: hidden;
+        float: none;
+        position: relative;
+
+        & > .icon {
+            cursor: pointer;
+            pointer-events: none;
+            float: left;
+            position: relative;
+            margin-right: 10px;
+            border-radius: 20px;
+            padding: 6px;
+
+            &:hover {
+                background-color: whitesmoke;
+            }
+
+            &.active {
+                pointer-events: all;
+            }
+
+            span {
+                width: 24px;
+                height: 24px;
+                background-size: cover !important;
+                display: block;
+            }
+        }
+
+        & > .control {
+            position: relative;
+            overflow: auto;
+            min-height: 36px;
+            padding-top: 9px;
+            word-break: break-all;
+
+            &.border {
+                border: 1px solid $border-gray-color;
+                padding: 7px;
+            }
+
+            &.nowrap {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+    }
+}

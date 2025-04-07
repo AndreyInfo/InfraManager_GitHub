@@ -1,0 +1,28 @@
+﻿<div class="asset-link-main">
+    <div class="asset-link-menu">
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: selectParameterSelector, css: { 'active' : isParameterSelected }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'AssetLinkHeaderParameters'"></div>
+        </div>
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton asset-link-choosenbutton" data-bind="click: selectChoosen, visible: isChoosenVisible, css: { 'active' : isChoosenSelected }">
+            <div class="asset-link-menubutton-text">
+                <span data-bind="restext: 'AssetLinkHeaderChoosen'"></span>
+                <span data-bind="text: ChoosenCounterText"></span>
+            </div>
+        </div>
+        <div class="asset-link-lastelement"></div>
+    </div>
+    <div class="asset-link-body">
+        <span data-bind="if: ParameterReady">
+            <div class="asset-link-parameters" data-bind="visible: currentMode() == modes.ParameterSelector && modelParameterSelector() != null">
+                <div data-bind="template: { name: 'FinanceForms/GoodsInvoiceSpecificationLink/Parameters', data: modelParameterSelector, afterRender: modelParameterSelector().AfterRender }"></div>
+            </div>
+        </span>
+        <span data-bind="if: ChoosenReady">
+            <div class="asset-link-choosen" data-bind="visible: currentMode() == modes.Choosen && modelChoosen() != null">
+                <div class="al-list-choosen modelLink-ChoosenList" style="position:absolute;" data-bind="style: {height: SpecControlHeight}, template: { name: 'FinanceForms/Controls/GoodsInvoiceSpecification', data: modelChoosen().control, afterRender: modelChoosen().control.AfterRender  }" />
+            </div>
+        </span>
+    </div>
+</div>

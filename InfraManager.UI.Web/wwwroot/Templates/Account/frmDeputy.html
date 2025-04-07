@@ -1,0 +1,29 @@
+﻿<div class="frmDeputy" data-bind="with: Object">
+    <div class="content">
+        <div class="formDeputy-requestDetail__table">
+            <div class="formDeputy-users-block">
+                <div class="notEmpty"data-bind="template: { name: 'User/FormUser', if: User() && UserLoaded(), data: User }"></div>
+                <div class="empty" data-bind="template: { name: 'User/FormUserEmpty', if: User() && !UserLoaded(), data: User }"></div>
+            </div>
+        </div>
+        <div class="form-Deputy-Data">
+            <div class="fieldPair form-Deputy-Block">
+                <div class="funding-text-Deputy-Block" data-bind="restext:'With'"></div>
+                <div class="editor form-Deputy-BlockEdit">
+                    <div class="border textBox" data-bind="css: { 'cursor-pointer': $parent.CanEdit }, click: $parent.EditDateDeputyWith">
+                        <span data-bind="text: UtcDataDeputyWith" />
+                    </div>
+                </div>
+            </div>
+            <div class="fieldPair form-Deputy-Block">
+                <div class="funding-text-Deputy-Block" data-bind="restext:'By'"></div>
+                <div class="editor form-Deputy-BlockEdit">
+                    <div class="border textBox" data-bind="css: { 'cursor-pointer': $parent.CanEdit }, click: $parent.EditDateDeputyBy">
+                        <span data-bind="text: UtcDataDeputyBy" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

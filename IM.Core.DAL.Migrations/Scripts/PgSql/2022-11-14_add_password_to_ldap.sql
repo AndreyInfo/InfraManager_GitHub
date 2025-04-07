@@ -1,0 +1,1 @@
+alter table uiad_path add column if not exists password varchar(4000) null

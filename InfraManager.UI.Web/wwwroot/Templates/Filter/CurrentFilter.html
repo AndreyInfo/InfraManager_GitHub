@@ -1,0 +1,22 @@
+﻿<div class="toolbar-filters-wrapper">
+    <!-- ko if: IsTreeFilterNameVisible -->
+    <div class="toolbar-filters-element" data-bind="with: CurrentTreeFilterName, longNameTooltip: CurrentTreeFilterName().Text">
+        <span class="toolbar-filters-element-header" data-bind="text: Header"></span>: <span data-bind="text: Text"></span>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: IsFilterNameVisible -->
+    <div class="toolbar-filters-element" data-bind="with: CurrentFilterName, longNameTooltip: CurrentFilterName().Text">
+        <span class="toolbar-filters-element-header" data-bind="text: Header"></span>: <span data-bind="text: Text"></span>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: IsWithFinishedWorkflowVisible -->
+    <div class="toolbar-filters-element not-matter" data-bind="with: WithFinishedWorkflowName, longNameTooltip: WithFinishedWorkflowName().Text">
+        <span data-bind="text: Text"></span>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: IsAfterDateModifiedVisible -->
+    <div class="toolbar-filters-element not-matter" data-bind="with: AfterDateModifiedName, longNameTooltip: AfterDateModifiedName().Text">
+        <span data-bind="text: Text"></span>
+    </div>
+    <!-- /ko -->
+</div>

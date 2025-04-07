@@ -1,0 +1,8 @@
+﻿<div data-bind="if: isNotDeleted">
+    <div class="sc_hieararchyServiceHeader" data-bind="click: ClickFolder, css: {'active': Selected }, event: {'contextmenu' : $root.showContextMenu }">
+        <div class="sc_hieararchyServiceHeaderButton" data-bind="css: { 'expanded': Expanded() }"></div>
+        <div class="sc_hieararchyServiceHeaderText" data-bind="text: Name"></div>
+        <div class="treeNodeContextMenuButton" data-bind="visible: Selected() && folderVisibleOption() && isShowMenu, click: $root.showContextMenu"></div>
+    </div>
+    <div class="sc_KBASearchList" data-bind="template: { name: '../UI/Lists/KB/KBAFolder', foreach: innerList() }"></div>
+</div>

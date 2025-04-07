@@ -1,0 +1,36 @@
+﻿.frmSoftwareLicenceLink {
+    .list {
+        height: 100%;
+    }
+
+    .tableWrapper {
+        position: absolute;
+        right: 0px;
+        left: 0px;
+        bottom: 0px;
+        top: 60px;
+    }
+
+    .searchText {
+        //margin: 0px 20px;
+        position: absolute;
+        top: 0px;
+        left: 10px;
+        right: 10px;
+        height: 60px;
+    }
+
+    .searcherInput {
+        margin-top: 12px;
+    }
+
+    .clearfield {
+        right: 6px;
+        top: 30px;
+        transform: translateY(-50%);
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        background: url(../images/icons.png) -84px -76px no-repeat;
+    }
+}

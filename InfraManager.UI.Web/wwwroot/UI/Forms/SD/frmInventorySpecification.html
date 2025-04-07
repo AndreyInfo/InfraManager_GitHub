@@ -1,0 +1,194 @@
+﻿<div class="frmInventorySpecification b-requestDetail im-base-text" style="overflow-x: hidden;">
+    <div class="b-requestDetail-left" data-bind="with: specification">
+        <div class="b-requestDetail-menu clearfix">
+            <div class="b-requestDetail-menu__item b-requestDetail-menu__common leftToolbarButtons">
+                <div class="menu__item-header" data-bind="tooltip: IsWorking">
+                    <div class="menuBlockIsWorking">
+                        <span data-bind="text: IsWorking" />
+                    </div>
+                    <span class="menu__item-expander" />
+                </div>
+            </div>
+        </div>
+        <div class="fieldPair b-requestDetail__title-header-nd">
+            <div class="title">
+                <div class="field-pair">
+                    <divs class="model-network-icon"/>
+                    <span class="im-big-header specification-text-field-header" data-bind="text: Name" />
+                </div>
+            </div>
+        </div>
+        <div class="b-requestDetail__mainParameters" data-bind="style: {height: $root.TabHeight}">
+            <div class="mainTab">
+                <div class="mainTab-left-side">
+                    <table class="table-margineTop table-fixed">
+                        <tbody>
+                            <tr>
+                                <td class="table-row"><span data-bind="restext:'Repair_InventoryNumber'" /></td>
+                                <td class="table-row">
+                                    <div class="specification-text-field-readonly" data-bind="text: InventoryNumber" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-row"><span data-bind="restext:'Asset_SerialNumber'" /></td>
+                                <td class="table-editable-row">
+                                    <div class="specification-text-field-readonly" data-bind="text: SerialNumber" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="characteristics">
+                        <div class="im-big-header">
+                            <span data-bind="restext: 'Inventory_Stocked'"></span>
+                        </div>
+                        <table class="table-margineTop table-fixed">
+                            <tbody>
+                                <tr>
+                                    <td class="table-row"><span data-bind="restext:'SpecificationForm_Count'" /></td>
+                                    <td class="table-editable-row">
+                                        <div class="specification-text-field-readonly" data-bind="text: Count" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"><span data-bind="restext:'Asset_Location'" /></td>
+                                    <td class="table-editable-row">
+                                        <div class="specification-text-field-readonly" data-bind="text: LocationName, tooltip: LocationName" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"><span data-bind="restext:'Asset_OnStorage'" /></td>
+                                    <td class="table-editable-row" style="padding-left: 8px;">
+                                        <input class="onStorage" type="checkbox" data-bind="click: $root.EditOnStore, disable: true">
+                                    </td>
+                                </tr>
+
+                                <tr data-bind="style: {height: $root.UtilizerHeight}">
+                                    <td class="table-row"><span data-bind="restext:'AssetNumber_UtilizerName'" /></td>
+                                    <td class="table-editable-row">
+                                        <div class="specification-text-field-readonly" data-bind="text: UtilizerName, tooltip: UtilizerName" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"><span data-bind="restext:'SpecificationForm_Manufacturer'" /></td>
+                                    <td class="table-editable-row">
+                                        <div class="specification-text-field-readonly" data-bind="text: ManufacturerName, tooltip: ManufacturerName" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"><span data-bind="restext:'Asset_Category'" /></td>
+                                    <td class="table-editable-row">
+                                        <div class="specification-text-field-readonly" data-bind="text: ProductCatalogCategoryName, tooltip: ProductCatalogCategoryName" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"><span data-bind="restext:'AssetNumber_TypeName'" /></td>
+                                    <td class="table-editable-row">
+                                        <div class="specification-text-field-readonly" data-bind="text: ProductCatalogTypeName, tooltip: ProductCatalogTypeName" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-row"><span data-bind="restext:'Model'" /></td>
+                                    <td class="table-editable-row">
+                                        <div class="specification-text-field-readonly" data-bind="text: ProductCatalogModelName, tooltip: ProductCatalogModelName" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="mainTab-right-side">
+                    <table class="table-margineTop table-fixed">
+                        <tbody>
+                            <tr>
+                                <td class="table-row"><span data-bind="restext: 'Code'" /></td>
+                                <td class="table-editable-row">
+                                    <div class="specification-text-field-readonly" data-bind="text: Code" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-row"><span data-bind="restext:'AssetFields_PurchaseDate'" /></td>
+                                <td class="table-editable-row">
+                                    <div class="specification-text-field-readonly" data-bind="text: UtcDateReceived" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="code-header-wrap">
+                        <div class="code-header">
+                            <div class="im-big-header">
+                                <span data-bind="restext: 'Inventory_Deviations'"></span>
+                            </div>
+                            <div>
+                                <table class="table-margineTop table-fixed">
+                                    <tbody>
+                                        <tr>
+                                            <td class="table-row"><span data-bind="restext:'Inventory_ActualCount'" /></td>
+                                            <td class="table-editable-row">
+                                                <div class="specification-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: NewCountStr, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditNewCount" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="table-row"><span data-bind="restext:'Inventory_ActualLocation'" /></td>
+                                            <td class="table-editable-row">
+                                                <div class="specification-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, tooltip: NewFullLocation, text: NewFullLocation, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditLocation" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="table-row"><span data-bind="restext:'Inventory_ActualOnStoсk'" /></td>
+                                            <td class="table-editable-row">
+                                                <input class="newOnStorage" type="checkbox" data-bind="click: $root.EditOnStore, disable: true" />
+                                            </td>
+                                        </tr>
+                                        <tr class="newUtilizer">
+                                            <td class="table-row"><span data-bind="restext:'Inventory_ActualUtilizer'" /></td>
+                                            <td class="table-editable-row">
+                                                <div data-bind="template: { name: 'User/FormUser', if: NewUtilizerLoaded(), data: NewUtilizer }"></div>
+                                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !NewUtilizerLoaded(), data: NewUtilizer }"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="table-row"><span data-bind="restext:'Inventory_ActualManufacturer'" /></td>
+                                            <td class="table-editable-row">
+                                                <div class="specification-text-field-readonly" data-bind="text: NewManufacturerName" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="table-row"><span data-bind="restext:'Inventory_ActualCategory'" /></td>
+                                            <td class="table-editable-row">
+                                                <div class="specification-text-field-readonly" data-bind="text: NewProductCatalogCategoryName" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="table-row"><span data-bind="restext:'Inventory_ActualType'" /></td>
+                                            <td class="table-editable-row">
+                                                <div class="specification-text-field-readonly" data-bind="text: NewProductCatalogTypeName" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="table-row"><span data-bind="restext:'Inventory_ActualModel'" /></td>
+                                            <td class="table-editable-row">
+                                                <div class="specification-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: NewProductCatalogModelName, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditModel" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="specification-note-wrap">
+                <table class="table-margineTop table-fixed">
+                    <tbody>
+                        <tr>
+                            <td class="table-row" style="vertical-align:top;"><span data-bind="restext:'CommentHeader'" /></td>
+                            <td class="table-editable-row">
+                                <div class="specification-text-field specification-note" data-bind="text: Note, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditNote" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

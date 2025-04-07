@@ -1,0 +1,19 @@
+﻿<div class="references-wrapper">
+    <div class="im-big-header im-list-header" data-table-container-header>
+        <span class="im-big-header__title" data-bind="restext: title"></span>
+        <button
+                type="button" 
+                class="references-wrapper__action iconSvgMask active"
+                data-bind="click: addReferenceWithCreate, enable: CanEdit, css: {'active': CanEdit }">
+            <span class="references-new-icon add-item-icon"></span>
+        </button>
+        <button
+                type="button" 
+                class="references-wrapper__action iconSvgMask active"
+                data-bind="click: addReference, enable: CanEdit, css: {'active': CanEdit }">
+            <span class="references-new-icon references-new-icon_link"></span>
+        </button>
+    </div>
+    <!-- ko template: {name: 'SDForms/References/ReferencesList', data: $data.Table } -->
+    <!-- /ko -->
+</div>

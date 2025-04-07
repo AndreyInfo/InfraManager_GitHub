@@ -1,0 +1,30 @@
+﻿<div class="left-solution-help_panel" data-bind="with: LeftPanelModel, visible: LeftPanelModel.IsVisible">
+    <div class="help_panel-kb" data-bind="with: kbModel">
+        <div class="help_panel-header"><span class="help_panel-header-text" data-bind="restext: 'LeftPanelUseKB'"></span></div>
+        <div class="help_panel-searchbox">
+            <input class="help_panel-tb" type="text" data-bind="resattr: { placeholder : 'ChooseNewValue' }, textInput: searchPhrase" />
+        </div>
+        <div class="help_panel-items scrollBar" data-bind="foreach: findedList">
+            <div class="help_panel-kb-item">
+                <div class="help_panel-kb-header" data-bind="text: Name, click: $parent.ShowArticle"></div>
+                <div class="help_panel-kb-descr">
+                    <div class="help_panel-kb-text" data-bind="text: Description"></div>
+                    <div class="help_panel-kb-insert" data-bind="click: $parent.IncludeInObject, restext: 'LeftPanelIncludeKB'"></div>
+                    <div class="help_panel-kb-add" data-bind="click: $parent.AddAndInclude, restext: 'LeftPanelAddKB'"></div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="help_panel-solutions" data-bind="with: solModel">
+        <div class="help_panel-header"><span class="help_panel-header-text" data-bind="restext: 'LeftPanelOrChooseSolution'"></span></div>
+        <div class="help_panel-searchbox">
+            <input class="help_panel-tb" type="text" data-bind="resattr: { placeholder : 'ChooseNewValue' }, textInput: searchPhrase" />
+        </div>
+        <div class="help_panel-items scrollBar" data-bind="foreach: listToShow">
+            <div class="help_panel-solution-item">
+                <div class="help_panel-solution-header" data-bind="text: Name, click: $parent.ShowSolution"></div>
+                <div class="help_panel-solution-insert" data-bind="click: $parent.AddToSolution, restext: 'LeftPanelAddSolution'"></div>
+            </div>
+        </div>
+    </div>
+</div>

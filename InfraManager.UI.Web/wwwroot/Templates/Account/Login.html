@@ -1,0 +1,22 @@
+﻿<div class="i-auth">
+    <div class="languageSet-auth">
+        <button class="language-ru" data-bind="click: setLanguage" data-param="ru-RU" />
+        <button class="language-en" data-bind="click: setLanguage" data-param="en-US" />
+    </div>
+    <div class="b-auth">
+        <div class="b-auth-logo"></div>        
+        <h1 data-bind="restext: 'Title'"></h1>
+        <div class="b-auth-error" data-bind="restext: 'UserLoginPasswordNotFound'"></div>
+        <div class="b-auth__item first-child">
+            <input id="firstInput" type="text" class="b-auth__item-input" data-bind="value: loginName, resattr: {placeholder : 'UserLogin'}, valueUpdate: 'input', event: { keypress: onEnter }">
+        </div>
+        <div class="b-auth__item">
+            <input type="password" class="b-auth__item-input" data-bind="value: password, resattr: {placeholder : 'UserPassword'}, valueUpdate: 'input', event: { keypress: onEnter }">
+            <span class="b-auth-showPass cursor-pointer" data-bind="resattr: {title : 'ShowPassword'}"></span>
+        </div>
+        <div class="b-auth-forgotPass">
+            <!--<a id="b-auth-forgotPass-link" data-bind="click: forgotPassword, restext: 'ForgotPassword'" />-->
+        </div>
+        <button class="ui-button b-auth-submit" data-bind="click: login"><span data-bind="restext: 'SignIn'" /></button>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿<input type="file" class="fileInput" multiple>
+
+<table class="b-requestDetail__files-items">
+    <colgroup>
+        <col class="singleColumn" />
+    </colgroup>
+    <tbody data-bind="foreach: Items">
+        <tr class="b-requestDetail__files-item" data-bind="style: {'font-weight' : IsCurrentUserAuthor() == false ? 'bold' : 'unset'}">
+            <td data-bind="longNameTooltip: Name" >
+                <span class="nopadding" data-bind="text: FullName" />
+                <div class="nopadding" style="margin-left: 10pt">
+                    <span class="im-blue-text cursor-pointer nopadding" data-bind="restext: 'OrgStructureFileDownload', click: DownloadClick, style: {'font-weight' : IsCurrentUserAuthor() == false ? 'bold' : ''}, visible: (ProgressVisible() != true)" />
+                    <progress data-bind="attr: {value: ProgressValue}, visible: (ProgressVisible() == true)" max="100" />
+                </div>
+                <span class="im-blue-text cursor-pointer nopadding" style="margin-left: 10pt" data-bind="restext: 'OrgStructureFileDelete', click: RemoveClick, clickBubble: false, visible: ($root.ReadOnly() == false && $root.RemoveFileAvailable() == true)" />
+            </td>
+        </tr>
+    </tbody>
+</table>

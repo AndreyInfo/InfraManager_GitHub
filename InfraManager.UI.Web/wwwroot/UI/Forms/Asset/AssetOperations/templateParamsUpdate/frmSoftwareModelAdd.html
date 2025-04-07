@@ -1,0 +1,34 @@
+﻿<div class="frmSoftwareModel">
+    <div class="container-fluid">
+        <!--Версия ПО-->
+        <div class="col-xs-12">
+            <span class="fieldCaption required2" data-bind="restext: 'SoftwareVersion'"></span>
+            <div class="fieldControl nowrap">
+                
+                    <input class="border fieldControl nowrap data" type="text" maxlength = "50"
+                           data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: Version"/>
+                
+            </div>
+        </div>
+        <!--Название продукта-->
+        <div class="col-xs-12">
+            <div class="fieldCaption" data-bind="restext: 'ProductName'"></div>
+            <div class="fieldValue" data-bind="text: ProductName()"></div>
+        </div>
+        <!--Шаблон-->
+        <div class="col-xs-12">
+            <div class="fieldCaption" data-bind="restext: 'Template'"></div>
+            <div class="fieldValue" data-bind="text: Template()"></div>
+        </div>
+        <!--Тип ПО-->
+        <div class="col-xs-12">
+            <div class="fieldCaption" data-bind="restext: 'SoftwareTypeName'"></div>
+            <div class="fieldValue" data-bind="text: SoftwareTypeName()"></div>
+        </div>
+        <!--Производитель-->
+        <div class="col-xs-12">
+            <div class="fieldCaption" data-bind="restext: 'AssetNumber_VendorName'"></div>
+            <div class="fieldValue" data-bind="text: VendorName()"></div>
+        </div>
+    </div>
+</div>

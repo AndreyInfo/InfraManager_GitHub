@@ -1,0 +1,45 @@
+﻿<div class="expression-editor">
+    <div class="statements-area">
+        <p class="text label" data-bind="restext: 'ExpressionEditor_StatementsLegend'" />
+        <div class="variables-list">
+            <p class="text statements-header statements-line" data-bind="restext: 'ExpressionEditor_Variables'"/>
+            <ul class="statements-list" data-bind="foreach: variables">
+                <li class="text statements-line selectable" data-bind="text: value, title: title, click: $parent.add"></li>
+            </ul>
+        </div>
+        <div class="functions-list">
+            <p class="text statements-header statements-line" data-bind="restext: 'ExpressionEditor_Functions'"/>
+            <ul class="statements-list" data-bind="foreach: functions">
+                <li class="text statements-line selectable" data-bind="text: value, title: title, click: $parent.add"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="editor-area">
+        <div class="editor-div">
+            <p class="editor-legend text" data-bind="text: editorLegendText"></p>
+            <p class="editor-label text label" data-bind="restext: 'ExpressionEditor_EditorLabel'" />
+            <textarea id="expression" class="expression-textarea" data-bind="value: expression, contextMenu: contextMenu"></textarea>
+            <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening }"></div>
+            <!-- ko if: hasError -->
+            <div class="validation-area">
+                <span class="validation-error text" data-bind="text: validationError"></span>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="operators-area">
+            <p class="label" data-bind="restext: 'ExpressionEditor_OperatorsLegend'" />
+            <div class="operators-list" data-bind="foreach: operators">
+                <div class="selectable operator" data-bind="title: title, click: $parent.add, css: icon"></div>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both" />
+    <div class="buttons-area">
+        <button class="ui-button ui-button-cancel ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: cancel">
+            <span class="ui-button-text" data-bind="restext: 'ExpressionEditor_Cancel'" />
+        </button>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: save">
+            <span class="ui-button-text" data-bind="restext: 'ExpressionEditor_Ok'" />
+        </button>
+    </div>
+</div>

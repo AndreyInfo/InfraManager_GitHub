@@ -1,0 +1,26 @@
+﻿<div class="frmContractRegistration">
+    <!--ko if: object()-->
+    <div class="content">
+        <div class="subjectRow">
+            <div class="outerIconAndControl">
+                <div class="icon active" data-bind="click: editDescription, tooltip: getTextResource('Contract_Description')"><span class="descriptionIcon"></span></div>
+                <div class="control border nowrap im-big-header" data-bind="css: {'invalid' : object().description().length == 0}">
+                    <input type="text" maxlength="500" data-bind="textInput: object().description, longNameTooltip: object().description" />
+                </div>
+            </div>
+        </div>
+        <div class="tabActive" data-bind="template: {name: tabActive().Template}"></div>
+    </div>
+    <!--/ko-->
+    <div class="tabPages" data-bind="foreach: tabList">
+        <div class="tabButton" data-bind="click: $parent.selectTabClick, css: {'active' : $parent.tabActive() === $data, 'invalid' : $parent.tabActive().IsValid && $parent.tabActive().IsValid() == false}">
+            <div class="tabButtonIcon" data-bind="css: $data.IconCSS">
+                <!--ko if: $data.Index-->
+                <span data-bind="text: $data.Index"></span>
+                <!--/ko-->
+            </div>
+            <div class="tabButttonCaption" data-bind="text: $data.Name" />
+        </div>
+    </div>
+</div>
+

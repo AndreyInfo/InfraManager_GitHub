@@ -1,0 +1,20 @@
+﻿<div class="sc_siaItemView" data-bind="with: SelectedObject">
+    <div class="sc_siaHeader">
+        <div class="sc_siaHeaderFavorite" data-bind="click: $root.OnChangeFavoritesStateClick, css: { 'active': IsInFavorite }"></div>
+        <span class="sc_siaHeaderName" data-bind="text: Name"></span>
+        <div class="sc_siaHeaderAvailable" data-bind="css: { 'active': IsAvailable }"></div>        
+    </div>
+    <div class="sc_siaDescription">
+        <div class="sc_siaCaption" data-bind="click: $parent.ServiceItemAttendanceNoteToggle">
+            <div class="sc_siaCaptionText" data-bind="restext: 'Description'"></div>
+            <div class="sc_siaCaptionButton" data-bind="css: { 'expanded':  IsNoteExpanded }"></div>
+        </div>
+        <div class="sc_siaDescriptionFullText" data-bind="text: NoteComputed, visible: IsNoteExpanded"></div>
+    </div>
+    <div class="sc_siaCallTypeBlock" data-bind="foreach: { data: CallTypeInfoList, as: 'callTypeInfo'}">
+        <div class="sc_callType_btn" data-bind="click: function() { $root.OnCallTypeClick($root.SelectedObject(), callTypeInfo); }">
+            <img class="sc_callType_btn-icon" data-bind="attr: { src: callTypeInfo.ImageSource }" />
+            <div class="sc_callType_btn-text" data-bind="text: callTypeInfo.Name" />
+        </div>
+    </div>
+</div>

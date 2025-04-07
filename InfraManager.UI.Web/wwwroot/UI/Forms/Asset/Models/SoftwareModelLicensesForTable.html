@@ -1,0 +1,5 @@
+﻿<div class="softwareModelLicensesForTable" style=" margin-left: 25px" data-bind="with: $root.softwareModelLicensesForTable">
+    <span class="im-big-header caption" data-bind="restext: 'SoftwareLicenceList'" />
+    <div style="height: calc(95% - 40px); margin-top: 10px;" data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'SoftwareModelLicensesForTable', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false}"></div>
+    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+</div>

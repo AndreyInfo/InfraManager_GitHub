@@ -1,0 +1,20 @@
+﻿<div class="frmLicenceConsumption">
+    <div class="asset-operations-header">
+        <div class="asset-operation-border asset-operations-mainTab-parameters" data-bind="visible: isEquip() != true, click:orgClick, css: mode() == modes.org ? 'acc-tab-active' : 'acc-tab' ">
+            <div data-bind="restext:'OrgStructureFilter'"></div>
+        </div>
+        <div class="asset-operation-border asset-operations-mainTab-links" data-bind="visible: isEquip() != true, click:placeClick, css: mode() == modes.place ? 'acc-tab-active' : 'acc-tab' ">
+            <div data-bind="restext:'LocationFilter'"></div>
+        </div>
+        <div class="asset-operation-border asset-operations-mainTab-links" data-bind="visible: isEquip() == true, click:productClick, css: mode() == modes.product ? 'acc-tab-active' : 'acc-tab' ">
+            <div data-bind="restext:'ProductCatalogueFilterCaption'"></div>
+        </div>
+        <div class="asset-operation-border asset-operations-mainTab-links" data-bind="visible: isEquip() == true, click:placeEquipClick, css: mode() == modes.placeEquip ? 'acc-tab-active' : 'acc-tab' ">
+            <div data-bind="restext:'LocationFilter'"></div>
+        </div>
+        
+    </div>
+    <div class="asset-operations-params-tab asset-operation-border-top" >
+        <div data-bind="template: {name: tabActive().Template,  afterRender: tabActive().AfterRender}"></div>
+    </div>
+</div>

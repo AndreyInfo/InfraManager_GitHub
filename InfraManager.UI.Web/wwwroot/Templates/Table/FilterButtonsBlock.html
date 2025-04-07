@@ -1,0 +1,18 @@
+﻿<!--ko if: $viewModelFiltration.filterLocationVisible()-->
+<div id="locationButtonID" class="filterButton filterButton-location" data-bind="click: $viewModelFiltration.ClickShowLocation, css: { 'active' : $viewModelFiltration.IsLocationActive }"><span></span></div>
+<!--/ko-->
+<!--ko if: $viewModelFiltration.filterOrgstructureVisible()-->
+<div id="orgstructureButtonID" class="filterButton filterButton-org" data-bind="click: $viewModelFiltration.ClickShowOrgStructure, css: { 'active' : $viewModelFiltration.IsOrgStructureActive }"><span></span></div>
+<!--/ko-->
+<!--ko if: $viewModelFiltration.filterProductCatalogueVisible()-->
+<div id="productCatalogueButtonID" class="filterButton filterButton-productCatalog" data-bind="click: $viewModelFiltration.ClickShowProductCatalogue, css: { 'active' : $viewModelFiltration.IsProductCatalogueActive }"><span></span></div>
+<!--/ko-->
+<!--ko if: $viewModelFiltration.filterSoftCatalogueVisible()-->
+<div id="softCatalogueButtonID" class="filterButton filterButton-softCatalog" data-bind="click: $viewModelFiltration.ClickShowSoftCatalogue, css: { 'active' : $viewModelFiltration.IsSoftCatalogueActive }"><span></span></div>
+<!--/ko-->
+<!--ko if: $viewModelFiltration.filterActiveVisible()-->
+<div id="filterButtonID" class="filterButton filterButton-filters" data-bind="click: $viewModelFiltration.ClickShowFilters, css: { 'active' : $viewModelFiltration.IsFiltersActive }"><span></span></div>
+<!--/ko-->
+<!--ko if: $viewModelFiltration.filterCommonFiltersVisible()-->
+<div id="filterButtonID" class="filterButton filterButton-filters" data-bind="click: $viewModelFiltration.ClickShowCommonFilters, css: { 'active' : $viewModelFiltration.IsFiltersActiveCommonFilters }"><span></span></div>
+<!--/ko-->

@@ -1,0 +1,87 @@
+﻿.fileInput {
+    display: none;
+}
+
+.b-requestDetail__files-items {
+    width: 100%;
+    table-layout: fixed;
+}
+
+
+.fileCol_img {
+    width: 16px;
+}
+
+.fileCol_name {
+    min-width: 20px;
+    width: 60%;
+}
+
+.fileCol_date {
+    max-width: 130px;
+    width: 40%;
+}
+
+.fileCol_size {
+    width: 90px;
+}
+
+.fileCol_remove {
+    width: 25px;
+}
+
+
+.b-requestDetail__files {
+    white-space: nowrap;
+}
+
+.b-requestDetail__files-addBtn span {
+    background: url(../UI/Controls/Parameters/Icons/attachments.png) no-repeat;
+}
+
+.b-requestDetail__files-addBtn.active span {
+    background: url(../UI/Controls/Parameters/Icons/attachments_active.png) no-repeat;
+}
+
+.b-requestDetail__files-allDownload.active {
+    float: right;
+    pointer-events: auto;
+    margin: 5px 5px 0px 0px;
+}
+
+.b-requestDetail__files-item {
+    overflow: hidden;
+}
+
+.b-requestDetail__files-item:hover {
+    background-color: #f5f5f5;
+}
+
+.b-requestDetail__files-item td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.b-requestDetail__files-item span {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.b-requestDetail__files-item progress {
+    vertical-align: middle;
+    width: 80%;
+}
+
+.b-requestDetail__files-item .close-icon {
+    padding-right: 0;
+    position: relative;
+    float: right;
+    opacity: 0.2;
+}
+
+.b-requestDetail__files-item .close-icon:hover {
+    opacity: 1;
+}

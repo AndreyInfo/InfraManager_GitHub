@@ -1,0 +1,16 @@
+﻿<div class="form-user-container" data-bind="if: $data != null">
+    <div class="form-user-leftside">
+        <div class="form-user-icon"></div>
+    </div>
+    <div class="form-user-rightside">
+        <div class="form-user-name-negotiation" data-bind="text: FullName"></div>
+        <div class="form-user-info-negotiation" data-bind="text: PositionName"></div>
+        <div class="form-user-dopinfo-negotiation" data-bind="text: SubdivisionName"></div>
+
+        <div data-bind="if: Email, visible: EmailInfo()==true,">
+            <span class="form-user-email-negotiation" data-bind="text:'E-mail:'" />
+            <div class="form-user-email-negotiation-blue" data-bind="text:Email" />
+        </div>
+
+    </div>
+</div>

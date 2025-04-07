@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX if not exists ui_notification_name on notification(name);

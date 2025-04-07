@@ -1,0 +1,444 @@
+﻿<div class="tabPage assetForm b-requestDetail im-base-text" data-bind="with: tabActive, afterUpdateBlock: tabActive().AfterRender">
+
+    <div class="tabGeneral" tabindex="0">
+        <div class="network-device-mainTab">
+            <div class="mainTab-left-side">
+                <!--Лимиты-->
+                <div class="network-device-characteristics" data-bind="visible: $parent.object().isNotOEM()">
+                    <div class="im-big-header">
+                        <span data-bind="restext: 'SoftwareLicence_Limits'"></span>
+                        <span data-bind="css: IsLimitsContainerVisible() ? 'arrow-up active' : 'arrow-down active', click: ToggleLimitsContainer, tooltip: IsLimitsContainerVisible == true ? getTextResource('Collapse') : getTextResource('Expand')">
+                            <span />
+                        </span>
+                    </div>
+                    <table class=" table-fixed" data-bind="visible: IsLimitsContainerVisible">
+                        <tbody>
+                            <!--Количество прав-->
+                            <tr>
+                                <td class="software-licence-table-row-left"><span data-bind="restext:'SoftwareLicence_Count'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl nowrap">
+                                        <input class="border fieldControl nowrap clickable" readonly="readonly" type="text" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().CountForForm(), disable: $parent.object().SoftwareUsageNoLimits(), css: {'cursor-pointer': $parent.CanEdit() == false}, click: EditCount" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--Без ограничений-->
+                            <tr>
+                                <td class="software-licence-table-row-left"><span data-bind="restext:'SoftwareLicence_SoftwareUsageNoLimits'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl slider-checkbox">
+                                        <input type="checkbox" id="noLimitsCheckbox" class="pronongation-input" data-bind="checked: $parent.object().SoftwareUsageNoLimits, style:{ 'pointer-events' :$parent.CanEdit() == false ? 'none' : 'auto'}, click: EditSoftwareUsageNoLimits" />
+                                        <label class="label" data-bind="text: $parent.object().SoftwareUsageNoLimits() ? getTextResource('True') : getTextResource('False')"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--Выдано-->
+                            <!--ko if: IsInUseVisible()-->
+                            <tr>
+                                <td class="software-licence-table-row-left"><span data-bind="restext:'SoftwareLicence_InUse'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl nowrap" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().InUseReferenceCount" />
+                                </td>
+                            </tr>
+                            <!--/ko-->
+                            <!--Свободно-->
+                            <!--ko if: IsBalanceVisible()-->
+                            <tr>
+                                <td class="software-licence-table-row-left"><span class="limitsNotInUse" data-bind="restext:'SoftwareLicence_NotInUse'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl nowrap limitsNotInUse" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().BalanceComputed" />
+                                </td>
+                            </tr>
+                            <!--/ko-->
+                            <!--Действительна с-->
+                            <!--ko if: IsBeginDateVisible()-->
+                            <tr>
+                                <td class="software-licence-table-row-left"><span data-bind="restext:'SoftwareLicence_BeginDate'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl border nowrap clickable" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().BeginDate, css: { 'cursor-pointer': $root.CanEdit }, click: EditBeginDate" />
+                                </td>
+                            </tr>
+                            <!--/ko-->
+                            <!--Действительна по-->
+                            <!--ko if: IsEndDateVisible()-->
+                            <tr>
+                                <td class="software-licence-table-row-left"><span data-bind="restext: 'SoftwareLicence_EndDate'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl border nowrap clickable" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().EndDate, css: { 'cursor-pointer': $root.CanEdit }, click: EditEndDate" />
+                                </td>
+                            </tr>
+                            <!--/ko-->
+                            <!--Ограничение, дней-->
+                            <!--ko if: IsLimitInDaysVisible()-->
+                            <tr>
+                                <td class="software-licence-table-row-left"><span data-bind="restext: 'SoftwareLicence_LimitInDays'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl border nowrap clickable" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().LimitInDays, css: { 'cursor-pointer': $root.CanEdit }, click: EditLimitInDays" />
+                                </td>
+                            </tr>
+                            <!--/ko-->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Местоположение -->
+                <div>
+                    <div class="im-big-header">
+                        <span data-bind="restext: 'SoftwareLicence_Location'"></span>
+                        <span class="asset-btn-edit" data-bind="visible: $root.CanEdit(), click: EditLocation"></span>
+                        <span data-bind="css: IsLocationContainerVisible() ? 'arrow-up active' : 'arrow-down active', click: ToggleLocationContainer, tooltip: IsLocationContainerVisible == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <table class=" table-fixed" data-bind="visible: IsLocationContainerVisible">
+                        <tbody>
+                            <!--Организация-->
+                            <tr>
+                                <td class="software-licence-table-row-left"><span data-bind="restext:'SoftwareLicence_OrganizationName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl" data-bind="text: $parent.object().OrganizationName, tooltip: $parent.object().OrganizationName" />
+                                </td>
+                            </tr>
+                            <!--Здание-->
+                            <tr>
+                                <td class="software-licence-table-row-left"><span data-bind="restext:'SoftwareLicence_BuildingName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl" data-bind="text: $parent.object().BuildingName, tooltip: $parent.object().BuildingName" />
+                                </td>
+                            </tr>
+                            <!-- Комната -->
+                            <tr>
+                                <td class="software-licence-table-row-left"><span data-bind="restext:'SoftwareLicence_RoomName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl" data-bind="text: $parent.object().RoomWithFloorName, tooltip: $parent.object().RoomWithFloorName" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- На складе -->
+                    <!--ko if: ShowOnStore()-->
+                    <div class="network-device-checkbox-field-pair" data-bind="visible: IsLocationContainerVisible">
+                        <div class="network-device-onStorage-text" data-bind="restext:'SoftwareLicence_OnStorage'"></div>
+                        <input class="network-device-onStorage" type="checkbox" data-bind="click: $root.EditOnStore, disable: true">
+                    </div>
+                    <!--/ko-->
+                </div>
+
+                <!--Информация-->
+                <div class="information-div">
+                    <div class="im-big-header">
+                        <span data-bind="restext: 'SoftwareLicence_Information'"></span>
+                        <span data-bind="css: IsNoteVisible() ? 'arrow-up active' : 'arrow-down active', click: ToggleNoteContainer, tooltip: IsNoteVisible == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <!--Описание-->
+                    <table class=" table-fixed" data-bind="visible: IsNoteVisible">
+                        <tbody>
+                            <tr>
+                                <td class="software-licence-table-row-left" style="vertical-align:top;"><span data-bind="restext:'SoftwareLicence_Note'" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fieldControl border multiline" data-bind="text: $parent.object().Note, click: EditNote, css: {'clickable': $parent.CanEdit()}"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mainTab-right-side">
+                <!--Классификатор-->
+                <div class="network-device-code-header">
+                    <div class="im-big-header">
+                        <span data-bind="restext: 'SoftwareLicence_Classifier'"></span>
+                        <span data-bind="css: IsClassifierContainerVisible() ? 'arrow-up active' : 'arrow-down active', click: ToggleClassifierContainer, tooltip: IsClassifierContainerVisible == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <table class=" table-fixed" data-bind="visible: IsClassifierContainerVisible">
+                        <tbody>
+                            <!-- Категория -->
+                            <tr>
+                                <td class="software-licence-table-row-right"><span data-bind="restext:'SoftwareLicence_Category'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl nowrap" data-bind="text: $parent.object().ProductCatalogCategoryName, tooltip: $parent.object().ProductCatalogCategoryName" />
+                                </td>
+                            </tr>
+                            <!--Тип-->
+                            <tr>
+                                <td class="software-licence-table-row-right"><span data-bind="restext:'SoftwareLicence_ModelLicenceType'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl nowrap" data-bind="text: $parent.object().ProductCatalogTypeName, tooltip: $parent.object().ProductCatalogTypeName" />
+                                </td>
+                            </tr>
+                            <!--Модель-->
+                            <tr data-bind="visible: IsSoftwareLicenceModelNameVisible">
+                                <td class="software-licence-table-row-right"><span data-bind="restext:'SoftwareLicence_Model'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl nowrap" data-bind="text: $parent.object().SoftwareLicenceModelName, tooltip: $parent.object().SoftwareLicenceModelName" />
+                                </td>
+                            </tr>
+                            <!--Модель ПО-->
+                            <tr>
+                                <td class="software-licence-table-row-right"><span data-bind="restext:'SoftwareLicence_SoftwareModel'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly fieldControl border nowrap clickable cursor-pointer" data-bind="text: $parent.object().SoftwareModelName, tooltip: $parent.object().SoftwareModelName, click: OpenCommercialSoftwareModelForm" />
+                                </td>
+                            </tr>
+                            <!--Производитель ПО-->
+                            <tr>
+                                <td class="software-licence-table-row-right"><span data-bind="restext:'SoftwareLicence_ManufacturerName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="fieldControl nowrap" data-bind="text: $parent.object().ManufacturerName, tooltip: $parent.object().ManufacturerName" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--Характеристики-->
+                <div class="network-device-code-header">
+                    <div class="im-big-header">
+                        <span data-bind="restext: 'SoftwareLicence_Characteristics'"></span>
+                        <span data-bind="css: IsCharacteristicsContainerVisible() ? 'arrow-up active' : 'arrow-down active', click: ToggleCharacteristicsContainer, tooltip: IsCharacteristicsContainerVisible == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <div>
+                        <table class=" table-fixed" data-bind="visible: IsCharacteristicsContainerVisible">
+                            <tbody>
+                                <!--Вид лицензии-->
+                                <tr>
+                                    <td class="software-licence-table-row-right">
+                                        <span data-bind="restext:'SoftwareLicence_LicenceType'" />
+                                    </td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field-readonly fieldControl border nowrap clickable" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().LicenceTypeName, css: { 'cursor-pointer': $root.CanEdit }, click: EditLicenceType" />
+                                    </td>
+                                </tr>
+                                <!--Схема лицензирования-->
+                                <tr>
+                                    <td class="software-licence-table-row-right">
+                                        <span data-bind="restext:'SoftwareLicence_Scheme'" />
+                                    </td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="pairFields">
+                                            <div class="asset-text-field-readonly fieldControl border nowrap clickable editor scheme" id="searchLicenceSchemeInputElelemnt" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().SoftwareLicenceSchemeName, css: { 'cursor-pointer': $root.CanEdit }, click: EditLicenceScheme" />
+                                            <div class="icon callObjectIcon" data-bind="css: { 'active' : $parent.object().IsLicenceSchemeExists }, tooltip: getTextResource('SoftwareLicence_Scheme'), click: OpenSoftwareLicenceSchemeForm, visible: CanOpenSoftwareLicenceSchemeForm()"><span /></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--Возможность downgrade-->
+                                <!--ko if: IsDowngradeAvailableVisible()-->
+                                <tr>
+                                    <td class="software-licence-table-row-right"><span data-bind="restext:'SoftwareLicence_IsDowngradeAvailable'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="fieldControl slider-checkbox">
+                                            <input type="checkbox" id="downgradeAvailableCheckbox" class="pronongation-input" data-bind="checked: $parent.object().DowngradeAvailable, click: EditDowngradeAvailable, style:{ 'pointer-events' : 'auto'}" />
+                                            <label class="label" data-bind="text: $parent.object().DowngradeAvailable() ? getTextResource('True') : getTextResource('False')"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--/ko-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!--Связи-->
+                <!--ko if: IsLinksDivVisible()-->
+                <div class="network-device-code-header">
+                    <div class="im-big-header">
+                        <span data-bind="restext: 'Links'"></span>
+                        <span data-bind="css: IsLinksContainerVisible() ? 'arrow-up active' : 'arrow-down active', click: ToggleLinksContainer, tooltip: IsLinksContainerVisible ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <div>
+                        <table class=" table-fixed" data-bind="visible: IsLinksContainerVisible">
+                            <tbody>
+                                <!--Аппаратный ключ-->
+                                <!--ko if: IsHASPAdapterVisible()-->
+                                <tr>
+                                    <td class="software-licence-table-row-right"><span data-bind="restext:'SoftwareLicence_HardwareKey'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="pairFields">
+                                            <div class="editor general">
+                                                <input id="searcherHaspAdapterInputElem" type="text" class="border searcherHaspAdapterInput" data-bind="textInput: $parent.object().HASPAdapterName, click: EditHASPAdapter, longNameTooltip: $parent.object().HASPAdapterName, attr: { placeholder: getTextResource('Select') }, css: { 'cursor-pointer': $root.CanEdit }">
+                                                <div id="eraser_HASPAdapter" class="search-control-clearfield cursor-pointer" data-bind="click: ClearHASPAdapter, visible: $parent.object().IsHASPAdapterExists, css: { 'cursor-pointer': $root.CanEdit }"></div>
+                                            </div>
+                                            <div class="icon callObjectIcon" data-bind="css: { 'active' : $parent.object().IsHASPAdapterExists }, tooltip: getTextResource('SoftwareLicence_HardwareKey'), click: OpenHASPAdapterForm"><span /></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--/ko-->
+                                <!--Связанная лицензия-->
+                                <!--ko if: IsParentSoftwareLicenceVisible()-->
+                                <tr>
+                                    <td class="software-licence-table-row-right"><span data-bind="restext:'SoftwareLicence_ParentSoftwareLicence'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="pairFields">
+                                            <div class="editor general">
+                                                <input id="searcherParentSoftwareLicenceElem" readonly="readonly" type="text" class="border searcherHaspAdapterInput" data-bind="textInput: $parent.object().ParentSoftwareLicenceName, longNameTooltip: $parent.object().ParentSoftwareLicenceName, attr: { placeholder: getTextResource('Select') }, css: { 'cursor-pointer': $root.CanEdit }">
+                                            </div>
+                                            <div class="icon callObjectIcon" data-bind="css: { 'active' : $parent.object().IsParentSoftwareLicenceExists }, tooltip: getTextResource('SoftwareLicence_ParentSoftwareLicence'), click: OpenParentSoftwareLicenceForm"><span /></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--/ko-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--/ko-->
+            </div>
+        </div>
+        <!--Ограничения-->
+        <div class="restrictions-div" data-bind="visible: $parent.object().isNotOEM()">
+            <div class="im-big-header">
+                <span data-bind="restext: 'SoftwareLicence_Restrictions'"></span>
+                <span data-bind="css: IsRestrictionsVisible() ? 'arrow-up active' : 'arrow-down active', click: ToggleRestrictionsContainer, tooltip: IsRestrictionsVisible == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+            </div>
+            <!--Описание-->
+            <div data-bind="visible: IsRestrictionsVisible">
+                <!-- Количество процессоров -->
+                <div class="restriction-block-part">
+                    <div class="restriction-block-innerpart">
+                        <span class="label block-title" data-bind="restext:'SoftwareLicence_Restrictions_CPUCount'" />
+                        <div class="nowrap">
+                            <div class="inline_block">
+                                <input type="radio" class="input_clickable input_radio" id="allowedNumberOfCPUUnlimitRadioTrue" name="allowedNumberOfCPUUnlimitRadio" value="1" data-bind="checked: $parent.object().RestrictionsCPUUnlimit, click:EditCpuRestrictionsRadioUnlimit" />
+                                <label class="label input_radio" for="allowedNumberOfCPUUnlimitRadio" data-bind="restext:'SoftwareLicence_Restrictions_NoLimit'"></label>
+                            </div>
+                            <div class="inline_block">
+                                <input type="radio" class="input_clickable input_radio" id="allowedNumberOfCPUUnlimitRadioFalse" name="allowedNumberOfCPUUnlimitRadio" value="0" data-bind="checked: $parent.object().RestrictionsCPUUnlimit, click:EditCpuRestrictionsRadioRange" />
+                                <label class="label input_radio" for="allowedNumberOfCPURangeRadio" data-bind="restext:'SoftwareLicence_Restrictions_Range'"></label>
+                            </div>
+                            <table class=" table-fixed">
+                                <tbody>
+                                    <!--Диапазон Количества-->
+                                    <tr>
+                                        <td class="software-licence-table-row-bottom"><span data-bind="restext:'SoftwareLicence_Restrictions_Range_From'" /></td>
+                                        <td class="network-device-table-editable-row">
+                                            <div class="fieldControl nowrap">
+                                                <input class="border fieldControl nowrap clickable" readonly="readonly" type="text" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().RestrictionsCPUFrom(), disable: $parent.object().RestrictionsCPUUnlimit()=='1', css: {'cursor-pointer': $parent.CanEdit() == false}, click: EditRestrictionsCPUFrom" />
+                                            </div>
+                                        </td>
+                                        <td class="software-licence-table-row-bottom next-cell"><span data-bind="restext:'SoftwareLicence_Restrictions_Range_Till'" /></td>
+                                        <td class="network-device-table-editable-row">
+                                            <div class="fieldControl nowrap">
+                                                <input class="border fieldControl nowrap clickable" readonly="readonly" type="text" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().RestrictionsCPUTill(), disable: $parent.object().RestrictionsCPUUnlimit()=='1', css: {'cursor-pointer': $parent.CanEdit() == false}, click: EditRestrictionsCPUTill" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Количество ядер -->
+                <div class="restriction-block-part">
+                    <div class="restriction-block-innerpart">
+                        <span class="label block-title" data-bind="restext:'SoftwareLicence_Restrictions_CoreCount'" />
+                        <div class="nowrap">
+                            <div class="inline_block">
+                                <input type="radio" class="input_clickable input_radio" id="allowedNumberOfCoreUnlimitRadioTrue" name="allowedNumberOfCoreUnlimitRadio" value="1" data-bind="checked: $parent.object().RestrictionsCoreUnlimit, click:EditCoreRestrictionsRadioUnlimit" />
+                                <label class="label input_radio" for="allowedNumberOfCoreUnlimitRadio" data-bind="restext:'SoftwareLicence_Restrictions_NoLimit'"></label>
+                            </div>
+                            <div class="inline_block">
+                                <input type="radio" class="input_clickable input_radio" id="allowedNumberOfCoreUnlimitRadioFalse" name="allowedNumberOfCoreUnlimitRadio" value="0" data-bind="checked: $parent.object().RestrictionsCoreUnlimit, click:EditCoreRestrictionsRadioRange" />
+                                <label class="label input_radio" for="allowedNumberOfCPURangeRadio" data-bind="restext:'SoftwareLicence_Restrictions_Range'"></label>
+                            </div>
+                            <table class=" table-fixed">
+                                <tbody>
+                                    <!--Диапазон количества-->
+                                    <tr>
+                                        <td class="software-licence-table-row-bottom"><span data-bind="restext:'SoftwareLicence_Restrictions_Range_From'" /></td>
+                                        <td class="network-device-table-editable-row">
+                                            <div class="fieldControl nowrap">
+                                                <input class="border fieldControl nowrap clickable" readonly="readonly" type="text" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().RestrictionsCoreFrom(), disable: $parent.object().RestrictionsCoreUnlimit()=='1', css: {'cursor-pointer': $parent.CanEdit() == false}, click: EditRestrictionsCoreFrom" />
+                                            </div>
+                                        </td>
+                                        <td class="software-licence-table-row-bottom next-cell"><span data-bind="restext:'SoftwareLicence_Restrictions_Range_Till'" /></td>
+                                        <td class="network-device-table-editable-row">
+                                            <div class="fieldControl nowrap">
+                                                <input class="border fieldControl nowrap clickable" readonly="readonly" type="text" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().RestrictionsCoreTill(), disable: $parent.object().RestrictionsCoreUnlimit()=='1', css: {'cursor-pointer': $parent.CanEdit() == false}, click: EditRestrictionsCoreTill" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- тактовая частота -->
+                <div class="restriction-block-part">
+                    <div class="restriction-block-innerpart">
+                        <span class="label block-title" data-bind="restext:'SoftwareLicence_Restrictions_Frequency'" />
+                        <div class="nowrap">
+                            <div class="inline_block">
+                                <input type="radio" class="input_clickable input_radio" id="allowedNumberOfHzUnlimitRadioTrue" name="allowedNumberOfHzUnlimitRadio" value="1" data-bind="checked: $parent.object().RestrictionsHzUnlimit, click: EditHzRestrictionsRadioUnlimit" />
+                                <label class="label input_radio" for="allowedNumberOfHzUnlimitRadio" data-bind="restext:'SoftwareLicence_Restrictions_NoLimit'"></label>
+                            </div>
+                            <div class="inline_block">
+                                <input type="radio" class="input_clickable input_radio" id="allowedNumberOfHzUnlimitRadioFalse" name="allowedNumberOfHzUnlimitRadio" value="0" data-bind="checked: $parent.object().RestrictionsHzUnlimit, click: EditHzRestrictionsRadioRange" />
+                                <label class="label input_radio" for="allowedNumberOfCPURangeRadio" data-bind="restext:'SoftwareLicence_Restrictions_Range'"></label>
+                            </div>
+                            <table class=" table-fixed">
+                                <tbody>
+                                    <!--Диапазон частоты-->
+                                    <tr>
+                                        <td class="software-licence-table-row-bottom"><span data-bind="restext:'SoftwareLicence_Restrictions_Range_From'" /></td>
+                                        <td class="network-device-table-editable-row">
+                                            <div class="fieldControl nowrap">
+                                                <input class="border fieldControl nowrap clickable" readonly="readonly" type="text" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().RestrictionsHzFrom(), disable: $parent.object().RestrictionsHzUnlimit()=='1', css: {'cursor-pointer': $parent.CanEdit() == false}, click: EditRestrictionsHzFrom" />
+                                            </div>
+                                        </td>
+                                        <td class="software-licence-table-row-bottom next-cell"><span data-bind="restext:'SoftwareLicence_Restrictions_Range_Till'" /></td>
+                                        <td class="network-device-table-editable-row">
+                                            <div class="fieldControl nowrap">
+                                                <input class="border fieldControl nowrap clickable" readonly="readonly" type="text" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().RestrictionsHzTill(), disable: $parent.object().RestrictionsHzUnlimit()=='1', css: {'cursor-pointer': $parent.CanEdit() == false}, click: EditRestrictionsHzTill" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Расположения -->
+                <div class="resrtiction-location" data-bind="visible: $parent.object().IsRestrictionsLocationVisible()">
+                    <div class="label label-vert-padding">
+                        <span data-bind="restext: 'SoftwareLicence_Restrictions_Location'" />
+                    </div>
+
+                    <div data-bind="attr: {'id': locationListViewID}, koListView: {settingsName: 'SoftwareLicenceLocations', controlInitialized: locationListViewInit, retrieveItems: locationRetrieveItems, virtualMode: false, contextMenu: locationsContextMenu, autoDispose: false, itemClick: null}"></div>
+                    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Комплектное Оборудование -->
+        <div class="oemdevice-div" data-bind="visible: $parent.object().isOEM">
+            <div class="im-big-header">
+                <span data-bind="restext: 'SoftwareLicence_OEM_Device'"></span>
+                <span class="tabCaption-icon-chain" data-bind="click: function() { OpenSelectOEMDevice() },  css: { 'active' : CanOpenSelectOEMDevice() }, tooltip: getTextResource('SoftwareLicence_OEM_Device')"></span>
+            </div>
+            <!--Описание-->
+            <div class="links__list im-list" data-bind="visible: $parent.object().OEMDeviceSpecified()">
+                <div class="im-list-item links-list-item">
+                    <div class="im-list-item-chb-column">
+                        <!--<input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected, visible: $root.CanEdit" />-->
+                    </div>
+                    <div class="im-list-item-icon-column">
+                        <div data-bind="css: $parent.object().OEMDeviceIconClass"><span></span></div>
+                    </div>
+                    <div class="im-list-item-main-column">
+                        <div class="im-list-item-main-firstrow links-object-main-firstrow">
+                            <span data-bind="text: $parent.object().OEMDeviceFullName, css: { 'cursor-pointer': $root.CanEdit}, click: function() { ShowOEMDevice() }"></span>
+                        </div>
+                        <div class="im-list-item-main-secondrow">
+                            <span class="im-list-row-item reference-object-location-text"><span data-bind="text: $parent.object().OEMDeviceLocation(), longNameTooltip: $parent.object().OEMDeviceLocation()"></span></span>
+                        </div>
+                    </div>
+                    <div class="im-list-item-links-info-column">
+                        <span class="links-info-item" data-bind="longNameTooltip: $parent.object().OEMDeviceType">
+                            <span class="links-reference-text" data-bind="restext: 'LinkCategory'"></span>
+                            <span class="links-reference-info" data-bind="text: $parent.object().OEMDeviceType()"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+ALTER TABLE [CreepingLine] ALTER COLUMN [Name] nvarchar(550) NOT NULL

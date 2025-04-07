@@ -1,0 +1,64 @@
+﻿@import "./../../../../Styles/general";
+
+.frmContractMaintenance {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 10px;
+    padding-left:20px;
+    padding-right:20px;
+
+            .fieldControl {
+                margin-left: 17px;
+                margin-right: 25px;
+                margin-bottom: 10px;
+                position: relative;
+                overflow: auto;
+                word-break: break-word;
+
+                &.border {
+                    border: 1px solid $border-gray-color;
+                    padding: 2px 7px;
+                    line-height: 22px;
+                    height: 26px;
+                }
+
+                &.nowrap {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                &.multiline {
+                    min-height: 80px;
+                    max-height: 120px;
+                }
+
+                &.bold {
+                    font-weight: bold;
+                }
+
+                &.blue {
+                    color: $blue-text-color;
+                }
+                &.clickable {
+                cursor: pointer;
+                }
+}
+
+   .fieldCaption {
+       color: $gray-text-color;
+       font-size: 11px;
+       margin-left: 17px;
+
+       &.blue {
+           color: $blue-text-color;
+           font-size: inherit;
+       }
+   }
+    .onMaintenance {
+        margin-left: 17px;
+        position: relative;
+        top: 2px
+    }
+}

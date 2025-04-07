@@ -1,0 +1,45 @@
+﻿<style xmlns="http://www.w3.org/1999/html">
+    .b-main {
+        overflow: hidden;
+    }
+
+    #regionToolbarFilters {
+        width: inherit;
+    }
+
+    #placeForListViewPanel {
+        order: 3;
+        -ms-flex-order: 3;
+        background-color: #f3f7f9;
+    }
+
+    #placeForListViewPanel.ko_ListView .tableContainer {
+        border: none;
+        float: right;
+    }
+
+    #regionFiltration {
+        min-height: 200px;
+    }
+</style>
+<div class="softwareLicenceList" data-bind="with: list">
+    <div class="b-content-table__icons clearfix">
+        <div class="b-wrapperWide top-table-region">
+            <!-- ko if: hasFilter -->
+            <div id="regionFiltersButtons" class="region-FiltersButtons" data-bind="template: {name: 'Table/FilterButtonsBlock', afterRender: filterButtonsRendered, data: filter.topButtonsModel}"></div>
+            <div id="regionToolbarFilters" class="toolbar-filters" data-bind="template: {name: 'Filter/CurrentFilter', afterRender: filterToolbarRendered, data: filter.currentFilterModel}"></div>
+            <!-- /ko -->
+            <div id="placeForListViewPanel" class="ko_ListView">
+                <div class="tableContainer"></div>
+            </div>
+        </div>
+    </div>
+    <div id="listRegion" class="b-wrapperWide main-table-region">
+        <!-- ko if: hasFilter -->
+        <div id="regionFiltration" class="region-Filtration" data-bind="style: { 'min-width': filter.Width()+'px', 'max-width': filter.Width()+'px'}, template: {name: 'Table/FiltrationBlock', afterRender: filterBlockRendered, data: filter}"></div>
+        <!-- /ko -->
+        <div class="region-Table dockFillListView"
+             data-bind="attr: {'id': listViewID}, koListView: {settingsName: viewName, controlInitialized: listViewInit, controlRendered: listViewRender, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, contextMenu: listViewContextMenu, itemClick: listViewRowClick, multiSelect: isMultiSelect}"></div>
+        <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening }"></div>
+    </div>
+</div>

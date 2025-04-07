@@ -1,0 +1,60 @@
+﻿@import "../../../Styles/general";
+
+.asset-details-tabs {
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  display: -ms-flexbox;
+  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-direction: row;
+  -ms-flex-direction: row;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+  align-items: flex-end;
+  -ms-flex-align: end;
+}
+
+.asset-details-tab {
+  height: 36px;
+  text-align: center;
+  background-color: $lightblue-background-color;
+  border-bottom: 1px solid $border-gray-color;
+  padding: 8px;
+}
+
+.asset-details-tab.active {
+  border: 1px solid $border-gray-color;
+  border-bottom: 0px;
+  background-color: $white-background-color;
+  height: 44px;
+  padding: 12px;
+}
+
+.asset-details-tab-text {
+  line-height: 20px;
+  @extend .im-base-text;
+  color: $service-catalog-light-gray;
+}
+
+.asset-details-tab.active .asset-details-tab-text {
+  color: $blue-text-color;
+}
+
+.asset-details-tabs-divider {
+  border-bottom: 1px solid $border-gray-color;
+  min-width: 15px;
+  height: 44px;
+  flex-grow: 0;
+}
+
+.asset-details-tabs-divider-last {
+  @extend .dictionaries-header_list-divider;
+  flex-grow: 1;
+  -ms-flex-positive: 1;
+}
+
+.asset-details-tab-content {
+  margin-top: 10px;
+  padding-right: 3px;
+}

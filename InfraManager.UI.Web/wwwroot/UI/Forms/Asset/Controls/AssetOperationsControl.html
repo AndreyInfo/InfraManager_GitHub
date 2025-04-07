@@ -1,0 +1,11 @@
+﻿<div class="b-requestDetail-menu__item b-requestDetail-menu__iniciation leftToolbarButtons assetOperationsBlock" data-bind="css: {'assetOperationsControl-container': $control.OperationList().length > 0 && $control.ReadOnly() == false}, click: $control.MenuClick">
+    <div class="menuBlock">
+        <span data-bind="text: $entity.LifeCycleStateName"></span>
+    </div>
+    <div class="assetOperationsControl-part" data-bind="visible: $control.OperationList().length > 0 && $control.ReadOnly() == false">
+        <a class="assetOperationsControl-expander"></a>
+        <ul class="assetOperationsControl-menu" data-bind="foreach: $control.OperationList">
+            <li data-bind="click: OperationClick"><a data-bind="text: Text, longNameTooltip: Text" /></li>
+        </ul>
+    </div>
+</div>

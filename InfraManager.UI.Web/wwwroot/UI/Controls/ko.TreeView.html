@@ -1,0 +1,4 @@
+﻿<div class="ko_treeView" tabindex="0" data-bind="event: {'keydown': keyDown}">
+    <div class="msg" data-bind="text: options.emptyMessage, visible: nodes().length == 0"></div>
+    <div class="nodes" data-bind="template: { name: './../UI/Controls/ko.TreeNode', foreach: nodes }"></div>
+</div>

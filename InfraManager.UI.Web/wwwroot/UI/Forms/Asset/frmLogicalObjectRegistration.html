@@ -1,0 +1,159 @@
+﻿<div class="logicFieldForm b-requestDetail im-base-text" style="overflow-x: hidden;">
+    <div class="b-requestDetail-left" data-bind="with: LogicalObject">
+        <div class="fieldPair b-requestDetail__title-header-nd">
+            <div class="network-device-title">
+                <div class="field-pair">
+                    <div class="icon-container">
+                        <div data-bind="css: IconCss()" />
+                    </div>
+                    <span class="im-big-header asset-text-field-header" data-bind="text: Name, css: { 'cursor-pointer': $root.CanEdit() && CanEditName()  && $root.EditIPAddressName(), 'asset-border': CanEditName()  && $root.EditIPAddressName() }, click: $root.EditName" />
+                    <div class="network-device-model-header">
+                        <div class="network-device-category" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-bind="visible: $parent.mode() == $parent.modes.main, style: {height: $root.TabHeight}">
+            <div class="network-device-mainTab">
+                <div class="network-device-mainTab-left-side">
+                    <div class="network-device-characteristics">
+                        <div class="im-big-header" data-bind="restext: 'TabGeneral'" />
+                        <div class="network-device-table-margineTop table-fixed">
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'LogicAssetName'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: LogicAssetName, css: { 'cursor-pointer': $root.CanEdit()},  click: $root.EditLogicAssetName" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader"><span data-bind="restext:'AssetIPAddress'" /></div>
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: IPAddress, css: { 'cursor-pointer': $root.CanEdit() && $root.EditIPAddressName() }, click: $root.EditIPAddress" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_VCenter'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: VCenter, css: { 'cursor-pointer': $root.CanEdit() },  click: $root.EditVCenter" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="text:'UUID'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: UUID, css: { 'cursor-pointer': $root.CanEdit() }, click: $root.EditUUID" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="text:getTextResource('Asset_SerialNumber')" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: SerialNumber, css: { 'cursor-pointer': $root.CanEdit() }, click: $root.EditSerialNumber" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="text:getTextResource('AssetNumber_TypeName')" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: ProductCatalogTypeName, css: { 'cursor-pointer': $root.CanEdit() }, click: $root.EditType" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="text:getTextResource('AssetNumber_ModelName')" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: ProductCatalogModelName, css: { 'cursor-pointer': $root.CanEdit() }, click: $root.EditModel" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="text:getTextResource('Owner')" />
+                                <div class="assetReg-locationControl td-width">
+                                    <div data-bind="template: { name: 'User/FormUser', if: ClientLoaded(), data: Client }"></div>
+                                    <div data-bind="template: { name: 'User/FormUserEmpty', if: !ClientLoaded(), data: Client }"></div>
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="text:getTextResource('Administrator')" />
+                                <div class="assetReg-locationControl td-width">
+                                    <div data-bind="template: { name: 'User/FormUser', if: ITContactLoaded(), data: ITContact }"></div>
+                                    <div data-bind="template: { name: 'User/FormUserEmpty', if: !ITContactLoaded(), data: ITContact }"></div>
+                                </div>
+                            </div>
+
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_Comment'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field asset-note" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: Note, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditNote" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ko if: $parent.ClassID() != 12 -->
+                <div class="network-device-mainTab-right-side">
+                    <div class="network-device-code-header">
+                        <div class="im-big-header" data-bind="restext: 'LocateAsset'" />
+                        <div class="network-device-table-margineTop table-fixed">
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'Device'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field floatLeft device-width" data-bind="text: HostName, click: $parent.EditHost" />
+                                    <div class="callObjectIcon floatLeft" data-bind="css: { 'active' : $parent.HasHost}, click: $root.ShowDeviceForm"><span /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldPair">
+                            <div class="icon fieldDatePromised" data-bind="css: { 'active' : $parent.CanEdit }, click: $parent.EditDateReceived"><span /></div>
+                            <div class="editor nowrap" data-bind="text: getTextResource('StartFrom') + ' ' + $parent.DateReceivedCalculated()" />
+                        </div>
+                        <div class="fieldPair">
+                            <div class="icon fieldDateAnnuled" data-bind="css: { 'active' : $parent.CanEdit }, click: $parent.EditDateAnnuled"><span /></div>
+                            <div class="editor nowrap" data-bind="text: getTextResource('Before') + ' ' + $parent.DateAnnuledCalculated()" />
+                        </div>
+                        <div class="im-middle-header" data-bind="text: 'CPU'" />
+                        <div class="td-width">
+                            <div class="fieldHeader" data-bind="restext:'LogicObject_CPULimit'" />
+                            <div class="assetReg-locationControl">
+                                <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: CPULimit, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditCPULimit" />
+                            </div>
+                        </div>
+                        <div class="td-width">
+                            <div class="fieldHeader" data-bind="restext:'LogicObject_CPUReserve'" />
+                            <div class="assetReg-locationControl">
+                                <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: CPUNumber, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditCPUNumber" />
+                            </div>
+                        </div>
+                        <div class="td-width">
+                            <div class="fieldHeader" data-bind="restext:'LogicObject_CPUPriority'" />
+                            <div class="assetReg-locationControl">
+                                <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: CPUShare, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditCPUShare" />
+                            </div>
+                        </div>
+                        <div class="im-middle-header" data-bind="text: 'RAM'" />
+                        <div class="td-width">
+                            <div class="fieldHeader" data-bind="restext:'LogicObject_RAMLimit'" />
+                            <div class="assetReg-locationControl">
+                                <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: MemoryLimit, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditRAMLimit" />
+                            </div>
+                        </div>
+                        <div class="td-width">
+                            <div class="fieldHeader" data-bind="restext:'LogicObject_RAMReserve'" />
+                            <div class="assetReg-locationControl">
+                                <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: Memory, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditRAMNumber" />
+                            </div>
+                        </div>
+                        <div class="td-width">
+                            <div class="fieldHeader" data-bind="restext:'LogicObject_RAMPriority'" />
+                            <div class="assetReg-locationControl">
+                                <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: MemoryShare, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditRAMShare" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+    <div class="b-requestDetail-right" data-bind="with: LogicalObject">
+        <div class="b-requestDetail__icon-wrap" data-bind="click: $root.MainClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : $parent.mode() != $parent.modes.main, 'b-requestDetail__icon1-active' : $parent.mode() == $parent.modes.main }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabGeneral'"></div>
+        </div>
+    </div>
+</div>

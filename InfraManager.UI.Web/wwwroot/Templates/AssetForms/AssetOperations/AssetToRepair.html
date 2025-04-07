@@ -1,0 +1,104 @@
+﻿<div data-bind="click: formClick" style="height: 100%;width: 100%;">
+    <div class="asset-operations-header">
+        <div class="asset-operation-border asset-operations-mainTab-parameters" data-bind="click:mainClick, css: { 'acc-tab-active' : mode() == modes.main, 'acc-tab' : mode() == modes.links }">
+            <div data-bind="text:'Параметры'"></div>
+        </div>
+        <div class="asset-operation-border asset-operations-mainTab-links" data-bind="click:linksClick, css: { 'acc-tab-active' : mode() == modes.links, 'acc-tab' : mode() == modes.main }">
+            <div data-bind="text:SelectedObjText"></div>
+        </div>
+    </div>
+    <div class="asset-operations-params-tab asset-operation-border-top" data-bind="visible: mode() == modes.main">
+        <div class="asset-registration-founding-container">
+            <span style="padding-right:72px;" data-bind="text:'Возникшие проблемы'" />
+            <input id="founding" class="c-lite-gray asset-to-repair-cause-text" type="text" placeholder="Введите текст" />
+        </div>
+        <table class="asset-operations-table">
+            <colgroup>
+                <col span="1" style="width: 50%;">
+                <col span="1" style="width: 50%;">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="height-asset-to-repair">
+                        <span data-bind="text:'Дата начала'" />
+                        <span style="padding-right:30px;" class="im-red-text" data-bind="text:'*'" />
+                        <span class="repair-date-start"></span>
+                    </td>
+                    <td class="asset-operations-table-float">
+                        <span data-bind="text:'Плановое окончание'" />
+                        <span style="padding-right:30px;" class="im-red-text" data-bind="text:'*'" />
+                        <span class="repair-date-end"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="height-asset-to-repair">
+                        <span data-bind="text:'Сервисный центр'" />
+                    </td>
+                    <td class="asset-operations-table-float">
+                        <span data-bind="text:'Сервисный контракт'" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="height-asset-to-repair">
+                        <div class="service-center-combobox combobox" data-bind="combobox: { dataSource: getServiceCentrComboItems}, comboboxValue: selectedServiceItem"></div>
+                    </td>
+                    <td class="asset-operations-table-float">
+                        <div class="service-contract-combobox combobox" data-bind="combobox: { dataSource: getServiceContractComboItems}, comboboxValue: selectedContractItem, visible : selectedServiceItem() != null"></div>
+                        <div class="service-contract-readonly" data-bind="visible : selectedServiceItem() == null"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="column1" class="height-asset-to-repair">
+                        <span data-bind="text:'Новое местоположение'" />
+                        <span style="padding-right:30px;" class="im-red-text" data-bind="text:'*'" />
+                    </td>
+                </tr>
+                <tr>
+                    <td id="x-location" class="height-asset-to-repair first-column" style="padding-bottom:10px;white-space: nowrap;">
+                        <div id="locationStr" style="display: inline-block;" data-bind="text: LocationName"></div>
+                        <div id="x-add" class="asset-operations-arrow-down" style="margin-left: 8px;background-color: white;margin-top: 3px;display: inline-block;" data-bind="click: ClickNav" />
+                        <div id="x-clear" style="display: inline-block;margin-left: 36px;background-color: white;margin-top: 2px;" class="asset-operations-clear-btn" data-bind="visible: IsCrearLocVisible, click: ClickClearLocation"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="asset-registration-founding-container">
+            <span data-bind="text:'Причина (номер объекта)'" />
+            <span class="tabCaption-icon-plus active" style="position: relative;top: 7px;" data-bind="click: LinkSdObjectClick"></span>
+            <div data-bind="text: FoundingNumberStr"></div>
+            <div class="contextMenu-inner-asset" style="position: relative;top: 5px;left: 395px;" data-bind="visible: ContextMenuVisible">
+                <div class="contextline" data-bind="text: 'Заявка', click: LinkCall"></div>
+                <div class="contextline" data-bind="text: 'Задание', click: LinkWorkorder"></div>
+                <div class="contextline" data-bind="text: 'Проблема', click: LinkProblem"></div>
+            </div>
+        </div>
+
+
+        <div class="asset-operation-border" style="position: absolute;top: 149px;left: 10px;background-color: white;" data-bind="visible: IsNavVisible">
+            <div style="position: relative;left: 20px;top: 4px;margin-bottom: 20px;">
+                <span class="im-blue-text" data-bind="text:'Открыть в отдельном окне'"></span>
+                <span class="asset-operations-arrow-down" style="right: 37px;margin-top: 2px;" data-bind="click: ClickNav"></span>
+            </div>
+            <div id="navig" style="position: relative;height:300px;" data-bind="template: {name: 'AssetForms/AssetOperations/Navigator', afterRender: AfterRender}"></div>
+        </div>
+        <div class="asset-operation-border" style="position: absolute;top: 90px;left: 10px;background-color: white;" data-bind="visible: IsOwnerNavVisible">
+            <div style="position: relative;left: 20px;top: 4px;margin-bottom: 20px;">
+                <span class="im-blue-text" data-bind="text:'Открыть в отдельном окне'"></span>
+                <span class="asset-operations-arrow-down" style="right: 37px;margin-top: 2px;" data-bind="click: ClickOwnerNav"></span>
+            </div>
+            <div id="owner-navig" style="position: relative;height:300px;" data-bind="template: {name: 'AssetForms/AssetOperations/OwnerNavigator', afterRender: AfterRender}"></div>
+        </div>
+        <div class="asset-operation-border" style="position: absolute;top: 90px;right: 20px;background-color: white;" data-bind="visible: IsMolNavVisible">
+            <div style="position: relative;left: 20px;top: 4px;margin-bottom: 20px;">
+                <span class="im-blue-text" data-bind="text:'Открыть в отдельном окне'"></span>
+                <span class="asset-operations-arrow-down" style="right: 37px;margin-top: 2px;" data-bind="click: ClickMolNav"></span>
+            </div>
+            <div id="mol-navig" style="position: relative;height:300px;" data-bind="template: {name: 'AssetForms/AssetOperations/MolNavigator', afterRender: AfterRender}"></div>
+        </div>
+    </div>
+
+    <div class="device-list-tab asset-operation-border-top" data-bind="visible: mode() == modes.links">
+        <div class="links__b" data-bind="visible: mode() == modes.links, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/LinkList', data: { $serviceButtonVisible: true, $control: $root.linkList } }" />
+    </div>
+</div>

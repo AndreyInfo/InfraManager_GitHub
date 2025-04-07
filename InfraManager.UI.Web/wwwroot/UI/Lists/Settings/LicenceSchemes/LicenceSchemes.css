@@ -1,0 +1,22 @@
+﻿.licence-schemes-panel {
+    height: 100%;
+}
+
+.licence-schemes-search-panel {    
+    margin-top: 10px;
+    margin-left: 20px;    
+    margin-right: 20px;
+}
+
+.licence-schemes-showDeletedRecords {
+    margin-top: 20px;
+}
+
+.licence-schemes-grid-panel {
+    margin-top: 20px;
+    height: 100%;
+}
+
+.licence-schemes-grid {
+    height: 100%;
+}

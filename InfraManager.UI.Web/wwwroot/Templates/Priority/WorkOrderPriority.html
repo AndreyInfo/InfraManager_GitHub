@@ -1,0 +1,8 @@
+﻿<div class="priority-table-wrap">
+    <!-- ko foreach: { data: $root.PriorityList, as: 'prior' } -->
+    <span class="priority-wo-element" data-bind="css: { 'priority-wo-element-current' : $root.CheckCurrentPriority(prior) }, click: $root.SelectPriority">
+        <span class="color-point" data-bind="style: { background: Color, border: Color == '#FFFFFF' ? '1px dashed gray' : 'none' }"></span>
+        <span class="priority-wo-header" data-bind="text: Name"></span>
+    </span>
+    <!-- /ko -->
+</div>

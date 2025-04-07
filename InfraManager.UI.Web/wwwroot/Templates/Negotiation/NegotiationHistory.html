@@ -1,0 +1,16 @@
+﻿<div class="assetHistory">
+    <div class="tabContent" style="bottom: 0px; top: 0px;">
+        <div class="tape__history">
+            <!-- ko foreach: { data: HistoryList } -->
+            <div class="tape__history__i">
+                <div class="tape__history__icon tape__history__icon_status"></div>
+                <div class="tape__history__text" data-bind="text: Text"></div>
+                <div class="tape__history__info">
+                    <span class="tape__history__user" data-bind="text: AuthorFullName"></span>
+                    <span class="tape__history__date" data-bind="text: LocalDate"></span>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

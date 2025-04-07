@@ -1,0 +1,29 @@
+﻿<div class="searchForm__topLine">
+    <div class="searchForm__searcher">
+        <input type="text" class="text-input searcherInput" data-bind="textInput: SearcherText, resattr: {placeholder : 'SearchEmpty'}, event: {keyup: OnEnter}" />
+    </div>
+</div>
+<!-- ko if: searchResult() != searchResults.nothingFound -->
+<div class="foundObjectsLite">
+    <!-- ko if: callList() != null && callList().imList.List().length > 0 -->
+    <div data-bind="template: {name: 'SDForms/Controls/CallList', data: { $control: callList(), $mode: 'search', $header: 'liteSearch' } }" />
+    <!-- /ko -->
+    <!-- ko if: workorderList() != null && workorderList().imList.List().length > 0 -->
+    <div data-bind="template: {name: 'SDForms/Controls/WorkOrderList', data: { $control: workorderList(), $mode: 'search', $header: 'liteSearch' } }" />
+    <!-- /ko -->
+    <!-- ko if: problemList() != null && problemList().imList.List().length > 0 -->
+    <div data-bind="template: {name: 'SDForms/Controls/ProblemList', data: { $control: problemList(), $mode: 'search', $header: 'liteSearch' } }" />
+    <!-- /ko -->
+    <!-- ko if: kbaList() != null && kbaList().imList.List().length > 0 -->
+    <div data-bind="template: {name: 'SDForms/Controls/KbaList', data: { $control: kbaList() } }" />
+    <!-- /ko -->
+    <!-- ko if: projectList() != null && projectList().imList.List().length > 0 -->
+    <div data-bind="template: {name: 'SDForms/Controls/ProjectList', data: { $control: projectList(), $mode: 'search', $header: 'liteSearch' } }" />
+    <!-- /ko -->
+</div>
+<!-- /ko -->
+<!-- ko if: searchResult() === searchResults.nothingFound -->
+<div class="listEmpty" style="padding-top:100px">
+    <span data-bind="restext: 'ListIsEmpty'" />
+</div>
+<!-- /ko -->

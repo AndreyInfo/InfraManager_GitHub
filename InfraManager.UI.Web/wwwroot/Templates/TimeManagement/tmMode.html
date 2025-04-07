@@ -1,0 +1,18 @@
+﻿<div class="b-content-table__left-Header" data-bind="restext: 'TooltipTimeManagement'"></div>
+<div class="b-content-table__left-FirstGap"></div>
+<span class="b-content-table__workplaceIconGroup" data-bind="click: ShowMyTimeSheet">
+    <a id="modeTimeSheet" class="tm_viewMode timesheet" data-bind="css: {'active' : IsTimeSheetActive }, if: TimesheetNoteCount() > 0">
+        <span class="timesheetTotal-mess-count" data-bind="text: TimesheetNoteCountString, visible: (TimesheetNoteCount() != null && TimesheetNoteCount() > 0)" />
+    </a>
+    <div id="modeTimeSheetText" class="b-content-table__workplaceIcon-header" style="display: block;"  data-bind="restext: 'TMView_TimeSheet'"></div>
+</span>
+<span class="b-content-table__workplaceIconGroup" data-bind="click: ShowMyCalendar">
+    <a id="modeCalendar" class="tm_viewMode calendar" data-bind="css: {'active' : IsCalendarActive }"></a>
+    <div id="modeCalendarText" class="b-content-table__workplaceIcon-header" style="display: block;"  data-bind="restext: 'TMView_Calendar'"></div>
+</span>
+<span class="b-content-table__workplaceIconGroup" data-bind="click: ShowTimeSheetTotal">
+    <a id="modeTimeSheetTotal" class="tm_viewMode timesheetTotal" data-bind="css: {'active' : IsTotalTimeSheetActive }, if: TimesheetTotalNoteCountComputed() > 0">
+        <span class="timesheetTotal-mess-count" data-bind="text: TimesheetTotalNoteCountString, visible: (TimesheetTotalNoteCountComputed() != null && TimesheetTotalNoteCountComputed() > 0)" />
+    </a>
+    <div id="modeTimeSheetTotalText" class="b-content-table__workplaceIcon-header" style="display: block;"  data-bind="restext: 'TMView_TimeSheetTotal'"></div>
+</span>

@@ -1,0 +1,72 @@
+﻿<div class="b-content-dictionaries-container">
+    <span class="sdc-edit-text" data-bind="restext: 'EditSoftwareDistributionCentreMenuItem', click: edit, visible: editVisible"></span>
+    <!-- Основная часть -->
+    <div class="sdc-details-title">
+        <div class="sdc-text-with-header">
+            <h1 class="sdc-details-name" data-bind="text: name, visible: nameViewing" />
+            <span class="sdc-text-header required_field_label" data-bind="visible: isNew, restext: 'SoftwareDistributionCentreNameLabel'"></span>
+            <input type="text" maxlength="250" class="sdc-textarea sdc-name-editor" data-bind="textInput: name, visible: nameEditing" />
+        </div>
+    </div>
+    <div class="sdc-details-note-section">
+        <div class="sdc-text-with-header">
+            <span class="sdc-text-header" data-bind="restext: 'SoftwareDistributionCentreNoteLabel'" />
+            <span class="sdc-details-note" data-bind="text: note, visible: readonly" />
+            <input type="text" maxlength="500" class="sdc-textarea sdc-note-editor" data-bind="textInput: note, visible: editing" />
+        </div>
+    </div>
+    <div class="sdc-details-responsible-person-section responsible-person-info" data-bind="template: { name: '../UI/Lists/Settings/SoftwareDistributionCentres.ResponsiblePerson', data: responsiblePerson }"></div>
+    <div class="sdc-details-tabs">
+        <div class="sdc-details-tabs-divider"></div>
+        <div class="sdc-details-tab" data-bind="css: { active: distributedSoftwareActive }, click: activateDistributedSoftware">
+            <span class="sdc-details-tab-text" data-bind="restext: 'SoftwareDistributionCentre_DistributedSoftwareTab'" />
+        </div>
+        <div class="sdc-details-tabs-divider"></div>
+        <div class="sdc-details-tab" data-bind="css: { active: referencesRecipientsActive }, click: activateReferencesRecipients">
+            <span class="sdc-details-tab-text" data-bind="restext: 'SoftwareDistributionCentre_ReferencesRecipientsTab'" />
+        </div>
+        <!-- ko ifnot: isNew()-->
+        <div class="sdc-details-tabs-divider"></div>
+        <div class="sdc-details-tab" data-bind="css: { active: sublicensesActive }, click: activateSublicenses">
+            <span class="sdc-details-tab-text" data-bind="restext: 'SoftwareDistributionCentre_SublicensesTab'"/>
+        </div>
+        <!-- /ko -->
+        <div class="sdc-details-tabs-divider-last"></div>
+    </div>
+    <div class="sdc-details-tab-content referenes-recipients-tab-content" data-bind="visible: referencesRecipientsActive">
+        <div id="sdc-referencesRecipients-filter" data-bind="template: {name: '../UI/Lists/Settings/SoftwareDistributionCentres.TreeFilter', data: referencesRecipientsFilter, afterRender: referencesRecipientsRendered}"></div>
+        <div class="treeControlItems sdc-tree-root" data-bind="template: { name: '../Templates/TristateTreeView/TreeNode', foreach: referencesRecipients.nodes }"></div>
+    </div>
+    <div class="sdc-details-tab-content distributed-software-tab-content" data-bind="visible: distributedSoftwareActive">
+        <div id="sdc-distributedSoftware-filter" data-bind="template: {name: '../UI/Lists/Settings/SoftwareDistributionCentres.TreeFilter', data: distributedSoftwareFilter}"></div>
+        <div class="treeControlItems sdc-tree-root" data-bind="template: { name: '../Templates/TristateTreeView/TreeNode', foreach: distributedSoftware.nodes, afterRender: distributedSoftwareRendered }"></div>
+        <!-- 
+        <<div class="treeControlItems sdc-tree-root" data-bind="template: { name: '../UI/Lists/Settings/SoftwareDistributionCentres.TreeNode', foreach: distributedSoftware.nodes, afterRender: distributedSoftwareRendered }"></div>
+        -->
+    </div>
+    <div class="sdc-details-tab-content distributed-software-tab-content" data-bind="visible: sublicensesActive">
+        <div class="b-content b-content-table">
+            <div class="asset-details-tabs" data-bind="foreach: SubLicensesTabs">
+                <div class="asset-details-tabs-divider"></div>
+                <div class="sdc-details-tab" data-bind="css: { 'active': $parent.activeSubLicensesTab().Index == $data.Index }">
+                    <span class="sdc-details-tab-text" data-bind="restext: $data.Name, click: $parent.SetActive"></span>
+                </div>
+                <!-- ko if: $data.Index == $parent.SubLicensesTabs().length -->
+                <div class="sdc-details-tabs-divider-last"></div>
+                <!-- /ko -->
+            </div>
+             <div class="list" data-bind="template: {name: '../UI/Lists/Asset/LicenceList'}" />
+        </div>
+    </div>    
+    <div class="sdc-buttons">
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: cancel, visible: editing">
+            <span class="ui-button-text" data-bind="restext: 'SoftwareDistributionCentreCancelButton'" />
+        </button>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: save, visible: modifying">
+            <span class="ui-button-text" data-bind="restext: 'SoftwareDistributionCentreSaveButton'" />
+        </button>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: save, visible: isNew">
+            <span class="ui-button-text" data-bind="restext: 'SoftwareDistributionCentreDetailsCreateButton'" />
+        </button>
+    </div>
+</div>

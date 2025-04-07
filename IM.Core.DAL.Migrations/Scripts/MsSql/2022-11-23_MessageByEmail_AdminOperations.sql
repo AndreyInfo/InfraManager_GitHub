@@ -1,0 +1,8 @@
+if not exists(select 1 from RoleOperation where RoleId='00000000-0000-0000-0000-000000000001' and OperationId = 735001)
+	insert into RoleOperation values ('00000000-0000-0000-0000-000000000001', 735001)
+if not exists(select 1 from RoleOperation where RoleId='00000000-0000-0000-0000-000000000001' and OperationId = 735002)
+	insert into RoleOperation values ('00000000-0000-0000-0000-000000000001', 735002)
+if not exists(select 1 from RoleOperation where RoleId='00000000-0000-0000-0000-000000000001' and OperationId = 735003)
+	insert into RoleOperation values ('00000000-0000-0000-0000-000000000001', 735003)
+if not exists(select 1 from RoleOperation where RoleId='00000000-0000-0000-0000-000000000001' and OperationId = 735004)
+	insert into RoleOperation values ('00000000-0000-0000-0000-000000000001', 735004)

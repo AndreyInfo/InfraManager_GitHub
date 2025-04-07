@@ -1,0 +1,5 @@
+﻿<div class="tabPage ml h100" data-bind="with: tabActive">
+    <div class="im-big-header caption"><span data-bind="restext: 'SoftwareLicence_SoftwareDistribution_Title'" /></div>
+    <div style="height: calc(100% - 40px);" data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'SoftwareSublicenceList', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false}"></div>
+    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening, itemClick: listViewRowClick}"></div>
+</div>

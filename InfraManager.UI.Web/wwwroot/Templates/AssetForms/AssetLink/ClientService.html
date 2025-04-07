@@ -1,0 +1,104 @@
+﻿<div class="asset-link_searchText">
+    <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, event: { keypress: SearchKeyPressed }">
+    <div class="asset-link_searchText-clearfield cursor-pointer" data-bind="click: EraseTextClick, visible: !IsSearchTextEmpty()"></div>
+</div>
+<div class="asset-link-ifraclient" data-bind="style: { height: CalculatedClientHeight }">
+    <div class="al-list-header"><span data-bind="restext: 'ClientInfrastructure'"></span></div>
+    <span class="caption-arrow">
+        <span data-bind="css: ClientObjectsExpanded() == true ? 'arrow-up-white' : 'arrow-down-white', click: ExpandCollapseClient, tooltip: ClientObjectsExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+            <span></span>
+        </span>
+    </span>
+    <div class="al-list-scroll" data-bind="foreach: FindedClientObjects, visible: ClientObjectsExpanded">
+        <div class="al-list-item" data-bind="css: { 'active': Selected }">
+            <div class="al-list-item-chb-column">
+                <input type="checkbox" data-bind="checked: Selected" />
+            </div>
+            <div class="al-list-item-icon-column">
+                <div data-bind="css: CssIconClass"><span></span></div>
+            </div>
+            <div class="al-list-item-main-column" data-bind="click: $parent.ShowForm">
+                <div class="al-list-item-main-firstrow" data-bind="">
+                    <span class="al-main-header" data-bind="text: Name, longNameTooltip: Name"></span>
+                </div>
+                <div class="al-list-item-main-secondrow">
+                    <span class="al-main-text"><span data-bind="text: Model, longNameTooltip: Model"></span></span>
+                </div>
+                <div class="al-list-item-main-thirdrow">
+                    <span class="al-secondary-text"><span data-bind="text: State, longNameTooltip: State"></span></span>
+                </div>
+            </div>
+            <div class="al-list-item-info-column">
+                <span class="al-list-info-item">
+                    <span class="al-property-header" data-bind="restext: 'UserRoom'"></span>
+                    <span class="al-property-text" data-bind="text: Room, longNameTooltip: Room"></span>
+                </span>
+                <span class="al-list-info-item">
+                    <span class="al-property-header" data-bind="restext: 'UserFloor'"></span>
+                    <span class="al-property-text" data-bind="text: Floor, longNameTooltip: Floor"></span>
+                </span>
+                <span class="al-list-info-item">
+                    <span class="al-property-header" data-bind="restext: 'UserBuilding'"></span>
+                    <span class="al-property-text" data-bind="text: Building, longNameTooltip: Building"></span>
+                </span>
+                <span class="al-list-info-item">
+                    <span class="al-property-header" data-bind="restext: 'UserOrganization'"></span>
+                    <span class="al-property-text" data-bind="text: Organization, longNameTooltip: Organization"></span>
+                </span>
+            </div>
+        </div>        
+    </div>
+    <!-- ko if: !CanSearchClient() || FindedClientObjects().length == 0 -->
+    <center><span class="al-list-noitems" data-bind="text: EmptyTextClient, visible: ClientObjectsExpanded"></span></center>
+    <!-- /ko -->
+</div>
+<div class="asset-link-ifraservice" data-bind="style: { top: CalculatedServiceTop }">
+    <div class="al-list-header"><span data-bind="restext: 'ServiceInfrastructure'"></span></div>
+    <span class="caption-arrow">
+        <span data-bind="css: ServiceObjectsExpanded() == true ? 'arrow-up-white' : 'arrow-down-white', click: ExpandCollapseService, tooltip: ServiceObjectsExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+            <span></span>
+        </span>
+    </span>
+    <div class="al-list-scroll" data-bind="foreach: FindedServiceObjects, visible: ServiceObjectsExpanded">
+        <div class="al-list-item" data-bind="css: { 'active': Selected }">
+            <div class="al-list-item-chb-column">
+                <input type="checkbox" data-bind="checked: Selected" />
+            </div>
+            <div class="al-list-item-icon-column">
+                <div data-bind="css: CssIconClass"><span></span></div>
+            </div>
+            <div class="al-list-item-main-column" data-bind="click: $parent.ShowForm">
+                <div class="al-list-item-main-firstrow" data-bind="">
+                    <span class="al-main-header" data-bind="text: Name, longNameTooltip: Name"></span>
+                </div>
+                <div class="al-list-item-main-secondrow">
+                    <span class="al-main-text"><span data-bind="text: Model, longNameTooltip: Model"></span></span>
+                </div>
+                <div class="al-list-item-main-thirdrow">
+                    <span class="al-secondary-text"><span data-bind="text: State, longNameTooltip: State"></span></span>
+                </div>
+            </div>
+            <div class="al-list-item-info-column">
+                <span class="al-list-info-item">
+                    <span class="al-property-header" data-bind="restext: 'UserRoom'"></span>
+                    <span class="al-property-text" data-bind="text: Room, longNameTooltip: Room"></span>
+                </span>
+                <span class="al-list-info-item">
+                    <span class="al-property-header" data-bind="restext: 'UserFloor'"></span>
+                    <span class="al-property-text" data-bind="text: Floor, longNameTooltip: Floor"></span>
+                </span>
+                <span class="al-list-info-item">
+                    <span class="al-property-header" data-bind="restext: 'UserBuilding'"></span>
+                    <span class="al-property-text" data-bind="text: Building, longNameTooltip: Building"></span>
+                </span>
+                <span class="al-list-info-item">
+                    <span class="al-property-header" data-bind="restext: 'UserOrganization'"></span>
+                    <span class="al-property-text" data-bind="text: Organization, longNameTooltip: Organization"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- ko if: !CanSearchService() || FindedServiceObjects().length == 0 -->
+    <center><span class="al-list-noitems" data-bind="text: EmptyTextService, visible: ServiceObjectsExpanded"></span></center>
+    <!-- /ko -->
+</div>

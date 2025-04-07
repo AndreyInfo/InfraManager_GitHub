@@ -1,0 +1,23 @@
+﻿<div class="licence-schemes-panel" data-bind="with: licenceSchemes()">
+    <div class="licence-schemes-search-panel">
+
+        <!-- общий или нет элемент  ServiceCatalogue/SearchControl  ? -->
+        <div class="sc_searchButton blue-btn cursor-pointer" data-bind="click: onSearch">
+            <a class="search-icon b-base-content__header_search_button" />
+        </div>
+        <div class="sc_searchText">
+            <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'LicenceSchemesFilterNamePlaceholder'}, textInput: filterLicenceSchemeName, event: { keypress: filterLicenceSchemeNameKeyPressed }">
+        </div>
+
+        <div class="licence-schemes-showDeletedRecords">
+            <input id="LicenceSchemesFilterShowDeletedRecords" type="checkbox" data-bind="checked: filterIsShowDeletedRecords">
+            <label for="LicenceSchemesFilterShowDeletedRecords" style="cursor:pointer" data-bind="restext:'LicenceSchemesFilterIsShowDeletedRecordsTitle'"></label>
+        </div>
+    </div>
+
+    <div class="licence-schemes-grid-panel">
+        <div class="licence-schemes-grid" data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'SoftwareLicenseSchemeForTable', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: contextMenu, autoDispose: false, multiSelect: true}"></div>
+        <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+    </div>
+</div>
+

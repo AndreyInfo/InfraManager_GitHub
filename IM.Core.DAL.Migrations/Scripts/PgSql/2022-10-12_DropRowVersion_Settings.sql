@@ -1,0 +1,1 @@
+ALTER TABLE IF EXISTS im.setting DROP COLUMN IF EXISTS row_version;

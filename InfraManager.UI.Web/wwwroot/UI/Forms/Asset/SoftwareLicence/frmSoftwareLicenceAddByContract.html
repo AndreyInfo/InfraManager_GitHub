@@ -1,0 +1,25 @@
+﻿<div class="frmSoftwareLicence">
+    <div class="content">
+        <div class="identificationRow">
+            <div class="outerIconAndControl">
+                <div class="icon active" data-bind="click: editName, tooltip: getTextResource('SoftwareLicence_Description')"><span class="descriptionIcon"></span></div>
+                <div class="control border nowrap im-big-header" data-bind="attr: { placeholder: getTextResource('SoftwareLicenceAdd_EnterSoftwareLicenceName') }, text: object().Name, longNameTooltip: object().Name"></div>
+            </div>
+            <div class="outerIconAndControl">
+                <div class="productCatalogTypeField" data-bind="text: object().CategoryFullName, tooltip: getTextResource('Contract_Type')"></div>
+            </div>
+        </div>
+        <div class="tabActive" data-bind="template: {name: tabActive().Template}">
+        </div>
+    </div>
+    <div class="tabPages" data-bind="foreach: tabList">
+        <div class="tabButton" data-bind="visible: $data.IsVisible, click: $parent.selectTabClick, css: {'active' : $parent.tabActive() === $data, 'invalid' : $parent.tabActive().IsValid && $parent.tabActive().IsValid() == false}">
+            <div class="tabButtonIcon" data-bind="css: $data.IconCSS">
+                <!--ko if: $data.Index-->
+                <span data-bind="text: $data.Index"></span>
+                <!--/ko-->
+            </div>
+            <div class="tabButttonCaption" data-bind="text: $data.Name" />
+        </div>
+    </div>
+</div>

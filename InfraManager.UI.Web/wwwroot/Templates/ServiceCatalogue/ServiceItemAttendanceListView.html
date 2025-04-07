@@ -1,0 +1,34 @@
+﻿<div class="sc_siaItem">
+    <div class="sc_siaItemHeader" data-bind="if: $showPath == false, click: function() { $isExpanded(!$isExpanded()); }">
+        <img class="sc_siaItemHeaderIcon" data-bind="attr: { src: $iconSource }" />
+        <div class="sc_siaItemHeaderText" data-bind="text: $name"></div>
+        <div class="sc_siaItemHeaderButton" data-bind="css: { 'expanded':  $isExpanded }"></div>
+    </div>
+    <div class="sc_siaItemListBlock" data-bind="foreach: { data: $list, as: 'sia' }, visible: $isExpanded">
+        <!-- ko if: ( $parent.$searchHighlight != true ) || ( $parent.$searchParams.NeedFilrerSIA != true ) || ( $parent.$searchParams.NeedShow(sia.ID) ) -->
+            <div class="sc_siaItemListRow">
+                <div class="sc_siaItemListRow-first">
+                    <div class="sc_siaItemListFavorite" data-bind="click: $root.OnChangeFavoritesStateClick, css: { 'active': sia.IsInFavorite }"></div>
+                    <div class="sc_siaItemListRowName" data-bind="click: $root.OnServiceItemAttendanceClick">
+                        <!-- ko if: $parent.$searchHighlight -->
+                        <span class="sc_siaItemListText" data-bind="highlightText: sia.Name, searchTextArray: $root.SearchTextSplitted"></span>
+                        <!-- /ko -->
+                        <!-- ko ifnot: $parent.$searchHighlight -->
+                        <span class="sc_siaItemListText" data-bind="text: sia.Name"></span>
+                        <!-- /ko -->
+                        <div class="sc_siaItemListAvailable" data-bind="css: { 'active': sia.IsAvailable }"></div>
+                    </div>                    
+                </div>
+                <div class="sc_siaItemListCallTypeBlock" data-bind="foreach: { data: sia.CallTypeInfoList, as: 'callTypeInfo'}">
+                    <img class="sc_siaItemListCallTypeElem sc_siaItemListCallTypeElemBig" data-bind="attr: { src: callTypeInfo.ImageSource }, tooltip: callTypeInfo.Name, click: function() { $root.OnCallTypeClick(sia, callTypeInfo); }" />
+                </div>
+            </div>
+            <!-- ko if: $parent.$searchHighlight && $parent.$searchParams.NeedShowSIANote(sia.ID) -->
+            <div class="sc_siaItemNote" data-bind="highlightText: sia.Note, searchTextArray: $root.SearchTextSplitted, highlightTextCut: true"></div>
+            <!-- /ko -->
+        <!-- /ko -->
+        <div class="sc_siaItemListRowPath" data-bind="visible: $parent.$showPath == true">
+            <div class="sc_siaItemListRowPathText" data-bind="text: sia.Service.ServiceCategory.Name + ' > ' + sia.Service.Name + ' > ' + sia.Name"></div>
+        </div>        
+    </div>
+</div>

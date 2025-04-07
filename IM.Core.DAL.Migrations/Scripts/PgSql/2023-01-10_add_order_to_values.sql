@@ -1,0 +1,1 @@
+ALTER TABLE im."values" ADD COLUMN IF NOT EXISTS "order" integer NOT NULL DEFAULT 0;

@@ -1,0 +1,15 @@
+﻿<div class="treeNodeWrapper" data-bind="visible: visible, attr: { id: key }">
+    <div class="treeNode clickableMode" data-bind="css: { 'selectedNode': selected }">
+        <div class="treeNodeExpander" data-bind="css: { 'expanded': expanded }, style: { visibility: expandable() ? '' : 'hidden' }, click: expandCollapse"></div>
+        <!-- ko if: checkbox -->
+        <div class="treeNodeCheckbox" data-bind="template: { name: '../UI/Controls/triStateCheckbox', data: checkbox }"></div>
+        <!-- /ko -->
+        <div class="treeNodeHeaderWrapper" data-bind="click: select, style: { cursor: selectable() ? 'pointer' : 'not-allowed' }">
+            <div class="treeNodeIcon" data-bind="css: iconCss"></div>
+            <div class="treeNodeText" data-bind="text: text, clickBubble: false"></div>
+        </div>
+    </div>
+    <!-- ko if: expanded -->
+    <div class="treeNodeSubList" data-bind="template: { name: '../Templates/TristateTreeView/TreeNode', foreach: nodes }"></div>
+    <!-- /ko -->
+</div>

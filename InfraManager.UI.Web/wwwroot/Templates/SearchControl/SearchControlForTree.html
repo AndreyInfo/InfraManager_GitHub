@@ -1,0 +1,25 @@
+﻿<div class="searchControlForTree-wrapper">
+    <div class="searchControlForTree-Search">
+        <input type="text" class="searchControlForTree-TextField" data-bind="resattr: { placeholder: 'FilterEnterValue'}, textInput: searchPhrase" />
+    </div>
+    <div class="searchControlForTree-List" data-bind="foreach: findedList, visible: findedList().length > 0">
+        <div class="searchControlForTree-item" data-bind="click: $parent.SelectItemClick">
+            <div class="searchControlForTree-itemCheckbox">
+                <input type="checkbox" data-bind="attr: { checked: $parent.IsSelected($data) ? 'checked' : null }" />
+            </div>
+            <div class="searchControlForTree-itemText" data-bind="highlightText: Name, searchText: $parent.searchPhrase, highlightClass: 'searchControlForTree-Finded'"></div>
+            <div class="searchControlForTree-itemDopText" data-bind="visible: DopInfo, highlightText: DopInfo, searchText: $parent.searchPhrase, highlightClass: 'searchControlForTree-Finded'"></div>
+        </div>
+    </div>
+    <div class="searchControlForTree-List" data-bind="foreach: selectedList, visible: IsSearchPhraseEmpty">
+        <div class="searchControlForTree-item" data-bind="click: $parent.SelectItemClick">
+            <div class="searchControlForTree-itemCheckbox">
+                <input type="checkbox" data-bind="attr: { checked: $parent.IsSelected($data) ? 'checked' : null }" />
+            </div>
+            <div class="searchControlForTree-itemText" data-bind="text: Name"></div>
+        </div>
+    </div>
+    <div class="searchControlForTree-none" data-bind="if: nothingFound">
+        <div data-bind="restext: 'NothingFound'"></div>
+    </div>
+</div>

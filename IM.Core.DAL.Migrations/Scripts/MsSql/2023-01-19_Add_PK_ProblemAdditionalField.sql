@@ -1,0 +1,9 @@
+if NOT EXISTS (SELECT 1
+					FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS C
+					WHERE C.TABLE_NAME = 'ProblemAdditionalField'
+						AND C.CONSTRAINT_SCHEMA = 'dbo' 
+						AND C.CONSTRAINT_NAME = 'PK_ProblemAdditionalField')
+BEGIN 
+	ALTER TABLE ProblemAdditionalField
+		ADD CONSTRAINT PK_ProblemAdditionalField PRIMARY KEY CLUSTERED (id);
+END 

@@ -1,0 +1,1364 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IM.Core.WebApi.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Assets.AssetConstants">
+            <summary>
+            Константы. 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.AssetConstants.ProductCatalogTemplate_Processor">
+            <summary>
+            Идентификатор шаблона "Процессоры"
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorModelModel">
+            <summary>
+            Модель объекта "Модель процессора"
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorModelModel.ID">
+            <summary>
+            Идентификатор модели
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorModelModel.TypeName">
+            <summary>
+            Наименование типа
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorModelModel.ModelName">
+            <summary>
+            Наименование модели
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorModelModel.ManufactorName">
+            <summary>
+            Производитель
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorModelModel.Cores">
+            <summary>
+            Количесво ядер
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorsListFilter">
+            <summary>
+            Модель фильтра поиска инсталляций
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorsListFilter.StartRecordIndex">
+            <summary>
+            Начальная запись
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorsListFilter.CountRecords">
+            <summary>
+            Коль-во записей
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorsListFilter.ProductCatalogID">
+            <summary>
+            Идентификатор типа для отбора
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorsListFilter.ProductCatalogClassID">
+            <summary>
+            Идентификатор категории для отбора
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Assets.ProcessorsListFilter.SearchText">
+            <summary>
+            Строка поиска наименования
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.ObjectClassID">
+            <summary>
+            Идентификатр класса объекта сущности
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.ClassID">
+            <summary>
+            Уточняющий идентификатор класса
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.EntityName">
+            <summary>
+            Имя сущности (типа) для отображения в событии
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.AddActionLabel">
+            <summary>
+            строка описания дейсвия добавления
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.EditActionLabel">
+            <summary>
+            строка описания дейсвия изменения
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.DeleteActionLabel">
+            <summary>
+            строка описания дейсвия удаления
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.IdentifierField">
+            <summary>
+            имя поля идентификатора
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.AddOperationID">
+            <summary>
+            Идентификатор операции добавления
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.EditOperationID">
+            <summary>
+            Идентификатор операции измененеия
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.DeleteOperationID">
+            <summary>
+            Идентификатор операции удаления (отметки удлаления)
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.EntityCompareAttribute.IsDeletedFieldName">
+            <summary>
+            Имя поля, содрежащее отметку удаления.
+            По Умолчанию: IsDeleted
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.FieldCompareAttribute">
+            <summary>
+            Задает Параметры сравнения и формирования описания события изменения для поля.
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.FieldCompareAttribute.UserFieldName">
+            <summary>
+            Наименование поля для записи в историю
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.FieldCompareAttribute.NameOrder">
+            <summary>
+            Признак имени - значение этого поля используется для обозначения объекта в событии. 
+            В полном представлении используются все поля с установленным номером в порядке убывания.
+            значение 1 - у основного названия (краткого)
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.FieldCompareAttribute.NullValueLabel">
+            <summary>
+            Представление null значения в событии
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.FieldCompareAttribute.Format">
+            <summary>
+            Формат представления поля
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.FieldCompareAttribute.SetFieldProperty">
+            <summary>
+            Наименование атрибта значения поля в JSON-сериализованном виде (передаваемое в SetField)
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.FieldCompareAttribute.ListIDField">
+            <summary>
+            Наименование атрибута, идентифицирующего элемент спискового поля.
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.FieldCompareAttribute.IsUseCustomValues">
+            <summary>
+            Флаг использования особого метода работы с данными поля
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.ICustomValueManager">
+            <summary>
+            Для использования при необходимост кастомно сериализации/десириализации полей объекта
+            </summary>
+        </member>
+        <member name="M:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.ICustomValueManager.SetField(System.String,System.String)">
+            <summary>
+            Установка значения поля объекта по указанномк строковому предвталению.
+            </summary>
+            <param name="filedName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:InfraManager.CrossPlatform.WebApi.Contracts.Common.Attributes.ICustomValueManager.CheckSameFieldValue(System.String,System.String)">
+            <summary>
+            Проврка совпадения текущих значений поля
+            </summary>
+            <param name="filedName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError">
+            <summary>
+            Ошибки исполнения запросов
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError.Success">
+            <summary>
+            Нет ошибок
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError.NullParamsError">
+            <summary>
+            Параметр null
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError.BadParamsError">
+            <summary>
+            Ошибочный параметр
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError.AccessError">
+            <summary>
+            Нет доступа
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError.GlobalError">
+            <summary>
+            Глобальная ошибка
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError.ConcurrencyError">
+            <summary>
+            Конкуренция за изменение данных
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError.ObjectDeleted">
+            <summary>
+            Объект уже удален
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError.OperationError">
+            <summary>
+            Ошибка операции
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError.ValidationError">
+            <summary>
+            Ошибка валидации
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseError.ExistsByName">
+            <summary>
+            Объект уже существует
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseFilter">
+            <summary>
+            Базовый фильтр для отсеивания каких-либо объектов.
+            <para>Содержит в себе параметры пагинации и строку поиска.</para>
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseFilter.ViewName">
+            <summary>
+            Название справочника
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseFilter.SearchString">
+            <summary>
+            Строка для поиска
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseFilter.StartRecordIndex">
+            <summary>
+            Начальная запись
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseFilter.CountRecords">
+            <summary>
+            Кол-во записей
+            </summary>
+        </member>
+        <member name="M:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseFilter.IsEmpty">
+            <summary>
+            Проверяет является ли фильтр пустым.
+            </summary>
+            <returns>True - если фильтр не имеет никаких значений; иначе False.</returns>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseResult`2">
+            <summary>
+            Базовый класс для ответов
+            </summary>
+            <typeparam name="T">тип результата ответа</typeparam>
+            <typeparam name="F">тип отрицательного ответа</typeparam>
+        </member>
+        <member name="M:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseResult`2.#ctor(`0,System.Nullable{`1})">
+            <summary>
+            Конструктор 
+            </summary>        
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseResult`2.Result">
+            <summary>
+            Результат выполнения операции
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseResult`2.Success">
+            <summary>
+            Положительный или отрицательный результат
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.BaseResult`2.Fault">
+            <summary>
+            Отрицательный результат выполнения операции
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.FieldValueModel.Field">
+            <summary>
+            Имя поля, значение которого меняется
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.FieldValueModel.OldValue">
+            <summary>
+            Исходное значение, которое пользователь правил
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.FieldValueModel.NewValue">
+            <summary>
+            новое значение, введенное пользователем
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.FieldValueModel.ReplaceAnyway">
+            <summary>
+            Флаг обхода проверки конкуренции по старому значению
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.HistoryForObjectRequest">
+            <summary>
+            Запрос истрии объекта
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.HistoryForObjectRequest.ObjectID">
+            <summary>
+            Объект запроса
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.HistoryForObjectRequest.DateFrom">
+            <summary>
+            Отбор только событи после указанной даты (опционально)
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.HistoryForObjectRequest.DateTill">
+            <summary>
+            Отбор событий только до указаннйо даты (опционально)
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.HistoryForObjectRequest.StartRecordIndex">
+            <summary>
+            Начальная запись
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.HistoryForObjectRequest.CountRecords">
+            <summary>
+            Коль-во записей
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.ListItem">
+            <summary>
+            Общий класс для представления элементов списокв для выбора
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.ListItem.Id">
+            <summary>
+            Значение для выбора
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.ListItem.Name">
+            <summary>
+            Наименование значения
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.ObjectClassModel.ObjClassID">
+            <summary>
+            Идентификатор класса объекта.
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.ObjectClassModel.ClassID">
+            <summary>
+            Используется для точного указания класса объекта, когда ObjClassID может соответствовать нескольким классам
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.ObjectIDModel.ID">
+            <summary>
+            Идентификатор объекта, для котрого производится изменение
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.SetFieldRequest">
+            <summary>
+            Универсальная модель, описаавыющая зименение поля сущности.
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.SetFieldRequest.FieldValue">
+            <summary>
+            ИЗменяемое значение в объекте
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.SetFieldRequest.Params">
+            <summary>
+            Дополнитльные параметры изменения... ???
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.SetFieldResult">
+            <summary>
+            Универсальная модлеь, описывающая результат изменеия сущности
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.SetFieldResult.CurrentObjectValue">
+            <summary>
+            Текущее значение
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Common.Models.SetFieldResult.Message">
+            <summary>
+            Допонительное сообщение по исполнению
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPItem">
+            <summary>
+            Модель данных схемы лицензирования
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPItem.ID">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPItem.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPItem.Description">
+            <summary>
+            Описание
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPItem.VendorID">
+            <summary>
+            Описание
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPItem.VendorLabel">
+            <summary>
+            Производитель. Представление
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPListFilter">
+            <summary>
+            Модель фильтра поиска схем лицензирования
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPListFilter.ShowDeleted">
+            <summary>
+            Показывать удалённые
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPRules">
+            <summary>
+            Бизнес правила схем лицензирования, проверяемые при сохранении данных
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPRules.NameObligatory">
+            <summary>
+            Имя долно быть задано
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPRules.UniqueName">
+            <summary>
+            Нарушена уникальность имени схемы
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPRules.InUse">
+            <summary>
+            Свзь используется
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPRules.EventFault">
+            <summary>
+            Ошибка запсис события
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPVendorItem">
+            <summary>
+            Модель данных схемы лицензирования
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPVendorItem.ID">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPVendorItem.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPVendorsListFilter">
+            <summary>
+            Модель фильтра поиска схем лицензирования
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPVendorsListFilter.ShowDeleted">
+            <summary>
+            Показывать удалённые
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.ELP.ELPVendorsListFilter.SearchText">
+            <summary>
+            Строка поиска
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogModel">
+            <summary>
+            Модель логирвания данных запросво к API
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogModel.EventTime">
+            <summary>
+            Вермя события
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogModel.Host">
+            <summary>
+            Хотс, к которому обращение
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogModel.Path">
+            <summary>
+            Метод, к которому идет обращение
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogModel.Query">
+            <summary>
+            Параметры строки запроса
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogModel.UserID">
+            <summary>
+            Идентификатор пользователя (если не авторизирован, то пусто)
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogModel.RequestData">
+            <summary>
+            Парамтеры ПОСТ метода (json представление)
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogModel.UserDeviceID">
+            <summary>
+            Идентификатоор устройва (браузера) пользователя (fingerprint)
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogModel.CorrelationID">
+            <summary>
+            идентификтор вызова
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogResultModel">
+            <summary>
+            Данные по результату исполнения метода
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogResultModel.Success">
+            <summary>
+            Результат исполнения - успех или ошибка
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogResultModel.ResultData">
+            <summary>
+            Результат успешного исполнения (json представление)
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogResultModel.ExceptionData">
+            <summary>
+            Информация об ошибке в случае ошибки
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Logging.WebApiLogResultModel.ExecuteDuration">
+            <summary>
+            Время исполнения метода
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Scheduler.ScheduleTask">
+            <summary>
+            Задача по расписанию
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.Scheduler.TaskRunInfo">
+            <summary>
+            Базовая модель задания
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Scheduler.TaskRunInfo.ScheduleLabel">
+            <summary>
+            Описание расписания
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Scheduler.TaskRunInfo.StateLabel">
+            <summary>
+            Представление сотсояния
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Scheduler.TaskRunInfo.NextRun">
+            <summary>
+            Следующий запус
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.Scheduler.TaskRunInfo.LastRun">
+            <summary>
+            Полний запуск
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem">
+            <summary>
+            Модель данных Инсталляции
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.ID">
+            <summary>
+            Идентификатор инсталляции
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.SoftwareInstallationName">
+            <summary>
+            Наименование инсталляции
+            </summary>       
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.SoftwareModelID">
+            <summary>
+            Идентифтикатор технической модели ПО
+            </summary>       
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.SoftwareModelName">
+            <summary>
+            Название технической модели ПО
+            </summary>       
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.CommercialModelName">
+            <summary>
+            Название коммерческой модели ПО, которая соответствует инсталляция (при наличии, иначе пустота)
+            </summary>       
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.DeviceClassID">
+            <summary>
+            Идентифткатор класса ИТ-актива
+            </summary>     
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.DeviceID">
+            <summary>
+            Идентифткатор ИТ-актива - компьютера, на котором установлена инсталляция
+            </summary>     
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.DeviceName">
+            <summary>
+            Название ИТ-актива - компьютера, на котором установлена инсталляция
+            </summary>     
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.InstallPath">
+            <summary>
+            Строка - путь, по которому найдена инсталляция
+            </summary>      
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.InstallDate">
+            <summary>
+            Дата, когда был установлена инсталляция
+            </summary>        
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.DateLastSurvey">
+            <summary>
+            Дата последнего запуска задачи опроса по сети для поиска инсталляций
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.CreateDate">
+            <summary>
+            Дата, когда был создана запись
+            </summary>        
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.Status">
+            <summary>
+            Статус Инсталляции
+            </summary>        
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationItem.StatusName">
+            <summary>
+            Статус Инсталляции
+            </summary>        
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem">
+            <summary>
+            Модель элемента списка инсталляций
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.ID">
+            <summary>
+            Идентификатор инсталляции
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.SoftwareModelName">
+            <summary>
+            Название технической модели ПО
+            </summary>       
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.CommercialModelName">
+            <summary>
+            Название коммерческой модели ПО, которая соответствует инсталляция (при наличии, иначе пустота)
+            </summary>       
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.DeviceName">
+            <summary>
+            Название ИТ-актива - компьютера, на котором установлена инсталляция
+            </summary>     
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.InstallPath">
+            <summary>
+            Строка - путь, по которому найдена инсталляция
+            </summary>      
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.InstallDate">
+            <summary>
+            Дата, когда был установлена инсталляция
+            </summary>        
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.DateLastSurvey">
+            <summary>
+            Дата последнего запуска задачи опроса по сети для поиска инсталляций
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.DateLastRightsCheck">
+            <summary>
+            Дата последнего запуска задачи последней проверки прав
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.CreateDate">
+            <summary>
+            Дата, когда была создана запись
+            </summary>        
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.Status">
+            <summary>
+            Статус Инсталляции
+            </summary>        
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareInstallationListItem.StatusName">
+            <summary>
+            Статус Инсталляции
+            </summary>        
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareLicenceUseListItem">
+            <summary>
+            Модель элемента списка инсталляций
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareLicenceUseListItem.ID">
+            <summary>
+            Идентификатор лицензии
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareLicenceUseListItem.SoftwareLicenceName">
+            <summary>
+            Названеие лицензии
+            </summary>       
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareLicenceUseListItem.ObjectName">
+            <summary>
+            Названеие объекта потребления
+            </summary>       
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.Models.SoftwareLicenceUseListItem.RightCount">
+            <summary>
+            Кол-во прав
+            </summary>       
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.SoftwareInstallationRules">
+            <summary>
+            Бизнес правила схем лицензирования, проверяемые при сохранении данных
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.SoftwareInstallationRules.NameObligatory">
+            <summary>
+            Имя долно быть задано
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.SoftwareInstallationRules.UniqueName">
+            <summary>
+            Нарушена уникальность имени схемы
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.SoftwareInstallationRules.ModelObligatory">
+            <summary>
+            Техническая Модель обязательна
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.SoftwareInstallationRules.DeviceObligatory">
+            <summary>
+            Место установки обязательна
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareInstallation.SoftwareInstallationRules.EventFault">
+            <summary>
+            Ошибка записи истории
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeRules">
+            <summary>
+            Бизнес правила схем лицензирования, проверяемые при сохранении данных
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeRules.UniqueName">
+            <summary>
+            Нарушена уникальность имени схемы
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeRules.NameObligatory">
+            <summary>
+            Не указано имя схемы
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeRules.ModificationProhibited">
+            <summary>
+            Вид схемы не допускает ее редактирования
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeRules.SchemeNotFound">
+            <summary>
+            схема не найдена
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeRules.EventFault">
+            <summary>
+            Проблемы формирования события при изменении
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme">
+            <summary>
+            Модель данных схемы лицензирования
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.ID">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.Description">
+            <summary>
+            Описание
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.SchemeType">
+            <summary>
+            Вид схемы
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.LicensingObjectType">
+            <summary>
+            Объект лицензирования 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.LicenseCountPerObject">
+            <summary>
+            Требуемое количество прав на объект. Формула расчета 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.IsLinkLicenseToObject">
+            <summary>
+            Привязывать права к объектам 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.IsLicenseAllHosts">
+            <summary>
+            Лицензировать все хосты кластеров (для кластеров) 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.IsLinkLicenseToUser">
+            <summary>
+            Лицензировать доступ пользователей 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.InstallationLimits">
+            <summary>
+            Допустимое число инсталляций на устройстве 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.InstallationLimitPerVM">
+            <summary>
+            Число инсталляций на виртуальных машинах 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.AllowInstallOnVM">
+            <summary>
+            Число инсталляций на виртуальных машинах : запрещено, разрешено без или с ограничением
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.IsLicenceByAccess">
+            <summary>
+            Лицензия на доступ 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.AdditionalRights">
+            <summary>
+            Количество дополнительных прав. Формула расчета 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.IncreaseForVM">
+            <summary>
+            Размер увеличения инсталляций на виртуальных машинах 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.CreatedDate">
+            <summary>
+            Дата-время создания
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.UpdatedDate">
+            <summary>
+            Дата-время последнего изменения
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.IsDeleted">
+            <summary>
+            Призанк удаленной схемы
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.SchemeTypeLabel">
+            <summary>
+            Вид схемы. Представление
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.LicensingObjectTypeLabel">
+            <summary>
+            Объект лицензирования. Представление 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceScheme.SoftwareLicenceSchemeCoefficients">
+            <summary>
+            Список коэффициентов схемы.
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeCoefficient">
+            <summary>
+            информация о коэффициенте типа процессора 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeCoefficient.ProcessorTypeID">
+            <summary>
+            Идентификатор типа процессора
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeCoefficient.Coefficient">
+            <summary>
+            Коэффициент для данного типа процессора
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeDeleteRequest">
+            <summary>
+            Запрос на пометку схем лицензирования удаленными
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeDeleteRequest.Guids">
+            <summary>
+            Список идентификаторов схем лицензирования
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeForVM">
+            <summary>
+            Применимость схемы для Виртуальных машины
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeForVM.NotAllowed">
+            <summary>
+            Не применима
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeForVM.AllowedUnrestricted">
+            <summary>
+            Применима без ограничений
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeForVM.AllowedWithRestriction">
+            <summary>
+            применима с ограничением по кол-ву, определенным свойством InstallationLimitPerVM
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListFilter">
+            <summary>
+            Модель фильтра поиска схем лицензирования
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListFilter.ShowDeleted">
+            <summary>
+            Показывать удалённые
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListFilter.SearchText">
+            <summary>
+            Строка поиска
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem">
+            <summary>
+            Модель элемента схемы лицензирвоания для отображения в списке
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem.ID">
+            <summary>
+            Идентификатор
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem.Name">
+            <summary>
+            Наименование
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem.LicensingObjectType">
+            <summary>
+            Объект лицензирования 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem.LicensingObjectTypeLabel">
+            <summary>
+            Объект лицензирования. Представление 
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem.SchemeType">
+            <summary>
+            Вид схемы
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem.SchemeTypeLabel">
+            <summary>
+            Вид схемы. Представление
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem.CreatedDate">
+            <summary>
+            Дата создания схемы
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem.UpdatedDate">
+            <summary>
+            Дата последней модификации схемы
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem.IsDeleted">
+            <summary>
+            Флаг удаленной схемы
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeListItem.IsLocationRestrictionApplicable">
+            <summary>
+            Флаг применимости ограничения расположения для данной схемы
+            </summary>
+        </member>
+        <member name="T:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeObjectTypes">
+            <summary>
+            Типы объектоы лицензирования для схемы лицензирования
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeObjectTypes.RealComputer">
+            <summary>
+            Компьютер физический
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeObjectTypes.RealSever">
+            <summary>
+            Сервер физический
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeObjectTypes.User">
+            <summary>
+            Пользователь
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeObjectTypes.Device">
+            <summary>
+            Устройство (компьютер/сервер)
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeType.User">
+            <summary>
+            Пользовательская схема
+            </summary>
+        </member>
+        <member name="F:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareLicenceSchemeType.System">
+            <summary>
+            Системная схема
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.Id">
+            <summary>
+            Идентификатор модели ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.SoftwareTypeId">
+            <summary>
+            Ссылка на тип ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.Name">
+            <summary>
+            Название модели ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.Note">
+            <summary>
+            Описание модели ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.Version">
+            <summary>
+            Версия модели ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.Code">
+            <summary>
+            Код модели ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.ManufacturerId">
+            <summary>
+            Идентификатор производителя модели ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.SupportDate">
+            <summary>
+            Дата до которой производится поддержка данной модели ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.Template">
+            <summary>
+            Шаблон модели ПО (справочник)
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.Removed">
+            <summary>
+            Флаг удаления
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.ParentId">
+            <summary>
+            Ссылка на родительскую модель ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.TrueId">
+            <summary>
+            Ссылка на модель ПО, являющуюся синонимом данной
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.CreateDate">
+            <summary>
+            Дата создания модели ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareModel.RowVersion">
+            <summary>
+            Версия строки
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareType.Id">
+            <summary>
+            Идентификатор типа ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareType.ParentId">
+            <summary>
+            Ссылка на родительский тип ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareType.Name">
+            <summary>
+            Название типа ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareType.Note">
+            <summary>
+            Описание типа ПО
+            </summary>
+        </member>
+        <member name="P:InfraManager.CrossPlatform.WebApi.Contracts.SoftwareLicenceScheme.Models.SoftwareType.RowVersion">
+            <summary>
+            Версия строки
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.Documents.DocumentFileModel.Data">
+            <summary>
+            Содержимое файла
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.Documents.DocumentFileModel.ContentType">
+            <summary>
+            Тип файла
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.Documents.DocumentFileModel.FileName">
+            <summary>
+            Имя файла
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.Documents.DocumentInfoDetailsModel.ID">
+            <summary>
+            Уникальный идентификатор документа
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.Documents.DocumentInfoDetailsModel.ObjectID">
+            <summary>
+            ID родительского объекта
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.Documents.DocumentInfoDetailsModel.Name">
+            <summary>
+            Наименование документа / имя файла
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.Documents.DocumentInfoDetailsModel.Extension">
+            <summary>
+            Расширение документа
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.Documents.DocumentInfoDetailsModel.Size">
+            <summary>
+            Размер данных документа
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.Documents.DocumentInfoDetailsModel.AuthorID">
+            <summary>
+            Идентификатор пользователя загрузившего документ
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.Documents.DocumentInfoDetailsModel.DateCreated">
+            <summary>
+            Дата загрузки документа
+            </summary>
+        </member>
+        <member name="T:InfraManager.WebApi.Contracts.Models.EMailProtocol.EMailListRequest">
+            <summary>
+            Запрос почтовых вдресов для получателся уведомления
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.EMailProtocol.EMailListRequest.NotificationID">
+            <summary>
+            Инедтифткатор уведомления
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.EMailProtocol.EMailListRequest.BusinessRole">
+            <summary>
+            Бизнес - роль получателя
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.EMailProtocol.EMailListRequest.Scope">
+            <summary>
+            Сфера примения
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.EMailProtocol.EMailListRequest.ObjectID">
+            <summary>
+            Объект по которому уведомление
+            </summary>
+        </member>
+        <member name="T:InfraManager.WebApi.Contracts.Models.EMailProtocol.NotificationReceiverDetails">
+            <summary>
+            Список адресов по запросу
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.EMailProtocol.NotificationReceiverDetails.EMail">
+            <summary>
+            Адрес
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.EMailProtocol.NotificationReceiverDetails.ClassID">
+            <summary>
+            Класс получателя уведомления, для которого указанный адрес
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.EMailProtocol.NotificationReceiverDetails.HasUserRole">
+            <summary>
+            Флаг наличия нужной роли у получателя
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.ServiceDesk.MassIncidents.MassIncidentDetailsModel.Name">
+            <summary>
+            Возвращает название МИ (он же краткое описание, он же саммари)
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.ServiceDesk.MassIncidents.MassIncidentDetailsModel.FormValues">
+            <summary>
+            Возвращает или задает данные формы доп. параметров.
+            </summary>
+        </member>
+        <member name="T:InfraManager.WebApi.Contracts.Models.ServiceDesk.CustomControlDataModel">
+            <summary>
+            Этот класс описывает модель входных данных "На контроле"
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.ServiceDesk.CustomControlDataModel.UnderControl">
+            <summary>
+            Возвращает признак нахождения объекта на контроле
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.ServiceDesk.FormValue.Rows">
+            <summary>
+            Возвращает массив строк параметра с типом Таблица.
+            </summary>
+        </member>
+        <member name="T:InfraManager.WebApi.Contracts.Models.ServiceDesk.TableRow">
+            <summary>
+            Представляет одну строку параметра с типом Таблица.
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.ServiceDesk.TableRow.RowNumber">
+            <summary>
+            Возвращает номер строки в таблице.
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.ServiceDesk.TableRow.Columns">
+            <summary>
+            Возвращает колонки в этой строке таблицы.
+            </summary>
+        </member>
+        <member name="T:InfraManager.WebApi.Contracts.Models.ServiceDesk.GetFormBuilderRequest">
+            <summary>
+            Представляет запрос получения шаблона формы доп. параметров.
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.ServiceDesk.GetFormBuilderRequest.ClassID">
+            <summary>
+            Класс объекта, для которого получить шаблон формы.
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.ServiceDesk.GetFormBuilderRequest.ObjectID">
+            <summary>
+            Уникальный идентификатор объекта, для которого получить шаблон формы.
+            </summary>
+        </member>
+        <member name="T:InfraManager.WebApi.Contracts.Models.ServiceDesk.MyCustomControlDataModel">
+            <summary>
+            Этот класс описывает модель входных данных "На контроле" у текущего пользователя
+            </summary>
+        </member>
+        <member name="T:InfraManager.WebApi.Contracts.Models.ServiceDesk.UserCustomControlDataModel">
+            <summary>
+            Этот класс описывает модель входных данных "На контроле" у пользователя
+            </summary>
+        </member>
+        <member name="P:InfraManager.WebApi.Contracts.Models.ServiceDesk.UserCustomControlDataModel.UserID">
+            <summary>
+            Возвращает идентификатор пользователя на контроле у которого находится (или не находится) объект
+            </summary>
+        </member>
+        <member name="T:IM.Core.WebApi.Contracts.Common.Models.GuidList">
+            <summary>
+            Список идентифткиторов
+            </summary>
+        </member>
+        <member name="P:IM.Core.WebApi.Contracts.Common.Models.GuidList.IDList">
+            <summary>
+            Конретный список идентификаторов
+            </summary>
+        </member>
+    </members>
+</doc>

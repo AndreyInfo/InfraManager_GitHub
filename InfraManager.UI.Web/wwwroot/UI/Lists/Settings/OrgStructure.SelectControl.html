@@ -1,0 +1,20 @@
+﻿<div class="selectControl-wrapper">
+    <div class="selectControl-firstRow">
+        <div class="selectControl-Search" data-bind="event: { click: StartEditClick }, clickBubble: false">
+            <input type="text" class="selectControl-TextField" data-bind="attr: { placeholder: SearchPlaceholder }, textInput: SearchText, event: { blur: CancelEdit, click: StartEditClick }, focusBubble: false, visible: EditActive(), hasFocus: EditActive()" />
+            <input type="text" class="selectControl-TextField" data-bind="textInput: TitleForShow, event: { focus: StartEditClick }, focusBubble: false, visible: !EditActive()" />
+        </div>
+    </div>
+    <div class="selectControl-body" style="display: none">
+        <div class="selectControl-List" data-bind="foreach: itemListForShow, visible: !IsListForShowEmpty()">
+            <div class="selectControl-item" data-bind="click: $root.SelectItemClick, css: { 'selected': !$parent.IsMultiple() && Checked() }">
+                <div class="selectControl-itemCheckbox" data-bind="visible: $parent.IsMultiple">
+                    <input type="checkbox" data-bind="checked: Checked" />
+                </div>
+                <div class="selectControl-itemIcon" data-bind="css: Image, visible: Image"></div>
+                <div class="selectControl-itemText" data-bind="text: Name"></div>
+            </div>
+        </div>
+        <div class="selectControl-ListIsEmpty" data-bind="restext: 'ListIsEmpty', visible: IsListForShowEmpty()"></div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿<div class="b-requestCreate__tabs">
+    <div data-bind="foreach: TabPages">
+        <div class="b-requestCreate__tab cursor-pointer clearfix" data-bind="click: TabPageClick, css: {'active': IsSelected() == true}">
+            <div class="b-requestCreate__tab-num" data-bind="text: Index" />
+            <div class="b-requestCreate__tab-decr">
+                <div class="b-requestCreate__tab-type" data-bind="text: Caption()" />
+                <div class="b-requestCreate__tab-title" data-bind="text: Text(), css: {'invalid' : IsValid() == false}" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,166 @@
+﻿<div class="b-requestDetail im-base-text">
+    <div class="b-requestDetail-left">
+        <div class="b-requestDetail-menu clearfix">
+            <div class="b-requestDetail-menu__item b-requestDetail-menu__priority left">
+                <div class="priority-header" data-bind="tooltip: getTextResource('RFCPriority')">
+                    <span data-bind="text: PriorityName" />
+                    <span class="priority-expander" />
+                </div>
+                <span class="priority-panel" data-bind="stopBinding: true" />
+            </div>
+        </div>
+        <div class="fieldPair b-requestDetail__title-header">
+            <div class="icon fieldRFCSummary active" data-bind="click: EditSummary, tooltip: getTextResource('Summary')"><span /></div>
+            <div class="editor big">
+                <input type="text" class="border bigField im-big-header firstFocus" maxlength="500" data-bind="textInput: Summary, longNameTooltip: Summary, attr: { placeholder: getTextResource('PromptRFCSummary') }, css: {'invalid' : Summary().length == 0}" />
+            </div>
+        </div>
+        <div class="b-requestDetail__tabsContainer">
+            <div class="b-requestDetail__mainParameters" data-bind="visible: mode() == modes.main">
+                <div class="horizontalContainer">
+                    <div class="horizontalContainer-leftPart">
+                        <div class="b-requestDetail__descr im-big-header"><span data-bind="restext: 'Description'" /><span data-bind="css: IsDescriptionContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleDescriptionContainer, tooltip: IsDescriptionContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span></div>
+                        <div data-bind="visible: IsDescriptionContainerVisible">
+                            <div class="fieldPair">
+                                <div class="icon fieldDescription active" data-bind="click: EditDescription, tooltip: getTextResource('Description')"><span /></div>
+                                <div class="editor border fill html slide description" style="padding:2px;" />
+                            </div>
+                            <div class="fieldPair form-RFC-Block">
+                                <div class="text-RFC-Block" data-bind="text: RFCTargetText"></div>
+                                <div class="editor form-RFC-BlockEdit">
+                                    <input type="text" class="border" maxlength="250" data-bind="textInput: RFCTarget, longNameTooltip: RFCTarget" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontalContainer-rightPart">
+                        <div class="fieldPair">
+                            <div class="icon fieldProblemType active" data-bind="click: EditRFCType, tooltip: getTextResource('RFCType')"><span /></div>
+                            <div class="editor nowrap fill combobox problemType" data-bind="combobox: { dataSource: RFCTypeHelper.getItemList, placeholder: getTextResource('RFCType') }, comboboxValue: RFCTypeHelper.SelectedItem, css: {'invalid' : RFCTypeHelper.SelectedItem() == null }" />
+                        </div>
+                        <div class="fieldPair">
+                            <div class="icon fieldRFCCategory active" data-bind="click: EditRFCCategory, tooltip: getTextResource('RFCCategory')"><span /></div>
+                            <div class="editor nowrap fill combobox problemType" data-bind="combobox: { dataSource: RFCCategoryHelper.getItemList, placeholder: getTextResource('RFCCategory') }, comboboxValue: RFCCategoryHelper.SelectedItem" />
+                        </div>
+                        <div class="fieldPair">
+                            <div class="icon fieldService active" data-bind="click: SearchService, tooltip: getTextResource('CallServiceItemOrAttendance')"><span /></div>
+                            <div class="editor general">
+                                <input type="text" readonly="readonly" class="rfc-form-service-field searcherInput" data-bind="textInput: ServiceItemName, click: SearchService, resattr: { placeholder : 'ChooseNewValue' }" />
+                            </div>
+                        </div>
+                        <div class="rfc-form__services-add"></div>
+                        <div class="b-requestDetail__table">
+                            <div class="form-users-block">
+                                <div data-bind="template: { name: 'User/FormUser', if: Initiator() && InitiatorLoaded(), data: Initiator }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Initiator() && !InitiatorLoaded(), data: Initiator }"></div>
+                                <div data-bind="template: { name: 'User/FormUser', if: Queue() && QueueLoaded(), data: Queue }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Queue() && !QueueLoaded(), data: Queue }"></div>
+                                <div data-bind="template: { name: 'User/FormUser', if: Owner() && OwnerLoaded(), data: Owner }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Owner() && !OwnerLoaded(), data: Owner }"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="b-requestDetail__descr im-big-header">
+                    <span data-bind="restext: 'ReasonForChange'" />
+                    <span class="tabCaption-icon-chain" data-bind="click: LinkSdObjectClick,  css: { 'active' : true }"></span>
+                    <div class="contextMenu-inner-asset im-base-text" data-bind="visible: ContextMenuVisible">
+                        <div class="contextline" data-bind="restext: 'Call', click: LinkCall"></div>
+                        <div class="contextline" data-bind="restext: 'WorkOrder', click: LinkWorkorder"></div>
+                        <div class="contextline" data-bind="restext: 'Problem', click: LinkProblem"></div>
+                    </div>
+                    <span data-bind="css: IsReasonContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleCauseContainer, tooltip: IsReasonContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+                        <span />
+                    </span>
+                </div>
+                <div data-bind="visible: IsReasonContainerVisible">
+                    <!-- ko if: VisibleReason() == true-->
+                    <div class="im-list-item-fullBlueLine">
+                        <div class="im-list-item-icon-column">
+                            <div data-bind="css: CssIconClass"></div>
+                        </div>
+                        <div class="im-list-item-main-column im-list-item-main-not-fixed-column" style="flex-grow: unset">
+                            <div class="im-list-item-main-firstrow" data-bind="css: { 'cursor-pointer': true}, click: ShowReasonObjectForm">
+                                <span class="reference-object-main-header" data-bind="text: ReasonName, longNameTooltip: ReasonName"></span>
+                            </div>
+                            <div class="im-list-item-main-secondrow">
+                                <span class="im-list-row-item reference-object-mode-text">
+                                    <span data-bind="restext: 'Before'"></span>: <span data-bind="text: ReasonUtcDatePromised"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="im-list-item-user-column">
+                            <!-- ko if: ReasonOwner != null -->
+                            <span data-bind="template: { name: 'User/FormUser', data: ReasonOwner }"></span>
+                            <!-- /ko -->
+                        </div>
+                        <div class="im-list-item-status-column">
+                            <span class="im-list-row-item reference-object-status-textwrap">
+                                <span class="reference-object-status-icon"></span>
+                                <span class="reference-object-status-text" data-bind="text: ReasonStateName, longNameTooltip: ReasonStateName"></span>
+                            </span>
+                        </div>
+                        <div class="im-list-item-end-column">
+                            <span class="im-list-row-item reference-object-ended-text"><span data-bind="text: ReasonModify, longNameTooltip: ReasonModify"></span></span>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="b-requestDetail__descr im-big-header">
+                    <span data-bind="restext: 'Planning'" />
+                    <span data-bind="css: IsPlanningContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: TogglePlanningContainer, tooltip: IsPlanningContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+                        <span />
+                    </span>
+                </div>
+                <div data-bind="visible: IsPlanningContainerVisible">
+                    <div class="fieldPair form-RFC-Block">
+                        <div class="funding-text-RFC-Block" data-bind="restext:'FundingAmount'"></div>
+                        <div class="spec_form-data">
+                            <input type="text" class="funding-number-TextField" data-bind="value: FundingAmountNumber, valueUpdate: 'input'" />
+                        </div>
+                    </div>
+                    <div class="fieldPair file-RFC-Block realizationFileField">
+                        <div class="icon b-requestDetail__files-addBtn addRealizationFileBtn active"><span /></div>
+                        <div class="file-text-RFC-Block" data-bind="restext:'RealizationPlan'"></div>
+                        <div class="editor b-requestDetail__files documentRealizationList" />
+                    </div>
+                    <div class="fieldPair file-RFC-Block rollbackFileField">
+                        <div class="icon b-requestDetail__files-addBtn addRollbackFileBtn active"><span /></div>
+                        <div class="file-text-RFC-Block" data-bind="restext:'RollbackPlan'"></div>
+                        <div class="editor b-requestDetail__files documentRollbackList" />
+                    </div>
+                </div>
+                <div class="b-requestDetail__descr im-big-header">
+                    <span data-bind="restext: 'Files'" />
+                    <span data-bind="css: IsFileContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleFileContainer, tooltip: IsFileContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+                        <span />
+                    </span>
+                </div>
+                <div data-bind="visible: IsFileContainerVisible">
+                    <div class="fieldPair file-RFC-Block RFCFileField">
+                        <div class="icon b-requestDetail__files-addBtn addFileBtn active"><span /></div>
+                        <div class="editor b-requestDetail__files RFCdocumentList" />
+                    </div>
+                </div>
+            </div>
+            <!--ko foreach: DynamicOptionsService.FormTabs -->
+            <div data-bind="visible: $parent.mode() == $parent.modes.parameterPrefix + $data.Tab.ID,
+                 template: {name: './Shared/DynamicOptionsService/Index', afterRender: $parent.DynamicOptionsService.AfterRender }">
+            </div>
+            <!-- /ko -->
+            <div class="fieldPair" />
+        </div>
+    </div>
+    <div class="b-requestDetail-right">
+        <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.main); }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : mode() != modes.main, 'b-requestDetail__icon1-active' : mode() == modes.main }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabGeneral'"></div>
+        </div>
+        <!--ko foreach: DynamicOptionsService.FormTabs -->
+        <div class="b-requestDetail__icon-wrap b-requestDetail__tab dynamic-options-icon-wrap" data-bind="click: $parent.SetTab.bind($data), css: {'dynamic-options-icon-wrap_active': $parent.mode() == $parent.modes.parameterPrefix + $data.Tab.ID}">
+            <a class="dynamic-options-icon" data-bind="text: $index() + 1"></a>
+            <div class="b-content-table__workplaceIcon-header dynamic-options-icon-title" data-bind="text: $data.Tab.Name"></div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿<div class="frmSoftwareInstallation">
+    <!--ko if: object()-->
+    <div class="content">
+        <div class="b-requestDetail-menu clearfix">
+            <!-- ko if: AssetOperationControl() != null -->
+            <div class="workflow" data-bind="template: {name: '../UI/Forms/Asset/Controls/AssetOperationsControl', data: { $entity: $data, $control: AssetOperationControl() }, afterRender: sizeChanged }" />
+            <div class="b-requestDetail-menu__item b-requestDetail-menu__inqury-date leftToolbarButtons im-gray-text">
+                <span data-bind="text: DateInquiry()" />
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="identificationRow">
+            <div class="outerIconAndControl">
+                <div class="icon" data-bind="css: {'active': CanEdit}, click: editName, tooltip: getTextResource('SoftwareInstallation_Form_Name')"><span class="nameIcon"></span></div>
+
+                <!-- ko if: isAddNewSoftwareInstallation -->
+                <div class="control border nowrap im-big-header" data-bind="css: {'invalid' : object().Name().length == 0}">
+                    <input type="text" maxlength="500" data-bind="textInput: object().Name, longNameTooltip: object().Name" />
+                </div>
+                <!-- /ko -->
+                <!-- ko ifnot: isAddNewSoftwareInstallation -->
+                <div class="control border nowrap im-big-header" data-bind="text: object().Name, longNameTooltip: object().Name"></div>
+                <!-- /ko -->
+
+            </div>
+        </div>
+        <div class="tabActive" data-bind="template: {name: tabActive().Template}">
+        </div>
+    </div>
+    <!--/ko-->
+    <div class="tabPages" data-bind="foreach: tabList">
+        <div class="tabButton" data-bind="visible: $data.IsVisible, click: $parent.selectTabClick, css: {'active' : $parent.tabActive() === $data, 'invalid' : $parent.tabActive().IsValid && $parent.tabActive().IsValid() == false}">
+            <div class="tabButtonIcon" data-bind="css: $data.IconCSS">
+                <!--ko if: $data.Index-->
+                <span data-bind="text: $data.Index"></span>
+                <!--/ko-->
+            </div>
+            <div class="tabButttonCaption" data-bind="text: $data.Name" />
+        </div>
+    </div>
+</div>

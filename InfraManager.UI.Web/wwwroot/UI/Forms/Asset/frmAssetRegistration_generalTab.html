@@ -1,0 +1,347 @@
+﻿<div class="tabPage assetForm" data-bind="with: tabActive, afterUpdateBlock: tabActive().afterRender">
+        <div class="network-device-mainTab">
+            <div class="network-device-mainTab-left-side">
+                <div class="network-device-characteristics">
+                    <div class="im-big-header">
+                        <span data-bind="restext: 'Asset_Identifiers'"></span>
+                        <span data-bind="css: $parent.IsIdentifiersContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $parent.ToggleIdentifiersContainer, tooltip: $parent.IsIdentifiersContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <table class="network-device-table-margineTop table-fixed" data-bind="visible: $parent.IsIdentifiersContainerVisible">
+                        <tbody>
+                            <!-- ko if: $parent.object().ShowIPAddress() -->
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="restext:'AssetIPAddress'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().IPAddress, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditIPAddress" />
+                                </td>
+                            </tr>
+                            <!-- /ko -->
+                            <tr data-bind="if: $parent.object().ShowInventoryNumber()">
+                                <td class="network-device-table-row"><span data-bind="restext:'Repair_InventoryNumber'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <input type="text" class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: $parent.object().InventoryNumber" />
+                                </td>
+                            </tr>
+
+                            <tr data-bind="if: $parent.object().ShowSerialNumber()">
+                                <td class="network-device-table-row"><span data-bind="restext:'Asset_SerialNumber'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <input type="text" class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: $parent.object().SerialNumber" />
+                                </td>
+                            </tr>
+                            <tr data-bind="if: $parent.object().ShowAssetTag()">
+                                <td class="network-device-table-row"><span data-bind="text: 'Asset tag'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <input type="text" class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: $parent.object().AssetTag" />
+                                </td>
+                            </tr>
+                            <tr data-bind="if: $parent.object().ShowIdentifier()">
+                                <td class="network-device-table-row"><span data-bind="text: 'ID'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <input type="text" class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: $parent.object().Identifier" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="restext: 'Code'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <input type="text" class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: $parent.object().Code" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="network-device-location-header" data-bind="if: $parent.object().ShowLocationBlock()">
+                    <div class="im-big-header">
+                        <span data-bind="restext: 'Asset_Location'"></span>
+                        <!--<span class="asset-btn-edit" data-bind="visible: $root.CanEdit, click: $root.EditLocation"></span>-->
+                        <span data-bind="css: $parent.IsLocationContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $parent.ToggleLocationContainer, tooltip: $parent.IsLocationContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <table class="network-device-table-margineTop table-fixed" data-bind="visible: $parent.IsLocationContainerVisible">
+                        <tbody>
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_OrganizationName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().OrganizationName" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_BuildingName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().BuildingName" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_RoomName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().RoomName" />
+                                </td>
+                            </tr>
+                            <tr data-bind="if: $parent.object().ShowRackName()">
+                                <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_RackName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().RackName" />
+                                </td>
+                            </tr>
+                            <tr data-bind="if: $parent.object().ShowRackPosition()">
+                                <td class="network-device-table-row"><span data-bind="restext:'Asset_RackPosition'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().RackPosition" />
+                                </td>
+                            </tr>
+                            <tr data-bind="if: $parent.object().ShowWorkPlace()">
+                                <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_WorkplaceName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().WorkPlaceName" />
+                                </td>
+                            </tr>
+                            <tr data-bind="if: $parent.object().ShowDeviceName()">
+                                <td class="network-device-table-row"><span data-bind="restext:'Asset_Equipment'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().DeviceName" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- ko if: $parent.object().ShowOnStore() -->
+                    <div class="network-device-checkbox-field-pair" data-bind="visible: $parent.IsLocationContainerVisible">
+                        <div class="network-device-onStorage-text" data-bind="restext:'Asset_OnStorage'"></div>
+                        <input class="network-device-onStorage" type="checkbox" data-bind="click: $root.EditOnStore, disable: true">
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="network-device-location-header" data-bind="if: $parent.object().ShowUtilization()">
+                    <div class="im-big-header">
+                        <span data-bind="restext: 'UsingAsset'"></span>
+                        <span data-bind="css: $parent.IsUtilizerContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $parent.ToggleUtilizerContainer, tooltip: $parent.IsUtilizerContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <table class="network-device-table-margineTop table-fixed" data-bind="visible: $parent.IsUtilizerContainerVisible">
+                        <tbody>
+                            <!-- ko if: $parent.object().ClassID() == 5 -->
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="restext:'Criticality'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field" style="padding-left:7px;padding-right:7px;">
+                                        <div class="searcherInput" data-bind="resattr: { placeholder : 'ChooseNewValue' }, text: $parent.object().CriticalityName, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditCriticality" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="network-device-table-row "><span data-bind="restext:'InfrastructureSegmentShort'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field" style="padding-left:7px;padding-right:7px;">
+                                        <div class="searcherInput" data-bind="resattr: { placeholder : 'ChooseNewValue' }, text: $parent.object().InfrastructureSegmentName, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditInfrastructureSegment" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="network-device-table-row "><span data-bind="restext:'Administrator'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div data-bind="template: { name: 'User/FormUser', if: AdministratorLoaded(), data: Administrator }"></div>
+                                    <div data-bind="template: { name: 'User/FormUserEmpty', if: !AdministratorLoaded(), data: Administrator }"></div>
+                                </td>
+                            </tr>
+                            <!-- /ko -->
+                            <tr data-bind="if: $parent.object().ShowUtilizer()">
+                                <td class="network-device-table-row "><span style="position: relative;" data-bind="restext:'AssetNumber_UtilizerName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <input type="text" class="asset-text-field utilizer" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: $parent.object().UtilizerFullName" />
+                                    <!--<div data-bind="template: { name: 'User/FormUser', if: UtilizerLoaded(), data: Utilizer }"></div>
+                                    <div data-bind="template: { name: 'User/FormUserEmpty', if: !UtilizerLoaded(), data: Utilizer }"></div>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="network-deivce-classifier" data-bind="style: {top: '20px' }">
+                    <div class="im-big-header" data-bind="style: {marginTop: '0'}">
+                        <span data-bind="restext: 'Asset_Classifier'"></span>
+                        <span data-bind="css: $parent.IsClassifierContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $parent.ToggleClassifierContainer, tooltip: $parent.IsClassifierContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <table class="network-device-table-margineTop table-fixed" data-bind="visible: $parent.IsClassifierContainerVisible">
+                        <tbody>
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="restext:'Asset_Category'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().ProductCatalogCategoryName" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_TypeName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().ProductCatalogTypeName" />
+                                </td>
+                            </tr>
+                            <tr data-bind="if: $parent.object().ShowManufacturerName()">
+                                <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_VendorName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().ManufacturerName" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_ModelName'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().ProductCatalogModelName" />
+                                </td>
+                            </tr>
+                            <tr data-bind="if: $parent.object().ShowModelCode()">
+                                <td class="network-device-table-row"><span data-bind="restext:'Asset_ModelCode'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <div class="asset-text-field-readonly" data-bind="text: $parent.object().ProductCatalogModelCode" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="network-deivce-classifier" data-bind="style: {top: '20px' }">
+                    <div class="im-big-header" data-bind="style: {marginTop: '0'}">
+                        <span data-bind="restext: 'Asset_Information'"></span>
+                        <span data-bind="css: $parent.IsNoteVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $parent.ToggleNoteContainer, tooltip: $parent.IsNoteVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <table class="network-device-table-margineTop table-fixed" data-bind="visible: $parent.IsNoteVisible">
+                        <tbody>
+                            <!-- ko if: $parent.object().ShowDescription()-->
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="restext:'Description'" /></td>
+                                <td class="network-device-table-editable-row" data-bind="event: { mouseenter: $root.CheckShowDescriptionTooltipMessage }">
+                                    <div class="asset-text-field asset-description" data-bind="css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditDescription">
+                                        <span data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().Description" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- /ko -->
+                            <tr>
+                                <td class="network-device-table-row" style="vertical-align:top;"><span data-bind="restext:'AssetNumber_Note'" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <textarea class="asset-text-field asset-note" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().Note" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="network-device-mainTab-right-side">
+                <div class="network-device-code-header">
+                    <div class="im-big-header">
+                        <span data-bind="restext: 'Asset_Characteristics'"></span>
+                        <span data-bind="css: $parent.IsCharacteristicsContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $parent.ToggleCharacteristicsContainer, tooltip: $parent.IsCharacteristicsContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+                    </div>
+                    <!-- ko if: $parent.IsCharacteristicsContainerVisible() == true -->
+                    <div data-bind="if: $parent.object().ShowAssetCharacteristics">
+                        <table class="network-device-table-margineTop table-fixed">
+                            <tbody>
+                                <!-- ko if: ShowPowerConsumption() -->
+                                <tr>
+                                    <td class="network-device-table-row"><span data-bind="restext:'AssetPowerConsumption'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: PowerConsumptionStr, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditPowerConsumption" />
+                                    </td>
+                                </tr>
+                                <!-- /ko -->
+                                <!--<tr>
+                                    <td class="network-device-table-row"><span data-bind="restext:'Asset_Processor'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field-readonly" data-bind="text: ''" />
+                                    </td>
+                                </tr>-->
+                                <!-- ko if: ShowDefaultPrinter() -->
+                                <tr>
+                                    <td class="network-device-table-row"><span data-bind="restext:'DefaultPrinterShort'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: DefaultPrinter, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditDefaultPrinter" />
+                                    </td>
+                                </tr>
+                                <!-- /ko -->
+                                <!-- ko if: ShowTotalSlotMemory()   -->
+                                <tr>
+                                    <td class="network-device-table-row"><span data-bind="restext:'Asset_RAM'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field-readonly" data-bind="text: TotalSlotMemory" />
+                                    </td>
+                                </tr>
+                                <!--<tr>
+                                    <td class="network-device-table-row"><span data-bind="restext:'Asset_DiskSpace'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field-readonly" data-bind="text: Memory" />
+                                    </td>
+                                </tr>-->
+                                <!-- /ko -->
+                            </tbody>
+                        </table>
+                        <!-- ko if: ShowCorpusCharacteristics() -->
+                        <div class="network-device-header-text" data-bind="restext: 'Asset_Corps'" />
+                        <table class="network-device-table-margineTop table-fixed">
+                            <tbody>
+                                <tr>
+                                    <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_VendorName'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: CsManufacturerName, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditManufacturer" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="network-device-table-row"><span data-bind="restext:'Asset_FormFactor'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field csModel" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: CsModel, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditCsModel" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="network-device-table-row"><span data-bind="restext:'Asset_PowerType'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field csFormFactor" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: CsFormFactor, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditCsFormFactor" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="network-device-table-row"><span data-bind="restext: 'Asset_Size'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: CsSize, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditCsSize" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="network-device-header-text" data-bind="text: 'BIOS'" />
+                        <table class="network-device-table-margineTop table-fixed">
+                            <tbody>
+                                <tr>
+                                    <td class="network-device-table-row"><span data-bind="restext:'AssetBiosModel'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: BIOSModel, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditBIOSModel" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="network-device-table-row"><span data-bind="restext:'AssetBiosVersion'" /></td>
+                                    <td class="network-device-table-editable-row">
+                                        <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: BIOSVersion, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditBIOSVersion" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- /ko -->
+                    </div>
+                    <table class="network-device-table-margineTop table-fixed">
+                        <tbody>
+                            <!-- ko foreach: $parent.object().SubDeviceParameterList -->
+                            <tr>
+                                <td class="network-device-table-row"><span data-bind="text:SubdeviceParameterFriendlyName" /></td>
+                                <td class="network-device-table-editable-row">
+                                    <!-- ko if: SubdeviceParameterType != 47 && SubdeviceParameterType != 49 -->
+                                    <input type="text" class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: SubdeviceParameterValue" />
+                                    <!-- /ko -->
+                                    <!-- ko if: SubdeviceParameterType == 47 || SubdeviceParameterType == 49 -->
+                                    <div class="asset-text-field-readonly" data-bind="text: SubdeviceParameterValue" />
+                                    <!-- /ko -->
+                                </td>
+                            </tr>
+                            <!-- /ko -->
+                        </tbody>
+                    </table>
+                    <!-- ko if: $parent.object().ClassID() == 5 -->
+                    <div class="ndRef__b" data-bind="template: {name: 'AssetForms/AssetModels/NetworkDeviceModel', data: { $model: $root.networkDeviceModel } }" />
+                    <!-- /ko -->
+                    <!-- ko if: $parent.object().ClassID() == 34 -->
+                    <!--<div class="ndRef__b" data-bind="template: {name: 'AssetForms/AssetModels/PeripheralModel', data: { $model: $root.networkDeviceModel } }" />-->
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    <!--</div>-->
+</div>

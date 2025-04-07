@@ -1,0 +1,6 @@
+﻿<div class="node" data-bind="element: domElement">
+    <div class="expander" data-bind="css: { 'expanded': isExpanded, 'visible' : nodes().length > 0 }, click: $root.toggleExpander"></div>
+    <div class="caption" data-bind="text: name, click: $root.nodeClick, clickBubble: false, css: { 'selected': $root.selectedNode() === $data }"></div>
+    <div class="nodes" data-bind="template: { name:'./../UI/Controls/ko.TreeNode', foreach: nodes }, visible: isExpanded() == true && nodes().length > 0"></div>
+</div>
+

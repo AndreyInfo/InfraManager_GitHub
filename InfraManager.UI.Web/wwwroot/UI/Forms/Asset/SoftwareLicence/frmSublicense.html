@@ -1,0 +1,82 @@
+﻿<div class="sublicenseForm b-requestDetail im-base-text">
+    <div class="b-requestDetail-left">
+        <div class="sublicense-commonTab" data-bind="visible: commonTabActive">
+            <div class="sublicense-commonTab-left">
+                <h1 data-bind="restext: 'Sublicense'"></h1>
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="restext: 'AssetNumber_ClassName'" /></p>
+                    <p><span class="field-value" data-bind="text: licenceClass" /></p>
+                </div>
+                <!-- ko if: hasValidPeriod -->
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="restext: 'Sublicense_Valid'"/></p>
+                    <p><span class="field-value" data-bind="text: validPeriod"></span></p>
+                </div>
+                <!-- /ko -->
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="text: getTextResource('AssetNumber_ModelName') + ' / ' + getTextResource('SoftwareLicence_ManufacturerName')"></span></p>
+                    <p><span class="field-value" data-bind="text: modelAndManufacturer"></span></p>
+                </div>
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="restext: 'SoftwareLicence_Scheme'"/></p>
+                    <p><span class="field-value" data-bind="text: licensingScheme"></span></p>
+                </div>
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="restext: 'SoftwareVersion'"/></p>
+                    <p><span class="field-value" data-bind="text: version"></span></p>
+                </div>
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="restext: 'Sublicense_LicenseType'"/></p>
+                    <p><span class="field-value" data-bind="text: licenceType"></span></p>
+                </div>
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="restext: 'Sublicense_LicenseRef'" /></p>
+                    <p>
+                        <span class="field-value" data-bind="text: licenceFullName"></span>
+                        <img class="show-license-details" src="images/view-details.png" data-bind="click: viewLicenseDetails" />
+                    </p>
+                </div>
+            </div>
+            <div class="sublicense-commonTab-right">
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="restext: 'Sublicense_SDC'" /></p>
+                    <p><span class="field-value" data-bind="text: softwareDistributionCentreName"></span></p>
+                </div>
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="restext: 'Sublicense_TotalRights'"/></p>
+                    <p><span class="field-value" data-bind="text: licenseTotalQuantity"></span></p>
+                </div>
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="restext: 'Sublicense_GrantedRights'"/></p>
+                    <p><span class="field-value" data-bind="text: licenseIssuedQuantity"></span></p>
+                </div>
+                <div class="field-area">
+                    <p><span class="field-title" data-bind="restext: 'Sublicense_AvailableRights'"/></p>
+                    <p><span class="field-value" data-bind="text: licenseAvailableQuantity"></span></p>
+                </div>
+            </div>
+        </div>
+        <div class="sublicense-referencesTab" data-bind="visible: permissionsTabActive">
+            <h1 data-bind="restext: 'SoftwareLicence_ReferencesTab_ListCaption'"></h1>
+            <div class="list" data-bind="template: {name: '../UI/Lists/Asset/LicenceList'}" />
+        </div>
+        <div class="sublicense-form-buttons sublicence-form-buttons-main">
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: transfer">
+                <span class="ui-button-text" data-bind="restext: 'Sublicense_SDCTransfer'" />
+            </button>
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: close">
+                <span class="ui-button-text" data-bind="restext: 'Close'"/>
+            </button>
+        </div>
+    </div>
+    <div class="b-requestDetail-right">
+        <div class="b-requestDetail__icon-wrap" data-bind="click: activateCommonTab">
+            <a class="b-requestDetail__icon b-requestDetail__icon1" data-bind="css: { 'b-requestDetail__icon1-active' : commonTabActive }"/>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'Tab_General'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click: activatePermissionsTab">
+            <a class="b-requestDetail__icon b-requestDetail__icon_permissions" data-bind="css: { 'b-requestDetail__icon_permissions-active': permissionsTabActive }" />
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'SoftwareLicence_ReferencesTab'"></div>
+        </div>
+    </div>
+</div>

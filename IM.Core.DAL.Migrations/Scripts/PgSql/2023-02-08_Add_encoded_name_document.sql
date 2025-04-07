@@ -1,0 +1,1 @@
+alter table document add column if not exists encoded_name varchar(250) null;

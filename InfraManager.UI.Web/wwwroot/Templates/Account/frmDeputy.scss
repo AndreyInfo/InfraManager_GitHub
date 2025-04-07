@@ -1,0 +1,82 @@
+﻿
+.frmDeputy {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .container {
+        max-width: 2300px;
+    }
+
+    .formDeputy-user-btn-edit {
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+        background: url(../images/listButtons.png) -273px -45px no-repeat;
+        cursor: pointer;
+        margin-left: 10px;
+        vertical-align: middle;
+        opacity: 0.6;
+    }
+
+    .formDeputy-requestDetail__table {
+        position: relative;
+
+        .formDeputy-users-block {
+
+            .notEmpty {
+                width: 400px;
+                padding: 15px 30px 10px 30px;
+            }
+
+            .empty {
+                width: 290px;
+                padding: 0px 30px 10px 0px;
+            }
+        }
+    }
+}
+
+    .formDeputy-text {
+        font-family: Arial;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        color: #61D6F2;
+    }
+
+.form-Deputy-Data {
+    width: 100%;
+    background-color: #f2fafd;
+    height: 170px;
+    padding: 20px 30px 20px 36px;
+}
+
+.funding-text-Deputy-Block {
+    width: 150px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    color: #9D9E9E;
+}
+.form-Deputy-Block {
+    margin-left: 15px;
+}
+
+.form-Deputy-BlockEdit > .clickable {
+    cursor: pointer;
+}
+
+.form-Deputy-BlockEdit > .border {
+    height: 26px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 150px;
+    background-color: white;
+    font-weight: bold;
+} 
+     
+

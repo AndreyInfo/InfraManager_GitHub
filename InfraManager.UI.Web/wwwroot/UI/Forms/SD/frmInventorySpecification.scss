@@ -1,0 +1,318 @@
+﻿@import "../../../Styles/general";
+
+.frmInventorySpecification {
+    
+    .menu__item-header {
+        min-width: 120px;
+    }
+
+    .mainTab {
+        padding-left: 20px;
+    }
+
+    .menuBlockIsWorking {
+        min-width: 120px;
+    }
+
+    .field-pair {
+        height: 50px;
+    }
+
+    .fieldPair {
+        margin-right: 10px;
+    }
+    
+    .model-network-icon {
+        top: 8px;
+    }
+
+    .characteristics {
+        margin-top: 20px;
+        padding-top:10px;
+        padding-left:0;
+    }
+
+    .b-content-table__workplaceIcon-header {
+        @extend .im-small-text;
+        color: $left-menu-gray-color;
+        text-align: center;
+        white-space: normal;
+        word-break: break-word;
+        display: block;
+    }
+    
+    .b-requestDetail-left {
+        word-wrap: break-word;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+    
+    .b-requestDetail-right {
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+        width: 105px;
+        height: 100%;
+    }
+    
+    .b-requestDetail__table {
+        width: 100%;
+        position: relative;
+        padding-right: 1px;
+        padding-bottom: 10px;
+    }
+    
+    .b-requestDetail__icon-wrap {
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
+    
+    .b-requestDetail__title-header-nd {
+        margin-bottom: 2px;
+        margin-top: 10px;
+        margin-right: 0;
+    }
+    
+    .title .field-pair {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .title {
+        margin-left: 10px;
+    }
+    
+    .title .model-network-icon {
+        display: inline-block;
+        position: relative;
+        top: 5px;
+    }
+    
+    .specification-text-field-header {
+        position: absolute;
+        margin-left: 14px;
+        padding: 5px;
+        width: calc(100% - 67px);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        top: 11px;
+        height: 32px;
+    }
+    
+    .specification-note-wrap {
+        position: relative;
+        margin-top: 15px;
+        margin-left: 20px;
+        margin-right: 35px;
+    }
+    
+    .mainTab-left-side {
+        display: inline-block;
+        width: calc(50% - 20px);
+    }
+
+    .specification-note {
+        height: 80px;
+    }
+
+    .mainTab-right-side {
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+        width: calc(50% - 10px);
+    }
+    
+    .location-header {
+        margin-top: 25px;
+        position: relative;
+    }
+
+    .code-header-wrap {
+        background: $light-gray-blue-text-color;
+    }
+
+    .newOnStorage {
+        top: 3px;
+        position: relative;
+    }
+
+    .onStorage {
+        top: 3px;
+        position: relative;
+    }
+
+    .code-header {
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 25px;
+        padding-top: 30px;
+    }
+    
+    .table-editable-row {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .table-row {
+        @extend .table-editable-row;
+        width: 120px;
+    }
+    
+    .table-margineTop {
+        margin-top: 5px;
+    }
+    
+    
+    .specification-text-field {
+        border: 1px solid $border-gray-color;
+        line-height: 25px;
+        min-height: 25px;
+        position: relative;
+        padding-left: 10px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        background: $white-background-color;
+        width: 100%;
+    }
+    
+    .specification-text-field-readonly {
+        @extend .specification-text-field;
+        border: unset;
+        background: unset;
+        line-height: 27px;
+        min-height: 27px;
+    }
+    
+    .table-margineTop .form-user-container {
+        padding: 0;
+    }
+    
+    .table-margineTop .form-user-empty-tb {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .table-margineTop .form-user-info {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .table-margineTop .form-user-phone {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .table-margineTop .form-user-dopinfo {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .b-requestDetail-menu__inqury-date {
+        position: relative;
+        padding-left: 10px;
+        max-width: 350px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .searcherInput {
+        background-image: url(../images/controls/searchPlaceHolder.png);
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+        text-indent: 20px;
+        color: darkgray;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    div:empty:before {
+        content: attr(placeholder);
+        color: darkgray;
+    }
+    
+    span:empty:before {
+        content: attr(placeholder);
+        color: darkgray;
+    }
+    
+    .searcherInput:not(:empty) {
+        background-image: none;
+        text-indent: 3px;
+        @extend .im-base-text;
+    }
+    
+    .outerIconAndControl {
+        margin-left: 10px;
+        margin-right: 0;
+        margin-top: 10px;
+        margin-bottom: 0;
+        overflow: hidden;
+        float: none;
+        position: relative;
+        & > .icon
+    
+    {
+        cursor: pointer;
+        pointer-events: none;
+        float: left;
+        position: relative;
+        margin-right: 10px;
+        border-radius: 20px;
+        padding: 6px;
+        &:hover
+    
+    {
+        background-color: whitesmoke;
+    }
+    
+    &.active {
+        pointer-events: all;
+    }
+    
+    span {
+        width: 24px;
+        height: 24px;
+        background-size: cover !important;
+        display: block;
+    }
+    
+    }
+    
+    & > .control {
+        position: relative;
+        overflow: auto;
+        min-height: 36px;
+        padding-top: 9px;
+        word-break: break-all;
+        &.border
+    
+    {
+        border: 1px solid $border-gray-color;
+        padding: 7px;
+    }
+    
+    &.nowrap {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    }
+    }
+}

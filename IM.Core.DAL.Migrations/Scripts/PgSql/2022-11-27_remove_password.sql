@@ -1,0 +1,1 @@
+alter table uiad_path drop column if exists password

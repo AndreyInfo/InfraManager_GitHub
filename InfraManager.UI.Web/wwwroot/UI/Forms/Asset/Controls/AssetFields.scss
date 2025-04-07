@@ -1,0 +1,45 @@
+﻿.network-device-mainTab-left-side {
+    display: inline-block;
+    width: calc(50% - 20px);
+}
+
+.network-device-mainTab-right-side {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    width: calc(50% - 10px);
+}
+
+.network-device-location-header {
+    margin-top: 25px;
+    position: relative;
+}
+
+.network-device-code-header {
+    background: $light-gray-blue-text-color;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 25px;
+}
+
+.network-device-table-editable-row {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.network-device-table-row {
+    @extend .network-device-table-editable-row;
+    width: 120px;
+}
+
+.network-device-table-margineTop {
+    margin-top: 5px;
+}
+
+.network-device-characteristics {
+    margin-top: 10px;
+}

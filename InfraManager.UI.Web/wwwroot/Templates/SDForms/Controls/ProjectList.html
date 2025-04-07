@@ -1,0 +1,69 @@
+﻿<!-- ko if: $header == 'clientSearch' -->  
+<div class="tabCaption im-client-search-header">
+    <span data-bind="restext: 'LinkCalls'"></span>
+</div>
+<span class="caption-arrow">
+    <span data-bind="css: $control.IsExpanded() == true ? 'arrow-up-white' : 'arrow-down-white', click: $control.ExpandCollapseClick, tooltip: $control.IsExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+        <span></span>
+    </span>
+</span>
+<!-- /ko -->
+<!-- ko if: $control.IsExpanded() == true -->
+<div class="callRef-list tabContent im-list" data-bind="style: {bottom: $control.imList.SelectedItemsCount() > 0 && $header != 'liteSearch' ? '60px' : '0'}, event: {scroll: $root.OnScroll}">
+    <!-- ko foreach: $control.imList.List -->
+    <div class="im-list-item">
+        <div class="im-list-item-chb-column">
+            <input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected, visible: $root.CanEdit" />
+        </div>
+        <div class="im-list-item-icon-column">
+            <div data-bind="css: CssIconClass"></div>
+        </div>
+        <div class="im-list-item-main-column">
+            <div class="im-list-item-main-firstrow" data-bind="css: { 'cursor-pointer': $root.CanEdit, 'cursor-pointer': $root.CanShow }, click: $parent.$control.ShowObjectForm">
+                <span class="reference-object-main-header" data-bind="text: NumberName, longNameTooltip: NumberName"></span>
+            </div>
+            <div class="im-list-item-main-secondrow">
+                <span class="im-list-row-item reference-object-mode-text"><span data-bind="restext: 'Before'"></span>: <span data-bind="text: UtcDatePlanEnd"></span></span>
+            </div>
+        </div>
+        <div class="im-list-item-user-column">
+            <!-- ko if: DirectorObj != null -->
+            <span data-bind="template: { name: 'User/FormUser', data: DirectorObj }"></span>
+            <!-- /ko -->
+        </div>
+        <div class="im-list-item-status-column">
+            <span class="im-list-row-item reference-object-status-textwrap"><span class="reference-object-status-icon"></span> <span class="reference-object-status-text" data-bind="text: StateName, longNameTooltip: StateName"></span></span>
+        </div>
+        <div class="im-list-item-end-column">
+            <span class="im-list-row-item reference-object-ended-text"><span data-bind="text: UtcDateEnd, longNameTooltip: UtcDateEnd"></span></span>
+        </div>
+
+    </div>
+    <!-- /ko -->
+    <!-- ko if: $control.imList.List().length == 0 -->
+    <center><span class="im-list-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+    <!-- /ko -->
+</div>
+<!-- /ko -->
+<!--когда панели появятся автоматом должен установиться отступ tabContent от нижнего края посредствам ko-->
+<div class="cRef__buttons" style="display:none;">
+    <!-- ko if: $root.CanEdit -->
+    <button class="button button_b-ctrl_note button_size_M button_type_normal links__buttons-btn"><span class="button__label" data-bind="restext: 'CallRefButtonAddLink'"></span></button>
+    <button class="button button_b-ctrl_note button_size_M button_type_normal links__buttons-btn"><span class="button__label" data-bind="restext: 'CallRefButtonAddNew'"></span></button>
+    <!-- /ko -->
+</div>
+<!-- ko if: $header != 'liteSearch' -->
+<div class="cRef__actions im-list__actions" data-bind="visible: $control.imList.SelectedItemsCount() > 0">
+    <div class="im-list__actions-wrapper">
+        <div class="cRef__actions-list im-list__actions-list" data-bind="foreach: $control.imList.OperationList">
+            <button class="button button_b-ctrl_note button_size_M button_type_normal im-list__actions-button" data-bind="visible: IsVisible, click: OnClick ">
+                <div class="button__label" data-bind="text: Text"></div>
+            </button>
+        </div>
+        <div class="im-list__right-panel">
+            <div class="cRef__actions-count im-list__actions-count"><span data-bind="restext: 'Choosen'"></span>: <span data-bind="text: $control.imList.SelectedItemsCount"></span></div>
+            <div class="cRef__actions-close im-list__actions-close"><a data-bind="restext: 'UndoCheck', click: $control.imList.UncheckAll"></a></div>
+        </div>
+    </div>
+</div>
+    <!-- /ko -->

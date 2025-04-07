@@ -1,0 +1,614 @@
+﻿@import "../../../../Styles/general";
+
+
+.frmLicenceScheme {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    .input_clickable {
+        cursor: pointer;
+    }
+
+    .label_bold {
+        font-weight: bold;
+    }
+
+    .input_radio {
+        /* margin-top: -16px;*/
+        vertical-align: middle;
+    }
+
+    .inline_block {
+        display: inline-block;
+    }
+
+    .content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 120px;
+
+
+
+        .identificationRow {
+            margin-top: 25px;
+
+            .outerIconAndControl {
+                margin-left: 25px;
+                margin-right: 0;
+                margin-bottom: 0;
+                overflow: hidden;
+                float: none;
+                position: relative;
+
+
+                & > .icon {
+                    cursor: pointer;
+                    pointer-events: none;
+                    float: left;
+                    position: relative;
+                    margin-right: 10px;
+                    border-radius: 20px;
+                    padding: 6px;
+
+                    &:hover {
+                        background-color: whitesmoke;
+                    }
+
+                    &.active {
+                        pointer-events: all;
+                    }
+
+                    span {
+                        width: 24px;
+                        height: 24px;
+                        background-size: cover !important;
+                        display: block;
+                    }
+                }
+
+                & > .control {
+                    position: relative;
+                    overflow: auto;
+                    height: 36px;
+                    line-height: 26px;
+                    word-break: break-all;
+
+                    > input {
+                        width: 100%;
+                        padding: 4px 7px;
+                        border: none;
+                        outline: none;
+                    }
+
+                    &.border {
+                        border: 1px solid $border-gray-color;
+                    }
+
+                    &.nowrap {
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+
+                    &.invalid input {
+                        background-color: $invalid-background-color;
+                    }
+                }
+            }
+        }
+
+        .icon > span.nameIcon {
+            background: url('../UI/Forms/Settings/LicenceSchemes/Icons/name.svg') no-repeat;
+            width: 36px;
+            height: 36px;
+            margin-top: -6px;
+        }
+
+        .icon.active {
+            & > span.nameIcon {
+                background: url('../UI/Forms/Settings/LicenceSchemes/Icons/name.svg') no-repeat;
+                width: 36px;
+                height: 36px;
+                margin-top: -6px;
+            }
+        }
+
+
+
+        .fieldControl {
+            position: relative;
+            word-break: break-word;
+            white-space: normal;
+
+            &.border {
+                border: 1px solid $border-gray-color;
+                padding: 2px 7px;
+                line-height: 22px;
+                height: 26px;
+            }
+
+            &.nowrap {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            /* &.multiline {
+                min-height: 60px;
+                height: auto;
+            }*/
+
+            &.multiline {
+                min-height: 60px;
+                height: auto;
+
+                > * {
+                    width: 100%;
+                    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+                    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+                    box-sizing: border-box; /* Opera/IE 8+ */
+                    resize: none;
+                    height: 60px;
+                    border: none;
+                    outline: none;
+                    padding: 2px 7px;
+                }
+            }
+
+            &.bold {
+                font-weight: bold;
+            }
+
+            &.blue {
+                color: $blue-text-color;
+            }
+
+            &.white {
+                background-color: white;
+            }
+
+            &.clickable {
+                cursor: pointer;
+                width: 100%
+            }
+
+            &.number_box {
+                width: 130px;
+            }
+
+            .arrow_grey_dark {
+                position: static;
+                width: 16px;
+                height: 16px;
+                left: 462px;
+                top: 5px;
+                /* Inside Auto Layout */
+
+                flex: none;
+                order: 1;
+                flex-grow: 0;
+                margin: 0px 10px;
+                position: absolute;
+                width: 12px;
+                height: 5px;
+                left: calc(50% - 12px/2);
+                top: calc(50% - 5px/2 + 0.5px);
+                /* Grey/Grey night */
+
+                border: 1px solid #8394A5;
+            }
+
+            &.nud {
+                /* overflow: hidden;*/
+
+                > .stepper-wrap {
+                    width: calc(100% - 15px);
+
+                    > input {
+                        width: 100%;
+                        border: 1px solid $border-gray-color;
+                        line-height: 26px;
+                        padding: 0 7px;
+                        outline: none;
+                        height: 28px;
+                    }
+                }
+            }
+        }
+
+        .fieldCaption {
+            color: $gray-text-color;
+            font-size: 11px;
+
+            &.text {
+                color: $black-text-color;
+                font-size: inherit;
+            }
+        }
+
+        .combobox {
+            width: 100%;
+        }
+
+        .tabGeneral {
+            position: relative;
+            display: table;
+            width: 100%;
+            outline: none;
+
+            .information-div {
+                padding-left: 25px;
+            }
+
+            .schemeTypee-div {
+                margin-top: 20px;
+                padding-left: 25px;
+            }
+        }
+
+        .tabSettings {
+            position: relative;
+            display: table;
+            width: 100%;
+            outline: none;
+
+
+            .licenseCountPerObject-div {
+                margin-top: 20px;
+            }
+
+            .bindRightsToObjects-div {
+                font-weight: normal;
+                margin-top: 20px;
+            }
+
+            .licenseUserAccess-div {
+                margin-top: 20px;
+                font-weight: normal;
+            }
+
+            .licenseAllClusterHosts-div {
+                margin-top: 20px;
+                font-weight: normal;
+            }
+
+            .allowedNumberOfInstallationsOnTheServer-div {
+                margin-top: 20px;
+
+                .radio_two {
+                    margin-left: 40px;
+
+                    input {
+                        cursor: pointer;
+                    }
+
+                    label {
+                        cursor: pointer;
+                        font-weight: normal;
+                    }
+                }
+            }
+
+            .numberOfInstallationsOnVirtualMachines-div {
+                margin-top: 20px;
+
+                .radio {
+                    margin-right: 25px;
+
+                    input {
+                        cursor: pointer;
+                    }
+
+                    label {
+                        cursor: pointer;
+                        font-weight: normal;
+                    }
+                }
+            }
+
+            .rulesForDeterminingAdditionalRightsAndInstallations {
+                margin-top: 25px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                background: #F2FAFD;
+
+                .numberOfAdditionalRights {
+                    margin-top: 20px;
+                }
+
+                .sizeOfIncreaseInNumberOfInstallations {
+                    margin-top: 20px;
+                }
+            }
+
+            .fieldCaption {
+                color: $gray-text-color;
+                font-size: 11px;
+
+                &.blue {
+                    color: $blue-text-color;
+                    font-size: inherit;
+                }
+
+                &.text {
+                    color: $black-text-color;
+                    font-size: inherit;
+                }
+            }
+
+            .inline {
+                display: inline-block;
+            }
+        }
+
+
+        .tabCoefficients {
+            position: relative;
+            display: table;
+            width: 100%;
+            outline: none;
+            padding-left: 10pt;
+
+            .information-div {
+                padding-left: 25px;
+            }
+
+            .schemeTypee-div {
+                margin-top: 20px;
+                padding-left: 25px;
+            }
+
+            .tabCoefficients-icon-add {
+                width: 26px;
+                height: 26px;
+                background: url('../images/controls/cross_blue.svg') no-repeat;
+                cursor: pointer;
+                position: relative;
+                top: 5px;
+                background-size: cover;
+                display: inline-block;
+                margin-left: 10px;
+            }
+        }
+
+
+        .part_left_25 {
+            margin-left: 25px;
+        }
+
+        .part_right_25 {
+            margin-right: 25px;
+        }
+
+        .tabActive {
+            margin-top: 20px;
+            overflow: auto;
+            margin-right: 0;
+            position: relative;
+            max-height: 700px;
+
+            .tabPage {
+                &.ml {
+                    margin-left: 25px;
+                }
+
+                &.h100 {
+                    height: 100%;
+                    overflow: hidden;
+                }
+
+                .caption {
+                    margin-bottom: 10px;
+                }
+
+                &.noscroll {
+                    overflow: hidden;
+                }
+
+                .tabCaption {
+                    margin: 0;
+                    height: 20px;
+                }
+
+                .tabContent {
+                    top: 35px;
+                }
+
+                .b-requestDetail_table {
+                    margin-right: 0;
+                    width: calc(100% - 10px);
+                }
+
+                .h100WithoutCaption {
+                    height: calc(100% - 30px);
+                    overflow: auto;
+                }
+
+                .firstConditionsBlock {
+                    margin-bottom: 10px;
+
+                    item {
+                        display: inline-block;
+                        margin-right: 25px;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        .fieldCaption {
+                            color: $gray-text-color;
+                            font-size: 11px;
+                            height: 20px;
+                        }
+
+                        .fieldValue {
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tabPages {
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+        width: 120px;
+        height: 100%;
+
+        .tabButton {
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 15px;
+            margin-top: 5px;
+
+            .tabButtonIcon {
+                display: inline-block;
+                width: 38px;
+                height: 38px;
+                background-size: cover !important;
+                position: relative;
+
+                &.settingsTab {
+                    background: url('../UI/Forms/Settings/LicenceSchemes/Icons/settings_passive.svg') no-repeat;
+                }
+
+                &.historyTab {
+                    background: url('../UI/Forms/Settings/LicenceSchemes/Icons/history_pssive.svg') no-repeat;
+                }
+
+                &.generalTab {
+                    background: url('../UI/Forms/Settings/LicenceSchemes/Icons/main_passive.svg') no-repeat;
+                }
+
+                &.coeffTab {
+                    background: url('../UI/Forms/Settings/LicenceSchemes/Icons/coeff_passive.svg') no-repeat;
+                }
+
+                span {
+                    color: #bdd1db;
+                    font-size: 16px;
+                    width: 38px;
+                    height: 38px;
+                    text-align: center;
+                    line-height: 38px;
+                    vertical-align: middle;
+                }
+            }
+
+            .tabButttonCaption {
+                line-height: 11px;
+                font-size: 11px;
+                white-space: normal;
+                word-break: break-word;
+                max-height: 22px;
+                overflow: hidden;
+                color: $left-menu-gray-color;
+            }
+        }
+
+        .tabButton.active, .tabButton:hover {
+            .tabButtonIcon {
+
+                &.settingsTab {
+                    background: url('../UI/Forms/Settings/LicenceSchemes/Icons/settings_active.svg') no-repeat;
+                }
+
+                &.historyTab {
+                    background: url('../UI/Forms/Settings/LicenceSchemes/Icons/history_active.svg') no-repeat;
+                }
+
+                &.generalTab {
+                    background: url('../UI/Forms/Settings/LicenceSchemes/Icons/main_active.svg') no-repeat;
+                }
+
+                &.coeffTab {
+                    background: url('../UI/Forms/Settings/LicenceSchemes/Icons/coeff_active.svg') no-repeat;
+                }
+
+                span {
+                    color: $blue-text-color;
+                }
+            }
+
+            .tabButttonCaption {
+                color: $blue-text-color;
+            }
+        }
+
+        .tabButton:hover {
+            .tabButtonIcon {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    div:empty:before {
+        content: attr(placeholder);
+        color: darkgray;
+    }
+
+    .frmLicenceScheme_editCoeff {
+        width: 100%;
+        //position: fixed;
+
+        .fieldCaption {
+            font-size: 11px;
+            font-family: Arial;
+            text-align: left;
+            vertical-align: central;
+        }
+
+        .content {
+            width: max-content;
+        }
+
+        .model-div {
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            min-width: 400px;
+
+            .editor {
+                font-size: 12px;
+                margin-left: 0px;
+                border-style: solid;
+                border-width: 1pt;
+            }
+
+            .fieldControl {
+                cursor: pointer;
+            }
+        }
+
+        .coefficient-div {
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            min-width: 400px;
+
+            .numberInputWrapper {
+                margin-top: unset;
+            }
+
+            .coefficientValue {
+                margin-left: 0px;
+                margin-right: 0px;
+                width: 100%;
+            }
+        }
+
+        .searcherSchemeCoeffInput {
+            width: 100%;
+        }
+    }
+}
+

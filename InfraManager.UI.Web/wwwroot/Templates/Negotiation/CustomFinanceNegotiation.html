@@ -1,0 +1,78 @@
+﻿<div class="finneg_form">
+    <div class="finneg_form-list">
+        <table class="imList-table">
+            <colgroup>
+                <col style="width: 38px" />
+                <col style="width: 180px" />
+                <col style="width: 50px" />
+                <col span="10" style="width: 180px" />
+            </colgroup>
+            <thead>
+                <tr class="imList-tableHeaderRow">
+                    <th class="imList-tableHeaderCheckBox">
+                        <input class="b-content-table__th-checkbox" type="checkbox" data-bind="checked: SpecList_SelectAll" />
+                    </th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_State'"></th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_OrderNumber'"></th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_Type'"></th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_Model'"></th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_PriceWithoutNDS'"></th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_PriceWithNDS'"></th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_NDSinfo'"></th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_Count'"></th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_Note'"></th>                    
+                    <th data-bind="restext: 'ActivesRequestSpecification_CostWithNDS'"></th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_CostWithoutNDS'"></th>
+                    <th data-bind="restext: 'ActivesRequestSpecification_SumNDS'"></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr class="imList-tableFooterRow">
+                    <td colspan="10" style="text-align: right" data-bind="restext: 'TotalSummaryHeader'"></td>
+                    <td class="imList-rightCell" data-bind="text: SpecList_TotalCostWithNDSString()"></td>
+                    <td class="imList-rightCell" data-bind="text: SpecList_TotalCostWithoutNDSString()"></td>
+                    <td class="imList-rightCell" data-bind="text: SpecList_TotalSumNDSString()"></td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <!-- ko foreach: SpecList -->
+                <tr class="imList-tableRow">
+                    <td class="imList-tableCheckBox">
+                        <input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected" />
+                    </td>
+                    <td class="imList-clickableCell" data-bind="text: StateString, click: $parent.SpecList_Edit"></td>
+                    <td class="imList-clickableCell" data-bind="text: OrderNumber, click: $parent.SpecList_Edit"></td>
+                    <td class="imList-clickableCell" data-bind="text: ProductCatalogTypeName, click: $parent.SpecList_Edit"></td>
+                    <td class="imList-clickableCell" data-bind="text: ProductCatalogModelFullName, click: $parent.SpecList_Edit"></td>
+                    <td class="imList-rightCell" data-bind="text: PriceWithoutNDSString"></td>
+                    <td class="imList-rightCell" data-bind="text: PriceWithNDSString"></td>
+                    <td data-bind="text: NDSInfo"></td>
+                    <td data-bind="text: Count"></td>
+                    <td data-bind="text: Note"></td>                    
+                    <td class="imList-rightCell" data-bind="text: CostWithNDSString"></td>
+                    <td class="imList-rightCell" data-bind="text: CostWithoutNDSString"></td>
+                    <td class="imList-rightCell" data-bind="text: SumNDSString"></td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+    <div class="finneg_bottomActions">
+        <div class="finneg_specButtons" data-bind="style: { visibility: CanPressButtons() ? 'visible' : 'hidden' }">
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: SetAgreed, visible: CanAgree">
+                <span class="ui-button-text" data-bind="restext: 'FinNeg_SetAgreeButton', longNameTooltip: getTextResource('FinNeg_SetAgreeButton')"></span>
+            </button>
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: SetDecline, visible: CanDecline">
+                <span class="ui-button-text" data-bind="restext: 'FinNeg_SetDeclineButton', longNameTooltip: getTextResource('FinNeg_SetDeclineButton')"></span>
+            </button>
+        </div>
+        <div class="finneg_voteBlock" data-bind="style: { visibility: SpecList_IsReadyToVote() ? 'visible' : 'hidden' }">
+            <div class="finneg_voteBlock-header" data-bind="restext: 'FinNeg_VoteAdvice'"></div>
+            <div class="finneg_voteBlock-data">
+                <span class="finneg_voteBlock-icon" data-bind="css: IconFor, click: SetVoteFor"></span>
+                <span class="finneg_voteBlock-icon" data-bind="css: IconAgainst, click: SetVoteAgainst"></span>
+                <input type="text" class="finneg_voteBlock-TextField" data-bind="textInput: Comment, resattr: { placeholder: 'YourComment' }" />
+            </div>
+        </div>
+    </div>
+</div>

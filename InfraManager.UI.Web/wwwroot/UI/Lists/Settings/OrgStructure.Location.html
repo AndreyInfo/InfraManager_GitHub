@@ -1,0 +1,12 @@
+﻿<div class="orgstructure-location" data-bind="with: Location(), afterUpdateBlock: function () { return Location() && Location().AfterRender(); }">
+    <div class="orgstructure-text-with-header">
+        <span class="orgstructure-text-header" data-bind="restext: 'OrgStructureLocationOrganization'"></span>
+        <span class="orgstructure-text" data-bind="text: (Organization() && Organization().Name), visible: !IsEditModeActive()"></span>
+        <div class="orgstructure-organizationSelector" data-bind="visible: IsEditModeActive()"></div>
+    </div>
+    <div class="orgstructure-text-with-header">
+        <span class="orgstructure-text-header" data-bind="restext: 'OrgStructureLocationSubdivision'"></span>
+        <span class="orgstructure-text" data-bind="text: SubdivisionFullName, visible: !IsEditModeActive()"></span>
+        <div class="orgstructure-subdivisionSelector" data-bind="visible: IsEditModeActive()"></div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿<div class="treeNodeWrapper">
+    <div class="treeNode" data-bind="css: { 'selectedNode': $root.IsSelected($data), 'clickableMode': $root.IsClickable($data) }, click: $root.OpenCloseClickFromHtml, element: domElement">
+        <div class="treeNodeExpander" data-bind="css: { 'expanded': IsExpanded }, style: { visibility: CanContainsSubNodes() ? '' : 'hidden' }"></div>
+        <div class="treeNodeCheckbox" data-bind="visible: $root.ShowCheckboxes">
+            <input type="checkbox" data-bind="checked3: CheckedState, allowInterminate: true" />
+        </div>
+        <div class="treeNodeHeaderWrapper" data-bind="event: {'contextmenu' : $root.ContextMenuRequested }">
+            <div class="treeNodeIcon" data-bind="css: $root.TakeCssNode($data)"></div>
+            <div class="treeNodeText" data-bind="text: ObservableName, click: $root.ClickNode, clickBubble: false"></div>
+            <div class="treeNodeContextMenuButton" data-bind="visible: $root.IsSelected($data) && $root.IsContextMenuEnabled(), click: $root.ContextMenuRequested"></div>
+        </div>
+    </div>
+    <!-- ko if: SubListVisible -->
+    <div class="treeNodeSubList" data-bind="template: { name: '../UI/Lists/Settings/OrgStructure.TreeNode', foreach: Nodes }, visible: IsExpanded"></div>
+    <!-- /ko -->
+</div>

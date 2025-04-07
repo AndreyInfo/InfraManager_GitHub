@@ -1,0 +1,8 @@
+﻿<div class="subdivision-list" data-bind="with: SubdivisionList()">
+    <div class="organization-list_searchText">
+        <input type="text" class="text-input searcherInput tabModelSearcher" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: searchText">
+        <div class="organization-list_searchText-clearfield cursor-pointer" data-bind="click: function() {searchText('');}, visible: searchText().length > 0"></div>
+    </div>
+    <div data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'SubdivisionList', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false, multiSelect: false, maxVisibleRowCount: 10}"></div>
+    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+</div>

@@ -1,0 +1,1 @@
+alter table supplier_contact_person alter column id set default gen_random_uuid()

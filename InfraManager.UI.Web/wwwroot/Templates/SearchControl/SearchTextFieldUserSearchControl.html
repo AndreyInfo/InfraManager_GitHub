@@ -1,0 +1,28 @@
+﻿<div class="search-results-control">   
+    <div class="scrollBar" tabindex="0">
+        <div class="search-results-control_item notFound" data-bind="visible: NotFoundVisible">
+            <div class="search-results-control_item-title" data-bind="restext: 'Search_UserNotFound'" />
+        </div>
+        <div class="search-results-control_item veryShortText" data-bind="visible: VeryShortText">
+            <div class="search-results-control_item-title" data-bind="restext: 'Search_VeryShortText'" />
+            <div class="ui-dialog-buttonset" style="opacity:0.5">
+                <button type="button" class="ui-button ui-button-text-only" data-bind="click: SearchImmediately">
+                    <span class="ui-button-text" data-bind="restext: 'SearchButton'" />
+                </button>
+            </div>
+        </div>
+        <div class="search-results-control_item searching" data-bind="visible: SearchingVisible">
+            <div class="search-results-control_item-title" data-bind="restext: 'Search_InProgress'" />
+        </div>
+        <div class="search-results-control_item error" data-bind="visible: SearchingErrorVisible">
+            <div class="search-results-control_item-title" data-bind="restext: 'Search_Error'" />
+        </div>
+        <div data-bind="foreach: Items">
+            <div class="search-results-control_item cursor-pointer" data-bind="click: Click, css: {active : $root.SelectedItem() === $data}, attr: {id: htmlID}">
+                <div class="search-results-control_item-title" data-bind="highlightText: FullName, searchText: $parent.syncSearchText, highlightClass: 'highlight'" />
+                <div class="search-results-control_item-descr" data-bind="highlightText: Details, searchText: $parent.syncSearchText, highlightClass: 'highlight'" />
+            </div>
+        </div>
+    </div>
+    <span class="nub"></span>
+</div>

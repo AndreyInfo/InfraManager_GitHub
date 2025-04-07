@@ -1,0 +1,92 @@
+﻿@import "../../../Styles/general";
+
+.orgstructure-location, .orgstructure-schedule {
+
+    .selectControl-body {
+        width: 100%;
+        padding: 0px;
+        //
+        position: relative;
+        border: 1px solid $border-gray-color;
+    }
+
+    .selectControl-TextField {
+        @extend .im-base-text;
+        overflow: hidden;
+        padding: 2px;
+        outline: none;
+        border-width: 1px !important;
+        border-color: $orgstructure-unfocused-field-border-color !important;
+        resize: none;
+        min-height: 22px;
+        height: auto;
+        width: 100%;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border: 1px solid $orgstructure-unfocused-field-border-color;
+    }
+
+    .selectControl-TextField:focus {
+        border-width: 2px !important;
+        border-color: $orgstructure-focused-field-border-color !important;
+    }
+
+    .selectControl-TextField.disabled {
+        border-width: 1px !important;
+        border-color: $orgstructure-disabled-field-border-color !important;
+        background-color: $orgstructure-disabled-field-background-color !important;
+    }
+
+    .selectControl-item {
+        cursor: pointer;
+        margin: 0px;
+        background-color: $white-background-color;
+        line-height: 20px;
+        //
+        width: 100%;
+        display: flex;
+        display: -ms-flexbox;
+        flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-direction: row;
+        -ms-flex-direction: row;
+        justify-content: flex-start;
+        -ms-flex-pack: start;
+        align-items: center;
+        -ms-flex-align: center;
+    }
+
+    .selectControl-item:hover {
+        background-color: $orgstructure-navigation-text-hover-color;
+
+        .selectControl-itemText {
+            color: #ffffff;
+        }
+    }
+
+    .selectControl-item.selected {
+        background: $orgstructure-navigation-text-hover-color;
+
+        .selectControl-itemText {
+            color: #ffffff;
+        }
+    }
+
+    .searcherInput {
+        background-image: url(../images/controls/searchPlaceHolder.png);
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+        text-indent: 40px;
+        color: darkgray;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .searcherInput:not(:empty) {
+        background-image: none;
+        text-indent: 3px;
+        @extend .im-base-text;
+    }
+}

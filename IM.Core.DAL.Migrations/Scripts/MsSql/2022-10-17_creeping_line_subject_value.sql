@@ -1,0 +1,1 @@
+ALTER TABLE [EventSubject] ALTER COLUMN [SubjectValue] NVARCHAR(550) NOT NULL

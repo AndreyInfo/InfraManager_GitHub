@@ -1,0 +1,122 @@
+﻿<!--<textarea class="text-input sdTextEditor" data-bind="attr: { placeholder: fieldFriendlyName }" />-->
+
+<style>
+    .element_formula_editor {
+        border: 1px solid black;
+        border-radius: 15%;
+        height: 26px;
+        line-height: 26px;
+        display: inline-block;
+        text-align: center;
+        margin: 6px;
+        padding-left: 6px;
+        padding-right: 6px;
+        cursor: pointer;
+    }
+
+    .element_parametr_formula_editor {
+        background: #cbedf1;
+    }
+
+    .element_sign_formula_editor {
+        background: #efe3b3;
+    }
+
+    li {
+        border: 1px solid black;
+        background-color: var(--color-gray-light);
+        margin: 5px;
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+    }
+
+    .dragSource {
+        opacity: .4;
+    }
+
+    .dragover {
+        border-style: dashed;
+    }
+
+    .trash {
+        border: 1px solid red;
+        background-color: pink;
+        text-align: center;
+    }
+</style>
+
+<div data-bind="with: parameterModel">
+    <input class="textResult" type="hidden" data-bind="value: textResult" />
+    <div>
+        <div style="width: 70%; height: 100px; overflow: auto; float: left; border: 1px solid #c1cfd9">            
+            <!-- ko foreach: conditionDirectoryType1 -->
+            <span class="element_formula_editor element_parametr_formula_editor" data-bind="text: name, click:  addCondition">
+            </span>
+
+            <!-- /ko -->
+        </div>
+
+        <div style="width: 30%; height: 100px; overflow: auto; border: 1px solid #c1cfd9">
+            <!-- ko foreach: conditionDirectoryType2 -->
+            <span class="element_formula_editor element_sign_formula_editor" data-bind="text: name, click:  addCondition">                
+            </span>
+            <!-- /ko -->
+        </div>
+    </div>
+
+    <div style="padding-top: 10px">
+        <div class="element_formula_editor">
+            <label style="cursor: pointer; padding:5px">=</label>
+        </div>        
+            <!-- ko foreach: conditionList -->
+            <div class="element_formula_editor draggable" draggable="true" data-bind="css: { element_parametr_formula_editor:  conditionType() == 1, 'element_sign_formula_editor': conditionType() == 2 },
+              event:{
+       dragstart:   function(data, event){
+                    $(event.target).addClass('dragSource')
+                    mainModel.drag_start_index($index());
+                    return $(event.target).hasClass('draggable');},
+
+       dragend:   function(data, event){
+                   mainModel.drag_start_index(-1);
+                   $(event.target).removeClass('dragSource')
+                   return true;
+       },
+       dragover:  function(data, event){
+                  event.preventDefault();
+                  },
+       dragenter: function(data, event){
+                mainModel.drag_target_index($index());
+                var element = $(event.target)
+                if(element.hasClass('draggable'))
+                     element.toggleClass('dragover');
+                event.preventDefault();
+    },
+       dragleave: function(data, event, $index){
+                var element = $(event.target)
+                if(element.hasClass('draggable'))
+                     element.toggleClass('dragover');
+                event.preventDefault();
+    },
+       drop: handleDrop
+        }
+       , text: conditionName
+       , click: removeCondition" >
+                <!--<span style="padding:5px" data-bind="text: conditionName"></span>-->  <!--, click: removeCondition-->
+                <!--<label style="cursor: pointer; padding:5px" data-bind="click: removeCondition">x</label>-->
+            </div>
+            <!-- /ko -->
+
+            <div class="trash" data-bind="visible:dragging, event:{
+       dragover: function(data, event){
+          event.preventDefault();
+       },
+       drop: function(data, event){
+             alert('drop');
+          console.log('trash', $parent.drag_start_index())
+          mainModel.trash(mainModel.drag_start_index())
+          event.preventDefault();
+       }
+}"> <span>УДАЛИТЬ</span> </div>
+        </div>
+</div>

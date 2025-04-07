@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX if not exists ui_calendar_weekend_name on calendar_weekend(name);

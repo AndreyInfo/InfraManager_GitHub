@@ -1,0 +1,48 @@
+﻿<div class="assetIdenfifierSet">
+    <div data-bind="visible: ShowGenerateInvNumber">
+        <div class="assetIdenfifierSet-Caption" data-bind="restext: 'Repair_InventoryNumber'" />
+        <!--<div class="assetIdentifierSet-pair">
+            <div class="assetIdentifierSet-label" data-bind="restext: 'Prefix'" />
+            <input class="assetIdentifierSet-TextField" type="text" data-bind="textInput: InventoryNumber_Prefix" />
+        </div>
+        <div class="assetIdentifierSet-pair">
+            <div class="assetIdentifierSet-label" data-bind="restext: 'ValueLength'" />
+            <input class="assetIdentifierSet-ValueLength-TextField" type="text" data-bind="value: InventoryNumber_Length, valueUpdate: 'input'" />
+        </div>
+        <div class="assetIdentifierSet-pair">
+            <div class="assetIdentifierSet-label" data-bind="restext: 'Value'" />
+            <input class="assetIdentifierSet-Value-TextField" type="text" data-bind="value: InventoryNumber_Value, valueUpdate: 'input'" />
+        </div>
+        <div class="assetIdentifierSet-pair">
+            <input class="assetIdentifierSet-Checkbox" type="checkbox" data-bind="checked: FillInventoryNumber" />
+            <div data-bind="restext: 'AssetRegistationFill'" />
+        </div>-->
+        <div class="assetIdentifierSet-pair">
+            <input class="assetIdentifierSet-Checkbox" type="checkbox" data-bind="checked: FillSubdeviceInventoryNumber" />
+            <div data-bind="restext: 'AssetRegistationFillSubDevice'" />
+        </div>
+    </div>
+    <div data-bind="visible: ShowGenerateCode">
+        <div class="assetIdenfifierSet-Caption" data-bind="restext: 'AssetNumber_Code'" />
+        <!--<div class="assetIdentifierSet-pair">
+            <div class="assetIdentifierSet-label" data-bind="restext: 'Prefix'" />
+            <input class="assetIdentifierSet-TextField" type="text" data-bind="textInput: Code_Prefix" />
+        </div>
+        <div class="assetIdentifierSet-pair">
+            <div class="assetIdentifierSet-label" data-bind="restext: 'ValueLength'" />
+            <input class="assetCodeSet-ValueLength-TextField" type="text" data-bind="value: Code_Length, valueUpdate: 'input'" />
+        </div>
+        <div class="assetIdentifierSet-pair">
+            <div class="assetIdentifierSet-label" data-bind="restext: 'Value'" />
+            <input class="assetCodeSet-Value-TextField" type="text" data-bind="value: Code_Value, valueUpdate: 'input'" />
+        </div>
+        <div class="assetIdentifierSet-pair">
+            <input class="assetIdentifierSet-Checkbox" type="checkbox" data-bind="checked: FillCode" />
+            <div data-bind="restext: 'AssetRegistationFill'" />
+        </div>-->
+        <div class="assetIdentifierSet-pair">
+            <input class="assetIdentifierSet-Checkbox" type="checkbox" data-bind="checked: FillSubdeviceCode" />
+            <div data-bind="restext: 'AssetRegistationFillSubDevice'" />
+        </div>
+    </div>
+</div>

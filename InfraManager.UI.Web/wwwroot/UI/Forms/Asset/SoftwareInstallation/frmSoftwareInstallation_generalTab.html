@@ -1,0 +1,56 @@
+﻿<div class="tabPage assetForm b-requestDetail im-base-text" data-bind="with: tabActive, afterUpdateBlock: tabActive().AfterRender">
+
+    <div class="tabGeneral" tabindex="0">
+        <!-- Информация -->
+        <div class="information-div-main">
+            <!--GUID-->
+            <span class="fieldCaption" data-bind="restext:'SoftwareInstallation_Form_GUID'" />
+            <div class="fieldControl border nowrap" data-bind="text: $parent.object().ID, longNameTooltip: $parent.object().ID"></div>
+
+            <!--Model-->
+            <span class="fieldCaption" data-bind="restext:'SoftwareInstallation_Form_ModelName'" />
+            <!--<div class="fieldControl border nowrap" data-bind="text: $parent.object().ModelName, longNameTooltip: $parent.object().ModelName"></div>-->
+            <div class="pairFields">
+                <div class="readonly fieldControl border nowrap clickable" id="searchModelInputElelemnt" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().ModelName, css: { 'cursor-pointer': $root.CanEdit }, click: EditModel" />
+                <!--<div class="readonly fieldControl border nowrap clickable callObject" id="searchModelInputElelemnt" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().ModelName, css: { 'cursor-pointer': $root.CanEdit }, click: EditModel" />
+                <div class="icon callObjectIcon" data-bind="css: { 'active' : $parent.object().IsSoftwareModelExists }, tooltip: getTextResource('SoftwareInstallation_Form_ModelName'), click: OpenSoftwareModelForm"><span /></div>-->
+            </div>
+
+            <!--Product-->
+            <span class="fieldCaption" data-bind="restext:'SoftwareInstallation_Form_Product'" />
+            <div class="fieldControl nowrap" data-bind="text: $parent.object().ProductName, longNameTooltip: $parent.object().ProductName"></div>
+
+            <!--Device-->
+            <span class="fieldCaption" data-bind="restext:'SoftwareInstallation_Form_InstallDevice'" />
+            <div class="pairFields">
+                <div class="callObject fieldControl border nowrap clickable " data-bind="text: $parent.object().DeviceName, longNameTooltip: $parent.object().DeviceName, css: { 'cursor-pointer': $root.CanEdit }, click: OpenSelectDevice"></div>
+                <div class="icon callObjectIcon" data-bind="css: { 'active' : $parent.object().IsDeviceExists }, tooltip: getTextResource('SoftwareInstallation_Form_InstallDevice'), click: OpenDeviceForm"><span /></div>
+            </div>
+
+            <!--InstallationPath-->
+            <span class="fieldCaption" data-bind="restext:'SoftwareInstallation_Form_InstallationPath'" />
+            <!-- ko if: $parent.isAddNewSoftwareInstallation -->
+            <div>
+                <input type="text" maxlength="500" class="fieldControl border nowrap combobox" data-bind="textInput: $parent.object().InstallationPath, longNameTooltip: $parent.object().InstallationPath" />
+            </div>
+            <!-- /ko -->
+            <!-- ko ifnot: $parent.isAddNewSoftwareInstallation -->
+            <div class="fieldControl border nowrap clickable" data-bind="text: $parent.object().InstallationPath, longNameTooltip: $parent.object().InstallationPath, css: { 'cursor-pointer': $root.CanEdit }, click: editInstallPath"></div>
+            <!-- /ko -->
+        </div>
+        <!-- Даты-->
+        <div class="information-div-right">
+            <!-- Дата установки-->
+            <span class="fieldCaption dateitem" data-bind="restext:'SoftwareInstallation_Form_InstallationDate'" />
+            <div class="pairFields">
+                <div class="icon selectDateIcon" data-bind="click: SelectInstallDate"><span /></div>
+                <div class="selectDate fieldControl border nowrap clickable" data-bind="text: $parent.object().InstallationDate, click: SelectInstallDate"></div>
+            </div>
+            <span class="fieldCaption dateitem" data-bind="restext:'SoftwareInstallation_Form_CreationDate'" />
+            <div class="pairFields">
+                <div class="icon selectDateIcon" data-bind="click: SelectCreateDate"><span /></div>
+                <div class="selectDate fieldControl border nowrap clickable" data-bind="text: $parent.object().CreateDate, click: SelectCreateDate"></div>
+            </div>
+        </div>
+        </div>
+</div>

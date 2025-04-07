@@ -1,0 +1,16 @@
+﻿<div class="frmLicenceScheme_addCoeff" data-bind="with: tabActive">
+    <div class="dataBlock">
+        <div class="add-coefficient_searchText">
+            <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: $root.lvSearchText" />
+            <div class="add-coefficient_searchText-clearfield cursor-pointer" data-bind="click: $root.eraseTextClick, visible: !$root.isSearchTextEmpty()" style=""></div>
+        </div>
+        <div class="add-coefficient_tableWrapper">
+            <div class="add-coefficient_paramsColumn">
+                <div id="regionSoftCatalogue2" class="regionFilterTree-productCatalogue"></div>
+            </div>
+            <div class="add-coefficient_tableColumn">
+                <div class="tableData" data-bind="koListView: {settingsName: 'ProcessorModelSimpleEditable', controlInitialized:lvInit, retrieveVirtualItems: lvRetrieveVirtualItems, virtualMode: true, itemClick: lvRowClick, drawCell: listViewDrawCell}"></div>
+            </div>
+        </div>
+    </div>
+</div>

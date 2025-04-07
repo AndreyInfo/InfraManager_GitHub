@@ -1,0 +1,17 @@
+﻿<div class="assetHistory">
+    <div class="im-big-header" style="padding-top:14px;padding-left: 22px;" data-bind="restext: 'Asset_History'" />
+    <div class="tabContent" style="bottom: 0px; top: 40px;">
+        <div class="tape__history" data-bind="visible: $control.Tape().length > 0">
+            <!-- ko foreach: { data: $control.Tape } -->
+            <div class="tape__history__i">
+                <div class="tape__history__icon tape__history__icon_status"></div>
+                <div class="tape__history__text" data-bind="text: Text"></div>
+                <div class="tape__history__info">
+                    <span class="tape__history__user" data-bind="text: AuthorFullName"></span>
+                    <span class="tape__history__date" data-bind="text: LocalDate"></span>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

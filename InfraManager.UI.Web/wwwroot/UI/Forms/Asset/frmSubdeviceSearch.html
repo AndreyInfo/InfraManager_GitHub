@@ -1,0 +1,15 @@
+﻿<div class="frmSubdeviceSearch">
+    <div class="leftSide" data-bind="splitter: { ChangeFunc: resizeSplitter, MinimalSize: minSplitterWidth, MaximumSize: maxSplitterWidth, Name: 'SubdeviceListOnStore', Direction: 'right' }, style: {'width': splitterDistance() + 'px'}">
+        <div class="searchField">
+            <input type="text" class="locationSearcher" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: tvSearchText" />
+        </div>
+        <div class="tvWrapper" />
+    </div>
+    <div class="rightSide" data-bind="style: {'left': splitterDistance() + 'px'}">
+        <div class="searchField">
+            <input type="text" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: lvSearchText" />
+            <div class="table-clearfield cursor-pointer" data-bind="click: eraseTextClick, visible: !isSearchTextEmpty()" style=""></div>
+        </div>
+        <div class="lvWrapper" data-bind="koListView: {settingsName: 'SubdeviceListOnStore', controlInitialized: lvInit, retrieveVirtualItems: lvRetrieveVirtualItems, virtualMode: true, itemClick: lvRowClick}"></div>
+    </div>
+</div>

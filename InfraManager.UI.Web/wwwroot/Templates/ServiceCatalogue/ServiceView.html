@@ -1,0 +1,19 @@
+﻿<div class="sc_service" data-bind="with: SelectedObject">
+    <div class="sc_serviceHeader">
+        <span class="sc_serviceHeaderName" data-bind="text: Name"></span>
+        <div class="sc_serviceHeaderAvailable" data-bind="css: { 'active': IsAvailable }"></div>
+    </div>
+    <div class="sc_serviceDescription">
+        <div class="sc_serviceCaption" data-bind="click: $parent.ServiceNoteToggle">
+            <div class="sc_serviceCaptionText" data-bind="restext: 'Description'"></div>
+            <div class="sc_serviceCaptionButton" data-bind="css: { 'expanded':  IsNoteExpanded }"></div>
+        </div>
+        <div class="sc_serviceDescriptionFullText" data-bind="text: NoteComputed, visible: IsNoteExpanded"></div>
+    </div>
+    <!--ko if: VisibleServiceItemList().length > 0-->
+    <div class="sc_serviceItems" data-bind="template: { name: 'ServiceCatalogue/ServiceItemAttendanceListView', data: { $iconSource: '/images/controls/serviceCatalogue/serviceItemList.png', $name: getTextResource('ServiceItems'), $isExpanded: IsServiceItemListExpanded, $list: VisibleServiceItemList, $showPath: false } }"></div>
+    <!-- /ko -->
+    <!--ko if: VisibleServiceAttendanceList().length > 0-->
+    <div class="sc_serviceAttendance" data-bind="template: { name: 'ServiceCatalogue/ServiceItemAttendanceListView', data: { $iconSource: '/images/controls/serviceCatalogue/serviceAttendanceList.png', $name: getTextResource('ServiceAttendances'), $isExpanded: IsServiceAttendanceListExpanded, $list: VisibleServiceAttendanceList, $showPath: false } }"></div>
+    <!-- /ko -->
+</div>

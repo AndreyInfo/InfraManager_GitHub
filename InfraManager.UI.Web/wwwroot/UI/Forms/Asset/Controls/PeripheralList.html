@@ -1,0 +1,12 @@
+﻿<div class="peripheralList">
+    <div class="tabCaption im-big-header">
+        <span data-bind="restext: 'Asset_PeripheralListHeader'" />
+        <span data-bind="css: IsExpanded() == true ? 'arrow-up active' : 'arrow-down active', click: ExpandCollapseClick"><span /></span>
+    </div>
+    <div data-bind="visible: IsExpanded()">
+        <div class="tabPage ml h100" data-bind="with: $root.peripheralList">
+            <div data-bind="style: {'height': Height() + 'px'}, attr: {'id': listViewID}, koListView: {settingsName: 'PeripheralReference', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false}"></div>
+            <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+        </div>
+    </div>
+</div>

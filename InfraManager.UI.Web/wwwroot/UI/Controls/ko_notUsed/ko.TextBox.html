@@ -1,0 +1,8 @@
+﻿<editor class="ko_TextBox" data-bind="css: Css">
+    <input type="text" data-bind="disable: options.readOnly, textInput: Value, hasFocus: Focused, attr: {'maxLength' : options.maxLength, 'placeholder': Prompt}, tooltip: ValidateMessage, tooltipShowImmediately: true, tooltipHide: false" autocomplete="off" />
+    <eraser data-bind="visible: EraserVisible, click: EraserClick">
+        <svg viewBox="0 0 14 14">
+            <polygon points="14,0.7 13.3,0 7,6.3 0.7,0 0,0.7 6.3,7 0,13.3 0.7,14 7,7.7 13.3,14 14,13.3 7.7,7" />
+        </svg>
+    </eraser>
+</editor>

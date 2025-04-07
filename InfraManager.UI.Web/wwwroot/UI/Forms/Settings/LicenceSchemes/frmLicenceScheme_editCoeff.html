@@ -1,0 +1,23 @@
+﻿<div class="frmLicenceScheme">
+    <div class="frmLicenceScheme_editCoeff">
+        <!--<div class="content">-->
+            <div class="model-div">
+                <!--processor type-->
+                <span class="fieldCaption" data-bind="restext:'SoftwareLicenceScheme_CoeffModel'" />
+
+                <div class="editor general">
+                    <div class="asset-text-field-readonly fieldControl border nowrap clickable" data-bind="text: $root.ProcessorModelName, click: $root.SelectProcessorName" />
+                </div>
+
+            </div>
+
+            <div class="coefficient-div">
+                <span class="fieldCaption" data-bind="restext:'SoftwareLicenceScheme_Coefficient'" />
+
+                <div class="fieldControl nud number_box" id="coeffEditor">
+                    <input class="coefficientValue" type="text" data-bind="value: CoefficientValue, valueUpdate: 'input'" />
+                </div>
+            </div>
+        <!--</div>-->
+    </div>
+</div>

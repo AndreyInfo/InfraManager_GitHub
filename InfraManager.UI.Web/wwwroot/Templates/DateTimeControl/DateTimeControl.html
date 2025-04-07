@@ -1,0 +1,5 @@
+﻿<div class="dateTimeControlBlock">
+    <!-- ko if: headerText --><span class="dateTimeControlText" data-bind="text: headerText, css: classText" />: <!-- /ko -->
+    <div class="dateTimeControlImage" data-bind="click: CalendarClick, css: { 'disabled': IsDisabled }"></div><input class="dateTimeControlInput" type="text" data-bind="textInput: stringObservable" />
+    <div class="eraser" data-bind="click: function() {stringObservable('');}"></div>
+</div>

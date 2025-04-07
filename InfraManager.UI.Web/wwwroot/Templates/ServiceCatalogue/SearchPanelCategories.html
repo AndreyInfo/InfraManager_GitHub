@@ -1,0 +1,5 @@
+﻿<div data-bind="foreach: CategoryArray, afterUpdateBlock: AfterRender">
+    <div class="sc_sortRow">
+        <div class="sc_sortRowText" data-bind="text: Name, css: { 'active': $parent.CurrentSortCategoryID() == $data.ID }, click: $parent.SelectCategory"></div>
+    </div>
+</div>

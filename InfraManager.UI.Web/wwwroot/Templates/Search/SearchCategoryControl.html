@@ -1,0 +1,24 @@
+﻿<div class="combobox-extended-search">
+    <div class="combobox" style="margin-top:10px; width: 260px" data-bind="combobox: { dataSource: getComboItems, placeholder: 'choose item' }, comboboxValue: SelectedComboItem"></div>
+</div>
+<div class="extended-search-categories">
+    <div data-bind="foreach: $root.categoriesSD">
+        <input class="check-box-extended-search" type="checkbox" data-bind="value: Name(), checked: Selected(), click: $root.CategoryCheckedChanged" />
+        <span data-bind="attr: { class: Icon }"></span>
+        <span class="category-extended-search" data-bind="text: '&nbsp;' + Name()"></span>
+        <div class="extended-search-br"></div>
+    </div>
+    <div class="extended-search-active-objects">
+        <input type="checkbox" data-bind="click: $root.SearchInFinishedCheckedChanged, checked: params().searchInFinished()">
+        <label><b data-bind="restext:'ShowFinishedOnly'" /></label>
+    </div>
+    <div data-bind="foreach: $root.categoriesOther">
+        <input class="check-box-extended-search" type="checkbox" data-bind="value: Name(), checked: Selected(), click: $root.CategoryCheckedChanged" />
+        <span data-bind="attr: { class: Icon }"></span>
+        <span class="category-extended-search" data-bind="text: '&nbsp;' + Name()"></span>
+        <div class="extended-search-br"></div>
+    </div>
+</div>
+<div class="extended-search-clear">
+    <a data-bind="restext: 'ClearSearch', click: $root.ClearSearch"></a>
+</div>

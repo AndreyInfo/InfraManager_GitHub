@@ -1,0 +1,25 @@
+﻿<div class="tabCaption im-big-header im-list-header">
+    <span data-bind="restext: 'GoodsInvoices'"></span>
+    <span class="tabCaption-icon-plus" data-bind="click: function() { $control.imList.ExecuteOperation(getTextResource('AddGoodsInvoice')) }, css: { 'active' : $control.CanEdit() && $control.CanAdd() }, tooltip: getTextResource('AddGoodsInvoice')"></span>
+</div>
+<div class="invoice-list">
+    <!-- ko foreach: $control.imList.List -->
+    <div class="invoice-list-item" data-bind="click: $parent.$control.SelectItem, css: { 'active' : Selected } ">
+        <span class="invoice-list-item-name" data-bind="event: { mouseenter: CheckShowTooltipMessage }"><span data-bind="text: FullName()" /></span>
+        <span class="invoice-list-item-edit">
+            <span class="invoice-list-btn-edit" data-bind="click: $parent.$control.ShowObjectForm, visible: $parent.$control.Properties()"></span>
+            <span class="invoice-list-btn-remove" data-bind="click: function() { $parent.$control.imList.ExecuteOperation(getTextResource('RemoveGoodsInvoice')) }, visible: !IsDone() && $parent.$control.CanEdit() && $parent.$control.CanDelete() "></span>
+        </span>
+    </div>
+    <!-- /ko -->
+</div>
+<div class="invoice-spec-list-wrapper">
+    <!-- ko if: $control.imList.List().length != 0 && $control.invoiceSpecificationList() != null -->
+    <div class="pu_specifications__b invoice-spec-list" data-bind="template: {name: 'FinanceForms/Controls/GoodsInvoiceSpecificationList',  data: { $control: $control.invoiceSpecificationList(), $mode: 'invoiceList'  } }" />
+    <!-- /ko -->
+</div>
+<!-- ko if: $control.imList.List().length == 0 -->
+<div class="tabCaption" style="top: 45px;">
+    <center><span class="im-list-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+</div>
+<!-- /ko -->

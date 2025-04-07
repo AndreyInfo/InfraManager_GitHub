@@ -1,0 +1,11 @@
+﻿<div class="negotiation-vote-form">
+    <span class="negotiation-status-text-comment"><span data-bind="restext: 'NegotiationDecision'"></span></span>
+    <div class="negotiation-vote-inline-form">
+        <span class="negotiation-vote-form-icon" data-bind="css: IconFor, click: SetFor"></span>
+        <span class="negotiation-vote-form-icon" data-bind="css: IconAgainst, click: SetAgainst"></span>
+    </div>
+    <span class="negotiation-status-text-comment"><span data-bind="css: IconMustComment, restext: 'NegotiationMessage'"></span></span>
+    <div>
+        <textarea class="negotiation-vote-form-comment" data-bind="resattr: { placeholder: 'YourComment' }, textInput: Comment"></textarea>
+    </div>
+</div>

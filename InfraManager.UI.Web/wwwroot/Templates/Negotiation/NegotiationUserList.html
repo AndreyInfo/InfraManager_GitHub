@@ -1,0 +1,61 @@
+﻿<table class="negotiationUserList">
+    <colgroup>
+        <!--<col class="negotiationUserCol_deluser" />-->
+        <col class="negotiationUserCol_user" />
+        <col class="negotiationUserCol_vote" />
+        <col class="negotiationUserCol_status" />
+        <col class="negotiationUserCol_comment" />
+        <col class="negotiationUserCol_remove" />
+    </colgroup>
+    <tbody data-bind="foreach: $userList">
+        <tr>
+            <td class="user">
+                <!-- ko if: TextDelegationUserVisible() -->
+                <div class="negotiation-user-deluser-header"><span data-bind="text:getTextResource ('OnBehalfOf') + (':') + (' ') + (OldUserName)"></span></div>
+                    <!-- /ko -->
+                    <span data-bind="template: { name: 'User/SimpleUserNegotiation' }"></span>
+            </td>
+            <td class="vote">
+                <!-- ko if: IconForVisible() -->
+                <div class="voteElement" data-bind="click: $parent.$actionContainer.VoteFor">
+                    <div class="vote-negotiation-icon-for" data-bind="css: IconFor"></div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: IconAgainstVisible() -->
+                <div class="voteElement" data-bind="click: $parent.$actionContainer.VoteAgainst">
+                    <div class="vote-negotiation-icon-against" data-bind="css: IconAgainst"></div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: IconCommentsVisible() -->
+                <div class="voteElement" data-bind="click: EditMessage">
+                    <div class="vote-negotiation-icon-comments" data-bind="css: CommentsIcon"></div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: IconDelegationVisible() -->
+                <div class="voteElement" data-bind="click: EditDelegationUser">
+                    <div class="vote-negotiation-icon-delegation" data-bind="css: IconDelegation"></div>
+                </div>
+                <!-- /ko -->
+                <div class="voteElement" data-bind="visible: IsEditIconVisible, click: $parent.$actionContainer.VoteEdit">
+                    <div class="vote-negotiation-icon-edit" data-bind="css: IconEdit"></div>
+                </div>
+            </td>
+            <td class="status">
+                <div class="status_user">
+                    <div class="negotiation-user-status-header"><span data-bind="text: getTextResource ('NegotiationStatus') + (':') "></span>&thinsp;<div class="negotiation-user-status-text"><span data-bind="text: VotingTypeString"></span><span data-bind = "text : (UtcDateVote() != '' ? ' (' + UtcDateVote() + ') ' : ' ')"></span></div></div>
+                </div>
+            </td>
+            <!-- ko if: CommentUserVisible() -->
+            <td class="comment">
+                <div class="comment_user">
+                    <div class="negotiation-user-comment-header" data-bind="text: getTextResource('NegotiationMessage') + (':') + (' ')"></div>
+                    <div class="negotiation-user-comment-text" data-bind="text: Message"></div>
+                </div>
+            </td>
+            <!-- /ko -->
+            <td class="remove" data-bind="if: $parent.$extendedMode == true && $parent.$actionContainer.CanUserBeRemoved($data) == true">
+                <a class="negotiation-form__users-remove" data-bind="click: $parent.$actionContainer.UserRemove"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

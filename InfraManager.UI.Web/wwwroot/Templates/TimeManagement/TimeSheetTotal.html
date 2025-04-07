@@ -1,0 +1,85 @@
+﻿<div class="h100" data-bind="with: TimeSheetTotal, afterUpdateBlock: TimeSheetTotal().ModelAfterRender">
+    <div class="ts-general f-big f-bold mb20">
+        <div class="ts-first">
+            <div class="ts-search" />
+        </div>
+        <div class="ts-second">
+            <div class="ts-user" />
+            <div class="ts-period">
+                <span data-bind="restext: 'TM_PeriodCaption'" />
+                <div class="ml10 leftArrow" data-bind="click: PreviousClick, enable: IntervalInfoExists" />
+                <span data-bind="text: DateIntervalString" />
+                <div class="rightArrow" data-bind="click: NextClick, enable: IntervalInfoExists" />
+                <!-- ko if: IntervalInfoList().length == 0 -->
+                <span class="ml10" data-bind="restext: 'TM_TimeSheetTotal_TimeSheetAbsent'" />
+                <!-- /ko -->
+            </div>
+            <div class="ts-filterState">
+                <span data-bind="restext: 'TM_State_All', css: {'c-gray' : FilterState() == '', 'c-blue cursor-pointer' :  FilterState() != ''}, click: function() { FilterState('') }"></span>
+                <span class="ml10">
+                    <span class="color-point state_review" />
+                    <span class="ml5" data-bind="restext: 'TM_State_Review', css: {'c-gray' : FilterState() == '1', 'c-blue cursor-pointer' :  FilterState() != '1'}, click: function() { FilterState('1') }" />
+                </span>
+                <span class="ml10">
+                    <span class="color-point state_approved" />
+                    <span class="ml5" data-bind="restext: 'TM_State_Approved', css: {'c-gray' : FilterState() == '3', 'c-blue cursor-pointer' :  FilterState() != '3'}, click: function() { FilterState('3') }" />
+                </span>
+                <span class="ml10">
+                    <span class="color-point state_rejected" />
+                    <span class="ml5" data-bind="restext: 'TM_State_Rejected', css: {'c-gray' : FilterState() == '2', 'c-blue cursor-pointer' :  FilterState() != '2'}, click: function() { FilterState('2') }" />
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="table-scroll mt20">
+        <!-- ko if: UserNotFound -->
+        <center class="f-bold f-big" data-bind="restext: 'TM_TimeSheetTotal_UserAbsent'" />
+        <!-- /ko -->
+        <!-- ko ifnot: UserNotFound -->
+        <table class="tst-table" border="0">
+            <thead>
+                <tr>
+                    <th class="th-user" />
+                    <!-- ko foreach: IntervalInfoList -->
+                    <th class="th-timeSheet">
+                        <div class="f-bold c-blue">
+                            <div data-bind="html: DateIntervalString1" />
+                            <div data-bind="html: DateIntervalString2" />
+                        </div>
+                        <input type="checkbox" data-bind="click: CheckAllRows" />
+                    </th>
+                    <!-- /ko -->
+                    <th class="th-auto" />
+                </tr>
+            </thead>
+
+            <tbody data-bind="foreach: {data: ItemInfoList, afterRender: $parent.ModelAfterRender}">
+                <tr>
+                    <td data-bind="template: { name: 'User/SimpleUser', data: UserInfo }, click: $root.TimeSheetTotal().ShowUserCalendar" />
+                    <!-- ko foreach: IntervalList -->
+                    <td class="a-center" data-bind="click: $root.TimeSheetTotal().ShowUserTimeSheet, if: $data != null">
+                        <div class="timeSheetContainer" data-bind="css: {'state_review' : State == 1, 'state_rejected' : State == 2, 'state_approved' : State == 3}, lazyLoadTooltip: TooltipWithComment, tooltipLoadingFunc: TooltipLoader, tooltipMultiline: true, tooltipHide: false">
+                            <div class="v-value">
+                                <div class="f-big" data-bind="text: TotalManhoursString, css: {'c-orange' : ManhoursNormInMinutes < ManhoursInMinutes }, longNameTooltip: TotalManhoursString" />
+                                <div data-bind="text: ManhoursNormString" />
+                            </div>
+                        </div>
+                        <span class="timeSheetContainer-mess-count" data-bind="text: NewMessagesCountString, visible: (NewMessagesCount() != null && NewMessagesCount() > 0)"></span>
+                        <input type="checkbox" data-bind="checked: Checked, clickBubble: false" />
+                    </td>
+                    <!-- /ko -->
+                    <td />
+                </tr>
+            </tbody>
+        </table>
+        <!-- /ko -->
+        <div class="ui-dialog-buttonset">
+            <button type="button" class="ui-button ui-button-text-only mv20" data-bind="click: cmd_ApproveTimeSheet, visible: GetSelectedItemsWithEqualState() == 1">
+                <span class="ui-button-text" data-bind="restext: 'TM_TimeSheet_Approve'" />
+            </button>
+            <button type="button" class="ui-button ui-button-text-only mv20" data-bind="click: cmd_RejectTimeSheet, visible: GetSelectedItemsWithEqualState() == 1">
+                <span class="ui-button-text" data-bind="restext: 'TM_TimeSheet_Reject'" />
+            </button>
+        </div>
+    </div>
+</div>

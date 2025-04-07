@@ -1,0 +1,62 @@
+﻿<div class="frmContractLicence">
+    <div class="fieldCaption" data-bind="restext: 'ContractLicence_Name', css: {'required' : object().Name().length == 0 && CanEdit()}"></div>
+    <div class="fieldControl border" data-bind="css: {'invalid' : object().Name().length == 0 && CanEdit()}">
+        <input type="text" id="IdName" class="searcherInput" maxlength="250" data-bind="textInput: object().Name, disable: !CanEdit(), css: {'invalid' : object().Name().length == 0 && CanEdit()}" />
+        <div class="search-results-control-clearfield cursor-pointer" data-bind="click: EraseTextClick, visible: CanEdit()"></div>
+    </div>
+
+    <div class="fieldCaption" data-bind="restext: 'ContractLicence_ProductCatalogTypeOrModel'"></div>
+    <div class="fieldControl border assetReg-locationControl">
+        <input type="text" class="searcherInput typeOrModel" data-bind="textInput: TypeOrModelName, longNameTooltip: TypeOrModelName, resattr: { placeholder : 'ChooseNewValue' }, disable: !CanEdit()" />
+    </div>
+
+    <div class="fieldCaption" data-bind="restext: 'SoftwareModel'"></div>
+    <div class="fieldControl border assetReg-locationControl">
+        <input type="text" class="searcherInput contractLicence-softwareModel" data-bind="textInput: SoftwareModelName, longNameTooltip: SoftwareModelName, resattr: { placeholder : 'ChooseNewValue' }, disable: !CanEdit()" />
+    </div>
+
+    <div class="fieldCaption" data-bind="restext: 'LicenceType'"></div>
+    <div class="fieldControl border invoice-supplier-combobox combobox" data-bind="combobox: { dataSource: getLicenceTypeComboItems}, comboboxValue: selectedLicenceType, style: { 'pointer-events': CanEdit() ? 'auto' : 'none' }"></div>
+
+    <div class="fieldCaption" data-bind="restext: 'LicenceScheme'"></div>
+    <div class="fieldControl border invoice-supplier-combobox combobox" data-bind="combobox: { dataSource: getLicenceSchemeComboItems}, comboboxValue: selectedLicenceScheme, style: { 'pointer-events': CanEdit() ? 'auto' : 'none' }"></div>
+
+    <div class="fieldCaption" data-bind="restext: 'ContractLicence_Cost'"></div>
+    <div class="fieldControl nud" data-bind="css: {'disable' : CanEdit() == false}">
+        <input class="cost" type="text" maxlength="10" data-bind="textInput: object().Cost" />
+    </div>
+
+    <div class="fieldControl" data-bind="visible: !object().NoLimits()">
+        <div class="fieldCaption" data-bind="restext: 'LicenceCount'"></div>
+        <div class="fieldControl nud" data-bind="css: {'disable' : CanEdit() == false}">
+            <input class="count" type="text" maxlength="10" data-bind="textInput: object().Count" />
+        </div>
+    </div>
+    <!-- ko if: VisibleLimitInDay() -->
+    <div class="fieldCaption" data-bind="restext: 'SoftwareLicence_LimitInDays'"></div>
+    <div class="fieldControl border assetReg-locationControl">
+        <input type="text" class="searcherInput limitInDays"maxlength="255" data-bind="textInput: object().LimitInDays, disable: !CanEdit()" />
+    </div>
+    <!-- /ko -->
+    <div class="fieldCaption" data-bind="restext: 'Contract_SoftwareUsageNoLimits'"></div>
+    <div class="fieldControl slider-checkbox">
+        <input type="checkbox" class="limits-input" data-bind="checked: object().NoLimits, style:{ 'pointer-events' : CanEdit() == false ? 'none' : 'auto'}" />
+        <label class="label" data-bind="text: object().NoLimits() == true ? getTextResource('Yes') : getTextResource('No')"></label>
+    </div>
+
+    <div class="fieldCaption" data-bind="restext: 'CanDowngrade'"></div>
+    <div class="fieldControl slider-checkbox">
+        <input type="checkbox" class="pronongation-input" data-bind="checked: object().CanDowngrade, style:{ 'pointer-events' : CanEdit() == false ? 'none' : 'auto'}" />
+        <label class="label" data-bind="text: object().CanDowngrade() == true ? getTextResource('Yes') : getTextResource('No')"></label>
+    </div>
+
+    <!--<div class="fieldCaption" data-bind="restext: 'Contract_SoftwareUsageIsFull'"></div>
+    <div class="fieldControl slider-checkbox">
+        <input type="checkbox" class="pronongation-input" data-bind="checked: object().IsFull, style:{ 'pointer-events' : CanEdit() == false ? 'none' : 'auto'}" />
+        <label class="label" data-bind="text: object().IsFull() == true ? getTextResource('Yes') : getTextResource('No')"></label>
+    </div>-->
+    <!-- ko if: object().SoftwareLicenceName().length > 0 -->
+    <div class="fieldCaption" data-bind="restext: 'ContractLicence_CreatedLicence'"></div>
+    <div class="fieldControl border text" data-bind="text: object().SoftwareLicenceName, css: { 'cursor-pointer': true }, click: EditCreatedLicence" />
+    <!-- /ko -->
+</div>

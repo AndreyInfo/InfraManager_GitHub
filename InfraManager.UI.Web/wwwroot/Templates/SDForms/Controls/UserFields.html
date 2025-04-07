@@ -1,0 +1,58 @@
+﻿
+<div class="edit-field-user-input-wrap">
+    <div data-bind="if: CanShowName1">
+        <div class="fieldPair">
+            <span class="edit-field-user-input-details__header" data-bind="text: UserField1Name"></span>
+            <div data-bind="if: !ReadOnly()">
+                <input type="text" class="editor border nowrap im-big-header" data-bind="value: UserField1" />
+            </div>
+            <div data-bind="if: ReadOnly() ">
+                <input readonly type="text" class="editor border nowrap im-big-header" data-bind="value: UserField1" />
+            </div>
+        </div>
+    </div>
+    <div data-bind="if: CanShowName2">
+        <div class="fieldPair">
+            <span class="edit-field-user-input-details__header" data-bind="text:  UserField2Name"></span>
+            <div data-bind="if: !ReadOnly()">
+                <input type="text" class="editor border nowrap im-big-header" data-bind="value: UserField2" />
+            </div>
+            <div data-bind="if: ReadOnly">
+                <input readonly type="text" class="editor border nowrap im-big-header" data-bind="value: UserField2" />
+            </div>
+        </div>
+    </div>
+    <div data-bind="if: CanShowName3">
+        <div class="fieldPair">
+            <span class="edit-field-user-input-details__header" data-bind="text:  UserField3Name"></span>
+            <div data-bind="if: !ReadOnly()">
+                <input type="text" class="editor border nowrap im-big-header" data-bind="value: UserField3" />
+            </div>
+            <div data-bind="if: ReadOnly">
+                <input readonly type="text" class="editor border nowrap im-big-header" data-bind="value: UserField3" />
+            </div>
+        </div>
+    </div>
+    <div data-bind="if: CanShowName4">
+        <div class="fieldPair">
+            <span class="edit-field-user-input-details__header" data-bind="text:  UserField4Name"></span>
+            <div data-bind="if: !ReadOnly()">
+                <input type="text" class="editor border nowrap im-big-header" data-bind="value: UserField4" />
+            </div>
+            <div data-bind="if: ReadOnly">
+                <input readonly type="text" class="editor border nowrap im-big-header" data-bind="value: UserField4" />
+            </div>
+        </div>
+    </div>
+    <div data-bind="if: CanShowName5">
+        <div class="fieldPair">
+            <span class="edit-field-user-input-details__header" data-bind="text:  UserField5Name"></span>
+            <div data-bind="if: !ReadOnly()">
+                <input type="text" class="editor border nowrap im-big-header" data-bind="value: UserField5" />
+            </div>
+            <div data-bind="if: ReadOnly">
+                <input readonly type="text" class="editor border nowrap im-big-header" data-bind="value: UserField5" />
+            </div>
+        </div>
+    </div>
+</div>

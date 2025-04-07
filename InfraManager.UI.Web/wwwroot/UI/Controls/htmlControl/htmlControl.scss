@@ -1,0 +1,298 @@
+﻿@import "../../../Styles/general";
+
+/*frmCallRegistration*/
+.htmlEditor-container {
+    padding: 0;
+    width: 100%;
+    min-height: 50px;
+    height: 170px;
+    position: relative;
+}
+
+/*tapeList*/
+.htmlEditor-extensionContainer {
+    padding: 0;
+    height: auto;
+
+    .htmlEditor-frame {
+        min-height: 30px;
+        max-height: 200px;
+    }
+}
+
+/*for iframe container*/
+.htmlEditor-frame {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.html {
+    ol, ul {
+        margin-left: 15px;
+    }
+}
+
+/*for body input iframe container*/
+.htmlEditor-textArea {
+    outline: 0px solid transparent;
+    cursor: text;
+    font-family: Arial;
+    font-size: 16px;
+    line-height: 1;
+    background: white;
+    min-width: auto;
+    margin: 8px;
+    width: auto;
+    height: auto;
+    word-wrap: break-word;
+
+    img {
+        cursor: nw-resize !important;
+    }
+
+    ol, ul {
+        margin-left: 15px;
+    }
+
+    font[size='1'] {
+        font-size: 8px;
+    }
+
+    font[size='2'] {
+        font-size: 10px;
+    }
+
+    font[size='3'] {
+        font-size: 12px;
+    }
+
+    font[size='4'] {
+        font-size: 14px;
+    }
+
+    font[size='5'] {
+        font-size: 16px;
+    }
+
+    font[size='6'] {
+        font-size: 20px;
+    }
+
+    font[size='7'] {
+        font-size: 24px;
+    }
+}
+
+.htmlControl-comboBox-fontSize {
+}
+
+.htmlControl-comboBox-fontfamily {
+}
+
+.htmlEditor-full {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .hiddenContainer {
+        .htmlControl-palette {
+            display: none;
+            background: $white-background-color;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            border: 1px solid $border-gray-color;
+            -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.5);
+            -moz-box-shadow: 0 2px 10px rgba(0,0,0,.5);
+            box-shadow: 0 2px 10px rgba(0,0,0,.5);
+
+            table {
+                margin: 16px;
+
+                tr {
+                    td {
+                        cursor: pointer;
+                        padding: 1px;
+
+                        div {
+                            height: 16px;
+                            width: 16px;
+                            border: 1px solid white;
+                        }
+
+                        &.checked {
+                            background: black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .htmlEditor-menu {
+        border-top: 5px solid #222222;
+        color: #222222;
+        background: #ffffff;
+        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+        -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+        position: relative;
+        z-index: 10;
+        display: none;
+
+        button {
+            outline: 0;
+            border: 0;
+            cursor: pointer;
+            margin: 2px;
+            position: relative;
+            font-size: 15px;
+            width: 32px;
+            height: 32px;
+            padding: 0px;
+            text-align: center;
+            float: left;
+            border: 1px solid transparent;
+            background-size: contain !important;
+
+            &:hover {
+                filter: invert(0.14) sepia(1) saturate(12.9) hue-rotate(183.6deg) brightness(1.2);
+                /* https://css-tricks.com/the-many-ways-to-change-an-svg-fill-on-hover-and-when-to-use-them */
+            }
+        }
+
+        .cmd-separator {
+            width: 1px;
+            height: 32px;
+            background: #ebebeb;
+            float: left;
+            margin: 2px;
+        }
+
+        .fontFamily, .fontSize {
+            float: left;
+            margin: 4px 5px;
+            width: 140px;
+            padding: 0;
+
+            .control {
+                border-color: $gray-light-color;
+            }
+
+            input {
+                outline: none;
+            }
+        }
+
+        .fontSize {
+            width: 80px;
+        }
+
+
+        .cmd-cut {
+            background: url('../UI/Controls/htmlControl/Icons/cmdCut.svg') no-repeat;
+        }
+
+        .cmd-copy {
+            background: url('../UI/Controls/htmlControl/Icons/cmdCopy.svg') no-repeat;
+        }
+
+        .cmd-paste {
+            background: url('../UI/Controls/htmlControl/Icons/cmdInsert.svg') no-repeat;
+        }
+
+        .cmd-undo {
+            background: url('../UI/Controls/htmlControl/Icons/cmdUndo.svg') no-repeat;
+        }
+
+        .cmd-redo {
+            background: url('../UI/Controls/htmlControl/Icons/cmdRedo.svg') no-repeat;
+        }
+
+        .cmd-bullets {
+            background: url('../UI/Controls/htmlControl/Icons/cmdBullets.svg') no-repeat;
+        }
+
+        .cmd-numbers {
+            background: url('../UI/Controls/htmlControl/Icons/cmdNumbers.svg') no-repeat;
+        }
+
+        .cmd-bold {
+            background: url('../UI/Controls/htmlControl/Icons/cmdBold.svg') no-repeat;
+        }
+
+        .cmd-italic {
+            background: url('../UI/Controls/htmlControl/Icons/cmdItalics.svg') no-repeat;
+        }
+
+        .cmd-underline {
+            background: url('../UI/Controls/htmlControl/Icons/cmdUnderline.svg') no-repeat;
+        }
+
+        .cmd-background {
+            background: url('../UI/Controls/htmlControl/Icons/cmdBackground.svg') no-repeat;
+        }
+
+        .cmd-color {
+            background: url('../UI/Controls/htmlControl/Icons/cmdFont_colour.svg') no-repeat;
+        }
+
+        .cmd-align-justify {
+            background: url('../UI/Controls/htmlControl/Icons/cmdAlign_none.svg') no-repeat;
+        }
+
+        .cmd-align-left {
+            background: url('../UI/Controls/htmlControl/Icons/cmdAlign_left.svg') no-repeat;
+        }
+
+        .cmd-align-center {
+            background: url('../UI/Controls/htmlControl/Icons/cmdAlign_center.svg') no-repeat;
+        }
+
+        .cmd-align-right {
+            background: url('../UI/Controls/htmlControl/Icons/cmdAlign_right.svg') no-repeat;
+        }
+
+        .cmd-right {
+            background: url('../UI/Controls/htmlControl/Icons/cmdIndent_increase.svg') no-repeat;
+        }
+
+        .cmd-left {
+            background: url('../UI/Controls/htmlControl/Icons/cmdIndent_decrease.svg') no-repeat;
+        }
+    }
+
+    .htmlEditor-frameContainer {
+        height: 100%;
+    }
+
+    &.h1, &.h2, &.h3 {
+        .htmlEditor-menu {
+            display: block;
+        }
+    }
+
+    @mixin setHeightEditor($height) {
+        .htmlEditor-menu {
+            height: $height;
+        }
+
+        .htmlEditor-frameContainer {
+            height: calc(100% - #{$height});
+        }
+    }
+
+    &.h1 {
+        @include setHeightEditor(42px);
+    }
+
+    &.h2 {
+        @include setHeightEditor(79px);
+    }
+
+    &.h3 {
+        @include setHeightEditor(116px);
+    }
+}

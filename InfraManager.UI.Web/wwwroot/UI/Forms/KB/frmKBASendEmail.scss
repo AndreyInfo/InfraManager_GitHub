@@ -1,0 +1,97 @@
+﻿@import "../../../Styles/general";
+
+/*.htmlEditor-textArea { //для htmlControl
+    .KbHeaderBlock_ {
+        height: 50px;
+        margin-left: 20px;
+        margin-right: 20px;
+        overflow: hidden;
+    }
+
+    .kba-number {
+        line-height: 50px;
+        margin-right: 10px;
+        float: left;
+    }
+
+    .kba-name {
+        line-height: 50px;
+        overflow: hidden;
+    }
+
+    .headText_ {
+        @extend .im-big-header;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+}*/
+
+.frmKBASendEmail {
+    padding: 25px;
+    //padding-bottom: 0;
+    //
+    .mailBody {
+        //height: 100%;
+        border: 1px solid $gray-background-color;
+        //style="height: 340px;";
+        //overflow-y: auto;
+    }
+
+    .htmlEditor-textArea {
+        //margin-bottom: 20px;
+    }
+
+    .icon {
+        padding-left: 0;
+    }
+
+    .fieldPair {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+
+    .input-control {
+        float: left;
+        width: calc(100%-106px);
+    }
+
+    .assetReg-location {
+        float: left;
+        padding: 0px 7px;
+    }
+
+    .ars-link_searchText-clearfield {
+        float: left;
+        width: 13px;
+        height: 13px;
+        right: unset;
+        top: unset;
+        position: unset;
+        float: left;
+        margin-top: 14px;
+        margin-left: -20px;
+    }
+
+    div:empty:before {
+        content: attr(placeholder);
+        color: darkgray;
+    }
+
+    .addAddress {
+        float: left;
+        margin-left: 10px;
+        cursor: pointer;
+        color: $kb-blue-text-color;
+    }
+
+    .assetReg-locationControl {
+        clear: both;
+        //margin-bottom: 40px;
+        line-height: 26px;
+        height: 26px;
+    }
+
+    .assetReg-locationHeader {
+        clear: both;
+    }
+}

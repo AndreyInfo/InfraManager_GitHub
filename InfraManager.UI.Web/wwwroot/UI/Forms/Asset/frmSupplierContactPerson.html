@@ -1,0 +1,28 @@
+﻿<div class="frmSupplierContactPerson">
+    <div class="fieldCaption" data-bind="restext: 'Supplier_Organization'"></div>
+    <div class="textField" data-bind="text: object().SupplierName, longNameTooltip: object().SupplierName" />
+
+    <div class="fieldCaption required" data-bind="restext: 'Surname'"></div>
+    <input type="text" class="textField border" maxlength="100" data-bind="textInput: object().Surname, longNameTooltip: object().Surname" />
+
+    <div class="fieldCaption" data-bind="restext: 'UserFullName'"></div>
+    <input type="text" class="textField border" maxlength="100" data-bind="textInput: object().Name, longNameTooltip: object().Name"/>
+
+    <div class="fieldCaption" data-bind="restext: 'Patronymic'"></div>
+    <input type="text" class="textField border" maxlength="100" data-bind="textInput: object().Patronymic, longNameTooltip: object().Patronymic"/>
+
+    <div class="fieldCaption" data-bind="restext: 'Supplier_ContactPhone'"></div>
+    <input type="text" class="textField border" maxlength="100" data-bind="textInput: $root.object().Phone, longNameTooltip: $root.object().Phone"/>
+
+    <div class="fieldCaption" data-bind="restext: 'SecondPhone'"></div>
+    <input type="text" class="textField border" maxlength="100" data-bind="textInput: $root.object().SecondPhone, longNameTooltip: $root.object().SecondPhone"/>
+
+    <div class="fieldCaption" data-bind="restext: 'Supplier_Email'"></div>
+    <input type="text" class="textField border" maxlength="100" data-bind="textInput: $root.object().Email, longNameTooltip: $root.object().Email"/>
+
+    <div class="fieldCaption" data-bind="restext: 'UserPosition'"></div>
+    <input type="text" class="textField border" maxlength="255" data-bind="textInput: $root.object().PositionName, longNameTooltip: $root.object().PositionName"/>
+
+    <div class="fieldCaption" data-bind="restext: 'Note'"></div>
+    <input type="text" class="textField border" maxlength="500" data-bind="textInput: $root.object().Note, longNameTooltip: $root.object().Note"/>
+</div>

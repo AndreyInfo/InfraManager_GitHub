@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX if not exists ui_calendar_work_schedule_name on calendar_work_schedule(name)

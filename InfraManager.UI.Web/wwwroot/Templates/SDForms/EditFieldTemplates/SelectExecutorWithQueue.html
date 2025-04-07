@@ -1,0 +1,161 @@
+﻿<div>
+    <div class="edit-field-user-input-wrap">
+        <div>
+            <input type="text" class="text-input searcherInputQueue searcherInput" data-bind="value: selectedObjectFullNameQueue, attr: { placeholder: emptyPlaceholderQueue }" />
+        </div>
+        <div class="edit-field-user-input-details" data-bind="with: selectedUserQueue">
+            <!-- ko if: ClassID == 9 -->
+            <div class="edit-field-user-input-details__name">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserFullName'"></span>:
+                <span data-bind="text: Name"></span> <span data-bind="text: Patronymic"></span> <span data-bind="text: Family"></span>
+            </div>
+            <div class="edit-field-user-input-details__position" data-bind="if: PositionName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserPosition'"></span>:
+                <span data-bind="text: PositionName"></span>
+            </div>
+            <div class="edit-field-user-input-details__number" data-bind="if: Number">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserNumber'"></span>:
+                <span data-bind="text: Number"></span>
+            </div>
+            <!-- ko if: OrganizationName -->
+            <hr class="edit-field-user-input-details__hr" />
+            <!-- /ko -->
+            <div class="edit-field-user-input-details__organization" data-bind="if: OrganizationName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserOrganization'"></span>:
+                <span data-bind="text: OrganizationName"></span>
+            </div>
+            <div class="edit-field-user-input-details__subdivision" data-bind="if: SubdivisionFullName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserSubdivision'"></span>:
+                <span data-bind="text: SubdivisionFullName"></span>
+            </div>
+            <!-- ko if: BuildingName -->
+            <hr class="edit-field-user-input-details__hr" />
+            <!-- /ko -->
+            <div class="edit-field-user-input-details__building" data-bind="if: BuildingName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserBuilding'"></span>:
+                <span data-bind="text: BuildingName"></span>
+            </div>
+            <div class="edit-field-user-input-details__floor" data-bind="if: FloorName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserFloor'"></span>:
+                <span data-bind="text: FloorName"></span>
+            </div>
+            <div class="edit-field-user-input-details__room" data-bind="if: RoomName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserRoom'"></span>:
+                <span data-bind="text: RoomName"></span>
+            </div>
+            <div class="edit-field-user-input-details__workplace" data-bind="if: WorkplaceName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserWorkplace'"></span>:
+                <span data-bind="text: WorkplaceName"></span>
+            </div>
+            <!-- ko if: Note -->
+            <hr class="edit-field-user-input-details__hr" />
+            <!-- /ko -->
+            <div class="edit-field-user-input-details__note" data-bind="if: Note">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserNote'"></span>:
+                <span data-bind="text: Note"></span>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: ClassID == 722 -->
+            <div class="edit-field-user-input-details__name">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserFullName'"></span>:
+                <span data-bind="text: Name"></span>
+            </div>
+            <div class="edit-field-user-input-details__position" data-bind="if: ResponsibleName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'Responsible'"></span>:
+                <span data-bind="text: ResponsibleName"></span>
+            </div>
+            <div class="edit-field-user-input-details__position" data-bind="if: QueueTypeName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'QueueType'"></span>:
+                <span data-bind="text: QueueTypeName"></span>
+            </div>
+            <!-- ko if: Note -->
+            <hr class="edit-field-user-input-details__hr" />
+            <!-- /ko -->
+            <div class="edit-field-user-input-details__note" data-bind="if: Note">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserNote'"></span>:
+                <span data-bind="text: Note"></span>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    <div class="edit-field-user-input-wrap">
+        <div>
+            <input type="text" class="text-input searcherInputExecutor searcherInput" data-bind="value: selectedObjectFullName, attr: { placeholder: emptyPlaceholder }" />
+        </div>
+        <div class="edit-field-user-input-details" data-bind="with: selectedUser">
+            <!-- ko if: ClassID == 9 -->
+            <div class="edit-field-user-input-details__name">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserFullName'"></span>:
+                <span data-bind="text: Name"></span> <span data-bind="text: Patronymic"></span> <span data-bind="text: Family"></span>
+            </div>
+            <div class="edit-field-user-input-details__position" data-bind="if: PositionName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserPosition'"></span>:
+                <span data-bind="text: PositionName"></span>
+            </div>
+            <div class="edit-field-user-input-details__number" data-bind="if: Number">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserNumber'"></span>:
+                <span data-bind="text: Number"></span>
+            </div>
+            <!-- ko if: OrganizationName -->
+            <hr class="edit-field-user-input-details__hr" />
+            <!-- /ko -->
+            <div class="edit-field-user-input-details__organization" data-bind="if: OrganizationName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserOrganization'"></span>:
+                <span data-bind="text: OrganizationName"></span>
+            </div>
+            <div class="edit-field-user-input-details__subdivision" data-bind="if: SubdivisionFullName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserSubdivision'"></span>:
+                <span data-bind="text: SubdivisionFullName"></span>
+            </div>
+            <!-- ko if: BuildingName -->
+            <hr class="edit-field-user-input-details__hr" />
+            <!-- /ko -->
+            <div class="edit-field-user-input-details__building" data-bind="if: BuildingName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserBuilding'"></span>:
+                <span data-bind="text: BuildingName"></span>
+            </div>
+            <div class="edit-field-user-input-details__floor" data-bind="if: FloorName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserFloor'"></span>:
+                <span data-bind="text: FloorName"></span>
+            </div>
+            <div class="edit-field-user-input-details__room" data-bind="if: RoomName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserRoom'"></span>:
+                <span data-bind="text: RoomName"></span>
+            </div>
+            <div class="edit-field-user-input-details__workplace" data-bind="if: WorkplaceName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserWorkplace'"></span>:
+                <span data-bind="text: WorkplaceName"></span>
+            </div>
+            <!-- ko if: Note -->
+            <hr class="edit-field-user-input-details__hr" />
+            <!-- /ko -->
+            <div class="edit-field-user-input-details__note" data-bind="if: Note">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserNote'"></span>:
+                <span data-bind="text: Note"></span>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: ClassID == 722 -->
+            <div class="edit-field-user-input-details__name">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserFullName'"></span>:
+                <span data-bind="text: FullName"></span>
+            </div>
+            <div class="edit-field-user-input-details__position" data-bind="if: ResponsibleFullName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'Responsible'"></span>:
+                <span data-bind="text: ResponsibleFullName"></span>
+            </div>
+            <div class="edit-field-user-input-details__position" data-bind="if: QueueTypeName">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'QueueType'"></span>:
+                <span data-bind="text: QueueTypeName"></span>
+            </div>
+            <!-- ko if: Note -->
+            <hr class="edit-field-user-input-details__hr" />
+            <!-- /ko -->
+            <div class="edit-field-user-input-details__note" data-bind="if: Note">
+                <span class="edit-field-user-input-details__header" data-bind="restext: 'UserNote'"></span>:
+                <span data-bind="text: Note"></span>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    
+</div>

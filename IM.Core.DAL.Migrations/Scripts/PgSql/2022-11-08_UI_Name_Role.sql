@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX if not exists ui_role_name on role(name);

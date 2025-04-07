@@ -1,0 +1,3 @@
+﻿<div class="radioButtons" data-bind="foreach: $data.EnumValueList, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true}">
+    <div><input type="radio" data-bind="checkedValue: $data.ID, checked: $parent.Value, attr: {name: $parent.UniqueValueIdentifier}, disable: $parent.Parameter.ReadOnly || !$parent.IsLoaded"><span data-bind="text: $data.Name" /></div>
+</div>

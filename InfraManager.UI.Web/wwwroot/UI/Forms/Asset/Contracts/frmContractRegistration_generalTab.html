@@ -1,0 +1,62 @@
+﻿<div class="tabPage" data-bind="with: tabActive, afterUpdateBlock: tabActive().afterRender">
+    <div class="tabGeneral">
+        <div class="leftSide">
+            <div class="fieldCaption" data-bind="restext: 'Contract_ExternalNumber'"></div>
+            <div class="fieldControl border">
+                <input type="text" maxlength="250" data-bind="value: $parent.object().externalNumber" />
+            </div>
+            <div class="fieldCaption" data-bind="restext: 'Contact_RegistrationDate'"></div>
+            <div class="fieldControl border nowrap">
+                <input class="dateRegistered" type="text" data-bind="value: $parent.object().dateRegisteredString" />
+            </div>
+            <div class="sumBlock">
+                <div class="fieldCaption required" data-bind="restext: 'Contract_StartDate'"></div>
+                <div class="fieldControl border bold">
+                    <input class="dateStart" type="text" data-bind="value: $parent.object().dateStartString" />
+                </div>
+                <div class="fieldCaption required" data-bind="restext: 'Contract_EndDate'"></div>
+                <div class="fieldControl border bold">
+                    <input class="dateEnd" type="text" data-bind="value: $parent.object().dateEndString" />
+                </div>
+                <div class="fieldCaption required" data-bind="restext: 'Contract_Cost'"></div>
+                <div class="fieldControl border nowrap bold clickable" data-bind="text: $parent.object().costString, click: costClick"></div>                
+            </div>
+            <div class="caption mt10 im-big-header" data-bind="restext: 'Contract_Prolongation'"></div>
+            <div class="fieldCaption" data-bind="restext: 'Contract_Prolongation'"></div>
+            <div class="fieldControl slider-checkbox">
+                <input type="checkbox" data-bind="checked: $parent.object().updateTypeEnabled" />
+                <label class="label" data-bind="text: $parent.object().updateTypeEnabled() == true ? getTextResource('True') : getTextResource('False')"></label>
+            </div>
+            <div class="fieldCaption" data-bind="restext: 'Contract_ProlongationEventMonthCount', visible: $parent.object().updateTypeEnabled() == true"></div>
+            <div class="fieldControl nud" data-bind="visible: $parent.object().updateTypeEnabled() == true">
+                <input class="updatePeriod" type="text" maxlength="3" data-bind="value: $parent.object().updatePeriod" />
+            </div>
+        </div>
+        <div class="rightSide">
+            <div class="fieldCaption required" data-bind="text: getTextResource('Contract_Type') +'/' + getTextResource('Contract_Model')"></div>
+            <div class="fieldControl border">
+                <input class="productCatalogue" type="text" data-bind="value: $parent.object().productCatalogFullName" />
+            </div>
+            <div class="fieldCaption" data-bind="restext: 'Contract_Manufacturer'"></div>
+            <div class="fieldControl border">
+                <input class="manufacturer" type="text" data-bind="value: $parent.object().manufacturerName" />
+            </div>
+            <div class="fieldCaption required" data-bind="restext: 'Contract_Supplier'"></div>
+            <div class="fieldControl border supplier" data-bind="text: $parent.object().supplierName, longNameTooltip: $parent.object().supplierName, click: $parent.tabActive().showSupplierList"></div>
+            <div class="fieldCaption" data-bind="restext: 'Contract_FinanceCenter'"></div>
+            <div class="fieldControl border">
+                <input class="financeCenter" type="text" data-bind="value: $parent.object().financeCenterFullName" />
+            </div>
+            <div class="fieldCaption" data-bind="restext: 'ContractInitiator'"></div>
+            <div class="fieldControl border">
+                <input class="initiator" type="text" data-bind="value: $parent.object().initiatorFullName" />
+            </div>
+            <div class="fieldCaption" data-bind="restext: 'Contract_Note'"></div>
+            <div class="fieldControl border multiline">
+                <textarea maxlength="255" data-bind="textInput: $parent.object().note" />
+            </div>
+        </div>
+    </div>
+</div>
+
+

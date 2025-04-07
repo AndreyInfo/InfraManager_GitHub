@@ -1,0 +1,47 @@
+﻿<div class="tabPage assetForm b-requestDetail im-base-text" data-bind="with: tabActive, afterUpdateBlock: tabActive().AfterRender">
+
+    <div class="tabGeneral" tabindex="0">
+        <!-- Информация -->
+        <div class="information-div">
+            <!--Описание-->
+            <span class="fieldCaption" data-bind="restext:'ELPTask_Form_Description'" />
+
+            <!--<div class="fieldControl border multiline" data-bind="text: $parent.object().Description, click: editDescription, css: {'clickable': $parent.CanEdit()}"></div>-->
+            <!-- ko if: $parent.isAddNewELPTask -->
+            <div class="fieldControl border multiline">
+                <textarea maxlength="255" data-bind="textInput: $parent.object().Description" />
+            </div>
+            <!-- /ko -->
+            <!-- ko ifnot: $parent.isAddNewELPTask -->
+            <div class="fieldControl border multiline" data-bind="text: $parent.object().Description, click: editDescription, css: {'clickable': $parent.CanEdit()}"></div>
+            <!-- /ko -->
+
+            <!-- Производитель -->
+            <div class="vendorSelet-div">
+                <span class="sectionCaption" data-bind="restext:'ELPTask_Form_Limits'" />
+                <div class="radio_block">
+                    <span class="radio_two">
+                        <input type="radio" class="input_radio" id="ELPVendorAnyRadioTrue" name="ELPVendorAnyRadio" value="1" data-bind="checked: $parent.object().ELPVendorAny(), click: SetVendorAny" /> <!--, click: EditInstallationLimitUnlimit-->
+                        <label class="label input_radio" for="ELPVendorAnyRadioTrue" data-bind="restext:'ELPTask_Form_VendorAnyRadio'"></label>
+                    </span>
+                </div>
+
+                <div class="radio_block">
+                    <span class="radio_two">
+                        <input type="radio" class="input_radio" id="ELPVendorAnyRadioFalse" name="ELPVendorAnyRadio" value="0" data-bind="checked: $parent.object().ELPVendorAny(), click: SetVendorSpecific" /> <!--, click: EditInstallationLimitUnlimit-->
+                        <label class="label input_radio" for="ELPVendorAnyRadioFalse" data-bind="restext:'ELPTask_Form_VendorSpecRadio'"></label>
+                    </span>
+                </div>
+
+                <!-- ko if: $parent.DisplayVendor() -->
+                <div class="radio_block">
+                    <span class="fieldCaption" data-bind="restext:'ELPTask_Form_Vendor'" />
+                    <div class="pairFields">
+                        <div class="asset-text-field-readonly fieldControl border nowrap clickable editor scheme" id="searchVendorInputElelemnt" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: $parent.object().VendorLabel, css: { 'cursor-pointer': $root.CanEdit }, click: EditVendor" />
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>

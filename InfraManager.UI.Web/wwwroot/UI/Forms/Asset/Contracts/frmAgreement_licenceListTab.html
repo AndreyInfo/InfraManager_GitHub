@@ -1,0 +1,28 @@
+﻿<div class="tabPage ml h100" data-bind="with: tabActive">
+
+    <div class="im-big-header caption">
+        <span class="treeNodeWrapper" data-bind="restext: 'Contract_SoftwareUsageRights'"> </span>
+        <span style="position:absolute" class="tabCaption-icon-plus active tooltipstered" data-bind="click: addLicence, css: { 'active' : availableAddPlus()}"></span>
+    </div>
+    <div class="firstConditionsBlock">
+        <item>
+            <div class="fieldCaption" data-bind="restext: 'ContractLicence_CostRights'"></div>
+            <div class="fieldValue" data-bind="text: summaString()"></div>
+        </item>
+        <item>
+            <div class="fieldCaption" data-bind="restext: 'ContractLicence_AvailableCost'"></div>
+            <div class="fieldValue" data-bind="text: availableCostString()"></div>
+        </item>
+        <item>
+            <div class="fieldCaption" data-bind="restext: 'ContractAgreement_Sum'"></div>
+            <div class="fieldValue" data-bind="text: agreementCost()"></div>
+        </item>
+        <item>
+            <div class="fieldCaption" data-bind="restext: 'Contract_Cost'"></div>
+            <div class="fieldValue" data-bind="text: contractCost()"></div>
+        </item>
+    </div>
+    <div style="height: calc(100% - 122px);" data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'ContractLicence', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false}"></div>
+    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+</div>
+

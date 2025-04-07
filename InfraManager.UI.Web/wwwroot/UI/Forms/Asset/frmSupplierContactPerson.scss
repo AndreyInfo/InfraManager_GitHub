@@ -1,0 +1,35 @@
+﻿@import "../../../Styles/general";
+
+.frmSupplierContactPerson {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .textField {
+        width: 100%;
+        height: 26px;
+        margin-bottom: 10px;
+
+        &.border {
+            border: 1px solid $border-gray-color;
+            padding: 2px 7px;
+        }
+    }
+
+    .fieldCaption {
+        color: $gray-text-color;
+        font-size: 11px;
+
+        &.blue {
+            color: $blue-text-color;
+            font-size: inherit;
+        }
+    }
+
+    .required {
+        font-weight: normal;
+    }
+}

@@ -1,0 +1,1 @@
+delete from im.mass_incident_affected_service t where exists(select 1 from im.mass_incident where id = t.mass_incident_id and service_id = t.service_id)

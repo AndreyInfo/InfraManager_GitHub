@@ -1,0 +1,13 @@
+﻿<div class="tabPage assetForm b-requestDetail im-base-text" data-bind="with: tabActive, afterUpdateBlock: tabActive().AfterRender">
+
+    <div class="tabLicences" tabindex="0">
+        <!-- Информация -->
+        <div class="licence-div">
+            <div class="label label-vert-padding">
+                <span data-bind="restext: 'SoftwareInstallation_Form_LicenceList'" />
+            </div>
+
+            <div data-bind="attr: {'id': licencesListViewID}, koListView: {settingsName: 'SoftwareInstallationLicences', controlInitialized: licencesListViewInit, retrieveItems: licencesRetrieveItems, virtualMode: false, autoDispose: false, itemClick: null}"></div>
+        </div>
+    </div>
+</div>

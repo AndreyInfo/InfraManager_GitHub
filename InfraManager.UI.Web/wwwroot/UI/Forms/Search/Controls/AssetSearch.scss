@@ -1,0 +1,55 @@
+﻿.assetSearch {
+    .asset-sd-left {
+        width: 300px;
+        float: left;
+        height: 100%;
+        position: relative;
+        background: $light-gray-blue-text-color;
+    }
+
+    .selectControl-body {
+        background: $white-background-color;
+    }
+
+    .selectControl-firstRowList, .selectControl-firstRowItem {
+        background: $light-gray-blue-text-color;
+    }
+
+    .filters {
+        overflow-y: auto;
+        height: calc(100%-50px);
+    }
+
+    .asset-sd-right {
+        float: right;
+        position: relative;
+        width: calc(100%-300px);
+        height: 100%;
+        // overflow:auto;
+    }
+
+    .asset-sd-right-table {
+        height: calc(100%-60px);
+    }
+
+    .asset-link_tableWrapper {
+        top: 0;
+        display: unset;
+        padding-top: 0;
+    }
+
+    .asset-link_tableColumn {
+        order: unset;
+        -ms-flex-order: unset;
+        flex-grow: unset;
+        -ms-flex-positive: unset;
+        overflow: unset;
+        position: unset;
+        //height: unset;
+        border-top: unset;
+    }
+
+    .asset-link_searchText-clearfield {
+        right: 90px;
+    }
+}

@@ -1,0 +1,22 @@
+﻿.elp-list-panel {
+    height: 100%;
+}
+
+.elp-list-search-panel {    
+    margin-top: 10px;
+    margin-left: 20px;    
+    margin-right: 20px;
+}
+
+.elp-list-showDeletedRecords {
+    margin-top: 20px;
+}
+
+.elp-list-grid-panel {
+    margin-top: 20px;
+    height: 100%;
+}
+
+.elp-list-grid {
+    height: 100%;
+}

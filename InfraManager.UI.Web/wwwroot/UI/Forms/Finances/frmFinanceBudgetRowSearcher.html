@@ -1,0 +1,103 @@
+﻿<div class="ars-link-main frmFinanceBudgetRowSearcher">
+    <div class="ars-link-menu">
+        <div class="ars-link-divider"></div>
+        <div class="ars-link-menubutton" data-bind="click: function() { mode(modes.general); }, css: { 'active' : mode() == modes.general }">
+            <div class="ars-link-menubutton-text" data-bind="restext: 'AssetLinkHeaderParameters'"></div>
+        </div>
+        <div class="ars-link-divider"></div>
+        <div class="ars-link-menubutton ars-link-choosenbutton" data-bind="click: function() { mode(modes.selected); }, visible: SelectedList().length > 0, css: { 'active' : mode() == modes.selected }">
+            <div class="ars-link-menubutton-text">
+                <span data-bind="restext: 'AssetLinkHeaderChoosen'"></span>
+                <span data-bind="text: SelectedTabText"></span>
+            </div>
+        </div>
+        <div class="ars-link-lastelement"></div>
+    </div>
+    <div class="ars-link-body">
+        <div class="ars-link-parameters" data-bind="visible: mode() == modes.general">
+            <div class="ars-link_searchText">
+                <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, valueUpdate: 'input'">
+                <div class="ars-link_searchText-clearfield cursor-pointer" data-bind="click: function() { SearchText(''); }, visible: SearchText().length > 0"></div>
+            </div>
+            <div class="ars-link_tableWrapper">
+                <div class="ars-link_tableSearchColumns" data-bind="with: tableColumns">
+                    <div data-bind="template: { name: 'Table/Columns', afterRender: AfterRender }"></div>
+                </div>
+                <div class="ars-link_paramsColumn">
+                    <div class="ars-link_columnsButton b-content-table__icon gray-btn b-content-table__icon3 cursor-pointer"><span /></div>
+                    <div class="financeCenterFilter">
+                        <div class="treeControlHeader" data-bind="click: function() { filter_financeCenter_isExpanded(!filter_financeCenter_isExpanded()); }">
+                            <div class="treeControlHeader-text" data-bind="restext: 'FinanceCenter'"></div>
+                            <div class="treeControlHeader-icon" data-bind="css: { 'expanded': filter_financeCenter_isExpanded }"></div>
+                        </div>
+                        <div class="financeCenterFilter_content" data-bind="visible: filter_financeCenter_isExpanded"></div>
+                    </div>
+                    <div class="budgetArticleFilter">
+                        <div class="treeControlHeader" data-bind="click: function() { filter_budgetArticle_isExpanded(!filter_budgetArticle_isExpanded()); }">
+                            <div class="treeControlHeader-text" data-bind="restext: 'FinanceBudgetRow_BudgetArticle'"></div>
+                            <div class="treeControlHeader-icon" data-bind="css: { 'expanded': filter_budgetArticle_isExpanded }"></div>
+                        </div>
+                        <div class="budgetArticleFilter_content" data-bind="visible: filter_budgetArticle_isExpanded"></div>
+                    </div>
+                    <div class="initiatorFilter">
+                        <div class="treeControlHeader" data-bind="click: function() { filter_initiator_isExpanded(!filter_initiator_isExpanded()); }">
+                            <div class="treeControlHeader-text" data-bind="restext: 'Initiator'"></div>
+                            <div class="treeControlHeader-icon" data-bind="css: { 'expanded': filter_initiator_isExpanded }"></div>
+                        </div>
+                        <div class="initiatorFilter_content" data-bind="visible: filter_initiator_isExpanded"></div>
+                    </div>
+                </div>
+                <div class="ars-link_tableColumn" data-bind="with: table">
+                    <div data-bind="template: { name: 'Table/Table', afterRender: AfterRender}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="ars-link-choosen ars-link-ChoosenList" data-bind="visible: mode() == modes.selected">
+            <table class="imList-table">
+                <colgroup>
+                    <col style="width: 30px" />
+                    <col style="width: 70px" />
+                    <col style="width: calc(100% - 820px)" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 120px" />
+                </colgroup>
+                <thead>
+                    <tr class="imList-tableHeaderRow">
+                        <th class="imList-tableHeaderCheckBox"></th>
+                        <th data-bind="restext: 'Identifier'"></th>
+                        <th data-bind="restext: 'Name'"></th>
+                        <th data-bind="restext: 'FinanceBudgetRow_BudgetArticle'"></th>
+                        <th data-bind="restext: 'FinanceCenter'"></th>
+                        <th data-bind="restext: 'Initiator'"></th>
+                        <th class="imList-rightCell" data-bind="restext: 'FinanceBudgetRow_TotalSum'"></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr class="imList-tableFooterRow">
+                        <td colspan="6" style="text-align: right" data-bind="restext: 'TotalSummaryHeader'"></td>
+                        <td class="imList-rightCell" data-bind="text: SelectedList_SumString()"></td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <!-- ko foreach: SelectedList -->
+                    <tr class="imList-tableRow" data-bind="click: ShowForm">
+                        <td class="imList-tableCheckBox">
+                            <input type="checkbox" class="im-list-item__chb" checked data-bind="click: function() { Selected(false); return true; }, clickBubble: false" />
+                        </td>
+                        <td class="imList-clickableCell" data-bind="text: Identifier"></td>
+                        <td class="imList-clickableCell" data-bind="text: Name"></td>
+                        <td data-bind="text: BudgetFullName"></td>
+                        <td data-bind="text: FinanceCenterFullName"></td>
+                        <td data-bind="text: InitiatorFullName"></td>
+                        <td class="financeBudgetRow_sum" data-bind="template: { afterRender: OnRender }, click: SumClick">
+                            <input type="text" class="imList-rightCell" data-bind="value: Sum, valueUpdate: 'input'" />
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

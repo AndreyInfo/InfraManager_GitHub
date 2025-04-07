@@ -1,0 +1,11 @@
+﻿<div class="financeBudgetTable" data-bind="stopBinding: true">
+    <div class="b-content-table">
+        <div class="b-content-table__icons">
+            <div class="columnSettingsButton b-content-table__icon gray-btn b-content-table__icon3 cursor-pointer"><span /></div>
+        </div>
+        <div class="listRegion">
+            <div class="regionTable" data-bind="template: {name: 'Table/Table', afterRender: AfterRender}" style="visibility:hidden"></div>
+        </div>
+    </div>
+    <span class="regionColumns" data-bind="template: {name: 'Table/Columns', afterRender: AfterRender}"></span>
+</div>

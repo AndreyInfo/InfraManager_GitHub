@@ -1,0 +1,47 @@
+﻿@import "../../../Styles/general";
+
+.frmUserSearch {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    padding-top: 10px;
+
+    .searchField {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 0 10px;
+
+        input {
+            border: 1px solid $border-gray-color;
+            padding: 2px 7px;
+            line-height: 22px;
+            height: 26px;
+            width: 100%;
+            outline: none;
+
+            &.locationSearcher {
+                padding-right: 20px;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .search-results-control-clearfield {
+            right: 16px;
+        }
+    }
+
+    .tvWrapper {
+        overflow: auto;
+        height: calc(100% - 36px);
+        margin-right: 1px;
+        padding: 10px;
+        width: 100%;
+
+        .treeControlWrapper {
+            padding-top: 0;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+﻿<div class="ars-link_searchText">
+    <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, event: { keypress: SearchKeyPressed }">
+    <div class="ars-link_searchText-clearfield cursor-pointer" data-bind="click: EraseTextClick, visible: !IsSearchTextEmpty()"></div>
+</div>
+<div class="ars-link_tableWrapper">
+    <span class="ars-link_tableSearchColumns" data-bind="if: startLoadingColumns">
+        <span data-bind="template: { name: 'Table/Columns', afterRender: columnsModel.AfterRender, data: columnsModel }"></span>
+    </span>
+    <div class="ars-link_paramsColumn">
+        <div>
+            <div class="ars-link_columnsButton b-content-table__icon gray-btn b-content-table__icon3 cursor-pointer" style="position:relative;"><span /></div>
+        </div>
+        <div class="ars-link_paramsColumnProductCatalog"></div>
+        <div class="ars-link_paramsColumnNumbers"></div>
+        <div class="ars-link_paramsColumnCustomers"></div>
+        <div class="ars-link_paramsColumnCustomerSubdivision"></div>
+        <div class="ars-link_paramsColumnReferences"></div>
+        <div class="ars-link_dtpDatePromised"></div>
+    </div>
+    <div class="ars-link_tableColumn" data-bind="if: startLoadingTable">
+        <span data-bind="template: { name: 'Table/Table', afterRender: tableModel.AfterRender, data: tableModel }"></span>
+    </div>
+</div>
+

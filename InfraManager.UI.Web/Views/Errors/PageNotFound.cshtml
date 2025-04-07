@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/LiteLayout.cshtml";
+}
+
+<style>
+    body {
+        background: white;
+    }
+
+    .img-container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center; /* Align center inline elements */
+        font: 0/0 a;
+    }
+
+        .img-container:before {
+            content: ' ';
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+
+        .img-container img {
+            vertical-align: middle;
+            display: inline-block;
+        }
+</style>
+
+<div class="img-container">
+    <img src="~/images/404.jpg" />
+</div>
+

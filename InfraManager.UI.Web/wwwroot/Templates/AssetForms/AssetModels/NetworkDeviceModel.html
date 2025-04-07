@@ -1,0 +1,116 @@
+﻿<!-- ko if:  $model() != null -->
+<div class="network-device-header-text" data-bind="restext: 'Asset_ModelCharacteristics'" />
+<table class="network-device-table-margineTop table-fixed">
+    <tbody>
+        <tr>
+            <td class="network-device-table-row"><span data-bind="restext:'Asset_PortNumber'" /></td>
+            <td>
+                <div class="asset-text-field-readonly" data-bind="text: $model().PortNumber" />
+            </td>
+        </tr>
+        <tr>
+            <td class="network-device-table-row"><span data-bind="restext:'Asset_SlotNumber'" /></td>
+            <td class="network-device-table-row">
+                <div class="asset-text-field-readonly" data-bind="text: $model().SlotNumber" />
+            </td>
+        </tr>
+        <!-- ko if: !$root.asset().CAT_LogicalComponent() && !$root.asset().IsLogical() -->
+        <tr>
+            <td class="network-device-table-row"><span data-bind="restext:'Asset_HeightInUnits'" /></td>
+            <td class="network-device-table-row">
+                <div class="asset-text-field-readonly" data-bind="text: $model().HeightInUnits" />
+            </td>
+        </tr>
+        <tr>
+            <td class="network-device-table-row"><span data-bind="restext:'Asset_HeightMM'" /></td>
+            <td class="network-device-table-row">
+                <div class="asset-text-field-readonly" data-bind="text: $model().Height" />
+            </td>
+        </tr>
+        <tr>
+            <td class="network-device-table-row"><span data-bind="restext:'Asset_WidthMM'" /></td>
+            <td class="network-device-table-row">
+                <div class="asset-text-field-readonly" data-bind="text: $model().Width" />
+            </td>
+        </tr>
+        <tr>
+            <td class="network-device-table-row"><span data-bind="restext:'Asset_DepthMM'" /></td>
+            <td class="network-device-table-row">
+                <div class="asset-text-field-readonly" data-bind="text: $model().Depth" />
+            </td>
+        </tr>
+        <!-- /ko -->
+    </tbody>
+</table>
+<div class="network-device-checkbox-field-pair" data-bind="visible: !$root.asset().CAT_LogicalComponent() && !$root.asset().IsLogical()">
+    <div class="network-device-onStorage-text" data-bind="restext:'Asset_IsRackMount'"></div>
+    <input class="network-device-onStorage" type="checkbox" readonly data-bind="checked: $model().IsRackMount, disable: true" />
+</div>
+<div data-bind="if: $model().CAT_NetworkDevicePrinter">
+    <div class="network-device-header-text" data-bind="restext: 'Asset_Printer'" />
+    <table class="network-device-table-margineTop">
+        <tbody>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_MaxPageCount'" /></td>
+                <td class="network-device-table-row">
+                    <div class="asset-text-field-readonly" data-bind="text: $model().Printer_MaxPageCount" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_NomPageCount'" /></td>
+                <td class="network-device-table-row">
+                    <div class="asset-text-field-readonly" data-bind="text: $model().Printer_NomPageCount" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_Color'" /></td>
+                <td class="network-device-table-row">
+                    <input class="asset-model-checkbox" type="checkbox" readonly data-bind="checked: $model().Printer_Color, disable: true" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_Photo'" /></td>
+                <td class="network-device-table-row">
+                    <input class="asset-model-checkbox" type="checkbox" readonly data-bind="checked: $model().Printer_Photo, disable: true" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_DuplexMode'" /></td>
+                <td class="network-device-table-row">
+                    <input class="asset-model-checkbox" type="checkbox" readonly data-bind="checked: $model().Printer_DuplexMode, disable: true" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_TechnologyName'" /></td>
+                <td class="network-device-table-row">
+                    <div class="asset-text-field-readonly" data-bind="text: $model().Printer_TechnologyName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_MaxFormatName'" /></td>
+                <td class="network-device-table-row">
+                    <div class="asset-text-field-readonly" data-bind="text: $model().Printer_MaxFormatName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_Speed'" /></td>
+                <td class="network-device-table-row">
+                    <div class="asset-text-field-readonly" data-bind="text: $model().Printer_Speed" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_SpeedMeasureName'" /></td>
+                <td class="network-device-table-row">
+                    <div class="asset-text-field-readonly" data-bind="text: $model().Printer_SpeedMeasureName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="network-device-table-row"><span data-bind="restext:'Printer_RollsCount'" /></td>
+                <td class="network-device-table-row">
+                    <div class="asset-text-field-readonly" data-bind="text: $model().Printer_RollsCount" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- /ko -->

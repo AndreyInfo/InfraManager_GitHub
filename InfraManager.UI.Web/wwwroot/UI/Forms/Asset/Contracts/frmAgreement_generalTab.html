@@ -1,0 +1,92 @@
+﻿<div class="tabPage" data-bind="with: tabActive, afterUpdateBlock: tabActive().afterRender">
+    <div class="tabGeneral" tabindex="0">
+        <div class="leftSide" data-bind="if: $parent.object().contract() != null">
+            <div class="fieldCaption" data-bind="restext: 'Contract_CreateDate'"></div>
+            <div class="fieldControl border nowrap" data-bind="text: $parent.object().contract().dateCreatedString"></div>
+
+            <div class="fieldCaption" data-bind="restext: 'Contract_Number'"></div>
+            <div class="fieldControl" data-bind="text: $parent.object().contract().Number"></div>
+
+            <div class="fieldCaption" data-bind="restext: 'Contact_RegistrationDate'"></div>
+            <div class="fieldControl border nowrap" data-bind="text: $parent.object().contract().UtcDateRegistered"></div>
+            
+            <!--ko if: $parent.object().id() != null-->
+            <div class="fieldCaption" data-bind="restext: 'ContractAgreement_Number'"></div>
+            <div class="fieldControl border nowrap" data-bind="text: $parent.object().number"></div>
+            <!--/ko-->
+               
+            <div class="fieldCaption" data-bind="restext: 'ContractAgreement_Type'"></div>
+            <!--ko if: $parent.object().id() == null-->
+            <div class="fieldControl border combobox typeOfAgreement" data-bind="combobox: { dataSource: $parent.object().typeDataSource }, comboboxValue: $parent.object().type, style: { 'pointer-events': $parent.canEdit() ? 'auto' : 'none' }" />
+            <!--/ko-->
+            <!--ko if: $parent.object().id() != null-->
+            <div class="fieldControl border nowrap" data-bind="text: $parent.object().typeString"></div>
+            <!--/ko-->
+
+            <div class="fieldCaption" data-bind="restext: 'Contract_StartDate'"></div>
+            <!--ko if: $parent.object().id() != null-->
+            <div class="fieldControl border nowrap bold" data-bind="text: $parent.object().utcDateStart, click: editDateStart, css: {'clickable': $parent.canEdit()}"></div>
+            <!--/ko-->
+            <!--ko if: $parent.object().id() == null-->
+            <div class="fieldControl border bold">
+                <input class="dateStart" type="text" data-bind="value: $parent.object().utcDateStart" />
+            </div>
+            <!--/ko-->
+
+            <div class="fieldCaption" data-bind="restext: 'Contract_EndDate'"></div>
+            <!--ko if: $parent.object().id() != null-->
+            <div class="fieldControl border nowrap bold" data-bind="text: $parent.object().utcDateEnd, click: editDateFinish, css: {'clickable': $parent.canEdit()}"></div>
+            <!--/ko-->
+            <!--ko if: $parent.object().id() == null-->
+            <div class="fieldControl border bold">
+                <input class="dateEnd" type="text" data-bind="value: $parent.object().utcDateEnd" />
+            </div>
+            <!--/ko-->
+
+            <div class="fieldCaption" data-bind="restext: 'ContractAgreement_Sum'"></div>
+            <div class="fieldControl border nowrap bold clickable" data-bind="text: $parent.object().costString, click: costClick, tooltip: getTextResource('Contract_CostDescription')"></div>
+
+            <div class="caption mt10 im-big-header" data-bind="restext: 'ContractAgreement_ContractGenerel'"></div>
+            <div class="fieldCaption" data-bind="restext: 'ContractAgreement_Contract'"></div>
+            <div class="fieldControl blue clickable" data-bind="text: $parent.object().contractFullName, click: showContract"></div>
+        </div>
+        <div class="rightSide" data-bind="if: $parent.object().contract() != null">
+            <div class="fieldCaption" data-bind="restext: 'Contract_Supplier'"></div>
+            <div class="fieldControl border nowrap" data-bind="text: $parent.object().contract().SupplierName, longNameTooltip: $parent.object().contract().SupplierName"></div>
+
+            <div class="fieldCaption" data-bind="restext: 'Contract_Model'"></div>
+            <div class="fieldControl" data-bind="text: $parent.object().contract().ModelName"></div>
+
+            <div class="fieldCaption" data-bind="restext: 'Contract_Manufacturer'"></div>
+            <div class="fieldControl" data-bind="text: $parent.object().contract().ManufacturerName"></div>
+
+            <div class="fieldCaption" data-bind="restext: 'Contract_FinanceCenter'"></div>
+            <div class="fieldControl border nowrap" data-bind="text: $parent.object().contract().FinanceCenterName, longNameTooltip: $parent.object().contract().FinanceCenterName"></div>
+
+            <div class="fieldCaption blue">
+                <div class="inline" data-bind="restext: 'Contract_Manager'"></div>
+            </div>
+            <div class="fieldCaption text" data-bind="text: $parent.object().contract().ManagerName"></div>
+            <div class="fieldCaption text" data-bind="text: $parent.object().contract().ManagerPositionName, visible: $parent.object().contract().ManagerPositionName().length > 0"></div>
+            <div class="fieldCaption text" data-bind="text: $parent.object().contract().ManagerDivisionFullName, visible: $parent.object().contract().ManagerDivisionFullName().length > 0"></div>
+            <div class="fieldControl" />
+            <div class="fieldCaption blue">
+                <div class="inline" data-bind="restext: 'ContractInitiator'"></div>
+            </div>
+            <div class="fieldCaption text" data-bind="text: $parent.object().contract().InitiatorName"></div>
+            <div class="fieldCaption text" data-bind="text: $parent.object().contract().InitiatorPositionName, visible: $parent.object().contract().InitiatorPositionName().length > 0"></div>
+            <div class="fieldCaption text" data-bind="text: $parent.object().contract().InitiatorDivisionFullName, visible: $parent.object().contract().InitiatorDivisionFullName().length > 0"></div>
+            <div class="fieldControl" />
+            <div class="fieldCaption" data-bind="restext: 'Contract_Note'"></div>
+            <div class="fieldControl border multiline" data-bind="text: $parent.object().contract().Notice"></div>
+
+            <div class="caption im-big-header">
+                <div class="inline" data-bind="restext: 'Contract_WorkOrder'"></div>
+            </div>
+            <div class="fieldControl blue clickable" data-bind="text: $parent.object().contract().WorkOrderName, click: showWorkOrder">
+            </div>
+        </div>
+    </div>
+</div>
+
+

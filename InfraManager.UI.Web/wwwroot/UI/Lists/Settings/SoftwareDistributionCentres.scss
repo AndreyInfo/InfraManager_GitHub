@@ -1,0 +1,369 @@
+﻿@import "../../../Styles/general";
+
+.required_field_label::after {
+    content: '*';
+}
+
+.b-content-dictionaries-container-sdc {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    > .leftSide {
+        position: absolute;
+        left: 0;
+        width: 100px;
+        top: 0;
+        bottom: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    > .rightSide {
+        border-left: 1px solid $table-border-gray-color;
+        position: absolute;
+        left: 100px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+.dictionaries-sdc-main {
+    min-width: 600px;
+    max-width: 1100px;
+    padding: 28px;
+    padding-bottom: 0px;
+    line-height: normal;
+    overflow: visible;
+}
+
+.sdc-text-with-header {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    justify-content: center;
+    -ms-flex-pack: center;
+    align-items: stretch;
+    -ms-flex-align: stretch;
+}
+
+.sdc-edit-text {
+    @extend .im-base-text;
+    color: $sdc-edit-link-color !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.sdc-navigation-bar {
+    margin-right: 100px;
+}
+
+.sdc-navigation-bar-item {
+    @extend .im-base-text;
+}
+
+.sdc-navigation-bar-item-text, .orgstructure-navigation-bar-item-separator {
+    color: $sdc-navigation-text-color;
+}
+
+.sdc-navigation-bar-item-text.active:hover {
+    color: $sdc-navigation-text-hover-color;
+    cursor: pointer;
+}
+
+.sdc-text-header {
+    @extend .im-base-text;
+    color: $sdc-text-header-color !important;
+    font-size: 11px !important;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 15px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.sdc-details-name {
+    @extend .im-base-text;
+    color: $sdc-header-text-color !important;
+    font-size: 22px !important;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 25px;
+}
+
+.sdc-details-note {
+    @extend .im-base-text;
+    color: $sdc-text-base-color !important;
+    font-weight: bold !important;
+}
+
+.sdc-details-note-section {
+    margin-top: 50px;
+}
+
+.sdc-textarea {
+    @extend .im-base-text;
+    overflow: hidden;
+    padding: 2px;
+    outline: none;
+    border-width: 1px !important;
+    border-color: $sdc-unfocused-field-border-color !important;
+    resize: none;
+    min-height: 22px;
+    height: auto;
+    width: auto;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.sdc-textarea:focus {
+    border-width: 2px !important;
+    border-color: $sdc-focused-field-border-color !important;
+}
+
+.sdc-details-responsible-person-section {
+    margin-top: 50px;
+}
+
+.sdc-name-editor {
+    width: 100%;
+    font-size: 22px !important;
+}
+
+.sdc-note-editor {
+    width: 100%;
+}
+
+.sdc-buttons {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: flex-end;
+    -ms-flex-pack: end;
+    align-items: center;
+    -ms-flex-align: center;
+}
+
+.sdc-edit-text {
+    @extend .im-base-text;
+    color: $orgstructure-edit-link-color !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    vertical-align: top;
+}
+
+.sdc-details-tabs {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: flex-start;
+    -ms-flex-pack: start;
+    align-items: flex-end;
+    -ms-flex-align: end;
+}
+
+.sdc-details-tab {
+    height: 36px;
+    background-color: $lightblue-background-color;
+    text-align: center;
+    border-bottom: 1px solid $border-gray-color;
+    padding: 8px;
+}
+
+.sdc-details-tab.active {
+    border: 1px solid $border-gray-color;
+    border-bottom: 0px;
+    background-color: $white-background-color;
+    height: 44px;
+    padding: 12px;
+}
+
+.sdc-details-tab-text {
+    line-height: 20px;
+    @extend .im-base-text;
+    color: $service-catalog-light-gray;
+}
+
+.sdc-details-tab.active .sdc-details-tab-text {
+    color: $blue-text-color;
+}
+
+.sdc-details-tabs-divider {
+    border-bottom: 1px solid $border-gray-color;
+    min-width: 15px;
+    height: 44px;
+    flex-grow: 0;
+}
+
+.sdc-details-tabs-divider-last {
+    @extend .dictionaries-header_list-divider;
+    flex-grow: 1;
+    -ms-flex-positive: 1;
+}
+
+.sdc-details-tab-content {
+    margin-top: 10px;
+    padding-right: 3px;
+}
+
+.sdc-show-only-allowed {
+    margin-top: 30px;
+    padding: 0px 10px 0px 10px;
+}
+
+.sdc-show-only-allowed span{
+    line-height: 14px;
+    font-size: 12px;
+    @extend .im-base-text;
+    color: $service-catalog-light-gray;
+}
+
+.sdc-show-only-allowed input{
+    height: 10px;
+}
+
+.sdc-collapse-all {
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.sdc-collapse-all span{
+    @extend .im-base-text;
+    color: $sdc-edit-link-color !important;
+}
+
+.sdc-tree-root {
+    margin-top: 30px;
+}
+
+.sdc-search-tree {
+    width: 600px;
+    margin-top: 20px;
+}
+
+.sdc-details-tab-content {
+    .treeNodeWrapper {
+        width: 100%;
+    }
+
+    .treeNodeHeaderWrapper {
+        width: 100%;
+    }
+
+    .treeNodeText {
+        flex-grow: 1;
+        -ms-flex-positive: 1;
+    }
+
+    .treeNode.selectedNode .treeNodeHeaderWrapper, .treeNodeHeaderWrapper:hover {
+        background-color: $lightblue-background-color;
+        cursor: pointer;
+    }
+}
+
+.sdc-details-responsible-person-icon {
+    float: left;
+    padding: 2px;
+    width: 43px;
+    height: 43px;
+}
+
+.sdc-details-respobsible-person-user {
+    background-image: url('../images/SDForms/user.png');
+}
+.sdc-details-responsible-person-group {
+    background-image: url('../images/SDForms/queue.png');
+}
+.sdc-details-responsible-person-info {
+    margin-left: 55px;
+}
+
+.sdc-details-responsible-person-title {
+    height: 25px;
+}
+.sdc-details-responsible-person-title-text {
+    @extend .im-base-text;
+    color: $sdc-responsible-person-title-color !important;
+    margin-top: 5px;
+}
+.sdc-details-responsible-person-edit {
+    margin-left: 10px;
+}
+.sdc-details-responsible-person-name span {
+    @extend .im-base-text;
+    font-weight: bold !important;
+}
+.sdc-details-responsible-person-room {
+    margin-top: 15px;
+}
+
+.sdc-details-responsible-person-room span{
+    @extend .im-base-text;
+    font-style: italic;
+}
+
+.sdc-details-responsible-person-jobTitle {
+    margin-top: 15px;
+}
+
+.sdc-details-responsible-person-jobTitle span{
+    @extend .im-base-text;
+}
+
+.sdc-details-responsible-person-division {
+    margin-top: 15px;
+}
+
+.sdc-details-responsible-person-division span{
+    @extend .im-base-text;
+    font-style: italic;
+}
+
+.sdc-details-responsible-person-email {
+    margin-top: 15px;
+}
+
+.dictionaries-sdc-tree .treeNodeContextMenuButton {
+    width: 18px;
+    height: 18px;
+    background: url(../UI/Lists/Settings/Icons/context_menu.svg) no-repeat;
+    background-size: 18px 18px;
+    visibility: inherit;
+    margin-right: 5pt;
+    flex-shrink: 0;
+}
+
+.dictionaries-sdc-tree .treeNodeWrapper {
+    width: 100%;
+}
+
+.dictionaries-sdc-tree .treeNodeHeaderWrapper {
+    width: 100%;
+}
+
+.dictionaries-sdc-tree .treeNodeText {
+    width: 100%;
+}

@@ -1,0 +1,8 @@
+﻿<div class="kbaAddingChildContent">
+    <p data-bind="text: ParentName"></p>
+    <form class="folderForm_content">
+        <input class="kbaFormInput" maxlength="250" required data-bind="textInput: Name, attr: {placeholder: getTextResource('EnterName')}, css: {'invalid' : Name().length == 0}" type="text"/>
+        <button type="button" class="closeKbaInputIcon" data-bind="click: resetName"></button>
+    </form>
+    <textarea class="kbaFormInput kbfAddChildNote folderForm_content" data-bind="value: Note, attr: {placeholder: getTextResource('EnterNote')}" type="text"></textarea>
+</div>

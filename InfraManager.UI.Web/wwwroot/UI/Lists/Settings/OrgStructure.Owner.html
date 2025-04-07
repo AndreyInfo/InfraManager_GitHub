@@ -1,0 +1,48 @@
+﻿<div class="b-content-dictionaries-container">
+    <span class="orgstructure-edit-text" data-bind="restext: 'EditOrgStructureItem', click: SwitchToEditMode, visible: CanSwitchToEditMode() && !IsEditable()"></span>
+    <!--Строка навигации-->
+    <div class="orgstructure-navigation-bar" data-bind="visible: !IsEditable()">
+        <div class="orgstructure-navigation-bar-item" data-bind="foreach: Path">
+            <span class="orgstructure-navigation-bar-item-separator" data-bind="visible: $index()!=0">&gt;</span>
+            <span class="orgstructure-navigation-bar-item-text" data-bind="text: Name, click: $parent.NavigationBarItemClick, css: { 'active': $index() != ($parent.Path().length - 1) }"></span>
+        </div>
+    </div>
+    <span class="orgstructure-navigation-bar-item-text" data-bind="restext: 'OrgStructureEditModeTitle', visible: ActiveMode() == 'edit'"></span>
+    <!--Блок Заголовок-->
+    <div class="orgstructure-header">
+        <div class="orgstructure-text-with-header">
+            <span class="orgstructure-text-header" data-bind="restext: 'OrgStructureHeaderTitle', visible: IsEditable"></span>
+            <div class="orgstructure-text-with-image">
+                <div class="orgstructure-header-icon-wrapper" data-bind="visible: !IsEditable()">
+                    <div class="orgstructure-header-icon" data-bind="css: IconClass"></div>
+                </div>
+                <span class="orgstructure-header-name" data-bind="text: Name, visible: !IsEditable()"></span>
+                <textarea rows="1" maxlength="100" class="orgstructure-textarea orgstructure-header-name-editor" data-bind="resattr: { placeholder : 'OrgStructureNamePlaceholder' }, textInput: Name, visible: IsEditable, event: { 'input': UpdateTextAreaHeight }" />
+            </div>
+        </div>
+        <div class="orgstructure-text-with-header">
+            <span class="orgstructure-text-header" data-bind="restext: 'OrgStructureLevelTitle'"></span>
+            <div class="orgstructure-text-with-image">
+                <span class="orgstructure-header-level-name" data-bind="text: LevelName, visible: !IsEditable()"></span>
+                <textarea rows="1" readonly class="orgstructure-textarea orgstructure-header-level-name disabled" data-bind="textInput: LevelName, visible: IsEditable" />
+                <div class="orgstructure-header-icon orgstructure-header-level-icon" data-bind="css: IconClass, visible: IsEditable"></div>
+            </div>
+        </div>
+    </div>
+    <!--Блок Расположение-->
+    <!--Поле Описание-->
+    <!--Блок Свойства-->
+    <!--Блок Вложенные разделы-->
+    <div class="orgstructure-text-with-header orgstructure-section-start">
+        <span class="orgstructure-text-section-header" data-bind="restext: 'OrgStructureNestedDivisionsTitle'"></span>
+        <div data-bind="template: {name: '../UI/Lists/Settings/OrgStructure.OrganizationList'}"></div>
+    </div>
+    <div class="orgstructure-buttons" data-bind="visible: ActiveMode() != 'view'">
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: SaveEditClick">
+            <span class="ui-button-text" data-bind="restext: 'OrgStructureSave'"></span>
+        </button>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: CancelClick">
+            <span class="ui-button-text" data-bind="restext: 'OrgStructureCancel'"></span>
+        </button>
+    </div>
+</div>

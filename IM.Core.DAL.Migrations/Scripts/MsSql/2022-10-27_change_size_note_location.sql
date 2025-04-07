@@ -1,0 +1,11 @@
+ALTER TABLE Здание
+	ALTER COLUMN Примечание  NVARCHAR(1000) NULL ;
+
+ALTER TABLE Этаж
+	ALTER COLUMN Примечание  NVARCHAR(1000) NULL ;
+
+ALTER TABLE Комната
+	ALTER COLUMN Примечание  NVARCHAR(1000) NULL ;
+
+ALTER TABLE [Рабочее место]
+	ALTER COLUMN Примечание  NVARCHAR(1000) NULL ;

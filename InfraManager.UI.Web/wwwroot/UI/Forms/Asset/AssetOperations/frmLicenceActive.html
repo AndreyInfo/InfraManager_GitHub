@@ -1,0 +1,36 @@
+﻿<div class="frmLicenceActive">
+    <div class="container-fluid">
+        <div class="lines">
+            <div class="col-xs-12">
+                <!--Активирумая лицензия -->
+                <div class="fieldCaption" data-bind="restext: 'ActivatedLicense'"></div>            
+            </div>
+            <div class="col-xs-12">
+                <div class="fieldValue" data-bind="text: ActivatedLicense()"></div>
+            </div>
+        </div>
+        <div class="lines">
+            <div class="row">
+                <div class="col-sm-6">
+                    <!--Дата активации -->
+                    <div class="fieldCaption" data-bind="restext: 'ActivationDate'"></div>
+                </div>
+                <div class="col-sm-6">
+                    <!--Ограничение дней -->
+                    <div class="fieldCaption" data-bind="restext: 'SoftwareLicence_LimitInDays'"></div>
+                </div>            
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <!--Дата активации -->
+                    <div class="effective-date" ></div>
+                </div>
+                <div class="col-sm-6">
+                    <!--Ограничение дней -->
+                    <div class="fieldValue" data-bind="text: LimitInDays()"></div>
+                </div>
+            </div>        
+        </div>
+        <div data-bind="template: {name: UpdateCharacteristics().Template,  afterRender: UpdateCharacteristics().AfterRender}"></div>
+    </div>
+</div>

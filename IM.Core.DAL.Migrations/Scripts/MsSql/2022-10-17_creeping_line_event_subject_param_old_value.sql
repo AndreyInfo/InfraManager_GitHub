@@ -1,0 +1,1 @@
+ALTER TABLE [EventSubjectParam] ALTER COLUMN [ParamOldValue] NVARCHAR(550)

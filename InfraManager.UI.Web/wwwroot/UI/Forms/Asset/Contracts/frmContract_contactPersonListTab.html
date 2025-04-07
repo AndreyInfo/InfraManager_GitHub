@@ -1,0 +1,20 @@
+﻿<div class="tabPage ml h100 contract-contacts" data-bind="with: tabActive">
+    <div class="columnContact">
+        <div class="im-big-header">
+            <span class="caption" data-bind="restext: 'Contract_ContractListInternal'" />
+            <span class="tabCaption-icon-chain" data-bind="css: {'active': userProperties() && CanUpdate() }, click: addUser"></span>
+        </div>
+        <div class="xx internal-contacts" data-bind="foreach: userList">
+            <div data-bind="template: { name: 'User/FormUser', data: $data }"></div>
+        </div>
+    </div>
+    <div class="columnContact">
+        <div class="im-big-header">
+            <span class="caption" data-bind="restext: 'Contract_ContactListExternal'" />
+            <span class="tabCaption-icon-chain" data-bind="css: {'active': CanUpdate()}, click: addContactPerson"></span>
+        </div>
+        <div class="xx external-contacts" data-bind="foreach: contactPersonList">
+            <div data-bind="template: { name: 'User/FormUser', data: $data }"></div>
+        </div>
+    </div>
+</div>

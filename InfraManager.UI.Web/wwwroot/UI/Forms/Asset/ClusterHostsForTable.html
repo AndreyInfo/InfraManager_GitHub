@@ -1,0 +1,9 @@
+﻿<div class="tabCaption im-big-header im-list-header" data-bind="with: $root.clusterHostsForTable">
+    <span data-bind="restext: 'Asset_Host'"></span>
+    <span class="tabCaption-icon-plus" data-bind="css: { 'active' : $root.CanEdit && isOperationeClusterAdd() }, click: createConfigurationUnit"></span>
+    <span class="tabCaption-icon-chain" data-bind="click: addСluster,css: { 'active' :  $root.CanEdit}"></span>
+</div> 
+<div class="tabContent clusterHostsForTable" data-bind="with: $root.clusterHostsForTable">
+    <div style="height: 100%" data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'ClusterHostsForTable', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false}"></div>
+    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+</div>

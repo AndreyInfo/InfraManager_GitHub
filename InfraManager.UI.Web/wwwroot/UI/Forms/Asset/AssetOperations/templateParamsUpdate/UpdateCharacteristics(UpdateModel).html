@@ -1,0 +1,32 @@
+﻿<div class="parametersUpdate" data-bind="with: $root.UpdateCharacteristics">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+            <div class="parametersUpdateText" data-bind="restext: 'UpdateCharacteristics'"></div>
+        </div>
+        <div class="col-xs-12">
+            <!--Версия ПО -->
+            <div class="fieldCaption required2" data-bind="restext: 'SoftwareVersion'"></div>
+            <div class="row no-gutters">
+                <div data-bind="text: SoftwareVersionParent()"></div>
+                <div class="icon arrow col-md-1" data-bind="css: { 'active' : IsEqualSoftwareVersion }"> </div>
+                <div class="editor general">
+                    <label for="searcherVeriosnElem"></label><input id="searcherVeriosnElem" type="text"
+                                                                    class="border searcherHaspAdapterInput"
+                                                                    data-bind="textInput: Version, click: EditVersion, longNameTooltip: Version, attr: { placeholder: getTextResource('Select') }, css: { 'cursor-pointer': CanEdit }"
+                                                                    readonly="readonly">
+                    <div id="eraser_version" class="cross cursor-pointer" 
+                         data-bind="click: ClearVersion, visible: IsVersionExists, css: { 'cursor-pointer': CanEdit}"></div>                    
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <!--Модель ПО -->
+            <div class="fieldCaption" data-bind="restext: 'SoftwareLicence_SoftwareModel'"></div>
+            <div class="row no-gutters">
+                <div data-bind="text: SoftwareModelParent()"></div>
+                <div class="icon arrow col-md-1" data-bind="css: { 'active' : IsEqualSoftwareModel }"> </div>
+                <div data-bind="text: SoftwareModel()"></div>
+            </div>
+        </div>        
+    </div>
+</div>

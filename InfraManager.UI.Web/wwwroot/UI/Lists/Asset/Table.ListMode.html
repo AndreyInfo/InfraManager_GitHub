@@ -1,0 +1,79 @@
+﻿<div class="b-content-table__left-Header" data-bind="restext: 'TooltipAssetTable'"></div>
+<div class="b-content-table__left-ScrollBlock" data-bind="visible: ScrollButtonsVisible">
+    <div class="b-content-table__left-ScrollUp" data-bind="click: OnScrollUpClick"></div>
+</div>
+<div class="b-content-table__left-FirstGap" data-bind="visible: !ScrollButtonsVisible()"></div>
+<div class="b-content-table__left">
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowHardware">
+        <a id="listModeHardware" class="b-content-table__workplaceIcon" data-bind="css: HardwareClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeHardwareText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'HardwareView'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowMyObjects" style="display: none;">
+        <a id="listModeMyObjects" class="b-content-table__workplaceIcon" data-bind="css: MyObjectsClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeMyObjectsText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'MyObjectsView'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowDiscarded">
+        <a id="listModeDiscarded" class="b-content-table__workplaceIcon" data-bind="css: DiscardedClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeDiscardedText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'DiscardedView'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowAssetRepair">
+        <a id="listModeAssetRepair" class="b-content-table__workplaceIcon" data-bind="css: AssetRepairClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeAssetRepairText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'AssetRepairView'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowConsumables" style="display: none;">
+        <a id="listModeConsumables" class="b-content-table__workplaceIcon" data-bind="css: ConsumablesClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeConsumablesText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'ConsumablesView'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowShopCalls" style="display: none;">
+        <a id="listModeShopCalls" class="b-content-table__workplaceIcon" data-bind="css: ShopCallsClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeShopCallsText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'ShopCallsView'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="visible: availability.SoftwareLicence, click: ShowSoftwareLicense">
+        <a id="listModeSoftwareLicense" class="b-content-table__workplaceIcon" data-bind="css: SoftwareLicenseClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeSoftwareLicenseText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'SoftwareLicenseView'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup"
+          data-bind="visible: availability.SoftwareDistributionCentres, click: ShowSoftwareLicenseDistribution">
+        <a id="listModeSoftwareDistribution" class="b-content-table__workplaceIcon" data-bind="css: SoftwareDistributionClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeSoftwareDistributionText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'SoftwareDistributionView'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowUtilizer" style="display: none;">
+        <a id="listModeUtilizer" class="b-content-table__workplaceIcon" data-bind="css: UtilizerClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeUtilizerText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'UtilizerClient'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowUtilizerComplete">
+        <a id="listModeUtilizerComplete" class="b-content-table__workplaceIcon" data-bind="css: UtilizerCompleteClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeUtilizerCompleteText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'UtilizerComplete'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowContracts">
+        <a id="listModeContracts" class="b-content-table__workplaceIcon" data-bind="css: ContractsClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeContractsText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'Contracts'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowInventories">
+        <a id="listModeInventories" class="b-content-table__workplaceIcon" data-bind="css: InventoriesClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeInventoriesText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'Inventory'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowConfigurationUnits">
+        <a id="listModeConfigurationUnits" class="b-content-table__workplaceIcon" data-bind="css: ConfigurationUnitsClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeConfigurationUnitsText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'NetworkUnits'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowClusters">
+        <a id="listModeClusters" class="b-content-table__workplaceIcon" data-bind="css: ClustersClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeClustersText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'Clusters'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowLogicObject">
+        <a id="listModeLogicObject" class="b-content-table__workplaceIcon" data-bind="css: LogicObjectsClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeLogicObjectText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'LogicalObjects'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowDataEntity">
+        <a id="listModeDataEntity" class="b-content-table__workplaceIcon" data-bind="css: DataEntitiesClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeDataEntityText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'DataEntities'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowSoftwareInstallation">
+        <a id="listModeSoftwareInstallation" class="b-content-table__workplaceIcon" data-bind="css: SoftwareInstallationClass, if: $root.ready() && tableModel.modifiedObjectCount()>0"></a>
+        <div id="listModeSoftwareInstallationText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'SoftwareInstallation_Menu_Caption'"></div>
+    </span>
+</div>
+<div class="b-content-table__left-ScrollBlock" data-bind="visible: ScrollButtonsVisible">
+    <div class="b-content-table__left-ScrollDown" data-bind="click: OnScrollDownClick"></div>
+</div>

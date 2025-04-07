@@ -1,0 +1,39 @@
+﻿@import "../../../Styles/general";
+
+.ko_FieldEditor {
+    position: absolute;
+    z-index: 9999;
+    width: calc(#{$control_lineHeight} + #{$control_lineHeight});
+    height: $control_lineHeight;
+    overflow: hidden;
+    background-color: $control_background;
+    box-shadow: $control_shadowColor 3px 3px 10px, $control_shadowColor -3px 3px 10px;
+
+    .ko_FieldEditorButtons {
+
+        svg {
+            width: $control_lineHeight;
+            height: $control_lineHeight;
+            float: left;
+            cursor: pointer;
+
+            circle {
+                fill: $control_button_background;
+            }
+
+            polyline {
+                stroke: $control_button_color;
+                fill: none;
+            }
+
+            path {
+                stroke: #34495E;
+            }
+
+            &:hover circle {
+                fill: $control_button_background_hover;
+                fill-opacity: 0.5;
+            }
+        }
+    }
+}

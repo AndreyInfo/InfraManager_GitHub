@@ -1,0 +1,29 @@
+﻿<div class="sc-category-select-button" data-bind="click: OnShowCategoryClick, css: { 'active': CategoryListVisible }">
+    <div class="sc-category-select-icon"></div>
+    <div class="sc-category-select-text" data-bind="restext: 'SelectCategory'"></div>
+    <div class="hide-categories-container-shadow" data-bind="visible: CategoryListVisible"></div>
+    <div class="hide-select-button-shadow" data-bind="visible: CategoryListVisible"></div>
+</div>
+<div class="sc-categoriesContainer" data-bind="afterUpdateBlock: ServiceCategoriesAfterRender, visible: CategoryListVisible, style: {bottom: IsHelpVisible() ? '110px' : '50px'} ">
+    <div class="sc-categoriesInnerContainer" data-bind="foreach: VisibleServiceCategoryList, afterUpdateBlock: ServiceCategoriesAfterRender, visible: !SmallCategories()">
+        <div class="sl_categoryListItem" data-bind="tooltip: Note, click: $parent.OnServiceCategoryClick, css: { 'active': $parent.SelectedServiceCategory() == $data }">
+            <div class="sl_categoryListItemImage">
+                <!-- ko if: ShowDefaultImage -->
+                <div class="sc_serviceCategoryImage sc_serviceCategoryImageDefault"></div>
+                <!-- /ko -->
+                <!-- ko ifnot: ShowDefaultImage -->
+                <img class="sc_serviceCategoryImage" data-bind="attr: { src: ImageSource }" />
+                <!-- /ko -->
+            </div>
+            <div class="sl_categoryListItemTextContainer" data-bind="css: { 'active': $parent.SelectedServiceCategory() == $data }">
+                <div class="sl_categoryListItemText" data-bind="text: Name" />
+            </div>
+        </div>
+    </div>
+    <div class="sc-small-category-container" data-bind="foreach: VisibleServiceCategoryList, afterUpdateBlock: ServiceCategoriesAfterRender, visible: SmallCategories()">
+        <div class="sc-small-category" data-bind="text: Name, click: $parent.OnServiceCategoryClick"></div>
+    </div>
+</div>
+<!-- ko if: VisibleServiceCategoryList().length == 0 -->
+<div class="sc_serviceListEmpty" data-bind="text: ServiceListEmptyText()"></div>
+<!-- /ko -->

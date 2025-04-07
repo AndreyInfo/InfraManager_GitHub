@@ -1,0 +1,89 @@
+﻿<div class="frmFinanceBudget">
+    <div class="asset-link-menu">
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: function() { mode(modes.general); }, css: { 'active' : mode() == modes.general }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'Tab_General'"></div>
+        </div>
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: function() { mode(modes.adjustments); }, css: { 'active' : mode() == modes.adjustments }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'Tab_Adjustments'"></div>
+        </div>
+        <div class="asset-link-lastelement"></div>
+    </div>
+    <!-- ko if: mode() == modes.general -->
+    <table class="formElements">
+        <colgroup>
+            <col class="columnCaption" />
+            <col class="columnEditor" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <td><label data-bind="restext: 'Name'"></label></td>
+                <td>
+                    <input type="text" maxlength="250" data-bind="value: Name, attr: {placeholder: getTextResource('Name')}, enable: CanEdit" />
+                </td>
+            </tr>
+            <tr>
+                <td><label data-bind="restext: 'Year'"></label></td>
+                <td data-bind="css: {'disable' : CanEdit() == false}">
+                    <input class="year" type="text" data-bind="value: Year, valueUpdate: 'input', enable: CanEdit" />
+                </td>
+            </tr>
+            <tr>
+                <td><label data-bind="restext: 'FinanceBudgetState'"></label></td>
+                <td><input disabled data-bind="value: StateString" /></td>
+            </tr>
+            <tr>
+                <td><label data-bind="restext: 'FinanceBudget_DateCreated'"></label></td>
+                <td>
+                    <input class="dateCreated" type="text" data-bind="value: DateCreatedString, enable: CanEdit" />
+                </td>
+            </tr>
+            <tr style="height:auto">
+                <td><label data-bind="restext: 'Note'"></label></td>
+                <td>
+                    <textarea type="text" maxlength="500" data-bind="textInput: Note, enable: CanEdit" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- /ko -->
+    <!-- ko if: mode() == modes.adjustments -->
+    <div class="adjustmentList">
+        <div data-bind="visible: (AdjustmentList().length > 0)">
+            <table class="imList-table">
+                <colgroup>
+                    <col style="width: 100px" />
+                    <col style="width: 170px" />
+                    <col style="width: 70px" />
+                    <col style="width: calc(100% - 540px)" />
+                    <col style="width: 200px" />
+                </colgroup>
+                <thead>
+                    <tr class="imList-tableHeaderRow">
+                        <th data-bind="restext: 'FinanceBudgetRowAdjustment_Date'"></th>
+                        <th data-bind="restext: 'FinanceBudgetRowAdjustment_Type'"></th>
+                        <th data-bind="restext: 'Identifier'"></th>
+                        <th data-bind="restext: 'Name'"></th>
+                        <th data-bind="restext: 'Initiator'"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ko foreach: AdjustmentList -->
+                    <tr class="imList-tableRow" data-bind="click: Show">
+                        <td class="imList-clickableCell" data-bind="text: UtcDateString"></td>
+                        <td data-bind="text: TypeString"></td>
+                        <td data-bind="text: RowIdentifier"></td>
+                        <td data-bind="text: RowName"></td>
+                        <td data-bind="text: InitiatorFullName"></td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+        <!-- ko if: AdjustmentList().length == 0 -->
+        <center><span data-bind="restext: 'ListIsEmpty'"></span></center>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+</div>

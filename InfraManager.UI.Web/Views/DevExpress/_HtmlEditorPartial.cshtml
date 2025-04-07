@@ -1,0 +1,79 @@
+﻿@*
+@Html.DevExpress().HtmlEditor(settings => {
+    settings.Name = "MainHtmlEditor";
+    settings.CallbackRouteValues = new { Controller = "DevExpress", Action = "HtmlEditorPartial" };
+    //
+    settings.Toolbars.CreateDefaultToolbars(false);
+    settings.SettingsDialogs.InsertImageDialog.ShowFileUploadSection = false;
+    settings.SettingsDialogs.InsertImageDialog.ShowStyleSettingsSection = false;
+    //
+
+    bool isFirefox = HttpContext.Current.Request.Request.UserAgent.IndexOf("Firefox", StringComparison.OrdinalIgnoreCase) > -1;
+    HtmlEditorToolbarItem tb = null;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changeelementpropertiesdialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("increaseIndent")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("decreaseIndent")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changeflashdialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changeimagedialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("applycss")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changeimage")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changeelementproperties")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changelinkdialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changeplaceholderdialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changeaudio")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changevideo")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changeyoutubevideodialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("customdialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertaudio")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("fullscreen")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changeyoutubevideo")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changevideo")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("changeplaceholder")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertflash")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertaudiodialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertflashdialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertimage")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertimagedialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertlinkdialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertplaceholder")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertplaceholderdialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertvideo")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertvideodialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("insertyoutubevideodialog")) != null)
+        tb.Visible = false;
+    if ((tb = settings.Toolbars[0].Items.FindByCommandName("print")) != null)
+        tb.Visible = false;
+    //
+    settings.Settings.AllowHtmlView = false;
+    settings.Settings.AllowPreview = false;
+
+}).GetHtml()*@

@@ -1,0 +1,160 @@
+﻿<div class="al-list-choosen modelLink-ChoosenList">
+    <div class="spec_form invoice-spec">
+        <div class="invoiceSpec_form-nameBlock">
+            <div class="invoiceSpec_form-name-header" data-bind="restext: 'InvoiceSpecification_Name'"></div>
+            <div class="invoiceSpec_form-name-data">
+                <input type="text" class="invoiceSpec_form-name-TextField" data-bind="textInput: CargoName, disable: !CanEdit()" />
+            </div>
+        </div>
+        <div class="spec_form-dataBlock">
+            <div class="spec_form-dataLeftColumnBlock">
+                <div class="spec_form-modelName">
+                    <div class="spec_form-header invoiceSpec_form-number-header" data-bind="restext: 'Number'"></div>
+                    <div class="spec_form-data">
+                        <input type="text" class="invoiceSpec_form-number-TextField" data-bind="value: OrderNumber, valueUpdate: 'input', disable: !CanEdit()" />
+                    </div>
+                </div>
+                <div class="spec_form-modelName">
+                    <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_Model'"></div>
+                    <div class="spec_form-data spec_form-bigHeader invoice-model" data-bind="text: ModelFullName, click: SelectModel, css: { 'cursor-pointer' : CanEdit()}"></div>
+                </div>
+                <div class="spec_form-productNumber">
+                    <div class="spec_form-header" data-bind="restext: 'SpecificationForm_ProductNumber'"></div>
+                    <div class="spec_form-data" data-bind="text: ModelProductNumber"></div>
+                </div>
+                <div class="spec_form-manufacturerName">
+                    <div class="spec_form-header" data-bind="restext: 'SpecificationForm_Manufacturer'"></div>
+                    <div class="spec_form-data" data-bind="text: ModelManufacturerName"></div>
+                </div>
+                <div class="spec_form-typeName">
+                    <div class="spec_form-header" data-bind="restext: 'SpecificationForm_TypeName'"></div>
+                    <div class="spec_form-data" data-bind="text: ModelTypeName"></div>
+                </div>
+                <div class="spec_form-noteBlock">
+                    <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_Note'"></div>
+                    <div class="spec_form-data">
+                        <textarea class="spec_form-note-TextField" maxlength="500" data-bind="textInput: Note, disable: !CanEdit()" />
+                    </div>
+                </div>
+            </div>
+            <div class="spec_form-dataRightColumnBlock">
+                <div class="spec_form-dataRightColumnStart">
+                    <div class="spec_form-RightFirstColumn">
+                        <div class="spec_form-countBlock">
+                            <div class="spec_form-header" data-bind="restext: 'SpecificationForm_Count'"></div>
+                            <div class="spec_form-data spec_form-count-TextField" data-bind="text: Count" />
+                        </div>
+                        <div class="spec_form-priceBlock">
+                            <div class="spec_form-header" data-bind="restext: 'SpecificationForm_PriceForOne'"></div>
+                            <div class="spec_form-data">
+                                <input type="text" class="spec_form-price-TextField" data-bind="textInput: PriceInput, event: { focusout: textFieldFocusOut }, disable: !CanEdit()" />
+                            </div>
+                        </div>
+                        <div class="spec_form-NDSBlock">
+                            <div class="spec_form-header" data-bind="restext: 'SpecificationForm_Vat'"></div>
+                            <div class="spec_form-data">
+                                <div class="spec_form-nds-dd combobox" data-bind="combobox: { dataSource: getNDSTypeList }, comboboxValue: SelectedNDSType, style: { 'pointer-events': CanEdit() ? 'auto' : 'none' }"></div>
+                                <!-- ko if: IsNeedShowPercentBlock -->
+                                <div class="spec_form-ndsPercents" data-bind="foreach: NDSPercentList, css: { 'blured' : IsNeedBlurPercentList }">
+                                    <!-- ko if: ID !== '0' -->
+                                    <div class="spec_form-NDSPercent-item" data-bind="text: (Name + '%'), css: { 'active' : $data == $parent.SelectedNDSPercent(), 'cursor-pointer' : $parent.CanEdit() }, click: $parent.OnPercentSelected"></div>
+                                    <!-- /ko -->
+                                </div>
+
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spec_form-RightSecondColumn">
+                        <div class="spec_form-unitBlock">
+                            <div class="spec_form-header" data-bind="restext: 'PurchaseSpecification_Unit'"></div>
+                            <div class="spec_form-data">
+                                <div class="spec_form-unit-dd combobox" data-bind="combobox: { dataSource: getUnitList }, comboboxValue: SelectedUnit, style: { 'pointer-events': CanEdit() ? 'auto' : 'none' }"></div>
+                            </div>
+                        </div>
+                        <!-- ko if: IsNeedShowPercentBlock -->
+                        <div class="spec_form-NDSCustomBlock" data-bind="css: { 'blured' : IsNeedBlurCustomNDSBlock }">
+                            <div class="spec_form-header" data-bind="restext: 'SpecificationForm_AnotherSum'"></div>
+                            <div class="spec_form-data">
+                                <input type="text" class="spec_form-NDS-TextField" data-bind="textInput: NDSCustomValueInput, event: { focusout: textFieldFocusOut }, disable: !CanEdit()" />
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <div class="spec_form-costBlock">
+                    <div class="spec_form-costWithout">
+                        <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_CostWithoutNDS'"></div>
+                        <div class="spec_form-data" data-bind="text: TotalValuesString().CostWithoutNDS"></div>
+                    </div>
+                    <div class="spec_form-costNDS">
+                        <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_SumNDS'"></div>
+                        <div class="spec_form-data" data-bind="text: TotalValuesString().SumNDS"></div>
+                    </div>
+                    <div class="spec_form-costWith">
+                        <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_CostWithNDS'"></div>
+                        <div class="spec_form-data" data-bind="text: TotalValuesString().CostWithNDS"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="imList-table imList-table-purs-spec-list" data-bind="style: {height: PURSListHeight}, visible: PURSList().length > 0">
+        <div class="purchase-spec-list-content">
+            <table>
+                <colgroup>
+                    <col style="width: 38px" />
+                    <col span="7" style="width: 180px" />
+                    <col style="width: 200px" />
+                </colgroup>
+                <thead>
+                    <tr class="imList-tableHeaderRow">
+                        <th class="imList-tableHeaderCheckBox" data-bind="visible: checkBoxVisible"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_OrderNumber'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_Model'"></th>
+                        <th data-bind="restext: 'PurchaseSpecification_ModelTypeName'"></th>
+                        <th data-bind="restext: 'PurchaseSpecification_Unit'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_PriceWithoutNDS'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_PriceWithNDS'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_NDSinfo'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_Note'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_State'"></th>
+                        <th data-bind="restext: 'PurchaseSpecification_Delivered'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_CostWithNDS'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_CostWithoutNDS'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_SumNDS'"></th>
+                        <th data-bind="restext: 'PurchaseSpecification_ActiveRequestCount'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_Count', visible: EditCount"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ko foreach: PURSList -->
+                    <tr class="imList-tableRow">
+                        <td class="imList-tableCheckBox" data-bind="click: $parent.ShowForm, visible: $parent.checkBoxVisible">
+                            <input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected" />
+                        </td>
+                        <td class="imList-clickableCell" data-bind="click: $parent.ShowForm, text: pur.OrderNumber"></td>
+                        <td class="imList-clickableCell" data-bind="click: $parent.ShowForm, text: pur.ProductCatalogModelFullName"></td>
+                        <td data-bind="click: $parent.ShowForm, text: pur.ProductCatalogTypeName"></td>
+                        <td data-bind="click: $parent.ShowForm, text: pur.UnitName"></td>
+                        <td class="imList-rightCell" data-bind="click: $parent.ShowForm, text: pur.PriceWithoutNDSString"></td>
+                        <td class="imList-rightCell" data-bind="click: $parent.ShowForm, text: pur.PriceWithNDSString"></td>
+                        <td data-bind="click: $parent.ShowForm, text: pur.NDSInfo"></td>
+                        <td data-bind="click: $parent.ShowForm, text: pur.Note"></td>
+                        <td data-bind="click: $parent.ShowForm, text: pur.StateString"></td>
+                        <td data-bind="click: $parent.ShowForm, text: pur.DeliveredComputed"></td>
+                        <td class="imList-rightCell" data-bind="click: $parent.ShowForm, text: pur.CostWithNDSString"></td>
+                        <td class="imList-rightCell" data-bind="vtext: pur.CostWithoutNDSString"></td>
+                        <td class="imList-rightCell" data-bind="click: $parent.ShowForm, text: pur.SumNDSString"></td>
+                        <td data-bind="click: $parent.ShowForm, text: pur.ActiveRequestComputed"></td>
+                        <td class="imList-Count" data-bind="template: { afterRender: OnRender }, visible: $parent.EditCount">
+                            <input type="text" class="imList-slider-TextField" data-bind="value: Count, valueUpdate: 'input', disable: !$parent.CanEdit()" />
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

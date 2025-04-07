@@ -1,0 +1,8 @@
+﻿<div class="treeControlWrapper">
+    <div class="treeControlHeader" data-bind="click: CollapseExpandHeader, css: TitleStyle, visible: TitleBlockVisible">
+        <div class="treeControlHeader-text" data-bind="text: Title"></div>
+        <div class="treeControlHeader-icon" data-bind="css: { 'expanded': HeaderExpanded }"></div>
+    </div>
+    <div class="treeControlNewWindow" data-bind="click: ShowInNewWindow, visible: NewWindowButtonVisible, restext: 'OpenInNewWindow'"></div>
+    <div class="treeControlItems" data-bind="template: { name: 'Navigator/TreeNode', foreach: firstNodes }, visible: IsShowTree"></div>
+</div>

@@ -1,0 +1,9 @@
+﻿<ul class="ko_ContextMenu contextSubMenu" data-bind="foreach: visibleItems, event: {'keydown' : onKeyDown}" tabindex="0">
+    <li class="dropdown contextMenuItem" data-bind="click: $parent.itemClick, css: {'disabled' : enabled() == false, 'focused' : $parent.isItemFocused($data), 'separator' : isSeparator() == true}, event: {'mouseenter' : $parent.mouseOver}">
+        <div data-bind="{text: text}"></div>
+        <ul class="contextSubMenu" data-bind="foreach: children">
+            <li class="contextMenuItem" data-bind="text: text, click: $parentContext.$parent.itemClick, css: {'disabled' : enabled() == false, 'focused' : $parentContext.$parent.isItemFocused($data), 'separator' : isSeparator() == true}, event: {'mouseenter' : $parentContext.$parent.mouseOver}">
+            </li>
+        </ul>
+    </li>
+</ul>

@@ -1,0 +1,66 @@
+﻿<!-- ko if: $header == 'search' -->
+<div class="tabCaption im-big-header im-list-header" data-bind="restext: 'Problems'"></div>
+<!-- /ko -->
+<!-- ko if: $header == 'call' || $header == 'massIncident' -->
+<div class="tabCaption im-big-header im-list-header">
+    <span data-bind="restext: 'LinkProblems'"></span>
+    <span class="tabCaption-icon-plus" data-bind="click: function() { $control.imList.ExecuteOperation('addNewProblem') }, css: { 'active' : $control.imList.IsGranted('addNewProblem') }, tooltip: getTextResource('AddNewProblem')"></span>
+    <span class="tabCaption-icon-chain" data-bind="click: function() { $control.imList.ExecuteOperation('addProblemReference') }, css: { 'active' : $control.imList.IsGranted('addProblemReference') }, tooltip: getTextResource('AddProblemReference')"></span>
+</div>
+<!-- /ko -->
+<div class="pbRef__list tabContent im-list" data-bind="style: {bottom: $control.imList.SelectedItemsCount() > 0 && $header != 'liteSearch' ? '60px' : '0'}, event: {scroll: $root.OnScroll}">
+    <!-- ko foreach: $control.imList.List -->
+    <div class="im-list-item">
+        <div class="im-list-item-chb-column">
+            <input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected, visible: $root.CanEdit" />
+        </div>
+        <div class="im-list-item-icon-column">
+            <div data-bind="css: CssIconClass"></div>
+        </div>
+        <div class="im-list-item-main-column">
+            <div class="im-list-item-main-firstrow" data-bind="css: { 'cursor-pointer': $root.CanEdit, 'cursor-pointer': $root.CanShow }, click: $parent.$control.ShowObjectForm">
+                <span class="reference-object-main-header" data-bind="text: NumberName, longNameTooltip: NumberName"></span>
+            </div>
+            <div class="im-list-item-main-secondrow">
+                <span class="im-list-row-item reference-object-mode-text"><span data-bind="restext: 'Before'"></span>: <span data-bind="text: UtcDatePromised"></span></span>
+            </div>
+        </div>        
+        <div class="im-list-item-user-column">
+            <!-- ko if: OwnerObj != null -->
+            <span data-bind="template: { name: 'User/FormUser', data: OwnerObj }"></span>
+            <!-- /ko -->
+        </div>
+        <div class="im-list-item-status-column">
+            <span class="im-list-row-item reference-object-status-textwrap"><span class="reference-object-status-icon"></span> <span class="reference-object-status-text" data-bind="text: EntityStateName, longNameTooltip: EntityStateName"></span></span>
+        </div>
+        <div class="im-list-item-end-column">
+            <span class="im-list-row-item reference-object-ended-text"><span data-bind="text: Modify, longNameTooltip: Modify"></span></span>
+        </div>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: $control.imList.List().length == 0 -->
+    <center><span class="im-list-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+    <!-- /ko -->
+</div>
+<!--когда панели появятся автоматом должен установиться отступ tabContent от нижнего края посредствам ko-->
+<div class="pbRef__buttons" style="display:none;">
+    <!-- ko if: $root.CanEdit -->
+    <button class="button button_b-ctrl_note button_size_M button_type_normal links__buttons-btn"><span class="button__label" data-bind="restext: 'ProblemRefButtonAddLink'"></span></button>
+    <button class="button button_b-ctrl_note button_size_M button_type_normal links__buttons-btn"><span class="button__label" data-bind="restext: 'ProblemRefButtonAddNew'"></span></button>
+    <!-- /ko -->
+</div>
+<!-- ko if: $header != 'liteSearch' -->
+<div class="pbRef__actions im-list__actions" data-bind="visible: $control.imList.SelectedItemsCount() > 0">
+    <div class="im-list__actions-wrapper">
+        <div class="pbRef__actions-list im-list__actions-list" data-bind="foreach: $control.imList.OperationList">
+            <button class="button button_b-ctrl_note button_size_M button_type_normal im-list__actions-button" data-bind="visible: IsVisible, click: OnClick ">
+                <div class="button__label" data-bind="text: Text"></div>
+            </button>
+        </div>
+        <div class="im-list__right-panel">
+            <div class="pbRef__actions-count im-list__actions-count"><span data-bind="restext: 'Choosen'"></span>: <span data-bind="text: $control.imList.SelectedItemsCount"></span></div>
+            <div class="pbRef__actions-close im-list__actions-close"><a data-bind="restext: 'UndoCheck', click: $control.imList.UncheckAll"></a></div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->

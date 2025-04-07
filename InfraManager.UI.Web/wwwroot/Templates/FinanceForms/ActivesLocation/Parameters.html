@@ -1,0 +1,22 @@
+﻿<div class="asset-link_searchText">
+    <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, event: { keypress: SearchKeyPressed }">
+    <div class="asset-link_searchText-clearfield cursor-pointer" data-bind="click: EraseTextClick, visible: !IsSearchTextEmpty()"></div>
+</div>
+<div class="asset-model-link_selectedType">
+    <span class="asset-model-link_selectedType-text" data-bind="text: ''"></span>
+    <!--<div class="asset-model-link_columnsButton b-content-table__icon gray-btn b-content-table__icon3 cursor-pointer"><span /></div>-->
+    <span class="asset-model-link_tableSearchColumns" data-bind="if: startLoadingColumns">
+        <span data-bind="template: { name: 'Table/Columns', afterRender: columnsModel.AfterRender, data: columnsModel }"></span>
+    </span>
+</div>
+<div class="asset-model-link_tableWrapper" style="padding-top: 0">
+    <div class="asset-link_paramsColumn" style="display:none;">
+        <div class="asset-link_paramsColumnType"></div>
+        <div class="asset-link_paramsColumnVendor"></div>
+        <div class="asset-link_paramsColumnModel"></div>
+        <div class="asset-link_paramsColumnLocation"></div>
+    </div>
+    <div class="asset-link_tableColumn" style="overflow: hidden" data-bind="if: startLoadingTable">
+        <span data-bind="template: { name: 'Table/Table', afterRender: tableModel.AfterRender, data: tableModel }"></span>
+    </div>
+</div>

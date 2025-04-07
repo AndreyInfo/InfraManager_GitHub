@@ -1,0 +1,25 @@
+﻿<div class="frmAssetRegistration">
+    <!--ko if: object()-->
+    <div class="content">
+        <div class="subjectRow">
+            <div class="outerIconAndControl">
+                <div class="icon active" data-bind="click: SelectModel, tooltip: getTextResource('ProductCatalogueTreeCaption')"><span class="descriptionIcon"></span></div>
+                <div class="control border nowrap im-big-header asset-text-field-header" data-bind="css: {'invalid' : object().productCatalogFullName().length == 0}">
+                    <div data-bind="text: object().productCatalogFullName, longNameTooltip: object().productCatalogFullName" />
+                </div>
+            </div>
+        </div>
+        <div class="tabActive" data-bind="template: {name: tabActive().Template}"></div>
+    </div>
+    <!--/ko-->
+    <div class="tabPages" data-bind="foreach: tabList">
+        <div class="tabButton" data-bind="visible: $data.IsVisible, click: $parent.selectTabClick, css: {'active' : $parent.tabActive() === $data, 'invalid' : $parent.tabActive().IsValid && $parent.tabActive().IsValid() == false}">
+            <div class="tabButtonIcon" data-bind="css: $data.IconCSS">
+                <!--ko if: $data.Index-->
+                <span data-bind="text: $data.Index"></span>
+                <!--/ko-->
+            </div>
+            <div class="tabButttonCaption" data-bind="text: $data.Name" />
+        </div>
+    </div>
+</div>

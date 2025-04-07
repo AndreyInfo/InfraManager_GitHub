@@ -1,0 +1,46 @@
+﻿<div class="softwareRecognitionFieldForm" style=" margin-left: 25px" data-bind="with: $root.softwareModelRecognition">
+    <div class="network-device-characteristics">
+        <div class="im-big-header" data-bind="restext: 'ModelRecognition'" />
+        <div class="network-device-table-margineTop scm-table-fixed">
+            <div class="td-width">
+                <div class="labelHeader label_radio" data-bind="restext:'ModelVersion'" />
+                <div class="inline_block">
+                    <input type="radio" class="input_clickable input_radio" name="versionRecognition" value="0" data-bind="checked: VersionRecognition" />
+                    <label class="input_radio" for="allowedNumberOfCPURangeRadio" data-bind="restext:'ModelNoRestrictions'"></label>
+                </div>
+                <div class="inline_block">
+                    <input type="radio" class="input_clickable input_radio" name="versionRecognition" value="1" data-bind="checked: VersionRecognition" />
+                    <label class="input_radio" for="allowedNumberOfCPURangeRadio" data-bind="restext:'ModelFullMatch'"></label>
+                </div>
+                <div class="inline_block">
+                    <input type="radio" class="input_clickable input_radio" name="versionRecognition" value="2" data-bind="checked: VersionRecognition" />
+                    <label class="input_radio" for="allowedNumberOfCPURangeRadio" data-bind="restext:'ModelMatchToVersionLevel'"></label>
+                </div>
+            </div>
+            <div class="td-width">
+                <div class="fieldCaption" data-bind="restext: 'ModelLevelVersion'" />
+                <!-- ko if: IsVisible() == true -->
+                <button class="quantity-arrow-minus" style="height: 30px; width: 30px;" data-bind="click: VersionRecognitionLvlMinus"> - </button>
+                <input type="number" maxlength="50" style="text-align: center;" data-bind="value: Obj().VersionRecognitionLvl" />
+                <button class="quantity-arrow-plus" style="height: 30px; width: 30px;" data-bind="click: VersionRecognitionLvlPlus"> + </button>
+                <!-- /ko -->
+                <!-- ko if: IsVisible() == false -->
+                <button class="quantity-arrow-minus" disabled style="height: 30px; width: 30px;" data-bind="click: VersionRecognitionLvlMinus"> - </button>
+                <input type="number" maxlength="50" disabled style="text-align: center;" data-bind="value: Obj().VersionRecognitionLvl" />
+                <button class="quantity-arrow-plus" disabled style="height: 30px; width: 30px;" data-bind="click: VersionRecognitionLvlPlus"> + </button>
+                <!-- /ko -->
+            </div>
+            <div class="td-width">
+                <div class="labelHeader label_radio" data-bind="restext:'ModelRedaction'" />
+                <div class="inline_block">
+                    <input type="radio" class="input_clickable input_radio" name="redactionRecognition" value="0" data-bind="checked: RedactionRecognition" />
+                    <label class="input_radio" for="allowedNumberOfCPURangeRadio" data-bind="restext:'ModelNoRestrictions'"></label>
+                </div>
+                <div class="inline_block">
+                    <input type="radio" class="input_clickable input_radio" name="redactionRecognition" value="1" data-bind="checked: RedactionRecognition" />
+                    <label class="input_radio" for="allowedNumberOfCPURangeRadio" data-bind="restext:'ModelRevisionMatch'"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

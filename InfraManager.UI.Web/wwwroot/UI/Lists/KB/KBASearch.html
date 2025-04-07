@@ -1,0 +1,53 @@
+﻿<div id="knowlegdeBase">
+    <div class="searcher">
+        <input type="text" class="text-input searcherInput b-base-content__header-input" data-bind="resattr: { placeholder: 'SearchEnterTags'}, textInput: searchPhrase, event: { keypress: SearchKeyPressed } " />
+        <div class="b-base-content__header__blue-btn blue-btn cursor-pointer searchButton" data-bind="click: ButtonSearchClick">
+            <a class="search-icon b-base-content__header_search_button"></a>
+        </div>
+    </div>
+    <div class="content b-content-dictionaries-container-KBA">
+        <div class="b-blueMenu myWhiteMenu leftSideKBA" data-bind="splitter: { ChangeFunc: ResizeFunction, MinimalSize: minWidth, MaximumSize: maxWidth, Name: 'KBSplitter', Direction: 'right' }, style: {'width': leftPanelWidth() + 'px'}">
+            <div class="leftPanel">
+                <b class="defaultTextKbaPage" data-bind="text: getTextResource('KBSections')"></b>
+                <span data-bind="template: { name: '../UI/Lists/KB/KBAFolder', foreach: kbaFolderList }"></span>
+                <div class="dictionaries-orgstructure-tree-contextmenu" data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+            </div>
+        </div>
+        <div class="b-base-content baseContent rightSideKBA" data-bind="style: {'left': leftPanelWidth() + 'px'}">
+            <div class="b-base-content__header baseContentHeader">
+                <div class="b-base-content__header-tags PheaderPathCatalogue" data-bind="css:{'defaultTextKbaPageCenter': ShowCenterMessage() === true}">
+                    <div class="breadcrumbs" data-bind="visible: showContenHint() === showContenHints.breadcrumbs">
+                        <div class="orgstructure-navigation-bar-item" data-bind="foreach: breadcrumbSectionList()">
+                            <span class="orgstructure-navigation-bar-item-separator" data-bind="visible: $index()!=0">&gt;</span>
+                            <span class="orgstructure-navigation-bar-item-text" data-bind="text: Name, click: $parent.KBABreadcrumbSelectedSection, css: { 'active': $index() != ($parent.breadcrumbSectionList().length - 1) }"></span>
+                        </div>
+                    </div>
+                    <b class="defaultTextKbaPage" data-bind="text: getTextResource('SelectSection'), visible: showContenHint() === showContenHints.defaultText"></b>
+                    <b class="searchResultKbaPage" data-bind="text: getTextResource('KBA_Search_Results'), visible: showContenHint() === showContenHints.searchResult"></b>
+                </div>
+
+                <div class="itemsRegion">
+                    <div data-bind="visible: showContent() === showContentParam.KBArticle, with: kbaView">
+                        <div data-bind="template: { name: '../UI/Lists/KB/KBArticle', data: kbArticle, afterRender: AfterRender }" />
+                    </div>
+
+                    <div data-bind="visible: searchResult() === searchResults.allOK && showContent() === showContentParam.KBAList">
+                        <div data-bind="template: {name: '../UI/Lists/KB/KBAList', data: $root }"></div>
+                    </div>
+
+                    <div class="b-base-content__items_none" data-bind="visible: searchResult() === searchResults.nothingFound && showContent() !== showContentParam.KBArticle">
+                        <div class="listEmpty">
+                            <span data-bind="restext: 'NothingFound'"></span>
+                        </div>
+                    </div>
+
+                    <div class="b-base-content__items_none" data-bind="visible: searchResult() === searchResults.emptyFolder && showContent() !== showContentParam.KBArticle">
+                        <div class="listEmpty">
+                            <span data-bind="restext: 'ListIsEmpty'"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

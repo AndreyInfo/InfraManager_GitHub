@@ -1,0 +1,9 @@
+﻿<div class="b-content-dictionaries-container-sdc" data-bind="with: SoftwareDistributionCentres, afterUpdateBlock: SoftwareDistributionCentres().ModelAfterRender">
+    <div class="leftSide" data-bind="splitter: { ChangeFunc: resizeSplitter, MinimalSize: minSplitterWidth, MaximumSize: maxSplitterWidth, Name: 'DictionariesSoftwareDistributionCentres', Direction: 'right' }, style: {'width': splitterDistance() + 'px'}, event: {'contextmenu' : ContextMenuRequested }">
+        <div class="dictionaries-sdc-tree"></div>
+        <div class="dictionaries-sdc-tree-contextmenu" data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+    </div>
+    <div class="rightSide" data-bind="style: {'left': splitterDistance() + 'px'}">
+        <div class="dictionaries-sdc-main" data-bind="template: {name: ViewTemplateName, data: Model}"></div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿<div class="asset-link_searchText">
+    <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, event: { keypress: SearchKeyPressed }">
+    <div class="asset-link_searchText-clearfield cursor-pointer" data-bind="click: EraseTextClick, visible: !IsSearchTextEmpty()"></div>
+</div>
+
+<div class="asset-link_tableWrapper">
+    <span class="asset-link_tableSearchColumns" data-bind="if: startLoadingColumns">
+        <span data-bind="template: { name: 'Table/Columns', afterRender: columnsModel.AfterRender, data: columnsModel }"></span>
+    </span>
+
+    <div class="asset-link_paramsColumn">
+        <div class="asset-link_paramsColumnType"></div>
+        <div data-bind="visible: visibleInfo()">
+            <div class="text-asset-searcher-style" data-bind="text: getTextResource('ProductCatalogueModel_TypeName')"> </div>
+            <div class="selectedCategoryNode im-list-item-wrapper">
+                <span class="selected-text-asset-searcher-style" data-bind="text: SelectedTextType"> </span>
+                <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedTypeClick" />
+            </div>
+            <div class="text-asset-searcher-style" data-bind="text: getTextResource('Model')"> </div>
+            <div class="selectedTypesNode im-list-item-wrapper" data-bind="foreach:SelectedModels">
+                <div>
+                    <div class="selected-text-asset-searcher-style" data-bind="text: Name"></div>
+                    <div class="selected-text-erase-style cursor-pointer" data-bind="click: $parent.EraseSelectedModelClick" />
+                </div>
+            </div>
+            <div class="selectedTypeNode im-list-item-wrapper " data-bind="visible: visibleModelInfo()">
+                <div class="selected-text-asset-searcher-style" data-bind="text: SelectedTextModel"></div>
+                <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedModelClick" />
+            </div>
+        </div>
+
+        <div class="asset-link_paramsColumnLocation"></div>
+        <div data-bind="visible: visibleLocation()">
+            <div class="selected-text-asset-searcher-style" data-bind="text: SelectedTextLocation"></div>
+            <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedLocationClick" />
+        </div>
+
+        <div id="regionOrgStructureAssetSearch" class="regionFilterTree-orgstructure orgStructureAssetSearch" data-bind="if: orgStructureControl()">
+            <div class="treeControlWrapper">
+                <div class="treeControlHeader" data-bind="click: orgStructureControl().CollapseExpandHeader, css: orgStructureControl().TitleStyle">
+                    <div class="treeControlHeader-text" data-bind="restext: 'OrgStructureCaption'"></div>
+                    <div class="treeControlHeader-icon" data-bind="css: { 'expanded': orgStructureControl().HeaderExpanded }"></div>
+                </div>
+                <div data-bind="visible: orgStructureControl().HeaderExpanded">
+                    <div class="regionFilterTree-orgstructure-dd combobox" data-bind="combobox: { dataSource: getOrgDDList }, comboboxValue: OrgStructureFilterType"></div>
+                    <div class="regionFilterTree-orgstructure-tree"></div>
+                </div>
+            </div>
+        </div>
+        <div data-bind="visible: visibleOrgStructure()">
+            <div class="selected-text-asset-searcher-style" data-bind="text: SelectedTextOrgStructure"></div>
+            <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedOrgStructureClick" />
+        </div>
+
+        <!--Навигатор по моделям ПО-->
+        <div class="asset-link_paramsColumnType"></div>
+        <div data-bind="visible: visibleInfo()">
+            <div class="text-asset-searcher-style" data-bind="text: 'asdasd'"> </div>
+            <div class="selectedCategoryNode im-list-item-wrapper">
+                <span class="selected-text-asset-searcher-style" data-bind="text: SelectedTextType"> </span>
+                <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedTypeClick" />
+            </div>
+            <div class="text-asset-searcher-style" data-bind="text: getTextResource('Model')"> </div>
+            <div class="selectedTypesNode im-list-item-wrapper" data-bind="foreach:SelectedModels">
+                <div>
+                    <div class="selected-text-asset-searcher-style" data-bind="text: Name"></div>
+                    <div class="selected-text-erase-style cursor-pointer" data-bind="click: $parent.EraseSelectedModelClick" />
+                </div>
+            </div>
+            <div class="selectedTypeNode im-list-item-wrapper " data-bind="visible: visibleModelInfo()">
+                <div class="selected-text-asset-searcher-style" data-bind="text: SelectedTextModel"></div>
+                <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedModelClick" />
+            </div>
+        </div>
+    </div>
+
+    <div class="asset-link_tableColumn">
+        <div id="regionAssetSearch" style="height:100%" class="region-Table" data-bind="koListView: {settingsName: 'AssetSearch', controlInitialized: listViewInit, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false }"></div>
+    </div>
+
+</div>
+

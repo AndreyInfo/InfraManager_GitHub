@@ -1,0 +1,51 @@
+﻿<div class="paramTableCotainer" data-bind="css: CssTableClass">
+        <div class="tableCaptionContainer">
+            <div class="icon active" data-bind="css: $data.CssClassFunc"><span /></div>
+            <span class="caption im-blue-text" data-bind="text: Name+': '" />
+        </div>
+        <div class="buttonsContainer" data-bind="visible: $data.ReadOnly() == false && $data.LockRowsCount == false">
+            <div class="addRowButton" data-bind="click: function() { $data.AddNewEditor(); $data.SilentSaveValue($root.$region, $root.objectClassID); return true; }"></div>
+            <div class="removeRowButton" data-bind="click: function() { $data.RemoveEditorClick(); $data.SilentSaveValue($root.$region, $root.objectClassID); return true; }, visible: CkeckedEditors().length > 0"></div>
+        </div>
+        <div class="tableScrollContainer">
+            <table class="invertTableContainer" data-bind="css: {'invalid' : $data.IsValueRequired == true && $data.ParameterValueIsReadOnly == false && $data.Editors().length == 0}, attr:{ id: 'Id_' + $data.Identifier} ">
+                <tbody class="mainBody">
+                    <tr>
+                        <th style="height:48px">
+                            <input type="checkbox" data-bind="checked: CheckAll" />
+                            <div class="columnResizeThumb" data-bind="style: {background:'none'}, event: { mousedown: OnMouseDown }" />
+                        </th>
+                        <!--ko foreach: $data.ParameterTemplateList-->
+                        <th data-bind="css: {'numeric' : $data.Type == 1}, style: {'height' : $data.Height() + 'px'}, visible: $data.WebVisibility || !$parent.ClientMode()">
+                            <span data-bind="text: $data.Name"></span>
+                            <div class="columnResizeThumb" data-bind="style: {background:'none'}, event: { mousedown: $parent.OnMouseDown }" />
+                        </th>
+                        <!-- /ko -->
+                    </tr>
+                    <!--ko foreach: $data.Editors-->
+                    <tr data-bind="css: {'checked' : Checked}">
+                        <td style="height:48px">
+                            <input type="checkbox" data-bind="checked: Checked" />
+                            <div class="columnResizeThumb" data-bind="style: {background:'none'}, event: { mousedown: $parent.OnMouseDown }" />
+                        </td>
+                        <!--ko foreach: RowParameterList-->
+                        <td data-bind="foreach: $data.Editors, style: {'height' : $data.Height() + 'px'}, visible: $data.WebVisibility || !$data.ClientMode(), css: { 'clicable': $parent.Parameter.ReadOnly() == false, 'readonly': $data.ParameterValueIsReadOnly() == true, 'numeric' : $data.ParameterTemplate.Type == 1, 'invalid' : $data.ValidationError() != '' && $data.ParameterTemplate.Type != 3}, tooltip: $data.ValidationError, click: function() { $data.ShowEditor($root.objectClassID); return true; }">
+                            <!--ko if: $data.Parameter.Type != 0 && ($data.Parameter.Type != 11 || $data.Value() == null) && $data.GetValueString() !== ''-->
+                            <div class="viewer" data-bind="text: $data.GetValueString, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true && $data.Parameter.Type != 3, 'readonly': $data.Parameter.ReadOnly() == true}"></div>
+                            <!-- /ko -->
+                            <!--ko if: $data.Parameter.Type == 0-->
+                            <input type="checkbox" class="parameterCheckBox" data-bind="click: function() { $data.Parameter.SilentSaveValue($root.$region, $root.objectClassID); return true; }, clickBubble: false, disable: $data.Parameter.ReadOnly || !$data.IsLoaded, checked3: $data.Value, allowInterminate: !$data.Parameter.IsValueRequired, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true, 'readonly': $data.Parameter.ReadOnly() == true}" />
+                            <!-- /ko -->
+                            <!--ko if: $data.Parameter.Type == 11 && $data.Value() != null-->
+                            <input type="button" class="gray-btn parameterButton" data-bind="click: $data.Parameter.DownloadClick, clickBubble: false, attr: {value : $data.ValueString}, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true}" />
+                            <!-- /ko -->
+                            <div class="columnResizeThumb" data-bind="style: {background:'none'}, event: { mousedown: $parents[2].OnMouseDown }" />
+                        </td>
+                        <!-- /ko -->
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+</div>
+

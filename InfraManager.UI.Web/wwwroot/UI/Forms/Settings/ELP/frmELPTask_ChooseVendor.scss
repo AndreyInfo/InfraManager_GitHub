@@ -1,0 +1,38 @@
+﻿.frmELPTask_ChooseVendor {
+    padding-bottom: 0px;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    height: 100%;
+
+    .radio_two {
+
+        input {
+            cursor: pointer;
+        }
+
+        label {
+            cursor: pointer;
+            font-weight: normal;
+        }
+    }
+
+    .radio_block {
+        margin-top: 20px;
+    }
+
+    .ChooseVendor_tableWrapper {
+        height: calc(100% - 138px);
+        width: 100%;
+    }
+
+    .ChooseVendor_tableColumn {
+        height: 100%;
+        width: 100%;
+    }
+
+    .tableData {
+        height: 100%;
+        width: 100%;
+    }
+}

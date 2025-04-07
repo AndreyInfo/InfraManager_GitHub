@@ -1,0 +1,23 @@
+﻿<div class="form-user-container form-user-search-container" data-bind="if: $data != null && $data.ShowTypeName != null">
+    <div class="form-user-leftside">
+        <div data-bind="css: ImageClass, tooltip: GetFullInfoForTooltip(), tooltipSide: 'left', tooltipMultiline: true"></div>
+
+    </div>
+    <div class="form-user-search-rightside">
+        <div class="form-user-header" data-bind="text: TypeName, visible: ShowTypeName()" />
+        <div class="form-user-name form-search-user-info FullName" data-bind="text: FullName" />
+        <div class="form-search-user-info" data-bind="text: FullUserPostitionInfo" />
+        <div class="form-search-user-info" data-bind="text: FullUserSubdivisionInfo" />
+        <div class="form-search-user-info" data-bind="text: FullUserOrganizationInfo" />
+        <div class="form-search-user-info form-search-user-room-info" data-bind="text: FullUserRoomInfo" />
+        <div class="form-search-user-info phone" data-bind="text: FullUserPhoneInfo" />
+        <div class="form-search-user-info phone" data-bind="text: FullUserFaxInfo" />
+        <div class="form-search-user-info phone" data-bind="text: FullSecondPhoneInfo" />
+        <div>
+            <span class="form-user-mail style-mail" data-bind="text:'E-mail:'" />
+            <div class="form-user-mail style-mail blue clickable size" data-bind="text:Email, click:SendEmail" />
+        </div>
+        <div class="fieldControl-search-user-info blue clickable" data-bind="text: EditUser, click: EditClick, visible: $root.CanShow()"></div>
+        <div class="fieldControl-search-user-info blue clickable" data-bind="restext:'EditSubstitutionProfileSettings', click: EditDeputyClick, visible: $root.CanShowDeputy()"></div>
+    </div>
+        </div>

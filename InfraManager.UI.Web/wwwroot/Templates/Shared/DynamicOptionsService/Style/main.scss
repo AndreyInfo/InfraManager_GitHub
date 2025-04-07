@@ -1,0 +1,298 @@
+﻿.dynamic-options {
+    &_form {
+        padding: 10px !important;
+    }
+
+    &__wrapper {
+        padding: 16px 0 16px 16px;
+    }
+
+    &__more-values {
+        display: flex;
+        align-items: flex-end;
+    }
+
+
+    &__list, &__wrapper-inputs {
+        list-style: none;
+    }
+
+    &__list-item {
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
+    }
+
+    &__wrapper-inputs {
+        width: 100%;
+    }
+
+    &__wrapper-item {
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &.blocking {
+            pointer-events: none;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__wrapper-input-radio {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    &__group {
+        border: 1px solid $gray-background-color;
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    &__separator {
+        width: 100%;
+        height: 1px;
+        background: $gray-background-color;
+        border: none;
+        margin: 10px 0;
+    }
+
+    &__title {
+        font-weight: bold;
+
+        &_group {
+            margin-bottom: 10px;
+        }
+    }
+
+    & .seachClientComboBox, & .callClientSearchForm__searcher {
+        margin: 0;
+        width: 100%;
+        padding: 0;
+    }
+
+    & .text-input, & .dateTimeControlImage {
+        margin: 0;
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        margin-left: 8px;
+    }
+
+    &__buttons, &__buttons-item:not(:first-child) {
+        margin-left: 8px;
+    }
+
+    & .date-picker_error .dateTimeControlInput {
+        background: $invalid-background-color;
+    }
+}
+
+.dynamic-options-password-icon {
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-password-wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.input-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+
+    &__input {
+        cursor: pointer;
+    }
+
+    &__text {
+        margin-left: 8px;
+        cursor: pointer;
+    }
+}
+
+.dynamic-options-icon-title {
+    margin-top: 8px !important;
+}
+
+.dynamic-options-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 38px;
+    height: 38px;
+
+    &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        -webkit-mask-image: url('/images/icons/setting.svg');
+        -webkit-mask-repeat: no-repeat;
+        display: inline-block;
+        background-color: $gray-background-color;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.dynamic-options-icon-wrap {
+    color: $blue-text-color;
+
+    &:hover .dynamic-options-icon::before, &_active .dynamic-options-icon::before {
+        background-color: $blue-text-color;
+    }
+}
+
+.ui-input {
+    border: 1px solid $gray-light-color;
+    padding: 7px;
+    width: 100%;
+
+    &[readonly] {
+        pointer-events: none;
+    }
+
+    &:focus {
+        border-width: 1px;
+    }
+
+    &_error {
+        background: $invalid-background-color;
+    }
+}
+
+.ui-dynamic-readonly {
+    pointer-events: none;
+}
+
+.ui-input-wrapper {
+    &__title {
+        font-size: 11px;
+        color: $gray-text-color;
+        display: inline-block;
+        margin-bottom: 6px;
+    }
+
+    &__btn {
+        margin-bottom: 16px;
+        display: flex;
+    }
+
+    & .table-invalid, .table-invalid-row {
+        background: $invalid-background-color;
+    }
+
+    & .table-content {
+        overflow: auto;
+
+        &__column {
+            min-height: 40.5px;
+            width: 100%;
+
+            & .captionText {
+                overflow: hidden;
+                width: auto;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    & .table-transposed {
+        border: 1px solid #e9ecee;
+        overflow: auto;
+
+        &__col {
+            min-height: 40.5px;
+            border-top: none;
+            border-bottom: 1px dotted #c1cfd9;
+            border-left: none;
+            border-right: 1px dotted #c1cfd9;
+            cursor: pointer;
+            white-space: nowrap;
+            padding: 10px 12px;
+            text-align: center;
+            position: relative;
+            text-overflow: ellipsis;
+            min-width: 150px;
+        }
+    }
+
+    & .table-icon {
+        width: 24px;
+        height: 24px;
+        display: block;
+        cursor: pointer;
+    }
+}
+
+.ui-button-add {
+    width: 30px;
+    height: 30px;
+    border: 1px solid $gray-background-color;
+    position: relative;
+    background: none;
+    cursor: pointer;
+
+    &:focus {
+        border: 1px solid $gray-background-color !important;
+    }
+
+    &::before, &::after {
+        content: '';
+        width: 1px;
+        height: 7px;
+        position: absolute;
+        display: block;
+        top: 50%;
+        left: 50%;
+        background: $gray-background-color;
+    }
+
+    &::before {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    &::after {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.ui-button-remove {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    display: block;
+    mask-image: url(/UI/Lists/SD/Icons/basket.svg);
+    -webkit-mask-image: url(/UI/Lists/SD/Icons/basket.svg);
+    -webkit-mask-repeat: no-repeat;
+    background-color: $gray-background-color;
+}
+
+.ui-icon-question {
+    display: block;
+    cursor: pointer;
+}
+
+.dynamic-table {
+    & .tableContainer .table tr:hover td.table-invalid-row {
+        background-color: $invalid-background-color !important;
+    }
+
+    & [class*=column] + [class*=column]:last-child {
+        float: none;
+    }
+}

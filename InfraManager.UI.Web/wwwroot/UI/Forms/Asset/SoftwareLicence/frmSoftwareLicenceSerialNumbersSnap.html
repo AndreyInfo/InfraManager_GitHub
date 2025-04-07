@@ -1,0 +1,9 @@
+﻿<div style="height: 100%; padding: 20px 20px">
+    <div class="im-big-header caption" style="margin-bottom: 10px">
+        <span data-bind="restext: 'SoftwareLicence_SerialNumbersTab_ListCaption'" />
+        <span class="tabCaption-icon-plus " data-bind="css: {'active': canAdd() }, click: AddSerialNumber"></span>
+    </div>
+
+    <div style="height: calc(100% - 40px);" 
+         data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'SoftwareLicenceSerialNumbers', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick,  autoDispose: false, multiSelect: false}"></div>
+</div>

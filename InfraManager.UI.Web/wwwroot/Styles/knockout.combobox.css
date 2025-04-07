@@ -1,0 +1,135 @@
+.combobox {
+    position: relative;
+    display: inline-block;
+    width: 220px;
+}
+
+    .combobox .control {
+        border: 1px solid lightgray;
+        background: #FFF;
+        cursor: pointer;
+    }
+
+    .combobox .textField, .combobox .dropdownButton {
+        display: inline-block;
+        height: 26px;
+    }
+
+    .combobox.big .textField {
+        height: 34px;
+    }
+
+    .combobox .textField {
+        background: transparent;
+        padding: 2px 7px;
+        border: none;
+        cursor: pointer;
+        width: calc(100% - 32px);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .combobox .dropdownButton {
+        background: url(../images/controls/tabPages/arrow_passive_down.png) no-repeat;
+        width: 24px;
+        height: 13px;
+        border: none;
+        vertical-align: middle;
+    }
+
+    .combobox .control:hover .dropdownButton {
+        background: url(../images/controls/tabPages/arrow_active_down.png) no-repeat;
+    }
+
+    .combobox .dropdownButton.opened {
+        background: url(../images/controls/tabPages/arrow_passive_up.png) no-repeat;
+    }
+
+    .combobox .control:hover .dropdownButton.opened {
+        background: url(../images/controls/tabPages/arrow_active_up.png) no-repeat;
+    }
+
+.combobox-dropdown-menu {
+    position: absolute;
+    left: 0px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid #CCCCCC;
+    z-index: 1000;
+    max-height: 500px;
+    padding: 7px 0;
+    min-width: 60px;
+    transition: all 0.2s ease-in-out;
+    overflow-y: auto;
+}
+
+    .combobox-dropdown-menu > div {
+        padding: 3px 7px;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+
+    .combobox-dropdown-menu .active, .highlighted {
+        background-color: #41aaed;
+        color: #fff;
+    }
+
+        .highlighted:hover {
+            cursor: pointer;
+        }
+/*
+.combobox .nav {
+    text-align: center;
+    border-top: 1px solid #DDDDDD;
+}
+
+.counter {
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    text-transform: uppercase;
+}
+
+.pagination ul {
+    list-style-type: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    display: inline-block;
+}
+
+.pagination li {
+    display: inline-block;
+    border-color: #DDDDDD;
+    border-style: solid;
+    border-width: 1px 1px 1px 0;
+    line-height: 20px;
+    padding: 4px 12px;
+    background-color: #fff;
+    cursor: pointer;
+    color: #0088CC;
+}
+
+    .pagination li:hover {
+        color: #999999;
+        background-color: #F5F5F5;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .pagination li.current {
+        background-color: #efefef;
+        color: #888888;
+        background-color: #;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.20) inset;
+        border-bottom-color: #ccc;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .pagination li:first-child {
+        border-bottom-left-radius: 4px;
+        border-left-width: 1px;
+        border-top-left-radius: 4px;
+    }
+
+    .pagination li:last-child {
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+    }*/

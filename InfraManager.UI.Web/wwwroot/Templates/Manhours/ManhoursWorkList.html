@@ -1,0 +1,45 @@
+﻿<div class="manhoursWork-container">
+    <div class="manhoursWork-list-header">
+        <span class="manhoursWork-list-header-text" data-bind="restext: 'ManhourWorks'"></span>
+        <!-- ko if: CanEditComputed() -->
+        <div class="manhoursWork-list-add" data-bind="click: $root.AddWork, clickBubble: false, operationID: 314, tooltip: getTextResource('AddManhoursWork')" />
+        <!-- /ko -->
+    </div>
+    <div class="manhoursWork-list" data-bind="foreach: SortedManhoursWorkList">
+        <div class="manhors-work-item" data-bind="click: $root.EditWork, operationID: 318, clickBubble: false, style: { cursor: $root.CanEditComputed() ? 'pointer' : 'default' }">
+            <div class="manhoursWork-item-header">
+                <span data-bind="text: NumberName"></span>
+                <!-- ko if: $root.CanEditComputed() -->
+                <div class="manhoursWork-item-remove" data-bind="click: $root.RemoveWork, clickBubble: false, operationID: 316, tooltip: getTextResource('RemoveManhoursWork')" />
+                <!-- /ko -->
+            </div>
+            <div class="manhours-list" data-bind="foreach: SortedManhoursList">
+                <div class="manhours-row">
+                    <div class="manhour-date-group">
+                        <div class="manhour-calendar-icon"></div>
+                        <!-- ko if: $root.ManhoursWorkShowFullInterval() == true -->
+                        <div class="manhour-date" data-bind="text: DateStringSinceTo"></div>
+                        <!-- /ko -->
+                        <!-- ko if: $root.ManhoursWorkShowFullInterval() == false -->
+                        <div class="manhour-date" data-bind="text: DateStringSimple"></div>
+                        <!-- /ko -->
+                    </div>
+                    <div class="manhour-value-group">
+                        <div class="manhour-time-icon"></div>
+                        <div class="manhour-value" data-bind="text: ValueString"></div>
+                    </div>                    
+                </div>
+            </div>
+            <!-- ko if: ManhoursList().length == 0 -->
+            <div class="manhour-list-empty" data-bind="restext: 'NoManhours'"></div>
+            <!-- /ko -->
+        </div>
+    </div>
+    <!-- ko if: ManhoursWorkList().length == 0 -->
+    <center><span class="manhoursWork-list-empty" data-bind="restext: 'NoManhoursWork'"></span></center>
+    <!-- /ko -->
+    <div class="manhoursWork-list-total-container" data-bind="if: ManhoursWorkList().length > 0">
+        <div class="manhoursWork-list-total-header" data-bind="restext: 'TotalManhours'"></div>
+        <div class="manhoursWork-list-total-value" data-bind="text: TotalManhoursString"></div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+﻿@import "../../../../Styles/general";
+
+.frmContractLicence {
+    overflow: hidden;
+    position: relative;
+    display: table;
+    width: 100%;
+    padding: 20px 20px 20px 20px;
+
+    .fieldCaption {
+        color: $gray-text-color;
+        font-size: 11px;
+    }
+
+    .fieldControl {
+        margin-bottom: 10px;
+        position: relative;
+        overflow: hidden;
+        word-break: break-word;
+        display: block;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.border {
+            border: 1px solid $border-gray-color;
+            line-height: 26px;
+            min-height: 26px;
+
+            &.combobox > .control {
+                border: none;
+            }
+
+            &.text {
+                padding: 2px 7px;
+            }
+
+            input {
+                border: none;
+                outline: none;
+            }
+
+            &.invalid {
+                background-color: $invalid-background-color;
+            }
+
+            .searcherInput {
+                min-height: 26px;
+                width: 100%;
+                padding: 2px 7px;
+            }
+
+            &.invalid {
+                background-color: $invalid-background-color;
+            }
+        }
+
+        &.bold {
+            font-weight: bold;
+        }
+
+        &.combobox {
+            width: 100%;
+        }
+
+        &.nud {
+            > .stepper-wrap {
+                width: calc(100% - 15px);
+
+                > input {
+                    width: 100%;
+                    border: 1px solid $border-gray-color;
+                    line-height: 26px;
+                    padding: 0 7px;
+                    height: 26px;
+                }
+            }
+
+            &.disable {
+                pointer-events: none;
+            }
+        }
+
+        .cost, .count {
+            height: 24px;
+        }
+    }
+
+    .invalid {
+        background-color: $invalid-background-color;
+    }
+}

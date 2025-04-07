@@ -1,0 +1,20 @@
+﻿<div class="b-content-table__left-Header" data-bind="restext: 'TooltipServiceCatalogue'"></div>
+<div class="b-content-table__left-FirstGap"></div>
+<span class="b-content-table__workplaceIconGroup" data-bind="click: ShowFavorites">
+    <a class="sc_viewMode favorites" data-bind="css: {'active' : IsFavoritesActive }"></a>
+    <div class="b-content-table__workplaceIcon-header" style="display: block;" data-bind="restext: 'SC_FavoritesButton'"></div>
+</span>
+<span class="b-content-table__workplaceIconGroup fullcatalogueGroup" data-bind="click: ShowFullCatalogue">
+    <a class="sc_viewMode fullcatalogue" data-bind="css: {'active' : IsFullCatalogueActive }"></a>
+    <div class="b-content-table__workplaceIcon-header" style="display: block;"  data-bind="restext: 'SC_FullServiceCatalogue'"></div>
+</span>
+<span class="b-content-table__workplaceIconGroup" data-bind="click: ShowSLACatalogue">
+    <a class="sc_viewMode slacatalogue" data-bind="css: {'active' : IsSLACatalogueActive }"></a>
+    <div class="b-content-table__workplaceIcon-header" style="display: block;" data-bind="restext: 'SC_SLAServiceCatalogue'"></div>
+</span>
+
+<span class="b-content-table__workplaceIconGroup" data-bind="click: ShowHelp">
+    <a class="sc_viewMode helpIcon" data-bind="css: {'active' : IsHelpActive }"></a>
+    <div class="sc_viewMode helpText b-content-table__workplaceIcon-header" style="display: block;"  data-bind="restext: 'SC_Help'"></div>
+</span>
+

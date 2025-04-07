@@ -1,0 +1,11 @@
+﻿<div class="sc_hieararchyBlock" data-bind="with: SelectedServiceCategory">
+    <div class="sc_hieararchyServiceList" data-bind="foreach: VisibleServiceList">
+        <div class="sc_hieararchyServiceHeader" data-bind="click: $root.OnServiceClick, css: { 'active': $root.SelectedObject() == $data }">
+            <div class="sc_hieararchyServiceHeaderButton" data-bind="css: { 'expanded':  IsExpanded }, click: $root.CollapseExpandService, clickBubble: false"></div>
+            <div class="sc_hieararchyServiceHeaderText" data-bind="text: Name"></div>            
+        </div>
+        <div class="sc_hieararchyServiceIAList" data-bind="foreach: VisibleServiceItemAttendanceList, visible: IsExpanded">
+            <div class="sc_hieararchyServiceIAHeader" data-bind="text: Name, click: $root.OnServiceItemAttendanceClick, css: { 'active': $root.SelectedObject() == $data }"></div>
+        </div>
+    </div>
+</div>

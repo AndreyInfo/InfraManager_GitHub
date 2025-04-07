@@ -1,0 +1,18 @@
+﻿using InfraManager.BLL.Localization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InfraManager.BLL.Settings
+{
+    public enum Protocol
+    {
+        [FriendlyName("POP3")]
+        POP3,
+        [FriendlyName("IMAP")]
+        IMAP
+        
+    }
+}

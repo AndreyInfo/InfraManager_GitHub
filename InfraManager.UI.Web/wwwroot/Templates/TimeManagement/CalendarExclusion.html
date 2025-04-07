@@ -1,0 +1,20 @@
+﻿<div class="calendar-exclusion">
+    <label><b data-bind="restext:'ExclusionType'" /></label>
+    <div class="calendar-exclusion-combobox combobox" data-bind="combobox: { dataSource: getComboItems}, comboboxValue: selectedComboItem"></div>
+    <table class="calendar-exclusion-dates">
+        <tbody>
+            <tr>
+                <td><span data-bind="restext:'Since'" /></td>
+                <td class="calendar-exclusion-date-start"></td>
+            </tr>
+            <tr>
+                <td><span data-bind="restext:'To'" /></td>
+                <td class="calendar-exclusion-date-end"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="calendar-exclusion-is-working">
+        <input type="checkbox" data-bind="click: $root.IsWorking, checked: isWorkingKO()">
+        <label data-bind="restext:'IsWorkPeriod'" />
+    </div>
+</div>

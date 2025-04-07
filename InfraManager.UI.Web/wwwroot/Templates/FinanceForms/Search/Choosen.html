@@ -1,0 +1,48 @@
+﻿<div class="al-list-choosen ars-link-ChoosenList">
+    <table class="imList-table" data-bind="visible: ChoosenObjectsList().length > 0">
+        <colgroup>
+            <col style="width: 38px" />
+            <col style="width: 50px" />
+            <col span="8" style="width: 160px" />
+            <col style="width: 200px" />
+        </colgroup>
+        <thead>
+            <tr class="imList-tableHeaderRow">
+                <th class="imList-tableHeaderCheckBox">
+                    <!--<input class="b-content-table__th-checkbox" type="checkbox" data-bind="click: SelectAllClick" />-->
+                </th>
+                <th data-bind="restext: 'ActivesRequestSpecification_OrderNumber'"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_Model'"></th>
+                <th data-bind="restext: 'ProductCatalogueModel_TypeName'"></th>
+                <th data-bind="restext: 'ProductCatalogueModel_ManufacturerName'"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_State'"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_NDSinfo'"></th>
+                <th data-bind="restext: 'ARS_NumberWorkOrder'"></th>
+                <th data-bind="restext: 'FinanceOrder_UtcDatePromised'"></th>
+                <th data-bind="restext: 'FinanceOrder_CustomerFullName'"></th>
+                <th data-bind="restext: 'CountValue'"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: ChoosenObjectsList -->
+            <tr class="imList-tableRow">
+                <td class="imList-tableCheckBox">
+                    <input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected" />
+                </td>
+                <td data-bind="text: OrderNumber, click: $parent.ShowForm"></td>
+                <td data-bind="text: ProductCatalogModelFullName"></td>
+                <td data-bind="text: ProductCatalogTypeName"></td>
+                <td data-bind="text: ManufacturerName"></td>
+                <td data-bind="text: StateString"></td>
+                <td data-bind="text: NDSInfo"></td>
+                <td data-bind="text: WorkOrderNumber"></td>
+                <td data-bind="text: WorkOrderUtcDatePromised"></td>
+                <td data-bind="text: CustomerFullName"></td>
+                <td data-bind="template: { afterRender: OnRender }">
+                    <input type="text" class="imList-slider-TextField" data-bind="value: Count, valueUpdate: 'input'" />
+                </td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</div>

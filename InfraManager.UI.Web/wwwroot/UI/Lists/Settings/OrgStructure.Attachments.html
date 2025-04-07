@@ -1,0 +1,8 @@
+﻿<div class="orgstructure-attachments" data-bind="with: Attachments(), afterUpdateBlock: function() { return Attachments() && Attachments().AfterRender(); }">
+    <div class="header_buttons">
+        <span class="orgstructure-addAttachmentBtn link-text active" data-bind="restext: 'OrgStructureFileAttach', visible: IsEditable()" />
+        <span class="link-text" style="margin-left: 10pt" data-bind="restext: 'OrgStructureFileDeleteAll', css: { active: CanRemoveAll() }, click: RemoveAll, clickBubble: false, visible: IsEditable()" />
+    </div>
+    <div class="control documentList"></div>
+    <span class="link-text active" data-bind="restext: 'OrgStructureFileDownloadAll', visible: CanDownloadAll(), click: DownloadArchive, clickBubble: false"/>
+</div>

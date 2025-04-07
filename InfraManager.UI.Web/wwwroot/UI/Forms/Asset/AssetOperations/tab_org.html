@@ -1,0 +1,24 @@
+﻿<div class="frmLicenceConsumption" data-bind="with: tabActive">
+    <div class="dataBlock">
+        <div class="licence-consumption_searchText">
+            <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: $root.lvSearchText" />
+            <div class="licence-consumption_searchText-clearfield cursor-pointer" data-bind="click: $root.eraseTextClick, visible: !$root.isSearchTextEmpty()" style=""></div>
+        </div>
+        <div class="licence-consumption_tableWrapper">
+            <div class="licence-consumption_paramsColumn">
+                <div id="regionOrgStructure2" class="regionFilterTree-orgstructure2">
+                    <div class="regionFilterTree-orgstructure-tree2"></div>
+                </div>
+            </div>
+            <div class="licence-consumption_tableColumn">
+                <div class="tableData" data-bind="koListView: {settingsName: 'AssertUser', controlInitialized:lvInit, retrieveVirtualItems: lvRetrieveVirtualItems, virtualMode: true, itemClick: lvRowClick, drawCell: listViewDrawCell}"></div>
+            </div>
+        </div>
+        <div class="box footer">
+            <div style="display: inline; float: left;" class="fieldCaption" data-bind="restext: 'TotalPrepareRights'"></div>
+            <div style="display: inline; float: left;" class="fieldValue" data-bind="text: $root.getReferenceCount() + '&nbsp;'"></div>
+            <div style="display: inline; float: left;" class="fieldCaption" data-bind="restext: 'TotalАvailableRights'"></div>
+            <div style="display: inline; float: left;" class="fieldValue" data-bind="text: $root.Rights()"></div>
+        </div>
+    </div>
+</div>

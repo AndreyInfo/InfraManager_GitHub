@@ -1,0 +1,20 @@
+﻿<div class="b-content-dictionaries-container" data-bind="with: Dictionaries, afterUpdateBlock: Dictionaries().ModelAfterRender">
+    <div class="b-content-dictionaries-container-header">
+        <div class="dictionaries-header_list-divider"></div>
+        <div class="dictionaries-header_list" data-bind="css: { 'active' : IsOrgStructureActive }, click: OpenOrgStructure">
+            <span class="dictionaries-header-text" data-bind="restext: 'DictionariesTabOrgStructure'"></span>
+        </div>
+        <div class="dictionaries-header_list-divider-last"></div>
+    </div>
+    <div class="b-content-dictionaries-container-body">
+        <div id="tabOrgStructure" class="b-content-dictionaries-container-orgstructure" data-bind="visible: IsOrgStructureActive">
+            <div class="leftSide" data-bind="splitter: { ChangeFunc: resizeSplitter, MinimalSize: minSplitterWidth, MaximumSize: maxSplitterWidth, Name: 'DictionariesOrgStructure', Direction: 'right' }, style: {'width': splitterDistance() + 'px'}">
+                <div class="dictionaries-orgstructure-tree"></div>
+                <div class="dictionaries-orgstructure-tree-contextmenu" data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+            </div>
+            <div class="rightSide" data-bind="style: {'left': splitterDistance() + 'px'}">
+                <div class="dictionaries-orgstructure-main" data-bind="template: {name: OrgStructureViewTemplateName}"></div>
+            </div>
+        </div>
+    </div>
+</div>

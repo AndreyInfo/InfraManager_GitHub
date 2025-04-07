@@ -1,0 +1,92 @@
+﻿<style>
+    .dynamic-service-tab:not(:last-child) {
+        margin-bottom: 16px;
+    }
+
+    .dynamic-service-tab__title {
+        padding: 0 16px;
+    }
+</style>
+
+<div class="call-registration-lite">
+    <div class="b-requestDetail im-base-text">
+        <div class="b-requestDetail-main">
+            <div class="call-registration-lite-header">
+                <div class="call-registration-lite-header-left">
+                    <div class="call-type-circle" data-bind="if: ImageSource(), click: EditServiceItemAttendance, tooltip: CallTypeName().length !== 0 ? CallTypeName() : getTextResource('Call') ">
+                        <img class="sc_callType_callLite-icon" data-bind="attr: { src: ImageSource()}">
+                    </div>
+                    <div class="call-registration-lite-service">
+                        <div class="call-registration-lite-sia im-big-header" data-bind="text: SiaName()"></div>
+                    </div>
+                    <div class="sc_siaPath">
+                        <div class="sc_siaPathText" data-bind="text: SiaPath()"></div>
+                    </div>
+                </div>
+                <div class="call-registration-lite-user">
+                    <div class="b-requestDetail__table">
+                        <div class="form-users-block">
+                            <div data-bind="template: { name: 'User/FormUser', if: Client() && ClientLoaded(), data: Client }"></div>
+                            <div class="invalid" data-bind="template: { name: 'User/FormUserEmpty', if: Client() && !ClientLoaded(), data: Client }"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="call-registration-lite-main">
+                <div class='call-registration-lite-main-first'>
+                    <div class="b-requestDetail__mainParameters">
+                        <div class="horizontalContainer-leftPart">
+
+                            <!--ko if: ShowPlaceOfService()-->
+                                <div class="fieldPair" data-bind="if: ShowPlaceOfService">
+                                    <div class="b-requestDetail__descr-call-lite im-middle-header" data-bind="restext : 'PlaceOfService' "> </div>
+                                    <div class="editor big">
+                                        <input type="text" class="border bigField searcherInput" data-bind="attr: { placeholder:getTextResource('CallRegistration_PlaceOfService') },  click: EditLocation, textInput: ServicePlaceCallName" />
+                                    </div>
+                                </div>
+                                <!-- /ko -->
+
+                                <div class="fieldPair">
+                                    <div class="b-requestDetail__descr-call-lite-urgency im-middle-header" data-bind="restext: 'UrgencyCaption'" />
+                                    <div class="b-requestCreate-input-wrap">
+                                        <div class="combobox clearfix urgency big" style="margin-top:10px" data-bind="combobox: { dataSource: getUrgencyList, placeholder: 'choose item' }, comboboxValue: SelectedUrgency"></div>
+                                    </div>
+                                </div>
+                                <div class="fieldPair">
+                                    <div class="b-requestDetail__descr-call-lite im-middle-header"><span data-bind="restext: 'CallSummaryCaption'" /></div>
+                                    <div class="editor big">
+                                        <input type="text" class="border bigField searcherInput im-base-text callSummarySearcher" data-bind="textInput: CallSummaryName, longNameTooltip: CallSummaryName, attr: { placeholder: getTextResource('PromptCallSummary') }, css: {'invalid' : !BeforeSave() && CallSummaryName().length == 0}" />
+                                    </div>
+                                </div>
+                                <div class="fieldPair">
+                                    <div class="b-requestDetail__descr-call-lite im-middle-header"><span data-bind="restext: 'DescriptionCaption'" /></div>
+                                    <div class="editor border call-lite-full html description htmlEditor" />
+                                </div>
+                                <div class="fieldPair">
+                                    <div class="icon paramFile " style="top:3px"><span /></div>
+                                    <div class="editor general b-requestDetail__descr-call-lite im-middle-header" style="float:left"><span data-bind="restext: 'AddFiles'" /></div>
+                                    <div class="icon call-lite-icon-plus active"></div>
+                                    <div class="editor b-requestDetail__files documentList" />
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div data-bind="foreach: DynamicOptionsService.FormTabs" class="dynamic-service-tab">
+                    <div class="b-requestDetail__descr-call-lite im-middle-header">
+                        <span class="dynamic-service-tab__title" data-bind="text: Tab.Name"></span>
+                    </div>
+                    <div>
+                        <div class="parameters" data-bind="template: {name: './Shared/DynamicOptionsService/Index', afterRender: $parent.DynamicOptionsService.AfterRender }"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="call-registration-lite-buttonset">
+                <a class="blue-btn b-requestDetail__searchBtn" data-bind="restext: 'ButtonCreateCall', click : Validate">
+                </a>
+                <a class="blue-btn b-requestDetail__searchBtn" data-bind="restext: 'CancelButtonText', click : Close">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

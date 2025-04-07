@@ -1,0 +1,12 @@
+﻿<div class="rangeSliderFilter-wrapper" data-bind="template: { afterRender: AfterRender }">
+    <div class="rangeSliderFilter-operations"></div>
+    <div class="rangeSliderFilter-valueWrapper">
+        <div class="rangeSliderFilter-firstValue" data-bind="visible: FirstTextFieldVisible">
+            <input type="text" class="rangeSliderFilter-TextField" data-bind="value: Left, valueUpdate: 'input'" />
+        </div>
+        <span class="rangeSliderFilter-separator" data-bind="visible: SecondTextFieldVisible"> - </span>
+        <div class="rangeSliderFilter-secondValue" data-bind="visible: SecondTextFieldVisible">
+            <input type="text" class="rangeSliderFilter-TextField" data-bind="value: Right, valueUpdate: 'input'" />
+        </div>
+    </div>
+</div>

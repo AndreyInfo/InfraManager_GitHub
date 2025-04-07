@@ -1,0 +1,46 @@
+﻿<div class="asset-link-main">
+    <div class="asset-link-menu">
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: selectClientService, css: { 'active' : isClientServiceSelected }, visible: CanSeeClientOrService">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'AssetLinkHeaderClientService'"></div>
+        </div>
+        <div class="asset-link-divider" style="display:none"></div>
+        <div class="asset-link-menubutton" style="display:none" data-bind="click: selectLocation, css: { 'active' : isLocationSelected }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'AssetLinkHeaderLocation'"></div>
+        </div>
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: selectParameterSelector, css: { 'active' : isParameterSelected }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'AssetLinkHeaderParameters'"></div>
+        </div>
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton asset-link-choosenbutton" data-bind="click: selectChoosen, visible: isChoosenVisible, css: { 'active' : isChoosenSelected }">
+            <div class="asset-link-menubutton-text">
+                <span data-bind="restext: 'AssetLinkHeaderChoosen'"></span>
+                <span data-bind="text: ChoosenCounterText"></span>
+            </div>
+        </div>
+        <div class="asset-link-lastelement"></div>
+    </div>
+    <div class="asset-link-body">
+        <span data-bind="if: ClientServiceReady">
+            <div class="asset-link-clientservice" data-bind="visible: currentMode() == modes.ClientOrService && modelClientService() != null">
+                <div data-bind="template: { name: 'AssetForms/AssetLink/ClientService', data: modelClientService, afterRender: modelClientService().AfterRender }"></div>
+            </div>
+        </span>
+        <span data-bind="if: LocationReady">
+            <div class="asset-link-location" data-bind="visible: currentMode() == modes.Location && modelLocation() != null">
+                <div data-bind="template: { name: 'AssetForms/AssetLink/Location', data: modelLocation }"></div>
+            </div>
+        </span>
+        <span data-bind="if: ParameterReady">
+            <div class="asset-link-parameters" data-bind="visible: currentMode() == modes.ParameterSelector && modelParameterSelector() != null">
+                <div data-bind="template: { name: 'AssetForms/AssetLink/Parameters', data: modelParameterSelector, afterRender: modelParameterSelector().AfterRender }"></div>
+            </div>
+        </span>
+        <span data-bind="if: ChoosenReady">
+            <div class="asset-link-choosen" data-bind="visible: currentMode() == modes.Choosen && modelChoosen() != null">
+                <div data-bind="template: { name: 'AssetForms/AssetLink/Choosen', data: modelChoosen }"></div>
+            </div>
+        </span>
+    </div>
+</div>

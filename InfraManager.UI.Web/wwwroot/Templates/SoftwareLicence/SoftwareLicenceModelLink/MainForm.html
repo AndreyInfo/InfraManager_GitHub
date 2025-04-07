@@ -1,0 +1,18 @@
+﻿<div class="asset-link-main">
+    <div class="asset-link-body">
+        <div data-bind="visible: mode() == modes.tabModel">
+            <div class="asset-link_searchText">
+                <input type="text" class="text-input searcherInput tabModelSearcher" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: searchText_Model">
+                <div class="asset-link_searchText-clearfield cursor-pointer" data-bind="click: function() {searchText_Model('');}, visible: searchText_Model().length > 0"></div>
+            </div>
+            <div class="asset-model-link_tableWrapper">
+                <div class="asset-link_paramsColumn">
+                    <div class="asset-link_paramsColumnProductCatalog"></div>
+                </div>
+                <div class="asset-link_tableColumn listView" data-bind="with: lv_tabModel">
+                    <div data-bind="koListView: {settingsName: viewName, controlInitialized: listViewInit, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: null}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿<div class="b-requestDetail-menu__item b-requestDetail-menu__iniciation leftToolbarButtons assetCriticalityBlock" data-bind="css: {'assetCriticalityControl-container': $control.CriticalityList().length > 0 && $control.ReadOnly() == false}, click: $control.MenuClick">
+    <div class="menuBlock">
+        <span data-bind="text: $entity.CriticalityName"></span>
+    </div>
+    <div class="assetOperationsControl-part" data-bind="visible: $control.CriticalityList().length > 0 && $control.ReadOnly() == false">
+        <a class="assetOperationsControl-expander"></a>
+        <ul class="assetCriticalityControl-menu" data-bind="foreach: $control.CriticalityList">
+            <li data-bind="click: CriticalityClick"><a data-bind="text: Text, longNameTooltip: Text" /></li>
+        </ul>
+    </div>
+</div> 

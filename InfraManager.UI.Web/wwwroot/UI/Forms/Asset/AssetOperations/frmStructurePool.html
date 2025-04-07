@@ -1,0 +1,19 @@
+﻿<div class="b-requestDetail im-base-text">
+    <div class="frmStructurePool">
+        <div class="frmStructurePool-Content">
+            <div class="field-area pool-details-field-area">
+                <p><span class="field-title" data-bind="restext: 'SoftwareSublicencePool_Name'" /></p>
+                <p><span class="field-value" data-bind="text: poolName" /></p>
+            </div>
+            <div>
+                <h1 data-bind="text: listTitle"></h1>
+                <div class="list" data-bind="template: {name: '../UI/Lists/Asset/LicenceList'}" />                
+            </div>
+        </div>
+        <div class="form-buttons">
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: close">
+                <span class="ui-button-text" data-bind="restext: 'Close'" />
+            </button>
+        </div>
+    </div>
+</div>

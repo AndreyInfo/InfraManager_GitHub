@@ -1,0 +1,6 @@
+﻿<div class="likeValueFilter-wrapper" data-bind="template: { afterRender: AfterRender }">
+    <div class="likeValueFilter-operations"></div>
+    <div class="likeValueFilter-searchValue" data-bind="visible: ValueTextFieldVisible">
+        <input type="text" class="likeValueFilter-TextField" data-bind="attr: { placeholder: getTextResource('FilterEnterValue'), maxlength: MaxTextLength }, textInput: SearchValue, longNameTooltip: SearchValue" />
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿<div class="GeneralTemplateLicence" data-bind="with: template">
+    <div class="container-fluid">
+        <!--Обновляемая лицензия-->
+        <div class="col-xs-12 generalTemplateTop">
+            <div class="fieldCaption" data-bind="restext: 'UpdatedLicense'"></div>
+        </div>
+        <div class="col-xs-12">
+            <div class="fieldValue lines clickableTextField" data-bind="text: ParentSoftwareLicenceName(), click: OpenParentSoftwareLicenceForm"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 generalTemplateMaxWidth">
+                <!--Дата вступления в силу -->
+                <div class="fieldCaption" data-bind="restext: 'EffectiveDate'"></div>
+            </div>
+            <div class="col-sm-6 generalTemplateMaxWidth">
+                <!--Тип обновления -->
+                <div class="fieldCaption" data-bind="restext: 'TypeOfUpdate'"></div>
+            </div>
+        </div>
+        <div class="row generalTemplateRowInfo ">
+            <div class="col-sm-6 generalTemplateMaxWidth">
+                <!--Дата вступления в силу -->
+                <div class="effective-date generalTemplateText"></div>
+                <div class="fieldValue generalTemplateText" data-bind="text: EffectiveDate()"></div>
+            </div>
+            <div class="col-sm-6 generalTemplateMaxWidth">
+                <!--Тип обновления -->
+                <div class="fieldValue generalTemplateText" data-bind="text: ProductType()"></div>
+            </div>
+        </div>
+
+        <!--Основание -->
+        <div class="col-xs-12 generalTemplateReasonField">
+            <div class="fieldCaption" data-bind="restext: 'ReasonForChange'"></div>
+        </div>
+        <div class="col-xs-12 generalTemplateBot">
+            <div class="fieldValue clickableTextField" data-bind="text: Reason(), click: OpenCorrespondingObjectForm"></div>
+        </div>
+        <div data-bind="template: {name: $parent.UpdateCharacteristics().Template,  afterRender: $parent.UpdateCharacteristics().AfterRender}"></div>
+    </div>
+</div>
+

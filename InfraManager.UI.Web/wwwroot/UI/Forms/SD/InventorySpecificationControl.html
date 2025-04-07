@@ -1,0 +1,53 @@
+﻿<div class="inventorySpecificationControl">
+    <div class="im-big-header caption">
+        <span data-bind="restext: 'InventoryDocument'" />
+        <span class="tabCaption-icon-chain" data-bind="css: {'active': $root.CanEdit() && addSpecificationEnabled }, click: addInventorySpecification"></span>
+    </div>
+    <div class="asset-link-menu">
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: selectParameterSelector, css: { 'active' : isParameterSelected }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'InventorySpecification'"></div>
+        </div>
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton asset-link-choosenbutton" data-bind="click: selectChoosen, visible: isChoosenVisible, css: { 'active' : isChoosenSelected }">
+            <div class="asset-link-menubutton-text">
+                <span data-bind="restext: 'AssetLinkHeaderChoosen'"></span>
+                <span data-bind="text: ChoosenCounterText"></span>
+            </div>
+        </div>
+        <div class="asset-link-lastelement"></div>
+    </div>
+    <div class="asset-link_searchText" data-bind="visible: isParameterSelected">
+        <div class="show-accepted">
+            <div class="show-accepted-inner">
+                <div class="show-accepted-checkbox">
+                    <input type="checkbox" data-bind="checked: showAccepted" />
+                </div>
+                <span data-bind="restext: 'ShowAccepted'" />
+            </div>
+        </div>
+        <div class="searcher-inner">
+            <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, event: { keypress: SearchKeyPressed }">
+            <div class="asset-link_searchText-clearfield cursor-pointer" data-bind="click: EraseTextClick, visible: !IsSearchTextEmpty()"></div>
+        </div>
+        <div class="scaner">
+            <div class="scaner-inner">
+                <div class="fieldCaption" data-bind="restext: 'StreamSelection'"></div>
+                <div class="fieldControl slider-checkbox">
+                    <input type="checkbox" class="limits-input" data-bind="checked: StreamSelection" />
+                    <label class="label" data-bind="text: StreamSelection() == true ? getTextResource('Yes') : getTextResource('No')"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="inventory-specification" data-bind="visible: isParameterSelected">
+        <div style="height: calc(100% - 130px);" class="asset-link-parameters" data-bind="with: list">
+            <div class="inventorySpec" data-bind="template: {name: './../UI/Forms/SD/InventorySpecificationList'}" />
+        </div>
+    </span>
+    <span class="inventory-specification-selected" data-bind="visible: isChoosenSelected">
+        <div style="height:calc(100% - 90px);" class="asset-link-choosen" data-bind="with: selectedList">
+            <div class="inventorySpec" data-bind="template: {name: './../UI/Forms/SD/InventorySpecificationSelectedList'}" />
+        </div>
+    </span>
+</div>

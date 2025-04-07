@@ -1,0 +1,51 @@
+﻿<div class="assetSearch">
+    <div class="asset-link_tableWrapper">
+        <div class="asset-sd-left">
+            <div class="filters">
+                <div class="asset-link_paramsColumnType"></div>
+                <div data-bind="visible: visibleInfo()">
+                    <div class="text-asset-searcher-style" data-bind="text: getTextResource('ProductCatalogueModel_TypeName')"> </div>
+                    <div class="selectedCategoryNode im-list-item-wrapper">
+                        <span class="selected-text-asset-searcher-style" data-bind="text: SelectedTextType"> </span>
+                        <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedTypeClick" />
+                    </div>
+                    <div class="text-asset-searcher-style" data-bind="text: getTextResource('Model')"> </div>
+                    <div class="selectedTypesNode im-list-item-wrapper" data-bind="foreach:SelectedModels">
+                        <div>
+                            <div class="selected-text-asset-searcher-style" data-bind="text: Name"></div>
+                            <div class="selected-text-erase-style cursor-pointer" data-bind="click: $parent.EraseSelectedModelClick" />
+                        </div>
+                    </div>
+                    <div class="selectedTypeNode im-list-item-wrapper " data-bind="visible: visibleModelInfo()">
+                        <div class="selected-text-asset-searcher-style" data-bind="text: SelectedTextModel"></div>
+                        <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedModelClick" />
+                    </div>
+                </div>
+                <div class="asset-link_paramsColumnLocation"></div>
+                <div data-bind="visible: visibleLocation()">
+                    <div class="text-asset-searcher-style" data-bind="text: getTextResource('Asset_Location')"> </div>
+                    <div class="selected-text-asset-searcher-style" data-bind="text: SelectedTextLocation"></div>
+                    <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedLocationClick" />
+                </div>
+            </div>
+            <div class="extended-search-clear">
+                <a data-bind="restext: 'ClearSearch', click: ClearSearchTextAndFilters"></a>
+            </div>
+        </div>
+        <div class="asset-sd-right ">
+            <div class="searchForm__topLine">
+                <div class="searchForm__buttonSearch">
+                    <a class="blue-btn b-requestDetail__searchBtn" data-bind="restext: 'Find', click: SearchKeyPressed"></a>
+                </div>
+                <div class="searchForm__searcher assetSearcher">
+                    <input type="text" class="text-input searcherInput" data-bind="textInput: SearchText, resattr: {placeholder : 'SearchEmpty'}, event: {keyup: SearchKeyPressed}" />
+                    <div class="asset-link_searchText-clearfield cursor-pointer" data-bind="click: EraseTextClick"></div>
+                </div>
+            </div>
+            <div class="asset-sd-right-table asset-link_tableColumn">
+                <div id="regionAssetSearch" style="height:100%" class="region-Table" data-bind="koListView: {settingsName: 'AssetSearch', controlInitialized: listViewInit, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false }"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,38 @@
+﻿<div class="selectControl-wrapper">
+    <div class="selectControl-firstRow" data-bind="ifnot: ShowChoosenList">
+        <div class="selectControl-Unactive" data-bind="visible: !EditActive()">
+            <div class="selectControl-UnactiveTitle" data-bind="text: TitleForShow, click: StartEditClick, css: TitleStyle"></div>
+            <div class="selectControl-StartEditButton" data-bind="click: StartEditClick"></div>
+        </div>
+    </div>
+    <div class="selectControl-firstRow" data-bind="if: ShowChoosenList">
+        <div class="selectControl-firstRowHeader" data-bind="text: TitleForShow, click: StartEditClick, css: TitleStyle, visible: !EditActive() && NeedShowTitle()"></div>
+        <div class="selectControl-firstRowList" data-bind="visible: !EditActive(), foreach: selectedlist">
+            <div class="selectControl-firstRowItem">
+                <div class="selectControl-firstRowName">
+                    <div class="selectControl-firstRowItemIcon" data-bind="css: Image, visible: Image"></div>
+                    <div class="selectControl-firstRowItemText" data-bind="text: Name"></div>
+                </div>
+                <div class="selectControl-firstRowButtons" data-bind="visible: $parent.IsEditSelectedAvailavible">
+                    <div class="selectControl-firstRowEditButton" data-bind="click: $parent.StartEditClick"></div>
+                    <div class="selectControl-firstRowRemoveButton" data-bind="click: $parent.DeselectItem"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="selectControl-body" style="display: none">
+        <div class="selectControl-Search" data-bind="visible: NeedShowSearch()">
+            <input type="text" class="selectControl-TextField" data-bind="attr: { placeholder: SearchPlaceholder }, textInput: SearchText" />
+        </div>
+        <div class="selectControl-List" data-bind="foreach: itemListForShow, visible: !IsListForShowEmpty()">
+            <div class="selectControl-item" data-bind="click: $root.SelectItemClick">
+                <div class="selectControl-itemCheckbox" data-bind="visible: $parent.IsMultiple">
+                    <input type="checkbox" data-bind="checked: Checked" />
+                </div>
+                <div class="selectControl-itemIcon" data-bind="css: Image, visible: Image"></div>
+                <div class="selectControl-itemText" data-bind="text: Name, css: { 'boldCaption': !$parent.IsMultiple() && Checked() }"></div>
+            </div>
+        </div>
+        <div class="selectControl-ListIsEmpty" data-bind="restext: 'ListIsEmpty', visible: IsListForShowEmpty()"></div>
+    </div>
+</div>

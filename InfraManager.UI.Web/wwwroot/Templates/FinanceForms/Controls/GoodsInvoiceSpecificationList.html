@@ -1,0 +1,84 @@
+﻿<div class="tabContent im-list" data-bind="style: {bottom: ($control.imList.SelectedItemsCount() > 0) && $root.CanEdit()  == true ? '105px' : '45px', top: 0}">
+    <table class="imList-table" data-bind="visible: ($control.imList.List().length > 0)">
+        <colgroup>
+            <col style="width: 38px" />
+            <col span="15" style="width: 150px" />
+        </colgroup>
+        <thead>
+            <tr class="imList-tableHeaderRow">
+                <th class="imList-tableHeaderCheckBox" data-bind="visible: $control.openedInsideForm"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_OrderNumber'"></th>
+                <th data-bind="restext: 'InvoiceSpecification_Name'"></th>
+                <!--<th data-bind="restext: 'ActivesRequestSpecification_Model'"></th>-->
+                <th data-bind="restext: 'PurchaseSpecification_ModelTypeName'"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_Count'"></th>
+                <th data-bind="restext: 'PurchaseSpecification_Unit'"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_PriceWithoutNDS'"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_PriceWithNDS'"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_NDSinfo'"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_Note'"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_CostWithNDS'"></th>
+                <th data-bind="restext: 'ActivesRequestSpecification_CostWithoutNDS'"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: $control.imList.List -->
+            <tr class="imList-tableRow">
+                <td class="imList-tableCheckBox" data-bind="visible: $parent.$control.openedInsideForm">
+                    <input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected, visible: $root.CanEdit" />
+                </td>
+                <td class="imList-clickableCell" data-bind="text: OrderNumber, click: $parent.$control.ShowObjectForm"></td>
+                <td class="imList-clickableCell" data-bind="text: CargoName, click: $parent.$control.ShowObjectForm"></td>
+                <!--<td data-bind="text: ProductCatalogModelFullName"></td>-->
+                <td data-bind="text: ProductCatalogTypeName, click: $parent.$control.ShowObjectForm"></td>
+                <td data-bind="text: Count, click: $parent.$control.ShowObjectForm"></td>
+                <td data-bind="text: UnitName, click: $parent.$control.ShowObjectForm"></td>
+                <td class="imList-rightCell" data-bind="text: PriceWithoutNDSString, click: $parent.$control.ShowObjectForm"></td>
+                <td class="imList-rightCell" data-bind="text: PriceWithNDSString, click: $parent.$control.ShowObjectForm"></td>
+                <td data-bind="text: NDSInfo, click: $parent.$control.ShowObjectForm"></td>
+                <td data-bind="text: Note, click: $parent.$control.ShowObjectForm"></td>
+                <td class="imList-rightCell" data-bind="text: CostWithNDSString, click: $parent.$control.ShowObjectForm"></td>
+                <td class="imList-rightCell" data-bind="text: CostWithoutNDSString, click: $parent.$control.ShowObjectForm"></td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+    <!-- ko if: $control.imList.List().length == 0 -->
+    <center><span class="im-list-noitems" data-bind="restext: 'ListIsEmpty', "></span></center>
+    <!-- /ko -->
+</div>
+<!-- ko if: $mode != 'invoiceList' -->
+<!--когда панели появятся автоматом должен установиться отступ tabContent от нижнего края посредствам ko-->
+<div class="im-list__actions" data-bind="style: {bottom: '55px'}, visible: ($control.imList.SelectedItemsCount() > 0) && $root.CanEdit()">
+    <div class="im-list__actions-wrapper">
+        <div class="im-list__actions-list" data-bind="foreach: $control.imList.OperationList">
+            <button class="button button_b-ctrl_note button_size_M button_type_normal im-list__actions-button" data-bind="visible: IsVisible, click: OnClick">
+                <div class="button__label" data-bind="text: Text"></div>
+            </button>
+        </div>
+        <div class="im-list__right-panel">
+            <div class="im-list__actions-count"><span data-bind="restext: 'Choosen'"></span>: <span data-bind="text: $control.imList.SelectedItemsCount"></span></div>
+            <div class="im-list__actions-close"><a data-bind="restext: 'UndoCheck', click: $control.imList.UncheckAll"></a></div>
+        </div>
+    </div>
+</div>
+<div class="invoice-table-total">
+    <div class="goods-add" data-bind="restext: 'AddGoods', click: function() { $control.imList.ExecuteOperation(getTextResource('AddPurchaseSpecificationFromCatalog')) }, style: { top: ($control.imList.List().length > 0) ? '-1px' : '100px'}, visible: $root.CanEdit() && $control.CanAdd()"></div>
+    <table class="invoice-table-total-color" data-bind="visible: ($control.imList.List().length > 0)">
+        <tbody>
+            <tr>
+                <td class="invoice-table-total-leftCell" data-bind="restext: 'ActivesRequestSpecification_CostWithoutNDS'"></td>
+                <td class="invoice-table-total-rightCell" data-bind="text: $control.TotalCostWithoutNDSString()"></td>
+            </tr>
+            <tr>
+                <td class="invoice-table-total-leftCell" data-bind="restext: 'ActivesRequestSpecification_CostWithNDS'"></td>
+                <td class="invoice-table-total-rightCell" data-bind="text: $control.TotalCostWithNDSString()"></td>
+            </tr>
+            <tr>
+                <td class="invoice-table-total-leftCell" style="padding-bottom:10px;" data-bind="restext: 'ActivesRequestSpecification_SumNDS'"></td>
+                <td class="invoice-table-total-rightCell" style="padding-bottom:10px;" data-bind="text: $control.TotalSumNDSString()"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- /ko -->

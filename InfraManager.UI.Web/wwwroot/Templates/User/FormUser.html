@@ -1,0 +1,40 @@
+﻿<div class="form-user-container" data-bind="if: $data != null && $data.ShowTypeName != null">
+    <div class="form-user-leftside" data-bind="click: EditSelectedClient">
+        <div data-bind="css: ImageClass, tooltip: GetFullInfoForTooltip(), tooltipSide: 'left', tooltipMultiline: true"></div>
+        <!-- ko if: CanEditSelectedUser -->
+        <div class="form-user-icon-settings"></div>
+        <!-- /ko -->
+    </div>
+    <div class="form-user-rightside">
+        <div class="form-user-header" data-bind="text: TypeName, visible: ShowTypeName()" />
+        <!-- ko if: !ShowRightSideButtons() && CanEdit -->
+        <div class="form-user-btn-edit" data-bind="click: EditClick"></div>
+        <!-- /ko -->
+        <!-- ko if: !ShowRightSideButtons() && CanRemove -->
+        <div class="form-user-btn-remove" data-bind="click: RemoveClick"></div>
+        <!-- /ko -->
+        <div class="form-user-name" data-bind="text: FullName, longNameTooltip: FullName" />
+        <div class="form-user-phone" data-bind="if: PhoneString">
+            <span class="form-user-number" data-bind="text: PhoneString" />
+            <!-- ko if: CanCallToUser -->
+            <div class="form-user-call" data-bind="click: CallToUser"><span data-bind="tooltip: getTextResource('Telephony_MakeCall')" /></div>
+            <!-- /ko -->
+        </div>
+        <div class="form-user-info" data-bind="text: PositionName" />
+        <div class="form-user-dopinfo" data-bind="text: SubdivisionFullName" />
+
+        <div data-bind="if: Email, visible: ViewEmailLink()==true,">
+            <div class="form-user-mail blue clickable size" data-bind="text:Email, click: SendEmail" />
+         </div>
+        
+
+    </div>
+    <div class="form-user-rightside-btns" data-bind="visible: ShowRightSideButtons">
+        <!-- ko if: CanEdit -->
+        <div class="form-user-btn-edit" data-bind="click: EditClick"></div>
+        <!-- /ko -->
+        <!-- ko if: CanRemove -->
+        <div class="form-user-btn-remove" data-bind="click: RemoveClick"></div>
+        <!-- /ko -->
+    </div>
+</div>

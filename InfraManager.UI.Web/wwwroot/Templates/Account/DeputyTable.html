@@ -1,0 +1,25 @@
+﻿<div class="b-content-substitution-container" data-bind="with: Deputy, afterUpdateBlock: Deputy().ModelAfterRender">
+    <!--ko if: IsUserSettings()-->
+    <div>
+        <h2 class="substitution-text_" data-bind="restext: 'SubstitutionProfileSettings'"></h2>
+        <hr class="substitution-line_">
+    </div>
+    <!-- /ko -->
+    <div class="substitution-withFinishedWorkflowWrapper">
+        <input type="checkbox" data-bind="checked: WithCompletedDeputy" /> <span class="substitution-withFinishedWorkflowHeader" data-bind="restext: 'Filter_ShowWithFinishedWorkflow'" />
+    </div>
+    <div class="b-content-substitution-container-header">
+        <!--ko if: IsUserSettings()-->
+        <div class="substitution-header_list-divider"></div>
+        <div class="substitution-header_list" data-bind="css: { 'active' : IsIDeputyForActive }, click: ShowIDeputyFor">
+            <span class="substitution-header-text" data-bind="restext: 'DeputyForProfileSettings'"></span>
+        </div>
+        <!-- /ko -->
+        <div class="substitution-header_list-divider"></div>
+        <div class="substitution-header_list" data-bind="css: { 'active' : IsMyDeputiesActive }, click: ShowMyDeputies">
+            <span class="substitution-header-text" data-bind="text: DeputyText()"></span>
+        </div>
+        <div class="substitution-header_list-divider-last"></div>
+    </div>
+    <div class="b-content-substitution-container-body" data-bind="template: {name: ViewTemplateName}"></div>
+</div>

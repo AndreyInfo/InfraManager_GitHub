@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS im.maintenance
+    ALTER COLUMN note SET DEFAULT ('');

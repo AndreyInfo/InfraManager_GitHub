@@ -1,0 +1,1 @@
+ALTER TABLE im.event_subject ALTER COLUMN subject_value type varchar(550), ALTER COLUMN subject_value set not null 

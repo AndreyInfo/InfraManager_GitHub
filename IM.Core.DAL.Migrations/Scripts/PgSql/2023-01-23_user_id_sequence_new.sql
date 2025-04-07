@@ -1,0 +1,1 @@
+SELECT setval('pk_user_id_seq', (select identificator from im.users order by identificator desc limit 1), true);

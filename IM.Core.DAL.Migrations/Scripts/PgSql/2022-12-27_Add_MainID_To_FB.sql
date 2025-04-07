@@ -1,0 +1,1 @@
+ALTER TABLE if exists form_builder_form add if not exists main_id uuid not null default(gen_random_uuid())

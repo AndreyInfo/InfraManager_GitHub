@@ -1,0 +1,760 @@
+﻿@import "../../../../Styles/general";
+
+.frmSoftwareLicenceAdd {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+
+    .icon > span.descriptionIcon {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/License_window.svg') no-repeat;
+    }
+
+    .icon.active {
+        & > span.descriptionIcon {
+            background: url('../UI/Forms/Asset/SoftwareLicence/Icons/License_window.svg') no-repeat;
+        }
+    }
+
+    .content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 120px;
+
+        .outerIconAndControl {
+            margin-left: 10px;
+            margin-right: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+            float: none;
+            position: relative;
+
+            .productCatalogTypeField {
+                height: 20px;
+                line-height: 20px;
+            }
+
+            & > .icon {
+                cursor: pointer;
+                pointer-events: none;
+                float: left;
+                position: relative;
+                margin-right: 10px;
+                border-radius: 20px;
+                padding: 6px;
+
+                &:hover {
+                    background-color: whitesmoke;
+                }
+
+                &.active {
+                    pointer-events: all;
+                }
+
+                span {
+                    width: 24px;
+                    height: 24px;
+                    background-size: cover !important;
+                    display: block;
+                }
+            }
+
+            & > .control {
+                position: relative;
+                min-height: 36px;
+                padding-top: 9px;
+                word-break: break-all;
+
+                &.border {
+                    border: 1px solid $border-gray-color;
+                    padding: 7px;
+                }
+
+                &.nowrap {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+
+        .stateRow {
+            border-bottom: 1px solid $control_border_color;
+
+            .item {
+                display: inline-block;
+                border-right: 1px solid $border-gray-color;
+                font-size: 11px;
+                font-weight: bold;
+                height: 30px;
+                min-width: 50px;
+                line-height: 30px;
+                text-align: center;
+                padding: 0 15px;
+                vertical-align: middle;
+
+                span {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    display: inline-block;
+                }
+            }
+        }
+
+        .identificationRow {
+            .productCatalogTypeField {
+                color: $gray-text-color;
+                margin-left: 46px;
+            }
+        }
+
+        .tabGeneral {
+            position: relative;
+            display: table;
+            width: 100%;
+            outline: none;
+
+            > .leftSide {
+                width: 200px;
+                min-width: 200px;
+                max-width: 500px;
+                height: 100%;
+                display: table-cell;
+                vertical-align: top;
+            }
+
+            > .rightSide {
+                height: 100%;
+                display: table-cell;
+                min-width: 300px;
+                vertical-align: top;
+            }
+
+            .fieldCaption {
+                color: $gray-text-color;
+                font-size: 11px;
+                margin-left: 25px;
+
+                &.blue {
+                    color: $blue-text-color;
+                    font-size: inherit;
+                }
+
+                &.text {
+                    color: $black-text-color;
+                    font-size: inherit;
+                }
+            }
+
+            .caption {
+                margin-left: 25px;
+                margin-right: 25px;
+
+                &.mt10 {
+                    margin-top: 10px;
+                }
+            }
+
+            .inline {
+                display: inline-block;
+            }
+
+            .btnEdit {
+                display: inline-block;
+                width: 13px;
+                height: 13px;
+                background: url(../images/listButtons.png) -273px -45px no-repeat;
+                cursor: pointer;
+                vertical-align: middle;
+                opacity: .6;
+                margin-left: 10px;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            .btnLink {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                background: url(../images/controls/chain.png) no-repeat;
+                background-size: cover;
+                cursor: pointer;
+                vertical-align: middle;
+                opacity: 1;
+                margin-left: 10px;
+
+                &:hover {
+                    opacity: 1;
+                    background: url(../images/controls/chain_active.png) no-repeat;
+                    background-size: cover;
+                }
+            }
+
+            .btnRemove {
+                display: inline-block;
+                width: 13px;
+                height: 13px;
+                background: url(../images/listButtons.png) -238px -46px no-repeat;
+                cursor: pointer;
+                vertical-align: middle;
+                opacity: .4;
+                margin-left: 10px;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            .fieldControl {
+                position: relative;
+                word-break: break-word;
+                white-space: normal;
+
+                &.border {
+                    border: 1px solid $border-gray-color;
+                    padding: 2px 7px;
+                    line-height: 22px;
+                    height: 26px;
+
+                    .beginDate, .endDate {
+                        border: none;
+                        outline: none;
+                    }
+                }
+
+                &.nowrap {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                &.multiline {
+                    min-height: 80px;
+                    height: auto;
+                }
+
+                &.bold {
+                    font-weight: bold;
+                }
+
+                &.blue {
+                    color: $blue-text-color;
+                }
+
+                &.clickable {
+                    cursor: pointer;
+                    width: 100%
+                }
+
+                &.scheme {
+                    width: 85%;
+                    min-height: 25px;
+                }
+            }
+
+            .sumBlock {
+                background: $lightblue-background-color;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .network-device-mainTab {
+                height: 440px;
+                display: table;
+                width: 100%;
+
+                .mainTab-left-side {
+                    display: table-cell;
+                    width: 280px;
+                }
+
+                .mainTab-right-side {
+                    display: table-cell;
+                    padding-left: 20px;
+                }
+            }
+
+            .information-div {
+            }
+
+            .restrictions-div {
+                padding-left: 20px;
+
+                .fieldControl {
+                    font-size: 12px;
+                }
+
+                .next-cell {
+                    padding-left: 10px;
+                }
+
+                .restriction-block-part {
+                    display: table-cell;
+                }
+
+                .restriction-block-innerpart {
+                    padding: 10px;
+                    margin: 10px;
+                    background-color: #DAE7F4;
+                }
+
+                .block-title {
+                    text-align: center;
+                }
+            }
+
+            .limitsNotInUse {
+                font-weight: bold;
+            }
+        }
+
+        .tabActive {
+            /*margin-top: 10px;*/
+            overflow: auto;
+            margin-right: 0;
+            position: relative;
+
+            .tabPage {
+                &.ml {
+                    margin-left: 25px;
+                }
+
+                &.h100 {
+                    height: 100%;
+                    overflow: hidden;
+                }
+
+                .caption {
+                    margin-bottom: 10px;
+                }
+
+                &.noscroll {
+                    overflow: hidden;
+                }
+
+                .tabCaption {
+                    margin: 0;
+                    height: 20px;
+                }
+
+                .tabContent {
+                    top: 35px;
+                }
+
+                .b-requestDetail_table {
+                    margin-right: 0;
+                    width: calc(100% - 10px);
+                }
+
+                .h100WithoutCaption {
+                    height: calc(100% - 30px);
+                    overflow: auto;
+                }
+
+                .firstConditionsBlock {
+                    margin-bottom: 10px;
+
+                    item {
+                        display: inline-block;
+                        margin-right: 25px;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        .fieldCaption {
+                            color: $gray-text-color;
+                            font-size: 11px;
+                            height: 20px;
+                        }
+
+                        .fieldValue {
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tabPages {
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+        width: 120px;
+        height: 100%;
+
+        .tabButton {
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 15px;
+            margin-top: 5px;
+
+            .tabButtonIcon {
+                display: inline-block;
+                width: 38px;
+                height: 38px;
+                background-size: cover !important;
+                position: relative;
+
+                &.parameterListTab {
+                    background: url('../images/controls/tabPages/parametrs.png') no-repeat;
+                }
+
+                &.licenceMaintenanceListTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/soft_passive.svg') no-repeat;
+                }
+
+                &.historyTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/history_pssive.svg') no-repeat;
+                }
+
+                &.generalTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/main_passive.svg') no-repeat;
+                }
+
+                &.assetFieldsTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Property_pass.png') no-repeat;
+                }
+
+                &.serialNumbersTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Keys_passive.svg') no-repeat;
+                }
+
+                &.referencesTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Access_references_passive.svg') no-repeat;
+                }
+
+                &.contactPersonTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/contacts_passive.svg') no-repeat;
+                }
+
+                &.attachmentsTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/files_passive.svg') no-repeat;
+                }
+
+                &.assetMaintenanceTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/equipment_passive.svg') no-repeat;
+                }
+
+                &.agreementListTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/subequipment_passive.svg') no-repeat;
+                }
+
+                &.updatesTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Icon_updates_passive.svg') no-repeat;
+                }
+
+                span {
+                    color: #bdd1db;
+                    font-size: 16px;
+                    width: 38px;
+                    height: 38px;
+                    text-align: center;
+                    line-height: 38px;
+                    vertical-align: middle;
+                }
+            }
+
+            .tabButttonCaption {
+                line-height: 11px;
+                font-size: 11px;
+                white-space: normal;
+                word-break: break-word;
+                max-height: 22px;
+                overflow: hidden;
+                color: $left-menu-gray-color;
+            }
+        }
+
+        .tabButton.active, .tabButton:hover {
+            .tabButtonIcon {
+                &.parameterListTab {
+                    background: url('../images/controls/tabPages/parametrs_active.png') no-repeat;
+                }
+
+                &.licenceMaintenanceListTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/soft_active.svg') no-repeat;
+                }
+
+                &.historyTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/history_active.svg') no-repeat;
+                }
+
+                &.generalTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/main_active.svg') no-repeat;
+                }
+
+                &.assetFieldsTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Property_act.png') no-repeat;
+                }
+
+                &.serialNumbersTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Keys_active.svg') no-repeat;
+                }
+
+                &.referencesTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Access_references_active.svg') no-repeat;
+                }
+
+                &.contactPersonTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/contacts_active.svg') no-repeat;
+                }
+
+                &.attachmentsTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/files_active.svg') no-repeat;
+                }
+
+                &.assetMaintenanceTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/equipment_active.svg') no-repeat;
+                }
+
+                &.agreementListTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/subequipment_active.svg') no-repeat;
+                }
+
+                &.updatesTab {
+                    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Icon_updates_active.svg') no-repeat;
+                }
+
+                span {
+                    color: $blue-text-color;
+                }
+            }
+
+            .tabButttonCaption {
+                color: $blue-text-color;
+            }
+        }
+
+        .tabButton:hover {
+            .tabButtonIcon {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .columnContact {
+        float: left;
+        width: 50%;
+        height: 100%;
+    }
+
+    .xx {
+        height: calc(100%-50px);
+        overflow: auto;
+        margin-top: 20px;
+    }
+
+    .tabCaption-icon-chain {
+        width: 24px;
+        height: 24px;
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/cross_grey.svg') no-repeat;
+        cursor: pointer;
+        pointer-events: none;
+        position: relative;
+        top: 5px;
+        background-size: cover;
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .tabCaption-icon-chain.active {
+        width: 24px;
+        height: 24px;
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/cross_blue.svg') no-repeat;
+        display: inline-block;
+        cursor: pointer;
+        pointer-events: auto;
+        position: relative;
+        top: 5px;
+        background-size: cover;
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .h30 {
+        height: 30px;
+    }
+
+    .software-licence-table-row-right {
+        width: 145px;
+    }
+
+    .software-licence-table-row-left {
+        width: 113px;
+    }
+
+    .software-licence-table-row-bottom {
+        width: 30px;
+        font-size: 12px;
+    }
+
+
+    div:empty:before {
+        content: attr(placeholder);
+        color: darkgray;
+    }
+
+    .pairFields {
+        margin-bottom: 0;
+        overflow: hidden;
+        float: none;
+        position: relative;
+    }
+
+    .pairFields .withoutIcon {
+        float: left;
+    }
+
+    .pairFields .icon {
+        float: right;
+        /*position: relative;*/
+        pointer-events: none;
+    }
+
+    .pairFields .icon span {
+        overflow: hidden;
+        width: 20px;
+        height: 20px;
+        background-size: cover !important;
+        display: block;
+        margin-right: 20px;
+        margin-top: 5px;
+    }
+
+    .pairFields > .icon.active {
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    .ajaxElement .pairFields > .icon.active {
+        cursor: default;
+        pointer-events: none;
+    }
+
+    .pairFields > .icon.active:hover {
+        background-color: whitesmoke;
+    }
+
+    .pairFields .editor {
+        float: left;
+        position: relative;
+        overflow: auto;
+        min-height: 36px;
+        word-break: break-all;
+        width: 85%;
+    }
+
+    .pairFields .editor .searcherHaspAdapterInput {
+        width: 100%;
+        background-image: url(../../images/controls/searchPlaceHolder.png);
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+        text-indent: 20px;
+        /*color: darkgray;*/
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .pairFields .editor.breakWord {
+        word-break: break-word;
+    }
+
+    .pairFields .editor.big {
+        padding: 0;
+    }
+
+    .pairFields .editor.general {
+        padding-top: 5px;
+        float: left;
+        width: 85%
+    }
+
+    .pairFields .editor:after {
+        clear: both;
+    }
+
+    .pairFields > .editor.nowrap, .pairFields > .editor .nowrap {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .pairFields > .editor.border {
+        border: 1px solid lightgray;
+        padding: 7px;
+        width: 100%;
+    }
+
+    .pairFields > .editor .border {
+        border: 1px solid lightgray;
+        padding: 2px 7px;
+    }
+
+    .pairFields > .editor .textBox {
+        min-height: 26px;
+    }
+
+    .callObjectIcon span {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/call_object_icon_passive.svg') no-repeat;
+    }
+
+    .callObjectIcon.active span {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/call_object_icon_active.svg') no-repeat;
+    }
+    /*******************************************************************************************/
+    .network-device-location-header {
+        margin-top: 25px;
+        position: relative;
+    }
+
+    .network-device-code-header {
+        background: $light-gray-blue-text-color;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 25px;
+    }
+
+    .network-device-table-editable-row {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        .fieldCaptionItalic {
+            color: #9d9e9e;
+            font-size: 12px;
+            font-style: italic
+        }
+    }
+
+    .network-device-table-row {
+        @extend .network-device-table-editable-row;
+        width: 120px;
+    }
+
+    .network-device-table-margineTop {
+        margin-top: 5px;
+    }
+
+    .search-control-clearfield {
+        right: 6px;
+        top: 45%;
+        transform: translateY(-50%);
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        background: url(../images/icons.png) -84px -76px no-repeat;
+    }
+}

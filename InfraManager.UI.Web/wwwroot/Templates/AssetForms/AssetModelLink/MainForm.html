@@ -1,0 +1,95 @@
+﻿<div class="asset-link-main">
+    <div class="asset-link-menu">
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: function() {mode(modes.tabModel);}, css: { 'active' : mode() == modes.tabModel }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'AssetLinkHeaderParameters'"></div>
+        </div>
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: function() {mode(modes.tabContract);}, visible: isTabContractVisible, css: { 'active' : mode() == modes.tabContract }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'Contracts'"></div>
+        </div>
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton asset-link-choosenbutton" data-bind="click: function() {mode(modes.tabResult);}, visible: isTabResultVisible, css: { 'active' : mode() == modes.tabResult }">
+            <div class="asset-link-menubutton-text">
+                <span data-bind="restext: 'AssetLinkHeaderChoosen'"></span>
+                <span data-bind="text: selectedObjectListCountString"></span>
+            </div>
+        </div>
+        <div class="asset-link-lastelement"></div>
+    </div>
+    <div class="asset-link-body">
+        <div data-bind="visible: mode() == modes.tabModel">
+            <div class="asset-link_searchText">
+                <input type="text" class="text-input searcherInput tabModelSearcher" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: searchText_Model">
+                <div class="asset-link_searchText-clearfield cursor-pointer" data-bind="click: function() {searchText_Model('');}, visible: searchText_Model().length > 0"></div>
+            </div>
+            <div class="asset-model-link_tableWrapper">
+                <div class="asset-link_paramsColumn">
+                    <div class="asset-link_paramsColumnProductCatalog"></div>
+                </div>
+                <div class="asset-link_tableColumn listView" data-bind="with: lv_tabModel">
+                    <div data-bind="koListView: {settingsName: viewName, controlInitialized: listViewInit, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: null}"></div>
+                </div>
+            </div>
+        </div>
+        <div data-bind="visible: mode() == modes.tabContract">
+            <div class="asset-link_searchText">
+                <input type="text" class="text-input searcherInput tabContractSearcher" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: searchText_Contract">
+                <div class="asset-link_searchText-clearfield cursor-pointer" data-bind="click: function() {searchText_Contract('');}, visible: searchText_Contract().length > 0"></div>
+            </div>
+            <div class="asset-model-link_tableWrapper">
+                <div class="asset-link_paramsColumn">
+                    <div class="asset-link_paramsColumnContractProductCatalog"></div>
+                </div>
+                <div class="asset-link_tableColumn listView" data-bind="with: lv_tabContract">
+                    <div data-bind="koListView: {settingsName: viewName, controlInitialized: listViewInit, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: listViewRowClick, contextMenu: listViewContextMenu}"></div>
+                    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}" style="display:none"></div>
+                </div>
+            </div>
+        </div>
+        <div data-bind="visible: mode() == modes.tabResult">
+            <div class="al-list-choosen modelLink-ChoosenList">
+                <table class="imList-table">
+                    <colgroup>
+                        <col style="width: 38px" />
+                        <col span="7" style="width: 180px" />
+                        <col style="width: 200px" />
+                    </colgroup>
+                    <thead>
+                        <tr class="imList-tableHeaderRow">
+                            <th class="imList-tableHeaderCheckBox"></th>
+                            <th data-bind="restext: 'ProductCatalogueModel_Name'"></th>
+                            <th data-bind="restext: 'ProductCatalogueModel_ExternalIdentifier'"></th>
+                            <th data-bind="restext: 'ProductCatalogueModel_Code'"></th>
+                            <th data-bind="restext: 'ProductCatalogueModel_ProductNumber'"></th>
+                            <th data-bind="restext: 'ProductCatalogueModel_Note'"></th>
+                            <th data-bind="restext: 'ProductCatalogueModel_ManufacturerName'"></th>
+                            <th data-bind="restext: 'ProductCatalogueModel_TypeName'"></th>
+                            <th data-bind="restext: 'CountValue'"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ko foreach: selectedObjectList -->
+                        <tr class="imList-tableRow">
+                            <td class="imList-tableCheckBox">
+                                <input type="checkbox" class="im-list-item__chb" checked data-bind="click: $parent.removeCheckedItem" />
+                            </td>
+                            <td data-bind="text: Name, click: $parent.showFormInResult"></td>
+                            <td data-bind="text: ExternalIdentifier"></td>
+                            <td data-bind="text: Code"></td>
+                            <td data-bind="text: ProductNumber"></td>
+                            <td data-bind="text: Note"></td>
+                            <td data-bind="text: ManufacturerName"></td>
+                            <td data-bind="text: TypeName"></td>
+                            <td data-bind="template: { afterRender: OnRender }">
+                                <input type="text" class="imList-slider-TextField" data-bind="value: Count, valueUpdate: 'input', enable: $data.ClassID != 115 && $data.ClassID != 386" />
+                            </td>
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

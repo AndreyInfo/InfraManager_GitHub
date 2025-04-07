@@ -1,0 +1,169 @@
+﻿@import "../../../Styles/general";
+
+.ui-dialog .kbaContent_ {
+    margin-top: 15px;
+}
+
+#knowlegdeBase, .kbaContent_, .ui-dialog {
+    .kbaContent_ {
+        //@include flex_main;
+    }
+
+    .kbaContentleft_ {
+        float: left;
+        width: calc(100% - 300px);
+    }
+
+    .kbaContentRightBlock_ {
+        float: left;
+        width: 300px;
+    }
+
+    .KbHeaderBlock_ {
+        height: 50px;
+        margin-left: 20px;
+        margin-right: 20px;
+        overflow: hidden;
+    }
+
+    .kba-number {
+        line-height: 50px;
+        margin-right: 10px;
+        float: left;
+    }
+
+    .kba-name {
+        line-height: 50px;
+        overflow: hidden;
+    }
+
+    .kba-name-input {
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        border: 1px solid $gray-background-color;
+        padding: 7px;
+        background: $white-background-color;
+    }
+
+    .cap_academicSingle_ {
+        background: url(./../images/icons/hat.svg) no-repeat;
+        width: 44px;
+        height: 44px;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .footerBackBlock {
+        margin-left: 31px;
+    }
+
+    .htmlEditor-frame {
+        min-height: 150px;
+    }
+
+
+    .blockContent_ {
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .solutionText_, .workaroundText_, .descriptionText_ {
+    }
+    /*.KBADescription_, .KBASolution_, .KBAWorkaround_, .KBAFikes_, .KBAFooter {
+    }*/
+    .KBADescription_, .KBASolution_, .KBAWorkaround_ {
+        min-height: 150px;
+        border: 1px solid $gray-background-color;
+        //@extend .clearfix;
+        clear: both;
+    }
+
+    .openEditor {
+        color: $blue-text-color;
+        padding-top: 26px;
+        cursor: pointer;
+    }
+
+    .openEditor:hover /*, .im-blue-text:hover, .link-text:hover*/ {
+        color: $orgstructure-navigation-text-hover-color;
+    }
+
+    .rightSidePadding {
+        padding-left: 5px;
+    }
+
+
+    .tagPanel {
+        width: 220px;
+    }
+
+    .rightPanelTag {
+        padding-bottom: 10px;
+        @extend .im-small-text;
+        color: $service-catalog-dark-gray
+    }
+
+    .tags {
+        white-space: normal;
+        overflow-y: auto;
+        resize: none;
+        padding-left: 10px;
+        line-height: 25px;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $gray-background-color;
+    }
+
+    .orgstructure-buttons {
+    }
+
+    .left_ {
+        float: left;
+    }
+
+    .right_ {
+        float: right;
+    }
+
+    .headText_ {
+        @extend .im-big-header;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        /*font-size: 16px;
+        color: $service-catalog-dark-gray;
+        font-weight: bold;*/
+    }
+
+    .filesText {
+        @extend .im-big-header;
+    }
+    /*.headText {
+        font-size: 14px;
+        margin: 20px 0 10px;
+    }*/
+    .KbBodyText_ {
+        margin-top: 5px;
+        margin-left: 0;
+        white-space: normal;
+        font-size: 12px;
+        color: #333;
+    }
+
+    .kba-attacments {
+    }
+}
+
+#kbaPrint {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 15px;
+    z-index: 999999;
+}

@@ -1,0 +1,141 @@
+﻿@model InfraManager.UI.Web.Models.Asset.TableAvailabilityModel
+<style>
+    .b-main {
+        overflow: hidden;
+    }
+
+    #regionToolbarFilters {
+        width: inherit;
+    }
+
+    #placeForListViewPanel {
+        order: 3;
+        -ms-flex-order: 3;
+        background-color: #f3f7f9;
+    }
+
+        #placeForListViewPanel.ko_ListView .tableContainer {
+            border: none;
+            float: right;
+        }
+</style>
+
+<div class="b-tableList">
+    <div id="regionListMode" class="region-ListMode" data-bind="template: {name: '../UI/Lists/Finance/Table.ListMode', afterRender: AfterRender}"></div>
+    <div class="b-content b-content-table region-rightMainBlock">
+        <div class="finance-budgetPanel" data-bind="visible: IsBudgetPanelVisible">
+            <div class="finance-selectedBudgetCaption" data-bind="restext: 'FinanceBudget_ActiveBudgetName'"></div>
+            <div class="finance-selectedBudgetName" data-bind="text: SelectedBudgetFullName"></div>
+            <div class="finance-selectBudgetButton ui-button" data-bind="restext: 'Select', click: SelectBudgetClick"></div>
+        </div>
+        <div class="b-content-table__icons clearfix">
+            <div class="b-wrapperWide top-table-region">
+                <div id="regionFiltersButtons" class="region-FiltersButtons" data-bind="template: {name: 'Table/FilterButtonsBlock', afterRender: AfterRender}"></div>
+                <div id="regionToolbarFilters" class="toolbar-filters" data-bind="template: {name: 'Filter/CurrentFilter', afterRender: AfterRender}"></div>
+                <div id="placeForListViewPanel" class="ko_ListView">
+                    <div class="tableContainer"></div>
+                </div>
+            </div>
+        </div>
+        <div id="listRegion" class="b-wrapperWide main-table-region">
+            <div id="regionFiltration" class="region-Filtration" data-bind="style: { 'min-width': Width()+'px', 'max-width': Width()+'px'}, template: {name: 'Table/FiltrationBlock', afterRender: AfterRender}"></div>
+            <div id="regionTable" class="region-Table dockFillListView" data-bind="koListView: {settingsName: '', controlInitialized: listViewInit, controlRendered: listViewRender, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: listViewRowClick, contextMenu: listViewContextMenu, getObjectID: getObjectID, drawCell: listViewDrawCell}"></div>
+            <div id="regionContextMenu" data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+        </div>
+    </div>
+</div>
+<span id="regionEditFilter" data-bind="template: {name: 'Filter/EditCurrentFilter', afterRender: AfterRender}"></span>
+
+<script type="text/javascript">
+    @section MainScript {
+    functionsAvailability.SoftwareDistributionCentres = @Html.Raw(Json.Serialize(Model.SoftwareDistributionAvailabilityModel.SoftwareDistributionCentres));
+    require(['jquery', 'knockout'], function ($, ko) {
+        {//set size of elements
+            var setSizeOfControls = function () {
+                var pageHeight = getPageContentHeight();
+                $('.region-ListMode').css('height', pageHeight + "px");//чтобы линия была до самого низа
+                //
+                var budgetPanel = $('.finance-budgetPanel');
+                var rightPart_height = pageHeight - $(".b-content-table__icons").outerHeight() - (budgetPanel.css('display') == 'none' ? 0 : budgetPanel.outerHeight());
+                $('.region-Filtration').css('height', rightPart_height + "px");//контейнер должен быть такой же высоты
+                $('#regionTable').css('height', rightPart_height + "px");//контейнер должен быть такой же высоты
+            };
+            //
+            setSizeOfControls();
+            $(window).resize(setSizeOfControls);
+        }
+        //
+        {//compatibility with old code (filters)
+            var oldTableModel = {
+                ScrollUp: function () { },                      //ignore it
+                columnList: ko.observableArray([]),             //ignore it
+                rowList: ko.observableArray([]),                //ignore it
+                isLoading: ko.observable(false),                //ignore it
+                Reload: null,                                   //wrapper to reload
+                load: null,                                     //wrapper to load
+                filtersBlockModel: null,                        //set in filtrationBlock, ignore it
+                selectedItemsTemplate: 'FinanceTable/TableSelectedItems',//using to get currentView in Filter! Ah!
+                listViewRendered: $.Deferred(),                 //using to put into listview filtration panel
+                setSizeOfControls : setSizeOfControls,
+            };
+        }
+        //
+        {//listMode
+            var listModeD = $.Deferred();
+            //
+            require(['ui_lists/Finance/Table.ListMode'], function (vm) {
+                var mod = new vm.ViewModel();
+                ko.applyBindings(mod, document.getElementById('regionListMode'));
+                listModeD.resolve(mod);
+            });
+        }
+        //
+        {//filters
+            var filterBlockD = $.Deferred();
+            var filterD = $.Deferred();
+            //
+            require(['models/Table/FiltrationBlock'], function (vm) {
+                var filterBlockModel = new vm.ViewModel(oldTableModel, filterD);
+                filterBlockModel.filterLocationVisible(false);
+                filterBlockModel.filterOrgstructureVisible(false);
+                filterBlockModel.filterProductCatalogueVisible(false);
+                ko.applyBindings(filterBlockModel, document.getElementById('regionFiltration'));
+                filterBlockD.resolve(filterBlockModel);
+            });
+        }
+        //
+        {//table & contextMenu
+            var tableD = $.Deferred();
+            //
+            require(['ui_lists/Finance/Table', 'ui_controls/ListView/ko.ListView'], function (vm) {
+                $.when(listModeD, filterD).done(function (listModeModel) {//listModeD - for viewName, filterD - for attrs to load data
+                    var tableVM = new vm.ViewModel(listModeModel, oldTableModel);//oldTableModel - filters are cause (to set load, reload func, for attr to load data)
+                    ko.applyBindings(tableVM, document.getElementById('regionTable'));
+                    ko.applyBindings(tableVM, document.getElementsByClassName('finance-budgetPanel')[0]);
+                    tableD.resolve(tableVM);
+                    setSizeOfControls();
+                    //
+                    hideSpinner($('.b-main')[0]);
+                    //
+                    require(['ui_lists/Finance/Table.ContextMenu', 'ui_controls/ContextMenu/ko.ContextMenu'], function (vm) {
+                        var cm = new vm.ViewModel(tableVM);//tableVM - bind contextMenu to listView
+                        ko.applyBindings(cm, document.getElementById('regionContextMenu'));
+                    });
+                    //move filter panel to contentPanel of listView
+                    $.when(oldTableModel.listViewRendered).done(function (elements) {
+                        $('#placeForListViewPanel .tableContainer').append($('#regionTable .tableControlPanel').addClass('big'));
+                    });
+                });
+            });
+        }
+        //
+        {//references
+            $.when(filterD, listModeD, filterBlockD, tableD).done(function (filterModel, listModeModel, filterBlockModel, tableVM) {
+                listModeModel.tableModel = tableVM;//to draw modified objects count
+                listModeModel.filtersModel = filterModel;//when viewMode chaned, nedd to load new filters
+                listModeModel.ready(true);//start to draw
+            });
+        }
+    });
+    }
+</script>

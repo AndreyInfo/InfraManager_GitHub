@@ -1,0 +1,898 @@
+﻿@import "../../../Styles/general";
+
+.tabContentLite {
+    .paramColCaption {
+        width: 100px;
+    }
+
+    .paramColEditor {
+        width: auto;
+    }
+}
+
+.b-requestDetail_table {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: calc(100% - 20px);
+
+    &.m0 {
+        margin: 0;
+        width: 100%;
+    }
+
+    .paramColIcon {
+        width: 36px;
+    }
+
+    .paramColCaption {
+        width: 100px;
+    }
+
+    .paramColEditor {
+        width: auto;
+    }
+
+    .caption {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 200px;
+    }
+
+    .icon {
+        margin-right: 10px;
+        border-radius: 20px;
+        padding: 6px;
+        pointer-events: none;
+
+        &.active {
+            cursor: pointer;
+            pointer-events: auto;
+
+            &:hover {
+                background-color: whitesmoke;
+            }
+        }
+
+        & span {
+            width: 24px;
+            height: 24px;
+            background-size: cover !important;
+            display: block;
+        }
+    }
+
+    .paramicon {
+        width: 24px;
+        height: 24px;
+        background-size: cover !important;
+        display: block;
+        margin-right: 10px;
+        border-radius: 20px;
+        float: right;
+        padding: 15px;
+        margin-top: 3px;
+
+
+        &.active {
+            cursor: pointer;
+            pointer-events: auto;
+
+            &:hover {
+                background-color: whitesmoke;
+            }
+        }
+
+        & span {
+            width: 24px;
+            height: 24px;
+            background-size: cover !important;
+        }
+    }
+
+    .paramFieldSizeWithIcon {
+        width: 100%;
+        display: inline-block;
+        float: left;
+    }
+
+    .paramFieldSizeEditors {
+        margin-left: 5px;
+        width: calc(100% - 50px);
+        min-height: 26px;
+        word-break: break-all;
+        border: 1px solid #d3d3d3;
+        padding: 2px 7px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        float: left;
+    }
+
+    .parameterSeparator {
+        font-size: 12px;
+        padding-left: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 650px;
+    }
+
+    hr {
+        margin-left: 5px;
+    }
+
+    td {
+        position: relative;
+    }
+
+    tr {
+        width: 100%;
+    }
+}
+
+.b-requestDetail_table .editor, .edit-field-template .editor {
+    margin-left: 5px;
+    width: auto;
+    min-height: 26px;
+    word-break: break-all;
+    border: 1px solid lightgray;
+    padding: 2px 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.b-requestDetail_table .editor.fill, .edit-field-template .editor.fill, .combobox.fill {
+    width: 100%;
+}
+
+.paramBool span {
+    background: url(../UI/Controls/Parameters/Icons/checkBox.png) no-repeat;
+}
+
+.paramBool.active span {
+    background: url(../UI/Controls/Parameters/Icons/checkBox_active.png) no-repeat;
+}
+
+.paramNumber span {
+    background: url(../UI/Controls/Parameters/Icons/number.png) no-repeat;
+}
+
+.paramNumber.active span {
+    background: url(../UI/Controls/Parameters/Icons/number_active.png) no-repeat;
+}
+
+.paramDate span {
+    background: url(../UI/Controls/Parameters/Icons/date.png) no-repeat;
+}
+
+.paramDate.active span {
+    background: url(../UI/Controls/Parameters/Icons/date_active.png) no-repeat;
+}
+
+.paramText span {
+    background: url(../UI/Controls/Parameters/Icons/text.png) no-repeat;
+}
+
+.paramText.active span {
+    background: url(../UI/Controls/Parameters/Icons/text_active.png) no-repeat;
+}
+
+.paramRadioButton span {
+    background: url(../UI/Controls/Parameters/Icons/radioButton.png) no-repeat;
+}
+
+.paramRadioButton.active span {
+    background: url(../UI/Controls/Parameters/Icons/radioButton_active.png) no-repeat;
+}
+
+.paramComboBox span {
+    background: url(../UI/Controls/Parameters/Icons/comboBox.png) no-repeat;
+}
+
+.paramComboBox.active span {
+    background: url(../UI/Controls/Parameters/Icons/comboBox_active.png) no-repeat;
+}
+
+.paramUser span {
+    background: url(../UI/Controls/Parameters/Icons/user.png) no-repeat;
+}
+
+.paramUser.active span {
+    background: url(../UI/Controls/Parameters/Icons/user_active.png) no-repeat;
+}
+
+.paramSubdivision span {
+    background: url(../UI/Controls/Parameters/Icons/subdivision.png) no-repeat;
+}
+
+.paramSubdivision.active span {
+    background: url(../UI/Controls/Parameters/Icons/subdivision_active.png) no-repeat;
+}
+
+.paramPosition span {
+    background: url(../UI/Controls/Parameters/Icons/position.png) no-repeat;
+}
+
+.paramPosition.active span {
+    background: url(../UI/Controls/Parameters/Icons/position_active.png) no-repeat;
+}
+
+.paramStorageLocation span {
+    background: url(../UI/Controls/Parameters/Icons/location.png) no-repeat;
+}
+
+.paramStorageLocation.active span {
+    background: url(../UI/Controls/Parameters/Icons/location_active.png) no-repeat;
+}
+
+.paramDataEntity span {
+    background: url(../UI/Controls/Parameters/Icons/data_entity_icon.svg) no-repeat;
+    margin-left: 3px;
+}
+
+.paramDataEntity.active span {
+    background: url(../UI/Controls/Parameters/Icons/data_entity_icon_active.svg) no-repeat;
+    margin-left: 3px;
+}
+
+.paramСardOpenObject {
+    background: url(../UI/Controls/Parameters/Icons/icon_call_card_blocked.svg) no-repeat;
+}
+
+.paramСardOpenObject.active {
+    background: url(../UI/Controls/Parameters/Icons/icon_call_card_default.svg) no-repeat;
+}
+
+.paramModel span {
+    background: url(../UI/Controls/Parameters/Icons/model.png) no-repeat;
+}
+
+.paramModel.active span {
+    background: url(../UI/Controls/Parameters/Icons/model_active.png) no-repeat;
+}
+
+.paramLocation span {
+    background: url(../UI/Controls/Parameters/Icons/location.png) no-repeat;
+}
+
+.paramLocation.active span {
+    background: url(../UI/Controls/Parameters/Icons/location_active.png) no-repeat;
+}
+
+.paramConfigurationItem span {
+    background: url(../UI/Controls/Parameters/Icons/configurationItem.png) no-repeat;
+}
+
+.paramConfigurationItem.active span {
+    background: url(../UI/Controls/Parameters/Icons/configurationItem_active.png) no-repeat;
+}
+
+.paramFile span {
+    background: url(../UI/Controls/Parameters/Icons/attachments.png) no-repeat;
+}
+
+.paramFile.active span {
+    background: url(../UI/Controls/Parameters/Icons/attachments_active.png) no-repeat;
+}
+
+.paramTable {
+    cursor: default !important;
+
+    &:hover {
+        background-color: white !important;
+    }
+
+    & span {
+        background: url(../UI/Controls/Parameters/Icons/table.png) no-repeat;
+    }
+
+    &.active span {
+        background: url(../UI/Controls/Parameters/Icons/table_active.png) no-repeat;
+    }
+}
+
+
+.parameter_addEditor {
+    @extend .tabCaption-icon-plus, .active;
+    width: 16px !important;
+    height: 16px !important;
+    background-size: contain !important;
+    vertical-align: bottom;
+}
+
+.parameter_addEditor.m0 {
+    margin: 0;
+}
+
+.parameter_addEditor.ml10 {
+    margin-left: 10px;
+}
+
+.parameter_removeEditor {
+    @extend .negotiation-form__users-remove;
+    margin: 5px;
+}
+
+.call-registration-lite-main .parameterSeparator {
+    @extend .im-base-text;
+    font-size: 14px;
+    padding-top: 5px;
+    color: white;
+    background: $blue-header-background-color;
+    padding-bottom: 5px;
+    max-width: 100%;
+    padding-left: 20px;
+}
+
+.call-registration-lite-main .tabCaptionLite {
+    padding-top: 5px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+
+.b-requestDetail_parameter {
+    padding: 10px 15px;
+}
+
+.edit-field-template .b-requestDetail_table.m0 {
+    margin-top: 10px;
+}
+
+.actives-location-params-header {
+    @extend .im-big-header;
+    margin-top: 20px;
+}
+
+.actives-location-params-table-text {
+    @extend .im-bold-text;
+    padding-right: 10px;
+}
+
+
+.b-requestDetail_table .parameterButton, .edit-field-template .parameterButton, .b-requestCreate-right__item .parameterButton {
+    padding: 5px;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 5px;
+}
+
+.b-requestDetail_table .parameterRemoveButton, .edit-field-template .parameterRemoveButton, .b-requestCreate-right__item .parameterRemoveButton {
+    position: relative;
+    display: inline-block;
+    top: 8px;
+    right: inherit;
+    left: 0;
+}
+
+.b-requestDetail_table .parameterCheckBox, .edit-field-template .parameterCheckBox {
+    margin-left: 5px;
+    vertical-align: text-top;
+}
+
+
+
+.radioButtons {
+    overflow-y: auto;
+    height: 100%;
+    padding-left: 5px;
+}
+
+.radioButtons input {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.b-requestDetail_table .editor.invalid, .b-requestDetail_table .radioButtons.invalid, .b-requestDetail_table .parameterButton.invalid,
+.edit-field-template .editor.invalid, .edit-field-template .radioButtons.invalid, .edit-field-template .parameterButton.invalid,
+.text-input.invalid, .searcherInput.invalid, .form-users-block > .invalid .searcherInput, .fieldPair.invalid, input.invalid {
+    background: #ffe7e7 !important;
+}
+
+.b-requestDetail__tab {
+    margin-bottom: 16px;
+    margin-top: 5px;
+}
+
+.b-requestDetail__tab.invalid:hover .b-requestDetail__tab-num, .b-requestDetail__tab.invalid.active:hover .b-requestDetail__tab-num {
+    border-color: #AAF0FF;
+    color: #ffafaf;
+    background: url(../images/controls/tabPages/parametrs_invalid.png) no-repeat;
+    opacity: .50;
+}
+
+.b-requestDetail__tab.invalid .b-requestDetail__tab-num, .b-requestDetail__tab.invalid.active .b-requestDetail__tab-num {
+    border-color: #61D7F3;
+    color: #ffafaf;
+    background: url(../images/controls/tabPages/parametrs_invalid.png) no-repeat;
+    opacity: .70;
+}
+
+.b-requestDetail__tab.invalid.active .b-requestDetail__tab-num {
+    opacity: 1;
+}
+
+.b-requestDetail__tab:hover .b-requestDetail__tab-num {
+    border-color: #AAF0FF;
+    color: #AAF0FF;
+    background: url(../images/controls/tabPages/parametrs_active.png) no-repeat;
+    opacity: .50;
+}
+
+.b-requestDetail__tab.active .b-requestDetail__tab-num {
+    border-colsearcherInputor: #61D7F3;
+    color: #61D7F3;
+    background: url(../images/controls/tabPages/parametrs_active.png) no-repeat;
+}
+
+.b-requestDetail__tab-num {
+    color: #BDD1DB;
+    font-size: 16px;
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    line-height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/controls/tabPages/parametrs.png) no-repeat;
+    padding-top: 3px;
+    padding-right: 2px;
+}
+
+.b-requestCreate-right__item .parameterSeparator, .b-requestCreate-right .parameterSeparator {
+    background: #8fd6f1;
+    font-weight: bold;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 30px;
+    margin-bottom: -15px;
+    padding: 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.b-requestCreate-right__item .searcherInput {
+    padding-right: 20px;
+    text-overflow: ellipsis;
+}
+
+.b-requestCreate-right .parameterSeparator {
+    margin-bottom: 10px;
+}
+
+$icon_shift: 5px;
+
+.paramTableCotainer {
+    margin-left: -$icon_shift;
+    margin-right: 0px;
+    margin-top: 18px;
+    margin-bottom: 5px;
+    overflow: visible;
+    border: 1px solid $gray-background-color;
+    border-radius: 5px;
+
+    &._gridLines {
+        .tableStructure {
+            thead > tr > th {
+                border-bottom: 1px solid $border-gray-color !important;
+                border-left: 1px solid $border-gray-color !important;
+
+                &:last-child {
+                    border-right: 1px solid $border-gray-color !important;
+                }
+            }
+
+            tbody.mainBody > tr {
+                & > td {
+                    border-top: 1px solid $border-gray-color !important;
+                    border-left: 1px solid $border-gray-color !important;
+
+
+                    &:last-child {
+                        border-right: 1px solid $border-gray-color !important;
+                    }
+                }
+
+                &:first-child > td {
+                    border-top: 1px solid transparent !important;
+                }
+
+                &:last-child > td {
+                    border-bottom: 1px solid $border-gray-color !important;
+                }
+            }
+        }
+    }
+
+    &._compact {
+        .tableStructure tr td, .tableStructure th {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+
+            & input[type=checkbox], input[type=button] {
+                margin: 0;
+            }
+        }
+    }
+
+    &._multiColor {
+        .tableStructure tbody.mainBody > tr:nth-child(even) {
+            background-color: $white-background-color;
+        }
+
+        .tableStructure tbody.mainBody > tr:nth-child(odd) {
+            background-color: $multicolored_background_color;
+        }
+    }
+
+    .tableCaptionContainer {
+        margin-top: -18px;
+        background: white;
+        display: table;
+        margin-left: $icon_shift;
+
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .caption {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: $icon_shift;
+        }
+    }
+
+    .buttonsContainer {
+        margin-left: $icon_shift;
+        display: inline-block;
+
+        .addRowButton {
+            background: url('../images/controls/cross_blue.svg') no-repeat;
+            background-size: contain;
+        }
+
+        .removeRowButton {
+            background: url(../images/listButtons.png) no-repeat scroll -237px -44px transparent;
+        }
+
+        .addRowButton, .removeRowButton {
+            width: 16px;
+            height: 16px;
+            margin: 0 5px;
+            display: inline-block;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        .addRowButton:hover, .removeRowButton:hover {
+            opacity: 1;
+        }
+    }
+
+    .tableScrollContainer {
+        overflow-x: auto;
+    }
+
+    .invertTableContainer {
+        min-width: auto !important;
+        margin: 0px 15px 15px 15px;
+        table-layout: fixed;
+
+
+        tbody {
+            display: block;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            border-top: 1px solid $border-gray-color;
+            border-bottom: none;
+            border-left: 1px solid $border-gray-color;
+            border-right: 1px solid $border-gray-color;
+            position: relative;
+            width: max-content;
+
+            &.checked {
+                background-color: $active-background-color;
+            }
+        }
+
+        tr {
+            display: block;
+            float: left;
+            width: auto;
+            text-align: left;
+            white-space: nowrap;
+            max-width: 200px;
+            position: relative;
+            text-align: left;
+        }
+
+        th {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            text-overflow: ellipsis;
+            padding: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 220px;
+            border-top: none;
+            border-bottom: 1px solid $border-gray-color;
+            border-left: none;
+            border-right: none;
+
+            &.numeric {
+                text-align: right;
+            }
+
+            .viewer {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                min-height: 20px;
+
+                &.invalid {
+                    background: #ffe7e7 !important;
+                }
+
+                &.readonly {
+                    background: #ebebeb !important;
+                }
+            }
+
+            input[type=button] {
+                display: block;
+                margin: 8px 0;
+            }
+
+            &.invalid {
+                background: #ffe7e7 !important;
+            }
+
+            &.readonly {
+                background: #ebebeb !important;
+            }
+        }
+
+        td {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            padding: 12px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            overflow-y: auto;
+            max-width: 220px;
+            border-top: none;
+            border-bottom: 1px solid $border-gray-color;
+            border-left: 1px solid $border-gray-color;
+            border-right: none;
+
+            &.numeric {
+                text-align: right;
+            }
+
+            &.clicable:hover {
+                background-color: $lightblue-background-color;
+                cursor: pointer;
+            }
+
+            .viewer {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                min-height: 20px;
+
+                &.invalid {
+                    background: #ffe7e7 !important;
+                }
+
+                &.readonly {
+                    background: #ebebeb !important;
+                }
+            }
+
+            input[type=button] {
+                display: block;
+                margin: 8px 0;
+            }
+
+            &.invalid {
+                background: #ffe7e7 !important;
+            }
+
+            &.readonly {
+                background: #ebebeb !important;
+            }
+        }
+        /*        tr > *:not(:first-child) {
+            border-right: 1px solid $border-gray-color !important;
+        }
+
+        tr:not(:first-child) > * {
+            border-left: 1px solid $border-gray-color !important;
+        }*/
+    }
+
+    .tableStructure {
+        margin: 0 10px;
+        margin-bottom: 5px;
+        table-layout: fixed;
+
+        .colCheck {
+            width: 36px;
+        }
+
+        thead tr {
+            border-top: 1px solid $gray-background-color;
+        }
+
+        thead tr th {
+            text-align: left;
+            font-weight: bold;
+            border-top: none;
+            border-bottom: 1px dotted $border-gray-color;
+            border-left: none;
+            border-right: 1px dotted $border-gray-color;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 10px 12px;
+            max-width: 220px;
+            position: relative;
+
+            &.numeric {
+                text-align: right;
+            }
+        }
+
+        tr td:first-child input, tr th:first-child input {
+            display: block;
+        }
+
+        tr td {
+            border-top: none;
+            border-bottom: none;
+            border-right: 1px dotted $border-gray-color;
+            border-left: none;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 0 12px;
+            max-width: 220px;
+            position: relative;
+
+            &.numeric {
+                text-align: right;
+            }
+
+            .viewer {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                min-height: 20px;
+
+                &.invalid {
+                    background: #ffe7e7 !important;
+                }
+
+                &.readonly {
+                    background: #ebebeb !important;
+                }
+            }
+
+            input[type=checkbox], input[type=button] {
+                display: block;
+                margin: 8px 0;
+            }
+
+            &.invalid {
+                background: #ffe7e7 !important;
+            }
+
+            &.readonly {
+                background: #ebebeb !important;
+            }
+        }
+
+        tbody tr {
+            &.checked {
+                background-color: $active-background-color;
+            }
+
+            td {
+                text-align: left;
+
+                &.clicable:hover {
+                    background-color: $lightblue-background-color;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        tbody.editorMode {
+            td {
+                .b-requestDetail_table {
+                    margin: 0;
+                    width: 100%;
+
+                    td {
+                        border: 0;
+                    }
+
+                    .parameter_removeEditor {
+                        margin: 0;
+                    }
+
+                    .b-requestCreate-right__item {
+                        .fileInput {
+                            display: none;
+                        }
+
+                        input[type=text] {
+                            min-width: 50px;
+                        }
+
+                        .radioButtons input, .parameterButton {
+                            display: inline-block;
+                        }
+
+                        .combobox {
+                            min-width: 50px;
+
+                            input {
+                                display: inline-block;
+                                min-width: initial;
+                            }
+                        }
+
+                        .stepper-wrap {
+                            input {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        .parameterButton {
+            margin-left: 0;
+        }
+
+        &.invalid {
+            background: #ffe7e7 !important;
+        }
+    }
+}
+
+    .b-requestCreate-right .paramTableCotainer {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-left: 0;
+        margin-right: 0;
+        border: 0;
+
+        .tableCaptionContainer {
+            margin-top: 0;
+            margin-left: 0;
+            margin-bottom: 10px;
+
+            .im-blue-text {
+                color: black;
+                font-weight: bold;
+            }
+        }
+
+        .tableStructure {
+            margin: 0;
+        }
+    }
+
+    .parameterValueLock {
+        vertical-align: middle;
+    }

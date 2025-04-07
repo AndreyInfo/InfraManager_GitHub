@@ -1,0 +1,251 @@
+﻿$blue-text-color: var(--color-blue);
+$red-text-color: #E31E24;
+$gray-text-color: #9D9E9E;
+$gray-light-color: var(--color-gray-light);
+$white-text-color: #FFFFFF;
+$darkblue-text-color: #1480c4;
+$black-text-color: #000000;
+$overdue-text-color: orange;
+$light-gray-blue-text-color: #f3f7f9;
+//
+$kb-blue-text-color: #37A2E6;//используется на форме отравки сообщения по статье БЗ
+//
+$mainmenu-color: #51667A;
+$mainmenu-selected-color: #8fd6f1;
+$mainmenu-bluebutton-color: #43A2E3;
+$mainmenu-bluebutton-hover: #2680C1;
+$mainmenu-text-color: #bfe9f9;
+$mainmenu-gray-color: #C2C8CF;
+$left-menu-gray-color: #7d8e98;
+//
+$white-background-color: #fff;
+$multicolored_background_color: #F3F7F9;
+$holiday-background-color: #fff0e5;
+$gray-background-color: var(--color-gray); //цвет как у фона иконок
+$lightblue-background-color: #f2fafd; //используется как подсветка элемента списка
+$active-background-color: #e5f6fe; //используется как выделение (checked) элемента списка
+$actions-panel-background-color: #e8f6ff; //панель действий в списках
+$darkblue-background-color: #91d6ef;
+$green-background-color: #5DAD42;
+$invalid-background-color: var(--color-red);
+$timeline-blue-color: #A2D9F7;
+$light-green-background-color: #e1ffd7;
+$blue-header-background-color: #8fd6f1;
+$blue-header-background-color_hover: #c7eaf8;
+//
+$green-available-color: #5ad715;
+$red-available-color: #e24c4c;
+$orange-available-color: #ffc400;
+//
+$service-catalog-light-gray: #8394A5;
+$service-catalog-dark-gray: #34495E;
+//
+$border-gray-color: #c1cfd9;
+$table-border-gray-color: #e9ecee;
+//
+$ui-button-blue-color: #41aaed;
+$ui-button-hover-color: #1480c4;
+//
+$blue-kba-color: #43A2E3;
+//
+$base-font: Arial, Helvetica, sans-serif;
+//
+$table-row-modified-color: #fff3d7;
+$table-row-highlight-color: #e1ffd7;
+
+$item_color: #2b2a29;
+$very_light_green: #E5F2EF;
+$form_input_border_focus_blue: #7CABF6;
+
+/*#region Flex for all browsers*/
+@mixin flex_main {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex_jcontent_between {
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+@mixin flex_jcontent-end {
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+@mixin flex_jcontent-start {
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+@mixin flex_jcontent_around {
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+@mixin flex_jcontent_center {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+@mixin flex_aitem-center {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+@mixin flex_aitem-end {
+    -webkit-box-align: end;
+    -moz-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+@mixin flex_direction_column {
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+@mixin flex_direction_column_reverse {
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse
+}
+
+@mixin flex_wrap_wrap {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+/*#endregion*/
+
+.im-base-text {
+    font-family: $base-font;
+    color: $item_color;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.im-big-text {
+    @extend .im-base-text;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.im-bold-text {
+    @extend .im-base-text;
+    font-weight: bold;
+}
+
+.im-small-text {
+    @extend .im-base-text;
+    font-size: 11px;
+}
+
+.im-big-header {
+    font-family: $base-font;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: normal;
+}
+
+.im-middle-header {
+    font-family: $base-font;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: normal;
+}
+
+
+$control_border_width: 0.08em;
+$control_border_color: var(--color-gray);
+$control_border_color_focused: #85B0EC;
+$control_border_color_required: #FFF3F3;
+$control_border_color_invalid: #D14141;
+
+$control_background_readOnly: rgba(0,0,0,0.05);
+$control_background: white;
+
+$control_text_color: black;
+
+$control_lineHeight: 1.67em;
+
+$control_padding_x: 0.58em;
+$control_padding_y: 0.17em;
+
+$control_shadowColor: rgba(10, 10, 10, 0.25);
+
+$control_button_background: whitesmoke;
+$control_button_background_hover: #A2D9F7;
+$control_button_color: #34495E;
+
+//
+$orgstructure-text-base-color: #333333;
+$orgstructure-text-header-color: #9d9e9e;
+$orgstructure-text-section-color: #8394A5;
+$orgstructure-navigation-text-color: #8394A5;
+$orgstructure-navigation-text-hover-color: #43A2E3;
+$orgstructure-header-text-color: #8394A5;
+$orgstructure-edit-link-color: #43A2E3;
+$orgstructure-delete-link-color: #8394A5;
+$orgstructure-unfocused-field-border-color: #c1cfd9;
+$orgstructure-focused-field-border-color: #7690C9;
+$orgstructure-disabled-field-border-color: #c1cfd9;
+$orgstructure-disabled-field-background-color: #f2fafd;
+
+$sdc-text-base-color: #000;
+$sdc-text-header-color: #9d9e9e;
+$sdc-text-section-color: #8394A5;
+$sdc-navigation-text-color: #8394A5;
+$sdc-navigation-text-hover-color: #43A2E3;
+$sdc-header-text-color: #000;
+$sdc-edit-link-color: #43A2E3;
+$sdc-delete-link-color: #8394A5;
+$sdc-unfocused-field-border-color: #c1cfd9;
+$sdc-focused-field-border-color: #7690C9;
+$sdc-disabled-field-border-color: #c1cfd9;
+$sdc-disabled-field-background-color: #f2fafd;
+$sdc-responsible-person-title-color: var(--color-blue);
+
+$sublicense-field-title-color: #9D9E9E;
+$sublicense-field-value-color: #000;
+$sublicense-header-color: #000;
+$sublicence-tab_general-left_column-bg_color: #F2FAFD;
+
+$pool-field-title-color: #9D9E9E;
+
+$kba_tag_color: #333333;
+$kba_tag_background_color: #E8EBEE;
+
+$tri_state_checkbox_color: #686868;
+$tri_state_checkbox_fill_color: #329EE3;

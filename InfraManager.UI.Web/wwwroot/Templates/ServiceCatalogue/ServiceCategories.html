@@ -1,0 +1,26 @@
+﻿<div class="sl_categoryList" data-bind="afterUpdateBlock: ServiceCategoriesAfterRender">
+    <!-- ko if: VisibleServiceCategoryList().length == 0 -->
+    <div class="sc_serviceListEmpty" data-bind="text: ServiceListEmptyText()"></div>
+    <!-- /ko -->
+    <div class="sl_categoryScrollBlock" data-bind="visible: ScrollButtonsVisible, if: VisibleServiceCategoryList().length > 0, click: OnServiceCategoryScrollLeftClick">
+        <div class="sc_serviceCategoryScrollLeft" />
+    </div>
+    <div class="sl_categoryListBody" data-bind="foreach: VisibleServiceCategoryList, afterUpdateBlock: ServiceCategoriesAfterRender">
+        <div class="sl_categoryListItem" data-bind="tooltip: Note, click: $parent.OnServiceCategoryClick, css: { 'active': $parent.SelectedServiceCategory() == $data }">
+            <div class="sl_categoryListItemImage">
+                <!-- ko if: ShowDefaultImage -->
+                <div class="sc_serviceCategoryImage sc_serviceCategoryImageDefault"></div>
+                <!-- /ko -->
+                <!-- ko ifnot: ShowDefaultImage -->
+                <img class="sc_serviceCategoryImage" data-bind="attr: { src: ImageSource }"/>
+                <!-- /ko -->
+            </div>
+            <div class="sl_categoryListItemTextContainer" data-bind="css: { 'active': $parent.SelectedServiceCategory() == $data }">
+                <div class="sl_categoryListItemText" data-bind="text: Name" />
+            </div>
+        </div>
+    </div>
+    <div class="sl_categoryScrollBlock" data-bind="visible: ScrollButtonsVisible, if: VisibleServiceCategoryList().length > 0, click: OnServiceCategoryScrollRightClick">
+        <div class="sc_serviceCategoryScrollRight" />
+    </div>
+</div>

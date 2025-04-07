@@ -1,0 +1,31 @@
+﻿<div class="ui-input-wrapper">
+    <!-- ko if: SpecialFields.Label && SpecialFields.ShowHeader  -->
+    <div class="ui-input-wrapper__title" data-bind="text: SpecialFields.Label, tooltip: ShowTooltipByHoverTitle(), tooltipDelay: TooltipDelay"></div>
+    <!-- /ko -->
+
+    <div class="dynamic-options__more-values" data-templates-wrapper>
+        <ul class="dynamic-options__wrapper-inputs" data-inputs-wrapper data-bind="foreach: KoUseValues">
+            <li>
+                <div class="input-checkbox-wrapper">
+                    <input class="input-checkbox-wrapper__input" type="checkbox"
+                           data-bind="checked: Value,
+                                attr: {
+                                    id: ID,
+                                    'data-custom-id': ID,
+                                    disabled: $parent.KoUseDynamicReadonly,
+                                },
+                                event: {
+                                    change: $parent.KoUseChecked
+                                }" />
+                    <label class="input-checkbox-wrapper__text"
+                           data-bind="
+                                    text: $parent.SpecialFields.Text,
+                                    attr: {
+                                        for: ID
+                                    }">
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

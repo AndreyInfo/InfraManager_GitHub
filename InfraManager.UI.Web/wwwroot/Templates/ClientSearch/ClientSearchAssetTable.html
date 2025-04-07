@@ -1,0 +1,14 @@
+﻿<div class="tabCaption im-client-search-header">
+    <span data-bind="restext: 'ReferenceAsset'"></span>
+</div>
+<span class="caption-arrow">
+    <span data-bind="css: assetList().IsExpanded() == true ? 'arrow-up-white' : 'arrow-down-white', click: assetList().ExpandCollapseClick, tooltip: assetList().IsExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+        <span></span>
+    </span>
+</span>
+<!-- ko if: assetList().IsExpanded() == true -->
+<div id="ClientSearchAssetList" class="asset-list tabContent" style="top:30px">
+    <div style="height:100%;" data-bind="koListView: {settingsName: assetList().viewName, controlInitialized: assetList().listViewInit, retrieveVirtualItems: assetList().listViewRetrieveItems, virtualMode: true, itemClick: assetList().listViewRowClick, contextMenu: assetList().listViewContextMenu, getObjectID: assetList().getObjectID}"></div>
+    <div data-bind="koContextMenu: {controlInitialized: assetList().contextMenuInit, opening: assetList().contextMenuOpening}"></div>
+</div>
+<!-- /ko -->

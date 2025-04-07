@@ -1,0 +1,31 @@
+﻿<div class="sublicenseForm b-requestDetail im-base-text">
+    <!-- ko if: formType() != 'pool' --> 
+    <div class="field-area read-only">
+        <p><span class="field-title" data-bind="restext: 'Sublicense'" /></p>
+        <p><span class="field-value" data-bind="text: name" /></p>
+     </div>
+    <!-- /ko -->
+     <div class="field-area read-only">
+        <p><span class="field-title" data-bind="restext: 'SublicenseTransfer_RightsAvailable'" /></p>
+        <p><span class="field-value" data-bind="text: quantityTotal" /></p>
+    </div>
+    <div class="field-area">
+        <p><span class="field-title" data-bind="restext: 'SublicenseTransfer_TargetSDC'" /></p>
+        <p>
+            <div class="combobox comboBoxEditor sublicense-comboBoxEditor" data-bind="combobox: { dataSource: getListOfSDC }, comboboxValue: targetSoftwareDistributionCentre" />
+        </p>
+    </div>
+    <div class="field-area">
+        <p><span class="field-title" data-bind="restext: 'SublicenseTransfer_RightsToTransfer'" /></p>
+        <p class="quantityInput" data-bind="visible: !infinity()"><input class="sdNumberEditor" type="text" data-bind="value: quantity, valueUpdate: 'input'" /></p>
+        <p class="field-value" data-bind="visible: infinity, text: infinityValue"></p>
+    </div>
+    <div class="sublicense-form-buttons sublicence-form-buttons-transfer">
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: post, visible: allowPost">
+            <span class="ui-button-text" data-bind="restext: 'SublicenseTransfer_TransferButton'" />
+        </button>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: close">
+            <span class="ui-button-text" data-bind="restext: 'ButtonCancel'" />
+        </button>
+    </div>
+</div>

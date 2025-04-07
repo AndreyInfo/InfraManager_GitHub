@@ -1,0 +1,125 @@
+﻿.frmLicenceScheme_addCoefficient {
+    padding-bottom: 20px;
+    padding-top: 10px;
+    height: 100%;
+
+    .add-coefficient-header {
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        margin-left: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    .add-coefficients-body {
+        height: calc(100% - 44px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .add-coefficient_searchText {
+        margin-top: 0px;
+        margin-right: 20px;
+        margin-bottom: 0px;
+        margin-left: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+    }
+
+    .add-coefficient_tableWrapper {
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        top: 60px;
+        padding-top: 10px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .add-coefficient_paramsColumn {
+        order: 1;
+        min-width: 300px;
+        max-width: 300px;
+        border-right-color: rgb(233, 236, 238);
+        border-right-style: solid;
+        border-right-width: 1px;
+        display: block;
+        position: relative;
+        height: 100%;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+
+    .add-coefficient_tableColumn {
+        order: 3;
+        flex-grow: 2;
+        overflow-x: auto;
+        overflow-y: auto;
+        position: relative;
+        height: 100%;
+        border-top-color: rgb(233, 236, 238);
+        border-top-style: solid;
+        border-top-width: 1px;
+    }
+
+    .add-coefficient-mainTab-links {
+        position: relative;
+        cursor: pointer;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 44px;
+        width: 196px;
+        height: 44px;
+        display: inline-block;
+        z-index: 1;
+        border-color: rgb(193, 207, 217);
+        border-style: solid;
+        border-width: 1px;
+        border-bottom-color: rgb(193, 207, 217);
+        border-bottom-style: none;
+        border-bottom-width: 0px;
+    }
+
+    .tableData {
+        height: 100%;
+    }
+
+    .add-coefficient-divider {
+        border-bottom-color: rgb(193, 207, 217);
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        min-width: 15px;
+        max-width: 15px;
+        height: 44px;
+    }
+
+    .asset-link-lastelement {
+        border-bottom-color: rgb(193, 207, 217);
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        min-width: 15px;
+        height: 44px;
+        flex-grow: 6;
+    }
+
+    .add-coefficient-border {
+        border-color: rgb(193, 207, 217);
+        border-style: solid;
+        border-width: 1px;
+        border-bottom-color: rgb(193, 207, 217);
+        border-bottom-style: none;
+        border-bottom-width: 0px;
+    }
+}

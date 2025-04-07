@@ -1,0 +1,8 @@
+﻿<div class="ars-link-main">
+    <div class="ars-link-body" data-bind="if:  modelParameterSelector() != null">
+        <div class="ars-link-parameters">
+            <div data-bind="template: { name: 'FinanceForms/ActivesLocated/Parameters', data: modelParameterSelector, afterRender: modelParameterSelector().AfterRender }"></div>
+        </div>
+    </div>
+    <div id="regionActivesLocatedCM" data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+</div>  

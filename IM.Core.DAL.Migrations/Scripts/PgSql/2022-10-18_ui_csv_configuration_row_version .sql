@@ -1,0 +1,1 @@
+ALTER TABLE IF EXISTS im.uicsv_configuration DROP COLUMN IF EXISTS row_version

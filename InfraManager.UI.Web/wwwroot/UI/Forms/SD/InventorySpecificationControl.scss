@@ -1,0 +1,66 @@
+﻿.inventorySpecificationControl {
+    height: 100%;
+
+    .im-big-header {
+        padding-left: 15px;
+        margin-top: 15px;
+    }
+
+    .asset-link_searchText {
+        top: 71px;
+    }
+
+    .tabCaption-icon-chain {
+        position: absolute;
+        top:-3px;
+    }
+
+.show-accepted {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.show-accepted-inner {
+    display: flex;
+    align-items: center;
+}
+
+.show-accepted-checkbox {
+    position: relative;
+    top: 2px;
+}
+
+.searcher-inner {
+    display: inline-block;
+    width: calc(100% - 281px);
+}
+
+.asset-link_searchText-clearfield {
+    right: 113px;
+}
+
+.scaner {
+    display: inline-block;
+
+}
+
+.scaner-inner {
+    position: absolute;
+    top: 6px;
+}
+
+.inventory-specification {
+    height: calc(100% - 130px);
+    position: relative;
+    top: 40px;
+}
+
+.inventory-specification-selected {
+   height:  calc(100% - 90px);
+}
+
+.inventorySpec {
+    height: 100%;
+}
+
+}

@@ -1,0 +1,22 @@
+﻿<div class="sc_favorites" data-bind="afterUpdateBlock: FavoritesAfterRender">
+    <div class="sc_favoritesMain" data-bind="style: {width : VisibleCallInfoList().length == 0 ? '100%' : '' }">
+        <div class="sc_favoritesMainHeader" data-bind="restext: 'SC_FavoritesHeader'"></div>
+        <div class="sc_favoritesItemAttendance" data-bind="template: { name: 'ServiceCatalogue/ServiceItemAttendanceListView', data: { $iconSource: '', $name: '', $isExpanded: true, $list: $root.FavoritesServiceItemAttendanceList, $showPath: true } }"></div>
+    </div>
+    <div class="sc_favoritesLast" data-bind="style: {display : VisibleCallInfoList().length == 0 ? 'none' : '' }">
+        <div class="sc_favoritesLastHeader" data-bind="text: getTextResource('SC_LastSearches') + ' (' + VisibleCallInfoList().length + ')'"></div>
+        <div class="sc_favoritesLastList" data-bind="foreach: VisibleCallInfoList">
+            <div class="sc_favoritesLastListItem">
+                <div class="sc_favoritesLastListItemRow">
+                    <div class="sc_favoritesLastListItemText" data-bind="text: '№' + Number + ' ' + CallSummaryName"></div>
+                    <div class="sc_favoritesLastListItemButton" data-bind="restext: 'SC_Repeat', click: $root.OnCreateCallAsClick"></div>
+                </div>
+                <div class="sc_favoritesLastListItemDescription" data-bind="text: ServiceItemAttendanceFullName"></div>
+                <div class="sc_favoritesLastListItemDate" data-bind="text: UtcDateRegistered"></div>
+            </div>
+        </div>
+        <!-- ko if: $root.CutCallInfoList -->
+        <div class="sc_favoritesLastShowAll" data-bind="restext: 'SC_ShowAll', click: $root.CutCallInfoListClick"></div>
+        <!-- /ko -->
+    </div>
+</div>

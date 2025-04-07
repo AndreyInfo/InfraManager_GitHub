@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/LiteLayout.cshtml";
+}
+
+<br />
+<br />
+<center><h2>@InfraManager.ResourcesArea.Resources.UnhandledErrorServer</h2></center>
+@if (ViewBag.IsDebuggingEnabled)
+{
+    <br />
+    <h3>@InfraManager.ResourcesArea.Resources.ErrorCodeHttp @ViewBag.ErrorCode</h3>
+    <h3>@InfraManager.ResourcesArea.Resources.ErrorMessage</h3>
+    <pre>
+        @ViewBag.LastErrorMessage
+    </pre>
+}

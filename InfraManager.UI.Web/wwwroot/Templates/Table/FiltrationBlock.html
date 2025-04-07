@@ -1,0 +1,35 @@
+﻿<div class="b-content-table__center" data-bind="splitter: { ChangeFunc: ResizeFunction, MinimalSize: minWidth, MaximumSize: maxWidth, Name: 'FiltrationBlock', Direction: 'right' }">
+    <div class="regionFilterTree-main" data-bind="style: { bottom: CalculateBottomPosition }">
+        <div id="regionLocation" class="regionFilterTree-location" data-bind="visible: IsLocationActive"></div>
+
+        <div id="regionOrgStructure" class="regionFilterTree-orgstructure" data-bind="visible: IsOrgStructureActive">
+            <div data-bind="foreach: DDList" class="orgStructLineFilter_top">
+                <div class="orgStructLineFilter">
+                    <input class="orgStructRadioFilter orgStructRadiobutton" type="radio" data-bind="checkedValue: $data, checked: $parent.SelectedField" value="true">
+                    <span class="orgStructTextNormal" data-bind="text: $data.Name" />
+                </div>
+            </div>
+            <div class="searchField orgsearchField_bot">
+                <input type="text" class="OrgStructSearcher searcherInput text-input orgStructSercherStyle" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: OrgSearchText" />
+            </div>
+            <div class="regionFilterTree-orgstructure-tree"></div>
+        </div>
+        <div id="regionProductCatalogue" class="regionFilterTree-productCatalogue" data-bind="visible: IsProductCatalogueActive"></div>
+        <div id="regionSoftCatalogue" class="regionFilterTree-productCatalogue" data-bind="visible: IsSoftCatalogueActive"></div>
+        <!--ko if: filterActiveVisible -->
+        <span data-bind="if: startLoadingFilters">
+            <div id="regionFilters" class="regionFilterTree-filter" data-bind="template: { name: 'Filter/Filters', afterRender: filtersModel.AfterRender, data: filtersModel }, visible: IsFiltersActive"></div>
+        </span>
+        <!-- /ko -->
+        <!--ko if: filterCommonFiltersVisible -->
+        <span data-bind="if: startLoadingFilters">
+            <div id="regionFilters" class="regionFilterTree-filter" data-bind="template: { name: 'Filter/FiltersCommonTasks', afterRender: filtersModel.AfterRender, data: filtersModel }, visible: IsFiltersActiveCommonFilters"></div>
+        </span>
+        <!-- /ko -->
+    </div>
+        <div class="regionFilterTree-buttons" data-bind="visible: NeedShowBottomPart">
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: ResetTreeSettingsClick">
+                <span class="ui-button-text" data-bind="restext: 'FilterActionReset', longNameTooltip: getTextResource('FilterActionReset')"></span>
+            </button>
+        </div>
+</div>

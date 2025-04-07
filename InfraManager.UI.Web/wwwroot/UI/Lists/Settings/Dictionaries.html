@@ -1,0 +1,26 @@
+﻿<div class="b-content-dictionaries-container" data-bind="with: Dictionaries, afterUpdateBlock: Dictionaries().ModelAfterRender">
+    <div class="b-content-dictionaries-container-header">
+        <div class="dictionaries-header_list-divider"></div>
+        <div class="dictionaries-header_list" data-bind="css: { 'active' : IsOrgStructureActive }, click: ShowOrgStructure, visible: availability.OrgStructure">
+            <span class="dictionaries-header-text" data-bind="restext: 'DictionariesTabOrgStructure'"></span>
+        </div>
+        <div class="dictionaries-header_list-divider"></div>
+        <div class="dictionaries-header_list" data-bind="css: { 'active' : IsDistributionCentresActive }, click: ShowSoftwareDistributionCentres, visible: availability.SoftwareDistributionCentres">
+            <span class="dictionaries-header-text" data-bind="restext: 'DictionariesTabDistributionCentre'"></span>
+        </div>
+        <div class="dictionaries-header_list-divider"></div>
+        <div class="dictionaries-header_list" data-bind="css: { 'active' : IsRFCCategoryActive }, click: ShowRFCCategory, visible: CanShowRFCCategory()">
+            <span class="dictionaries-header-text" data-bind="restext: 'RFCCategoryCatalog'"></span>
+        </div>
+        <div class="dictionaries-header_list-divider"></div>
+        <div class="dictionaries-header_list" data-bind="css: { 'active' : IsLicenceSchemesActive }, click: ShowLicenceSchemes, visible: CanShowLicenceSchemes()">
+            <span class="dictionaries-header-text" data-bind="restext: 'LicenceSchemesTabTitle'"></span>
+        </div>
+        <div class="dictionaries-header_list-divider"></div>
+        <div class="dictionaries-header_list" data-bind="css: { 'active' : IsELPListActive }, click: ShowELPList, visible: CanShowELPList()">
+            <span class="dictionaries-header-text" data-bind="restext: 'ELPListTabTitle'"></span>
+        </div>
+        <div class="dictionaries-header_list-divider-last"></div>
+    </div>
+    <div class="b-content-dictionaries-container-body" data-bind="template: {name: ViewTemplateName}"></div>
+</div>

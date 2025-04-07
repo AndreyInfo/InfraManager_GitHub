@@ -1,0 +1,141 @@
+﻿.horizontalContainer {
+    &__wrapper {
+        padding: 16px 0 16px 16px;
+        display: flex;
+
+        & ul {
+            list-style: none;
+        }
+
+        .fieldPair {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        & .horizontalContainer-leftPart {
+            width: 50%;
+            margin-right: 16px;
+        }
+
+        & .horizontalContainer-rightPart {
+            width: 50%;
+            max-width: 100%;
+            padding-top: 56px;
+        }
+
+        & .b-requestDetail__descr {
+            margin-right: 0;
+        }
+
+        & .b-requestDetail__descr {
+            margin: 0;
+            padding: 0;
+        }
+
+        & .form-user-rightside, .form-user-empty-tb {
+            width: 100%;
+        }
+    }
+
+    &__body {
+        margin-top: 16px;
+    }
+
+    &__documents {
+        margin-top: 24px;
+    }
+}
+
+.inputs-form-list {
+    &__item:not(:last-child) {
+        margin-bottom: 8px;
+    }
+}
+
+.field-container {
+    & .fieldPair {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        & .icon {
+            align-self: start;
+        }
+
+        & .editor {
+            padding: 0;
+            width: 100%;
+            align-self: center;
+
+            &:not(.html) {
+                min-height: auto;
+            }
+        }
+    }
+}
+
+.additional-services-title {
+    color: #61D6F2;
+    margin-bottom: 10px;
+}
+
+.additional-services-container {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.additional-services-list {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+
+    &_empty {
+        margin: 0;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__item-icon {
+        display: block;
+        width: 16px;
+        height: 16px;
+        background: url(../images/controls/form/close.svg) no-repeat;
+        cursor: pointer;
+    }
+}
+
+.additional-services-add {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #C9D6E2 !important;
+    position: relative;
+    background: none;
+    cursor: pointer;
+
+    &::before, &::after {
+        content: '';
+        width: 1px;
+        height: 7px;
+        position: absolute;
+        display: block;
+        top: 50%;
+        left: 50%;
+    }
+
+    &::before {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(-90deg);
+    }
+}

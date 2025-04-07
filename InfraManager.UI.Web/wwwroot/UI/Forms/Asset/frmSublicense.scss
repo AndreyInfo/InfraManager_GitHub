@@ -1,0 +1,128 @@
+﻿@import "../../../Styles/general";
+
+.sublicenseForm {
+    overflow: hidden;
+
+    .b-requestDetail-left {
+        word-wrap: break-word;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 105px;
+    }
+
+    .b-requestDetail-right {
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+        width: 105px;
+        height: 100%;
+    }
+
+    .sublicense-commonTab-left {
+        display: inline-block;
+        width: 500px;
+        background-color: $sublicence-tab_general-left_column-bg_color !important;
+    }
+
+    .sublicense-commonTab-right {
+        display: inline-block;
+        position: absolute;
+    }
+
+    h1 {
+        @extend .im-base-text;
+        color: $sublicense-header-color !important;
+        font-size: 22px !important;
+        margin-left: 25px;
+    }
+
+    .list {
+        margin-left: 25px;
+    }
+
+    .field-area {
+        margin-top: 30px;
+        margin-left: 25px;
+    }
+
+    .field-title {
+        @extend .im-base-text;
+        color: $sublicense-field-title-color !important;
+        font-size: 11px !important;
+    }
+
+    .field-value {
+        @extend .im-base-text;
+        color: $sublicense-field-value-color !important;
+        font-size: 12px !important;
+    }
+
+    .b-requestDetail__icon-wrap {
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
+
+    .b-requestDetail__icon_common {
+    }
+
+    .active .b-content-table__workplaceIcon-header {
+        @extend .b-content-table__base-highlihted-text !optional;
+    }
+
+    .b-requestDetail__icon1-active + div {
+        @extend .b-content-table__base-highlihted-text !optional;
+    }
+
+    .b-requestDetail__icon-wrap:hover {
+
+        .b-content-table__workplaceIcon-header {
+            @extend .b-content-table__base-highlihted-text !optional;
+            cursor: pointer;
+        }
+    }
+
+    .show-license-details {
+        width: 18px;
+        height: 18px;
+        visibility: inherit;
+        margin-right: 5pt;
+        flex-shrink: 0;
+    }
+
+    .tab-content {
+        margin-bottom: 100px;
+    }
+}
+
+.b-requestDetail__icon_permissions {
+    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Access_references_passive.svg') no-repeat;
+}
+
+.b-requestDetail__icon_permissions:hover {
+    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Access_references_active.svg') no-repeat;
+    opacity: .50;
+}
+
+.b-requestDetail__icon_permissions-active {
+    background: url('../UI/Forms/Asset/SoftwareLicence/Icons/Access_references_active.svg') no-repeat;
+}
+
+.sublicense-form-buttons {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: flex-end;
+    -ms-flex-pack: end;
+    align-items: center;
+    -ms-flex-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-bottom: 25px;
+}

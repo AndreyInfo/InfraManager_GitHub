@@ -1,0 +1,195 @@
+﻿@import "../../../Styles/general";
+
+
+.frmSupplier {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .textArea {
+        resize: none;
+        width: 100%;
+        height: 100px;
+
+        &.border {
+            border: 1px solid $border-gray-color;
+            padding: 2px 7px;
+        }
+    }
+
+    .types {
+        height: 65px;
+        overflow: auto;
+    }
+
+    .type-chbx {
+        position: relative;
+        top: 2px;
+    }
+
+    .type {
+        height: 20px;
+    }
+
+    .content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 120px;
+
+        .tabGeneral {
+            overflow: hidden;
+            position: relative;
+            display: table;
+            width: 100%;
+            height: 100%;
+
+            .textField {
+                width: 100%;
+                height: 26px;
+                margin-bottom: 10px;
+
+                &.border {
+                    border: 1px solid $border-gray-color;
+                    padding: 2px 7px;
+                }
+            }
+
+            > .rightSide {
+                height: 100%;
+                display: table-cell;
+                min-width: 300px;
+                vertical-align: top;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .fieldCaption {
+                color: $gray-text-color;
+                font-size: 11px;
+
+                &.blue {
+                    color: $blue-text-color;
+                    font-size: inherit;
+                }
+            }
+
+            .caption {
+                margin-left: 20px;
+                margin-right: 20px;
+
+                &.mt10 {
+                    margin-top: 10px;
+                }
+            }
+
+            .inline {
+                display: inline-block;
+            }
+        }
+
+        .tabActive {
+            margin-top: 10px;
+            margin-right: 0;
+            margin-bottom: 10px;
+            overflow: auto;
+            position: relative;
+
+            .tabPage {
+                &.ml {
+                    margin-left: 20px;
+                }
+
+                &.h100 {
+                    height: 100%;
+                }
+
+                .caption {
+                    margin-bottom: 10px;
+                }
+
+                &.noscroll {
+                    overflow: hidden;
+                }
+
+                .tabCaption {
+                    margin: 0;
+                    height: 20px;
+                }
+
+                .tabContent {
+                    top: 35px;
+                }
+
+                .b-requestDetail_table {
+                    margin-right: 0;
+                    width: calc(100% - 10px);
+                }
+            }
+        }
+    }
+
+    .tabPages {
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+        width: 120px;
+        height: 100%;
+
+        .tabButton {
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 15px;
+            margin-top: 5px;
+
+            .tabButtonIcon {
+                display: inline-block;
+                width: 38px;
+                height: 38px;
+                background-size: cover !important;
+                position: relative;
+
+                &.generalTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/main_passive.svg') no-repeat;
+                }
+
+                &.contactPersonTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/contacts_passive.svg') no-repeat;
+                }
+            }
+
+            .tabButttonCaption {
+                font-size: 11px;
+                white-space: normal;
+                word-break: break-word;
+                max-height: 22px;
+                overflow: hidden;
+                color: $left-menu-gray-color;
+            }
+        }
+
+        .tabButton.active, .tabButton:hover {
+            .tabButtonIcon {
+                &.generalTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/main_active.svg') no-repeat;
+                }
+
+                &.contactPersonTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/contacts_active.svg') no-repeat;
+                }
+            }
+
+            .tabButttonCaption {
+                color: $blue-text-color;
+            }
+        }
+
+        .tabButton:hover {
+            .tabButtonIcon {
+                opacity: 0.5;
+            }
+        }
+    }
+}

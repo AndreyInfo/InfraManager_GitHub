@@ -1,0 +1,60 @@
+﻿<div class="portList" data-bind="splitter: { ChangeFunc: ResizeFunction, MinimalSize: MinHeight, MaximumSize: MaxHeight, Name: 'PortList', Direction: 'bottom' }">
+    <div class="tabCaption im-big-header">
+        <span data-bind="text: HeaderText()" />
+        <span data-bind="css: IsExpanded() == true ? 'arrow-up active' : 'arrow-down active', click: ExpandCollapseClick"><span /></span>
+    </div>
+    <div data-bind="visible: IsExpanded()">
+        <div class="table-margine">
+            <div class="tableHeader">
+                <table data-bind="style: {width: TableWidth() + 'px'}">
+                    <thead>
+                        <tr>
+                            <th class="check-box">
+                                <!--<input type="checkbox" />-->
+                            </th>
+                            <!-- ko foreach: columnList -->
+                            <th class="b-content-table__th  cursor-pointer" style="display:inline-block" data-bind="css: {'b-content-table__table-sorted': SortAsc() != null ? true : false}, event: { mouseenter: checkShowTooltip}, click: ColumnClick, style: {width: Width()+'px', cursor : $parent.moveTrumbData() != null ? 'e-resize' : ''}">
+                                <div class="columnContainer">
+                                    <div class="columnLabel" data-bind="text: Text" />
+                                    <div class="columnSortArrow" data-bind="if: SortAsc() != null, css: {'table_arrow_up': SortAsc() == true, 'table_arrow_down': SortAsc() == false}" />
+                                </div>
+                                <div class="columnResizeThumb" data-bind="style: {background: $data.showResizeThumb() == true ? 'darkgray' : ''}, event: { mouseenter: enableResizeThumb, mouseout: disableResizeThumb, mousedown: $parent.thumbResizeCatch }" />
+                            </th>
+                            <!-- /ko -->
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="tabContent tableScroll" data-bind="style: {'height': Height() + 'px'}">
+            <div class="table-margine-list">
+                <table data-bind="style: {width: TableWidth() + 'px'">
+                    <tbody data-bind="foreach: rowList">
+                        <tr class="row cursor-pointer" data-bind="attr: {id: ID}, css: {'active' : Data.Selected}">
+                            <td class="check-box"><!--<input type="checkbox" data-bind="checked: Data.Selected" />--></td>
+                            <!-- ko foreach: Cells -->
+                            <td class="relative" style="display:inline-block" data-bind="click: function() {$parent.ShowForm($parent.Data);}, style: {width: Column.Width()+'px', cursor : $parent.moveTrumbData() != null ? 'e-resize' : ''}, longNameTooltip: Text">
+                                <span data-bind="text: Text"></span>
+                                <div class="columnResizeThumb" data-bind="visible: $data.Column.showResizeThumb" />
+                            </td>
+                            <!-- /ko -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="actions" data-bind="visible: IsActionsVisible">
+            <div class="actions-wrapper">
+                <div class="actions-list" data-bind="foreach: imList.OperationList">
+                    <button class="button button_b-ctrl_note button_size_M button_type_normal im-list__actions-button" data-bind="visible: IsVisible, click: OnClick ">
+                        <div class="button__label" data-bind="text: Text"></div>
+                    </button>
+                </div>
+                <div class="actions-rightPanel">
+                    <div class="actions-count"><span data-bind="restext: 'Choosen'"></span>: <span data-bind="text: imList.SelectedItemsCount"></span></div>
+                    <div class="actions-close"><a data-bind="restext: 'UndoCheck', click: imList.UncheckAll"></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

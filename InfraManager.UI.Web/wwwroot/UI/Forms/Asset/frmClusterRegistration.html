@@ -1,0 +1,90 @@
+﻿<div class="clusterForm b-requestDetail im-base-text" style="overflow-x: hidden;">
+    <div class="b-requestDetail-left" data-bind="with: cluster">
+        <div class="fieldPair b-requestDetail__title-header-nd">
+            <div class="network-device-title">
+                <div class="field-pair">
+                    <div class="icon-container">
+                        <div class="cluster-icon" />
+                    </div>
+                    <span class="im-big-header asset-text-field-header" data-bind="text: Name, css: { 'cursor-pointer': $root.CanEdit() && CanEditName(), 'asset-border': CanEditName() }, click: $root.EditName" />
+                    <div class="network-device-model-header">
+                        <div class="network-device-category" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="b-requestDetail__mainParameters" data-bind="visible: $parent.mode() == $parent.modes.main, style: {height: $root.TabHeight}">
+            <div class="network-device-mainTab">
+                <div class="network-device-mainTab-left-side">
+                    <div class="network-device-characteristics">
+                        <div class="im-big-header" data-bind="restext: 'TabGeneral'" />
+                        <div class="network-device-table-margineTop table-fixed">
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="text:getTextResource('AssetNumber_TypeName')" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: ProductCatalogTypeName, css: { 'cursor-pointer': $root.CanEdit },  click: $root.EditType" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'DataCenter'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: DataCenter, css: { 'cursor-pointer': $root.CanEdit() }, click: $root.EditDataCenter" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_VCenter'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: VCenter, css: { 'cursor-pointer': $root.CanEdit() },  click: $root.EditVCenter" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="text:'UUID'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: UUID, css: { 'cursor-pointer': $root.CanEdit() }, click: $root.EditUUID" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_Administrator'" />
+                                <div class="assetReg-locationControl td-width">
+                                    <div data-bind="template: { name: 'User/FormUser', if: AdministratorLoaded(), data: Administrator }"></div>
+                                    <div data-bind="template: { name: 'User/FormUserEmpty', if: !AdministratorLoaded(), data: Administrator }"></div>
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_Comment'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field asset-note" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: Note, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditNote" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="network-device-mainTab-right-side">
+                    <div class="network-device-code-header">
+                        <div class="im-big-header" data-bind="restext: 'LocateAsset'" />
+                        <div class="network-device-table-margineTop table-fixed">
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_CpuNumber'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="searcherInput" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_RAM'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="searcherInput" data-bind="text: TotalSlotMemory" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="b-requestDetail-right" data-bind="with: cluster">
+        <div class="b-requestDetail__icon-wrap" data-bind="click: $root.MainClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : $parent.mode() != $parent.modes.main, 'b-requestDetail__icon1-active' : $parent.mode() == $parent.modes.main }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabGeneral'"></div>
+        </div>     
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿<div class="parametersUpdate" data-bind="with: $root.UpdateCharacteristics">
+    <div class="container-fluid">
+        <div class="lines">
+            <div class="col-xs-12">
+                <div class="parametersUpdateText" data-bind="restext: 'SubscriptionOptions'"></div>
+            </div>
+        </div>
+        <div class="lines">
+            <div class="col-xs-12">
+                <!--Срок продление подписки -->
+                <div class="fieldCaption" data-bind="restext: 'Contract_StartDate'"></div>
+                <div class="fieldValue" data-bind="text: StartDate()"></div>
+            </div>
+        </div>
+        <div class="lines">
+            <div class="col-xs-12">
+                <!--Дата окончание лицензии -->
+                <div class="fieldCaption" data-bind="restext: 'Contract_EndDate'"></div>
+                <div class="fieldValue" data-bind="text: EndDate"></div>
+            </div>
+        </div>
+    </div>
+</div>

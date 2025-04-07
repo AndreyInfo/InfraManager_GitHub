@@ -1,0 +1,13 @@
+﻿<span id="profile" data-bind="template: {name: 'Account/ProfileSettings', afterRender: AfterRender}"></span>
+
+<script type="text/javascript">
+    @section MainScript {
+    require(['jquery', 'knockout', 'models/Account/ProfileSettings'], function ($, ko, vm) {
+            var mod = new vm.ViewModel('@ViewBag.UserID');
+            mod.Load();
+            ko.applyBindings(mod, document.getElementById('profile'));
+            //
+            hideSpinner($('.b-main')[0]);
+    });
+    }
+</script>

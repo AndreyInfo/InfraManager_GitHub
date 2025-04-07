@@ -1,0 +1,26 @@
+﻿<!-- ko foreach: $data.kbaList -->
+<div class="b-base-content__item" data-bind="click: $parent.ShowKBArticle">
+    <div class="KbHeaderBlock">
+        <div class="cap_academicSingleToList cap_academicList" />
+        <h3 data-bind="text: Caption"></h3>
+    </div>
+    <div class="blockContent">
+        <div class="PKbDescription" data-bind="text: Description"></div>
+        <div class="PKBASolution" data-bind="text: Solution"></div>
+        <div class="KBABlockFooter">
+            <div>
+                <div class="dateBlock">
+                    <div class="KBAItemListVisible" data-bind="css: { 'active': IsVisible }"></div>
+                    <div class="KBABlockFooterText" data-bind="text: Date"></div>
+                </div>
+                <div class="KBABlockFooterText KBABlockFooterTextOne" data-bind="text: FileCount"></div>
+
+                <div class="KBABlockFooterText KBABlockFooterTextOne" data-bind="text: Author"></div>
+            </div>
+            <div>
+                <div data-bind="text: Section" class="KBABlockFooterLastText"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->

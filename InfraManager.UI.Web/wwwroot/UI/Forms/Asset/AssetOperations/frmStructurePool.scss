@@ -1,0 +1,57 @@
+﻿@import "../../../../Styles/general";
+@import "GeneralFormStyle";
+
+.frmStructurePool {
+    overflow: hidden;
+    height: 100%;
+
+    .form-buttons {
+    }
+
+    .ui-button {
+        margin-right: 30px;
+        margin-bottom: 15px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .table {
+        border-bottom: 1px solid #c1cfd9 !important;
+        border-left: 1px solid #c1cfd9 !important;
+        border-right: 1px solid #c1cfd9 !important;
+    }
+
+    .tableHeader {
+        border-top: 1px solid #c1cfd9 !important;
+    }
+
+    .tableData {
+        height: 100%;
+    }
+}
+
+.frmStructurePool-Content {
+    padding-top: 16px;
+    padding-left: 25px;
+    padding-right: 30px;
+    margin: 0;
+    height: calc(100% - 65px);
+
+    .field-area {
+        margin: 0 !important;
+    }
+
+    .field-title {
+        font-size: 11px;
+        color: $pool-field-title-color;
+    }    
+
+    h1 {
+        font-size: 22px !important;
+    }
+
+    .b-content-table__icons {
+        height: 0 !important;
+    }
+}

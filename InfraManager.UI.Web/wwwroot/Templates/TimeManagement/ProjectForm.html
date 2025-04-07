@@ -1,0 +1,82 @@
+﻿<div class="b-requestDetail-left" data-bind="with: project">
+    <div class="b-requestDetail__mainParameters" data-bind="visible: $parent.mode() == $parent.modes.main, style: {height: $root.TabHeight}">
+        <div class="fieldPair">
+            <div class="icon fieldDescription active" data-bind="click: $parent.EditState, tooltip: getTextResource('ProjectState')"><span /></div>
+            <div class="project-state">
+                <span data-bind="text: StateName, tooltip: getTextResource('CallReceiptType'), css: { 'hyperlink' : $parent.CanEdit }, click: $parent.EditState" class="hyperlink tooltipstered"></span>
+            </div>
+        </div>
+        <div class="fieldPair project-name" style="margin-right:0;">
+            <div class="icon fieldProjectName active" data-bind="click: $parent.EditName, tooltip: getTextResource('Name')"><span /></div>
+            <div class="editor big">
+                <input type="text" readonly class="border bigField im-big-header" data-bind="textInput: Name, longNameTooltip: Name, attr: { placeholder: getTextResource('PromptName') }" />
+            </div>
+        </div>
+        <div class="horizontalContainer">
+            <div class="horizontalContainer-leftPart">
+                <div class="fieldPair">
+                    <div class="icon fieldDescription active" data-bind="click: $parent.EditDescription, tooltip: getTextResource('Description')"><span /></div>
+                    <div class="editor border fill html slide description" data-bind="html: HtmlNote" style="padding:2px; height:200px" />
+                </div>
+            </div>
+            <div class="horizontalContainer-rightPart">
+                <div class="b-requestDetail__table">
+                    <div class="form-users-block">
+                        <div data-bind="template: { name: 'User/FormUser', if: Director() && DirectorLoaded(), data: Director }"></div>
+                        <div data-bind="template: { name: 'User/FormUserEmpty', if: Director() && !DirectorLoaded(), data: Director }"></div>
+                        <div data-bind="template: { name: 'User/FormUser', if: Initiator() && InitiatorLoaded(), data: Initiator }"></div>
+                        <div data-bind="template: { name: 'User/FormUserEmpty', if: Initiator() && !InitiatorLoaded(), data: Initiator }"></div>
+                    </div>
+                </div>
+                <div class="fieldPair">
+                    <div class="icon fieldManhours" data-bind="cssOperation: { 'active' : $parent.CanEdit }, operationID: 317, click: $parent.EditManhoursWork, tooltip: getTextResource('ManhoursWorkTooltip')"><span /></div>
+                    <div class="editor nowrap">
+                        <div style="float:left" data-bind="tooltip: getTextResource('Spent'), if: ManHours() != null">
+                            <span data-bind="text: ManHours" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-plan-fact">
+            <div class="project-plan-fact-icon-column">
+                <div data-bind="css: 'calendar-icon'"></div>
+            </div>
+            <div class="project-plan-fact-first-column">
+                <div class="project-plan-fact-first-row project-text">
+                    <span data-bind="restext: 'TM_Plan'" />
+                </div>
+                <div class="project-plan-fact-row project-date">
+                    <span data-bind="text: getTextResource('TM_StartTill') + ': ' + UtcDatePlanStart(), click: $parent.EditDatePlanStart" />
+                </div>
+                <div class="project-plan-fact-row project-date">
+                    <span data-bind="text: getTextResource('TM_FinishBefore') + ': ' + UtcDatePlanEnd(), click: $parent.EditDatePlanEnd" />
+                </div>
+            </div>
+            <div class="project-plan-fact-second-column">
+                <div class="project-plan-fact-row project-text">
+                    <span data-bind="restext: 'TM_Fact'" />
+                </div>
+                <div class="project-plan-fact-row project-date">
+                    <span data-bind="text: getTextResource('TM_Start')  + ': ' + UtcDateStart(), click: $parent.EditDateStart" />
+                </div>
+                <div class="project-plan-fact-row project-date">
+                    <span data-bind="text: getTextResource('TM_Finish')  + ': ' + UtcDateEnd(), click: $parent.EditDateEnd" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="woRef__b" style="top:15px" data-bind="visible: $parent.mode() == $parent.modes.workorders, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/WorkOrderList', data: { $control: $root.workOrderList, $header: 'problem' } }" />
+</div>
+<div class="b-requestDetail-right">
+    <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.main); $root.SizeChanged(); }, tooltip: getTextResource('MainParams'), tooltipSide: 'left'">
+        <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : mode() != modes.main, 'b-requestDetail__icon1-active' : mode() == modes.main }"></a>
+        <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabGeneral'"></div>
+    </div>
+    <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.workorders); $root.SizeChanged(); }, tooltip: getTextResource('LinkWorkorders'), tooltipSide: 'left'">
+        <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon3' : mode() != modes.workorders, 'b-requestDetail__icon3-active' : mode() == modes.workorders }">
+            <span class="b-requestDetail__icon-itemscount" data-bind="text: workOrderList.ItemsCount, visible: workOrderList.ItemsCount() != null"></span>
+        </a>
+        <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabWOReference'"></div>
+    </div>
+</div>

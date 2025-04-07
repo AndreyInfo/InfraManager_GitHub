@@ -1,0 +1,4 @@
+﻿<div class="RFCCategoryList" data-bind="with: RFCCategory">
+    <div style="height: 100%;" data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'RFCCategory', controlInitialized: listViewInit, retrieveItems: RFCCategoryListViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false, multiSelect: false}"></div>
+    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+</div>

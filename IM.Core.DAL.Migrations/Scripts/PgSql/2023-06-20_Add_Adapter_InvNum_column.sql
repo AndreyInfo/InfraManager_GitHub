@@ -1,0 +1,1 @@
+alter table adapter add column if not exists inventory_number varchar(50) null;

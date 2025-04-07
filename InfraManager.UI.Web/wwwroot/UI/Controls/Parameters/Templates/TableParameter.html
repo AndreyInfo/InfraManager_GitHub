@@ -1,0 +1,67 @@
+﻿<div class="paramTableCotainer" data-bind="css: CssTableClass">
+    <div class="tableCaptionContainer">
+        <div class="icon active" data-bind="css: $data.CssClassFunc"><span /></div>
+        <span class="caption im-blue-text" data-bind="text: Name" />
+    </div>
+    <div class="buttonsContainer" data-bind="visible: $data.ReadOnly() == false && $data.LockRowsCount == false">
+        <div class="addRowButton" data-bind="click: $data.AddNewEditor"></div>
+        <div class="removeRowButton" data-bind="click: $data.RemoveEditorClick, visible: CkeckedEditors().length > 0"></div>
+    </div>
+    <div class="tableScrollContainer">
+        <table class="tableStructure" data-bind="style: {width: $data.WidthCSS}, css: {'invalid' : $data.IsValueRequired == true && $data.ParameterValueIsReadOnly == false && $data.Editors().length == 0}">
+            <colgroup>
+                <col class="colCheck" />
+                <!--ko foreach: $data.ParameterTemplateList-->
+                <col data-bind="style: {width: $data.WidthCSS}, visible: $data.WebVisibility || !$parent.ClientMode()" />
+                <!-- /ko -->
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" data-bind="checked: CheckAll" />
+                    </th>
+                    <!--ko foreach: $data.ParameterTemplateList-->
+                    <th data-bind="css: {'numeric' : $data.Type == 1}, visible: $data.WebVisibility || !$parent.ClientMode()">
+                        <span data-bind="text: $data.Name"></span>
+                        <div class="columnResizeThumb" data-bind="style: {background: $data.ResizeThumbVisible() == true ? 'darkgray' : 'none'}, event: { mouseenter: $parent.EnableResizeThumb, mouseout: $parent.DisableResizeThumb, mousedown: $parent.ThumbResizeCatch }" />
+                    </th>
+                    <!-- /ko -->
+                </tr>
+            </thead>
+            <tbody class="editorMode mainBody" data-bind="foreach: { data: $data.Editors, as: 'editor' }">
+                <tr data-bind="css: {'checked' : Checked}">
+                    <td>
+                        <input type="checkbox" data-bind="checked: Checked" />
+                    </td>
+                    <!--ko foreach: editor.RowParameterList-->
+                    <td class="clicable" data-bind="visible: $data.WebVisibility || !$data.ClientMode(), click: function(m, e) { if(e.target.tagName == 'TD') { $data.ShowEditor($root.objectClassID); e.stopPropagation(); } return true; }">
+                        <table class="b-requestDetail_table">
+                            <colgroup>
+                                <col class="paramColEditor" />
+                                <!--ko if: $data.ReadOnly() == false && $data.IsMultiple == true -->
+                                <col class="paramColIcon" />
+                                <!-- /ko -->
+                            </colgroup>
+                            <tbody data-bind="foreach: $data.Editors">
+                                <tr>
+                                    <td class="b-requestCreate-right__item" data-bind="template: {name: $parent.TemplateName, afterRender: $data.AfterRender}, 'numeric' : $parent.Type == 1" />
+                                    <!--ko if: $parent.ReadOnly() == false && $parent.IsMultiple == true -->
+                                    <td><div class="parameter_removeEditor" data-bind="click: $parent.RemoveEditor, visible: $parent.ReadOnly() == false && $parent.IsMultiple == true"><span /></div></td>
+                                    <!-- /ko -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <span class="parameter_addEditor ml10" data-bind="click: $data.AddNewEditor, visible: $data.ReadOnly() == false && $data.IsMultiple == true" />
+                        <div class="columnResizeThumb" data-bind="visible: $data.ParameterTemplate.ResizeThumbVisible" />
+                    </td>
+                    <!-- /ko -->
+                </tr>
+                <!--ko if: $data.Type == 13 && IsInversion == true-->
+                <tr data-bind="template: {name: '../UI/Controls/Parameters/Lists/InvertTableParameter',
+                            afterRender: $data.AddNewEditor2 }">
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+</div>

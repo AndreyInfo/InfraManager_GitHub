@@ -1,0 +1,80 @@
+﻿.b-content-table__financeBudgets {
+    background: url(../UI/Lists/Finance/Icons/Budget.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__financeBudgets {
+    background: url(../UI/Lists/Finance/Icons/Budget_active.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__financeBudgets_active {
+    background: url(../UI/Lists/Finance/Icons/Budget_active.png) no-repeat center;
+}
+
+.b-content-table__financeBudgets_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__financePurchase {
+    background: url(../UI/Lists/Finance/Icons/Buying.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__financePurchase {
+    background: url(../UI/Lists/Finance/Icons/Buying_active.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__financePurchase_active {
+    background: url(../UI/Lists/Finance/Icons/Buying_active.png) no-repeat center;
+}
+
+.b-content-table__financePurchase_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__financeActivesRequest {
+    background: url(../UI/Lists/Finance/Icons/Orders.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__financeActivesRequest {
+    background: url(../UI/Lists/Finance/Icons/Orders_active.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__financeActivesRequest_active {
+    background: url(../UI/Lists/Finance/Icons/Orders_active.png) no-repeat center;
+}
+
+.b-content-table__financeActivesRequest_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__financeProjects {
+    background: url(../UI/Lists/Finance/Icons/Projects.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__financeProjects {
+    background: url(../UI/Lists/Finance/Icons/Projects_active.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__financeProjects_active {
+    background: url(../UI/Lists/Finance/Icons/Projects_active.png) no-repeat center;
+}
+
+.b-content-table__financeProjects_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-requestDetail__iconFinance {
+    background: url(../UI/Lists/Finance/Icons/Budget.png) no-repeat center;
+}
+
+.b-requestDetail__iconFinance:hover {
+    background: url(../UI/Lists/Finance/Icons/Budget_active.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-requestDetail__iconFinance-active {
+    background: url(../UI/Lists/Finance/Icons/Budget_active.png) no-repeat center;
+}

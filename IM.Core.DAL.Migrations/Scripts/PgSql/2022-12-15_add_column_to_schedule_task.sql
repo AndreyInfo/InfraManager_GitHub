@@ -1,0 +1,1 @@
+ALTER TABLE im.schedule_task ADD COLUMN IF NOT EXISTS last_run_at timestamp without time zone

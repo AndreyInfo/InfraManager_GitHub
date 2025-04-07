@@ -1,0 +1,7 @@
+﻿<div class="priority-table-wrap">
+    <!-- ko foreach: { data: $root.MenuItemsList, as: 'criticality' } -->
+    <span class="priority-wo-element" data-bind="css: { 'priority-wo-element-current' : $root.CheckCurrentItem(criticality) }, click: $root.SelectItem">
+        <span class="priority-wo-header" data-bind="text: Name"></span>
+    </span>
+    <!-- /ko -->
+</div>

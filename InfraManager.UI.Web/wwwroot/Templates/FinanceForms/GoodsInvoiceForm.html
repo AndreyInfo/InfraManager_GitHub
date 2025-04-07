@@ -1,0 +1,43 @@
+﻿<div data-bind="with: goodsInvoice">
+    <div class="invoice" data-bind="restext: 'GoodsInvoice'"></div>
+    <table class="invoice-table">
+        <colgroup>
+            <col span="1" style="width: 130px">
+            <col span="1">
+            <col span="1" style="width: 130px">
+            <col span="1">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td class="invoice-table-text" data-bind="restext: 'DocumentNumber'"></td>
+                <td class="invoice-table-control"><input class="invoice-table-control-input" type="text" data-bind="textInput: DocumentNumber, disable: !$root.CanEdit()" /></td>
+                <td class="invoice-table-text" data-bind="restext: 'Consignor'"></td>   
+            <td>
+                <div class ="invoice-table-control">
+                    <input class=" goodInvoiceSupplierSearcher" type="text" data-bind="value: ConsignorName, disable: !$root.CanEdit()" />
+                </div>
+            </td>
+            </tr>
+            <tr>
+                <td class="invoice-table-text" data-bind="restext: 'DateCreated'"></td>
+                <td class="invoice-table-control"><div class="invoice-date-created" data-bind="style: { 'pointer-events': $root.CanEdit() ? 'auto' : 'none' }" /></td>
+                <td class="invoice-table-text" data-bind="restext: 'Consignee'"></td>
+                <td>
+                <div class="invoice-table-control">
+                    <input class="goodInvoiceOrganizationSearcher" type="text" data-bind="value: ConsigneeName, disable: !$root.CanEdit()" />
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="invoice-table-text" data-bind="restext: 'GoodsInvoiceStorageLocation'"></td>
+                <td>
+                    <div class="invoice-table-control">
+                        <input class="goodInvoiceStorageLocationSearcher" type="text" data-bind="value: StorageLocationName, disable: !$root.CanEdit()" />
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="goods" data-bind="restext: 'GoodsSection'"> </div>
+    <div class="pu_specifications__b" data-bind="style: {height: $root.GoodsRegionHeight }, template: {name: 'FinanceForms/Controls/GoodsInvoiceSpecificationList',  data: { $control: $root.specificationsList, $mode: 'full' } }" />
+</div>

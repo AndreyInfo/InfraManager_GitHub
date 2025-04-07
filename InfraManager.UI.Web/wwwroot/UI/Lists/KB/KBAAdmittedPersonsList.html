@@ -1,0 +1,11 @@
+﻿<div class="kba-withFinishedWorkflowHeader-grey" data-bind="restext: 'KBAArticle'" />
+<div class="kba-withFinishedWorkflowHeader" data-bind="text: KBAArticleName" />
+<div class="kba-withFinishedWorkflowHeader-grey" data-bind="restext: 'KBA_AccessLevel'" />
+<div class="kba-withFinishedWorkflowHeader" data-bind="text: 'Доступ ограничен'" />
+<div class="kba-withFinishedWorkflowWrapper">
+    <b data-bind="restext: 'KBA_ListAdmittedPersons'" />
+</div>
+<div class="kbaList">
+    <div style="height: 100%; width: 80%; padding-left:30px; " data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'KBAAdmittedPersons', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false, multiSelect: false}"></div>
+    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+</div>

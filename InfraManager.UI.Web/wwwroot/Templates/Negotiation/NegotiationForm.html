@@ -1,0 +1,46 @@
+﻿<div class="negotiation-form-header">
+    <div class="negotiation-form-state" data-bind="click: StartNegotiation, css: { 'cursor-pointer': NotStarted }">
+        <div data-bind="css: StateImgClass"></div>
+        <div data-bind="text: StatusString"></div>
+    </div>
+    <div class="negotiation-form-header-main">
+        <div class="negotiation-form-header-firstrow">
+            <span class="negotiation-form-blue-header" data-bind="restext: 'Description'"></span>
+            <span class="negotiation-form-votecount-text"><span data-bind="text: VotedCount"></span></span>
+        </div>
+        <div class="negotiation-form-header-secondrow">
+            <input type="text" class="text-input negotiation-form-textinput" data-bind="value: Theme, valueUpdate: 'input', disable: (!NotStarted() || !CanEdit()), longNameTooltip: Theme">
+        </div>
+    </div>
+</div>
+<div class="negotiation-form-info">
+    <div class="negotiation-form-mode">
+        <span class="negotiation-form-blue-header" data-bind="restext: 'NegotiationMode'"></span>
+        <div class="negotiation-form-mode-dd combobox big" data-bind="combobox: { dataSource: getModeList }, comboboxValue: Mode, style: { 'pointer-events': CanEditDD() ? 'auto' : 'none' }"></div>
+    </div>
+    <div class="negotiation-form-dates">
+        <div class="negotiation-form-started">
+            <span data-bind="restext: 'NegotiationDateStart'"></span>
+            <span data-bind="text: UtcDateVoteStart"></span>
+        </div>
+        <div class="negotiation-form-ended">
+            <span data-bind="restext: 'NegotiationDateEnd'"></span>
+            <span data-bind="text: UtcDateVoteEnd"></span>
+        </div>
+    </div>
+</div>
+<div class="negotiation-form-users">
+    <div class="negotiation-form-users-header">
+        <span class="negotiation-form-blue-header"><span data-bind="restext: 'NegotiationUsers'"></span>:</span>
+        <!-- ko if: NotFinished -->
+        <span class="add-user-negotiation__button" data-bind="click: AddUserClick, visible: CanEdit()"></span>
+        <!-- /ko -->
+    </div>
+    <div class="negotiation-form__users-add"></div>
+    <div class="negotiation-form__users-list">
+        <!-- ko if: UserList().length == 0 -->
+        <center><div class="negotiation-form__users-list-empty" data-bind="restext: 'NegotiationNoUsers'"></div></center>
+        <!-- /ko -->
+        <div data-bind="template: { name: 'Negotiation/NegotiationUserList', data: {$userList: UserList, $actionContainer: $data, $extendedMode: true} }" />
+    </div>
+</div>

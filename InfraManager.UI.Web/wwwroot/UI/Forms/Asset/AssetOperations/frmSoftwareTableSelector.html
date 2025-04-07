@@ -1,0 +1,11 @@
+﻿<div class="frmSoftwareTableSelector">
+   <div class="container-fluid">
+        <div class="col-lg-12">
+            <input class="text-input searcherInput" type="text"  data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, event: { keypress: SearchKeyPressed }">
+            <div class="searchText" data-bind="click: EraseTextClick, visible: !IsSearchTextEmpty()"></div>
+        </div>
+        <div class="col-lg-12 tableData">
+            <div class="list" data-bind="template: {name: './../UI/Forms/Asset/Controls/SoftwareLicenceList'}" />
+        </div>
+   </div>
+</div>

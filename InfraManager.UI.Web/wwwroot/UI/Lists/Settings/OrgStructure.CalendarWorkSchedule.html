@@ -1,0 +1,7 @@
+﻿<div class="orgstructure-schedule" data-bind="with: Schedule(), afterUpdateBlock: function () { return Schedule() && Schedule().AfterRender(); }">
+    <div class="orgstructure-text-with-header">
+        <span class="orgstructure-text-header" data-bind="restext: 'OrgStructureCalendarWorkScheduleTitle'"></span>
+        <span class="orgstructure-text" data-bind="text: ScheduleName, visible: !IsEditable()"></span>
+        <div class="orgstructure-scheduleSelector" data-bind="visible: IsEditable"></div>
+    </div>
+</div>

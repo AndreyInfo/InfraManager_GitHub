@@ -1,0 +1,163 @@
+﻿<div class="tabPage assetForm pad" data-bind="with: tabActive, afterUpdateBlock: tabActive().afterRender">
+    <div class="network-device-mainTab-left-side">
+        <div class="network-device-characteristics">
+            <div class="im-big-header">
+                <span data-bind="restext: 'Purchase'"></span>
+                <span data-bind="css: IsPurchaseContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: TogglePurchaseContainer, tooltip: IsPurchaseContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+            </div>
+            <table class="network-device-table-margineTop table-fixed" data-bind="visible: IsPurchaseContainerVisible">
+                <tbody>
+                    <tr>
+                        <td class="network-device-table-row"><span data-bind="restext:'AssetFields_PurchaseDate'" /></td>
+                        <td class="network-device-table-editable-row">
+                            <input type="text" class="asset-text-field dateReceived" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: AssetFields().DateReceivedString" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_SupplierName'" /></td>
+                        <td class="network-device-table-editable-row">
+                            <input type="text" class="supplier asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: AssetFields().SupplierName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row"><span data-bind="restext:'AssetFields_Cost'" /></td>
+                        <td class="network-device-table-editable-row">
+                            <input type="text" class="cost asset-text-field" data-bind="value: AssetFields().Cost" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row"><span data-bind="restext: 'AssetNumber_Agreement'" /></td>
+                        <td class="network-device-table-editable-row">
+                            <input type="text" class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: AssetFields().Document" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="network-device-characteristics">
+            <div class="im-big-header">
+                <span data-bind="restext: 'AssetFields_Owning'"></span>
+                <span data-bind="css: IsOwnerContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleOwnerContainer, tooltip: IsOwnerContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+            </div>
+            <table class="network-device-table-margineTop table-fixed" data-bind="visible: IsOwnerContainerVisible">
+                <tbody>
+                    <tr>
+                        <td class="network-device-table-row "><span data-bind="restext:'AssetNumber_OwnerName'" /></td>
+                        <td class="network-device-table-editable-row">
+                            <input type="text" class="owner asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: AssetFields().OwnerFullName" />
+                            <!--<div data-bind="template: { name: 'User/FormUser', if: OwnerLoaded(), data: Owner }"></div>
+                            <div data-bind="template: { name: 'User/FormUserEmpty', if: !OwnerLoaded(), data: Owner }"></div>-->
+                        </td>
+                    </tr>
+                    <tr data-bind="if: $root.object().ShowUtilizer()">
+                        <td class="network-device-table-row "><span style="position: relative;" data-bind="restext:'AssetNumber_UtilizerName'" /></td>
+                        <td class="network-device-table-editable-row">
+                            <input type="text" class="utilizer asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: $root.object().UtilizerFullName" />
+                            <!--<div data-bind="template: { name: 'User/FormUser', if: $root.asset().UtilizerLoaded(), data: $root.asset().Utilizer }"></div>
+                            <div data-bind="template: { name: 'User/FormUserEmpty', if: !$root.asset().UtilizerLoaded(), data: $root.asset().Utilizer }"></div>-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="network-device-characteristics">
+            <div class="im-big-header">
+                <span data-bind="restext: 'AssetFields_Sevice'"></span>
+                <span data-bind="css: IsServiceContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleServiceContainer, tooltip: IsServiceContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+            </div>
+            <table class="network-device-table-margineTop table-fixed" data-bind="visible: IsServiceContainerVisible">
+                <tbody>
+                    <tr>
+                        <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_Warranty'" /></td>
+                        <td class="network-device-table-editable-row">
+                            <input type="text" class="warranty asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: AssetFields().WarrantyString" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_SupplierName'" /></td>
+                        <td class="network-device-table-editable-row">
+                            <input type="text" class="serviceCenter asset-text-field" style="padding-left:7px;padding-right:7px;" data-bind="resattr: { placeholder : 'ChooseNewValue' },  value: AssetFields().ServiceCenterName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_ServiceContractNumber'" /></td>
+                        <td class="network-device-table-editable-row">
+                            <input type="text" class="serviceContract asset-text-field" style="padding-left:7px;padding-right:7px;" data-bind="resattr: { placeholder : 'ChooseNewValue' },  value: AssetFields().ServiceContractNumber" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="network-device-mainTab-right-side">
+        <div class="network-device-code-header">
+            <div class="im-big-header">
+                <span data-bind="restext: 'AssetFields_Inventorization'"></span>
+                <span data-bind="css: IsInventorizationContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleInventorizationContainer, tooltip: IsInventorizationContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+            </div>
+            <div data-bind="visible: IsInventorizationContainerVisible()">
+                <table class="network-device-table-margineTop table-fixed">
+                    <tbody>
+                        <tr>
+                            <td class="network-device-table-row"><span data-bind="restext:'Repair_InventoryNumber'" /></td>
+                            <td class="network-device-table-editable-row">
+                                <input type="text" class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: $root.object().InventoryNumber" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="network-device-header-text" data-bind="restext: 'AssetNumber_UserName'" />
+                <table class="network-device-table-margineTop table-fixed">
+                    <tbody>
+                        <tr>
+                            <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_UserName'" /></td>
+                            <td class="network-device-table-editable-row">
+                                <input type="text" class="materialResponse asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: AssetFields().UserFullName" />
+                                <!--<div data-bind="template: { name: 'User/FormUser', if: UserLoaded(), data: User }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !UserLoaded(), data: User }"></div>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="network-device-table-row"><span data-bind="restext:'AssetNumber_Founding'" /></td>
+                            <td class="network-device-table-editable-row">
+                                <input type="text" class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: AssetFields().Founding" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="network-device-table-row"><span data-bind="restext:'AssetFields_AppointmentDate'" /></td>
+                            <td class="network-device-table-editable-row">
+                                <input type="text" class="appointmentDate asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value: AssetFields().AppointmentDateString" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- ko if: AssetFields().UserFieldList().length != 0 -->
+            <div class="im-big-header" style="white-space: nowrap;overflow: hidden;margin-top:10px;">
+                <span data-bind="restext: 'UserFieldsGroupName'"></span>
+                <span data-bind="css: IsUserFieldsContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleUserFiedlsContainer, tooltip: IsUserFieldsContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+            </div>
+            <div data-bind="visible: IsUserFieldsContainerVisible()">
+                <table class="network-device-table-margineTop table-fixed">
+                    <tbody>
+                        <!-- ko foreach: AssetFields().UserFieldList -->
+                        <tr>
+                            <td class="network-device-table-row"><span data-bind="text:FieldName" /></td>
+                            <td class="network-device-table-editable-row">
+                                <input type="text" class="asset-text-field" maxlength="255" data-bind="resattr: { placeholder : 'FilterEnterValue' }, value:Value" />
+                            </td>
+                        </tr>
+                        <!--<tr>
+                    <td class="network-device-table-row"><span data-bind="text:Name" /></td>
+                    <td class="network-device-table-editable-row" data-bind="foreach: $data.Editors">
+                        <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text:$data.GetValueString, click: function() { ShowEditor($root.assetFields.AssetFields().ClassID()); }" />
+                    </td>
+                </tr>-->
+                        <!-- /ko -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

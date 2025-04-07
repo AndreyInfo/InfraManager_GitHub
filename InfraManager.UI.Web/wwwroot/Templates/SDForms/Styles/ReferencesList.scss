@@ -1,0 +1,31 @@
+﻿.references-wrapper {
+    padding-left: 16px;
+
+    & .im-big-header {
+        margin-bottom: 22px;
+
+        &__title {
+            margin-right: 8px;
+        }
+    }
+
+    &__action {
+        background: none;
+    }
+}
+
+.references-wrapper-table {
+    padding: 16px;
+    height: 100%;
+}
+
+.references-new-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+
+    &_link {
+        mask-image: url(/images/SDForms/references/link.svg);
+        -webkit-mask-image: url(/images/SDForms/references/link.svg);
+    }
+}

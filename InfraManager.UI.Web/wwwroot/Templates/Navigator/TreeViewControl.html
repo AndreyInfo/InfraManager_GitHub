@@ -1,0 +1,14 @@
+<div>
+    <div class="treeControlWrapper">
+        <div class="treeControlHeader treeControlHeader-default" data-bind="click: CollapseExpandHeader">
+            <div class="treeControlHeader-text" data-bind="text: Caption"></div>
+            <div class="treeControlHeader-icon" data-bind="css: { 'expanded': HeaderExpanded }"></div>
+        </div>
+        <div data-bind="visible: HeaderExpanded">
+            <div data-bind="if: FilterType">
+                <div class="combobox" data-bind="combobox: { dataSource: FilterType.getOrgDDList }, comboboxValue: FilterType.SelectedValue"></div>
+            </div>
+            <div class="treeControlItems" data-bind="template: { name: '../Templates/TristateTreeView/TreeNode', foreach: Tree.nodes }, visible: IsShowTree"></div>
+        </div>
+    </div>
+</div>

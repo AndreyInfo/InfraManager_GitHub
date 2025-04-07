@@ -1,0 +1,51 @@
+﻿<div class="asset-operations-header">
+    <div class="asset-operation-border asset-operations-mainTab-parameters" data-bind="click:mainClick, css: mode() == modes.main ? 'acc-tab-active' : 'acc-tab' ">
+        <div data-bind="restext:'TabPage_Parameters'"></div>
+    </div>
+    <div class="asset-operation-border asset-operations-mainTab-links" data-bind="click:linksClick, css: mode() == modes.links ? 'acc-tab-active' : 'acc-tab' ">
+        <div data-bind="text:TabLinksCaption"></div>
+    </div>
+</div>
+<div class="asset-operations-params-tab asset-operation-border-top" data-bind="visible: mode() == modes.main">
+    <div class="assetReg-dataBlock">
+
+        <div class="assetReg-locationHeader" data-bind="restext:'GoodsInvoiceStorageLocation', visible: ObjectsHasLogical() == false" />
+        <div class="assetReg-locationControl" data-bind="visible: ObjectsHasLogical() == false">
+            <input type="text" class="searcherInput assetReg-storage" data-bind="textInput: StorageName, longNameTooltip: StorageName, disable: !StorageLocationEnabled()" />
+        </div>
+
+        <div class="assetReg-locationHeader required" data-bind="restext:'LocationCaption', visible: ObjectsHasLogical() == false" />
+        <div class="assetReg-locationControl" data-bind="visible: ObjectsHasLogical() == false">
+            <input type="text" class="searcherInput assetReg-location" data-bind="textInput: LocationFullName, longNameTooltip: LocationFullName, resattr: { placeholder : 'ChooseNewValue' }" />
+        </div>
+
+        <div class="assetReg-ownerHeader" data-bind="restext:'Owner'" />
+        <div class="assetReg-ownerControl combobox" data-bind="combobox: { dataSource: getOwnerComboItems }, comboboxValue: selectedOwner" />
+
+        <div class="assetReg-mResponsible">
+            <div data-bind="template: { name: 'User/FormUser', if: UserLoaded(), data: User }"></div>
+            <div class="hideUserIcon" data-bind="template: { name: 'User/FormUserEmpty', if: !UserLoaded(), data: User }"></div>
+        </div>
+
+        <div class="assetReg-foundingHeader" data-bind="restext:'AssetRegistrationFounding'" />
+        <input class="assetReg-foundingText" type="text" maxlength="250" data-bind="textInput: founding, resattr: {placeholder : 'FilterEnterValue'}" />
+
+        <div>
+            <input class="assetReg-invNumber-checkbox" type="checkbox" data-bind="checked: setAssetInvNumber, css: {'ajaxElement' : ObjectsHasMaterail}">
+            <span data-bind="restext:'AssetRegistrationGenerateInvNumber', css: {'ajaxElement' : ObjectsHasMaterail}"></span>
+        </div>
+
+        <div>
+            <input class="assetReg-invNumber-checkbox" type="checkbox" data-bind="checked: setAssetCode, css: {'ajaxElement' : ObjectsHasMaterail}">
+            <span data-bind="restext:'AssetRegistrationGenerateCode', css: {'ajaxElement' : ObjectsHasMaterail}"></span>
+        </div>
+
+        <div>
+            <input class="assetReg-invNumber-checkbox" type="checkbox" data-bind="checked: printReport">
+            <span data-bind="restext:'Asset_PrintReport'"></span>
+        </div>
+    </div>
+</div>
+<div class="device-list-tab asset-operation-border-top" data-bind="visible: mode() == modes.links">
+    <div class="links__b" data-bind="visible: mode() == modes.links, template: {name: 'SDForms/Controls/LinkList', data: { $serviceButtonVisible: true, $control: $root.linkList } }" />
+</div>

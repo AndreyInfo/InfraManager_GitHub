@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX if not exists ui_parameter_enum_name on parameter_enum(name);

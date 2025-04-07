@@ -1,0 +1,37 @@
+﻿<div class="al-list-choosen modelLink-ChoosenList">
+    <table class="imList-table" data-bind="visible: ChoosenObjectsList().length > 0">
+        <colgroup>
+            <col style="width: 38px" />
+            <col span="7" style="width: 180px" />
+            <col style="width: 200px" />
+        </colgroup>
+        <thead>
+            <tr class="imList-tableHeaderRow">
+                <th class="imList-tableHeaderCheckBox">
+                    <!--<input class="b-content-table__th-checkbox" type="checkbox" data-bind="click: SelectAllClick" />-->
+                </th>
+                <th data-bind="restext: 'ActivesRequestSpecification_Model'"></th>
+                <th data-bind="restext: 'ProductCatalogueModel_TypeName'"></th>
+                <th data-bind="restext: 'GoodsInvoiceNumber'"></th>
+                <!--<th data-bind="restext: 'ActivesRequestNumber'"></th>-->
+                <th data-bind="restext: 'CountValue'"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: ChoosenObjectsList -->
+            <tr class="imList-tableRow">
+                <td class="imList-tableCheckBox">
+                    <input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected" />
+                </td>
+                <td data-bind="text: ModelName, click: $parent.ShowForm"></td>
+                <td data-bind="text: TypeName"></td>
+                <td data-bind="text: GoodsInvoiceNumber"></td>
+                <!--<td data-bind="text: ActivesRequestNumber"></td>-->
+                <td data-bind="template: { afterRender: OnRender }">
+                    <input type="text" class="imList-slider-TextField" data-bind="value: Count, valueUpdate: 'input'" />
+                </td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</div>

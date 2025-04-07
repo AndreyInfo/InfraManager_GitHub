@@ -1,0 +1,7 @@
+ALTER TABLE IF EXISTS im.service_catalogue_import_csv_configuration_concordance DROP CONSTRAINT IF EXISTS fk_service_catalogue_import_csv_configuration_concordance_servi;
+
+ALTER TABLE service_catalogue_import_csv_configuration_concordance
+ADD CONSTRAINT fk_service_catalogue_import_csv_configuration_concordance_servi
+FOREIGN KEY (service_catalogue_import_csv_configuration_id)
+REFERENCES service_catalogue_import_csv_configuration(id)
+ON DELETE CASCADE ON UPDATE NO ACTION; 

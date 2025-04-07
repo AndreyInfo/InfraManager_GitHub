@@ -1,0 +1,135 @@
+﻿<div class="b-requestDetail im-base-text">
+    <div class="b-requestDetail-left">
+        <div class="b-requestDetail-menu clearfix">
+            <div class="b-requestDetail-menu__item b-requestDetail-menu__priority left">
+                <div class="priority-header" data-bind="tooltip: getTextResource('ProblemPriority')">
+                    <span data-bind="text: PriorityName"></span>
+                    <span class="priority-expander"></span>
+                </div>
+                <span class="priority-panel" data-bind="stopBinding: true"></span>
+            </div>
+        </div>
+        <div class="fieldPair b-requestDetail__title-header">
+            <div class="icon fieldProblemSummary active" data-bind="click: EditSummary, tooltip: getTextResource('Summary')"><span></span></div>
+            <div class="editor big">
+                <input type="text" class="border bigField im-big-header firstFocus" maxlength="500" data-bind="textInput: Summary, longNameTooltip: Summary, attr: { placeholder: getTextResource('PromptProblemSummary') }, css: {'invalid' : Summary().length == 0}" />
+            </div>
+        </div>
+        <div class="b-requestDetail__tabsContainer">
+            <div class="b-requestDetail__mainParameters" data-bind="visible: mode() == modes.main">
+                <div class="horizontalContainer">
+                    <div class="horizontalContainer-leftPart">
+                        <div class="b-requestDetail__descr im-big-header"><span data-bind="restext: 'Description'"></span><span data-bind="css: IsDescriptionContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleDescriptionContainer, tooltip: IsDescriptionContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span></span></span></div>
+                        <div data-bind="visible: IsDescriptionContainerVisible">
+                            <div class="fieldPair">
+                                <div class="icon fieldDescription active" data-bind="click: EditDescription, tooltip: getTextResource('Description')"><span /></div>
+                                <div class="editor border fill html slide description" style="padding:2px;"></div>
+                                <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')"></div>
+                            </div>
+                            <div class="fieldPair">
+                                <div class="icon b-requestDetail__files-addBtn active"><span></span></div>
+                                <div class="editor b-requestDetail__files documentList"></div>
+                            </div>
+                        </div>
+                        <!--User Fields-->
+                        <div class="b-requestDetail__descr im-big-header">
+                            <span data-bind="restext: 'UserFieldsGroupName'"></span><span data-bind="css: IsUserFieldsContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleUserFieldsContainer, tooltip: IsUserFieldsContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span></span></span>
+                            <div data-bind="visible: IsUserFieldsContainerVisible">
+                                <div class="form-user-fields-block">
+                                    <div data-bind="template: { name: 'SDForms/Controls/UserFields', if: UserFields() && UserFieldsLoaded(), data: UserFields, afterRender: AfterRender }"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!---->
+                    </div>
+                    <div class="horizontalContainer-rightPart">
+                        <div class="fieldPair">
+                            <div class="icon fieldProblemType active" data-bind="click: EditProblemType, tooltip: getTextResource('ProblemType')"><span></span></div>
+                            <div class="editor nowrap fill combobox problemType" data-bind="combobox: { dataSource: ProblemTypeHelper.getItemList, placeholder: getTextResource('ProblemType') }, comboboxValue: ProblemTypeHelper.SelectedItem, css: {'invalid' : ProblemTypeHelper.SelectedItem() == null }"></div>
+                        </div>
+                        <div class="fieldPair">
+                            <div
+                                 class="icon fieldService active" 
+                                 data-bind="click: EditServiceItemAttendance, tooltip: getTextResource('Service')"
+                             >
+                                <span></span>
+                            </div>
+                            <div class="editor general">
+                                <input 
+                                    type="text" 
+                                    class="border searcherInput serviceItemAttendance" 
+                                    data-bind="textInput: ServiceItemAttendanceFullName, 
+                                       longNameTooltip: ServiceItemAttendanceFullName, 
+                                       attr: { placeholder: getTextResource('PromptServiceItem') }, 
+                                       css: {'invalid' : ServiceItemAttendanceFullName().length == 0}" />
+                            </div>
+                        </div>
+                        <div class="b-requestDetail__table">
+                            <div class="form-users-block">
+                                <div data-bind="template: { name: 'User/FormUser', if: Initiator() && InitiatorLoaded(), data: Initiator }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Initiator() && !InitiatorLoaded(), data: Initiator }"></div>
+
+                                <div data-bind="template: { name: 'User/FormUser', if: Owner() && OwnerLoaded(), data: Owner }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Owner() && !OwnerLoaded(), data: Owner }"></div>
+
+                                <div data-bind="template: { name: 'User/FormUser', if: Queue() && QueueLoaded(), data: Queue }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Queue() && !QueueLoaded(), data: Queue }"></div>
+
+                                <div data-bind="template: { name: 'User/FormUser', if: Executor() && ExecutorLoaded(), data: Executor }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Executor() && !ExecutorLoaded(), data: Executor }"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="b-requestDetail__descr im-big-header"><span data-bind="restext: 'Cause'"></span><span data-bind="css: IsCauseContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleCauseContainer, tooltip: IsCauseContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span></span></span></div>
+                <div data-bind="visible: IsCauseContainerVisible">
+                    <div class="fieldPair">
+                        <div class="icon fieldShortCause active" data-bind="click: EditShortCause, tooltip: getTextResource('ShortCause')"><span></span></div>
+                        <div class="editor fill combobox shortCause" data-bind="combobox: { dataSource: ProblemCauseHelper.getItemList, placeholder: getTextResource('ShortCause') }, comboboxValue: ProblemCauseHelper.SelectedItem"></div>
+                    </div>
+                    <div class="fieldPair">
+                        <div class="icon fieldCause active" data-bind="click: EditCause, tooltip: getTextResource('Cause')"><span></span></div>
+                        <div class="editor border fill html slide cause" style="padding:2px;"></div>
+                        <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')"></div>
+                    </div>
+                </div>
+
+                <div class="b-requestDetail__descr im-big-header"><span data-bind="restext: 'Solution'"></span><span data-bind="css: IsSolutionContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: ToggleSolutionContainer, tooltip: IsSolutionContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span></span></span></div>
+                <div data-bind="visible: IsSolutionContainerVisible">
+                    <div class="fieldPair">
+                        <div class="icon fieldAlternariveSolution active" data-bind="click: EditFix, tooltip: getTextResource('Fix')"><span></span></div>
+                        <div class="editor">
+                            <div class="im-blue-text" data-bind="restext: 'Fix'"></div>
+                            <div class="editor border fill html slide fix" style="padding:2px;"></div>
+                            <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')"></div>
+                        </div>
+                    </div>
+                    <div class="fieldPair">
+                        <div class="icon fieldSolution active" data-bind="click: EditSolution, tooltip: getTextResource('Solution')"><span></span></div>
+                        <div class="editor border fill html slide solution" style="padding:2px;"></div>
+                        <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')"></div>
+                    </div>
+                </div>
+            </div>
+            <!--ko foreach: DynamicOptionsService.FormTabs -->
+            <div data-bind="visible: $parent.mode() == $parent.modes.parameterPrefix + $data.Tab.ID,
+                 template: {name: './Shared/DynamicOptionsService/Index', afterRender: $parent.DynamicOptionsService.AfterRender }">
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    <div class="b-requestDetail-right">
+        <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.main); }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : mode() != modes.main, 'b-requestDetail__icon1-active' : mode() == modes.main }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabGeneral'"></div>
+        </div>
+
+        <!--ko foreach: DynamicOptionsService.FormTabs -->
+        <div class="b-requestDetail__icon-wrap b-requestDetail__tab dynamic-options-icon-wrap" data-bind="click: $parent.SetTab.bind($data), css: {'dynamic-options-icon-wrap_active': $parent.mode() == $parent.modes.parameterPrefix + $data.Tab.ID}">
+            <a class="dynamic-options-icon" data-bind="text: $index() + 1"></a>
+            <div class="b-content-table__workplaceIcon-header dynamic-options-icon-title" data-bind="text: $data.Tab.Name"></div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

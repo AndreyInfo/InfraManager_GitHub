@@ -1,0 +1,213 @@
+﻿<div class="mainTimeSheetWrapper h100" data-bind="with: TimeSheet">
+    <div class="h100" data-bind="with: Model, afterUpdateBlock: ModelAfterRender">
+        <div class="ts-general f-big f-bold mb10">
+            <div class="ts-first">
+                <div class="ts-user" data-bind="if: UserInfo() != null">
+                    <div class="ts-userInfo" data-bind="template: { name: 'User/SimpleUser', data: UserInfo }" />
+                </div>
+                <div class="ts-period">
+                    <span data-bind="restext: 'TM_PeriodCaption'" />
+                    <span class="ml10" data-bind="text: IntervalName" />
+                    <div class="ml10 leftArrow" data-bind="click: $parent.PreviousTimeSheetClick, enable: $parent.Model() != null" />
+                    <span data-bind="text: DateIntervalString" />
+                    <div class="rightArrow" data-bind="click: $parent.NextTimeSheetClick, enable: $parent.Model() != null" />
+                </div>
+                <div class="ts-state">
+                    <div class="combobox" data-bind="combobox: { dataSource: getStateList }, comboboxValue: SelectedState" />
+                </div>
+                <div class="ts-norm">
+                    <div class="c-gray">
+                        <span data-bind="restext: 'TM_ManhoursNormCaption'" />
+                        <span class="ml10" data-bind="text: ManhoursNormString" />
+                        <span class="ml10" data-bind="restext: 'TM_Hours'" />
+                    </div>
+                    <div class="ts-summary">
+                        <span data-bind="restext: 'TM_TotalManhoursCaption'" />
+                        <span class="ml10 c-blue" data-bind="text: TotalManhoursByDaysString, css: {'c-orange' : TotalManhoursByDaysInMinutes() > ManhoursNormInMinutes}"></span>
+                        <span class="ml10" data-bind="restext: 'TM_Hours'" />
+                    </div>
+                </div>
+            </div>
+            <div class="ts-second">
+                <div class="ts-search" data-bind="visible: SheetMode">
+                    <input type="text" class="text-input searcherInput" data-bind="textInput: SearcherText, resattr: {placeholder : 'SearchEmpty'}, event: {keyup: OnEnter}" />
+                </div>
+            </div>
+        </div>
+        <span class="f-italic f-bold c-blue txt-btn" data-bind="click: ShowComments, visible: SheetMode() == true">
+            <span data-bind="restext: 'TM_Notes'"></span> <span data-bind="text: TotalUnreadedMessagesString, visible: TotalUnreadedMessages() > 0"></span>  
+        </span>
+        <span class="f-italic f-bold c-blue txt-btn" data-bind="restext: 'TM_TimeSheet', click: ShowSheet, visible: SheetMode() == false" />
+        <div class="ts-third" data-bind="visible: SheetMode() == true">
+            <span class="ts-filterItem">
+                <input type="checkbox" data-bind="checked: $parent.Filter_ShowTemplates" />
+                <span data-bind="restext: 'TM_TimeSheet_FilterTemplates'" />
+            </span>
+            <span class="ts-filterItem">
+                <input type="checkbox" data-bind="checked: $parent.Filter_ShowWorksWithManhours" />
+                <span data-bind="restext: 'TM_TimeSheet_FilterWorks'" />
+            </span>
+            <span class="ts-filterItem">
+                <input type="checkbox" data-bind="checked: $parent.Filter_ShowWorksWithoutManhours" />
+                <span data-bind="restext: 'TM_TimeSheet_FilterWorksWithoutManhours'" />
+            </span>
+            <span class="ts-filterItem">
+                <input type="checkbox" data-bind="checked: $parent.Filter_ShowCalls" />
+                <span data-bind="restext: 'Calls'" />
+            </span>
+            <span class="ts-filterItem">
+                <input type="checkbox" data-bind="checked: $parent.Filter_ShowWorkOrders" />
+                <span data-bind="restext: 'WorkOrders'" />
+            </span>
+            <span class="ts-filterItem">
+                <input type="checkbox" data-bind="checked: $parent.Filter_ShowProblems" />
+                <span data-bind="restext: 'Problems'" />
+            </span>
+            <span class="ts-filterItem">
+                <input type="checkbox" data-bind="checked: $parent.Filter_ShowProjects" />
+                <span data-bind="restext: 'Projects'" />
+            </span>
+            <span class="ts-filterItem">
+                <input type="checkbox" data-bind="checked: $parent.Filter_ShowAllMy" />
+                <span data-bind="restext: '_PROB_ALLMY_'" />
+            </span>
+        </div>
+        <div class="ts-tableHeader" data-bind="if: SheetMode">
+            <table class="ts-table mt20" border="1" data-bind="style: {'min-width' : $parent.TableMinWidth() + 'px'}">
+                <colgroup>
+                    <col class="th-checkBox" />
+                    <col class="th-linkIcon" />
+                    <col class="th-linkNumber" />
+                    <col class="th-description" />
+                    <!-- ko foreach: DayList -->
+                    <col class="th-date" />
+                    <!-- /ko -->
+                    <col class="th-total" />
+                </colgroup>
+                <thead>
+                    <tr class="f-bold">
+                        <th rowspan="2">
+                            <input type="checkbox" data-bind="click: CheckAllItems" />
+                        </th>
+                        <th rowspan="2" colspan="2">
+                            <span class="f-bold" data-bind="restext: 'TM_LinkCaption'" />
+                        </th>
+                        <th rowspan="2">
+                            <span class="f-bold" data-bind="restext: 'TM_ManhoursDescription'" />
+                        </th>
+                        <!-- ko foreach: DayList -->
+                        <th data-bind="css: {holiday : $data.ManhoursNormInMinutes == 0 }">
+                            <span class="f-bold c-blue" data-bind="text: DateString" />
+                        </th>
+                        <!-- /ko -->
+                        <th>
+                            <span class="f-bold c-blue" data-bind="restext: 'TM_Total'" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <!-- ko foreach: DayList -->
+                        <th data-bind="css: { 'holiday' : $data.ManhoursNormInMinutes == 0 }">
+                            <span class="c-blue" data-bind="text: ManhoursInMinutesString, css: {'c-orange' : ManhoursNormInMinutes < ManhoursInMinutes()}" /> / <span class="c-gray" data-bind="text: ManhoursNormString" />
+                        </th>
+                        <!-- /ko -->
+                        <th>
+                            <span class="c-blue" data-bind="text: TotalManhoursByDaysString, css: {'c-orange' : ManhoursNormInMinutes < TotalManhoursByDaysInMinutes()}" /> / <span class="c-gray" data-bind="text: ManhoursNormString" />
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="table-scroll" data-bind="css: {'mt20' : SheetMode() == false}, event: { scroll: $parent.OnScroll }">
+            <div class="ts-comments" data-bind="ifnot: SheetMode(), visible: !SheetMode()">                
+                <div class="ts-comments-list">
+                    <!-- ko if: NotesList().length == 0 -->
+                    <center><span class="ts-note-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+                    <!-- /ko -->
+                    <!-- ko foreach: NotesList -->
+                    <div class="ts-note" data-bind="style: { background: IsReaded() ? '' : '#e5f6fe' }, event: { mouseover: $parent.OnMouseOverMessage }">
+                        <div class="avatar ts-note__avatar">
+                            <img src="/images/person_empty.png">
+                        </div>
+                        <div class="ts-note__text" data-bind="html: HTMLNote"></div>
+                        <div class="ts-note__info">
+                            <span class="ts-note__user" data-bind="text: UserFullName"></span>
+                            <span class="ts-note__date" data-bind="text: LocalDate"></span>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="ts-comments-editor">
+                    <div class="ts-forms__i">
+                        <div class="text-input htmlEditor-extensionContainer ts-forms__editor" />
+                    </div>
+                    <div class="ts-forms__button">
+                        <button class="button button_size_L button_type_action" data-bind="click: $parent.AddNote"><span class="button__label" data-bind="restext: 'Add'"></span></button>
+                    </div>
+                </div>
+            </div>
+            <div data-bind="if: SheetMode">
+                <table class="ts-table" border="1" data-bind="style: {'min-width' : $parent.TableMinWidth() + 'px'}">
+                    <colgroup>
+                        <col class="th-checkBox" />
+                        <col class="th-linkIcon" />
+                        <col class="th-linkNumber" />
+                        <col class="th-description" />
+                        <!-- ko foreach: DayList -->
+                        <col class="th-date" />
+                        <!-- /ko -->
+                        <col class="th-total" />
+                    </colgroup>                   
+                    <tbody data-bind="foreach: {data: $parent.VisibleItemList, afterRender: $parent.ModelAfterRender}">
+                        <tr data-bind="click: $root.TimeSheet().RowClick, css: {'c-gray' : IsTemplate == true, 'active' : Checked() == true}">
+                            <td>
+                                <input type="checkbox" data-bind="checked: Checked, clickBubble: false" />
+                            </td>
+                            <!-- ko if: IsTemplate == false -->
+                            <td class="ts-norightborder">
+                                <div data-bind="css: $root.TimeSheet().GetTimeSheetObjectCss($data)" />
+                            </td>
+                            <td class="ts-noleftborder">
+                                <span data-bind="text: LinkObjectNumber" />
+                            </td>
+                            <!-- /ko -->
+                            <td class="tr-description" data-bind="tooltip: ObjectFullName, attr: {'colspan' : IsTemplate == true ? 3 : 1}">
+                                <span data-bind="text: ObjectFullName" />
+                            </td>
+                            <!-- ko foreach: DayList -->
+                            <td data-bind="if: ManhoursInMinutes() > 0 || $root.TimeSheet().EditableCalendarItemDay() == $data, css: {'holiday' : ManhoursNormInMinutes() == 0, 'ts-itemDay' : $root.TimeSheet().CanEdit() == true && $parent.IsTemplate == false, 'edit' : $root.TimeSheet().EditableCalendarItemDay() == $data}, click: $root.TimeSheet().CellMouseClick, clickBubble: false">
+                                <span data-bind="text: ManhoursInMinutesString, css: {'c-orange' : ManhoursNormInMinutes() < ManhoursInMinutes() }, visible: $root.TimeSheet().EditableCalendarItemDay() != $data" />
+                                <input type="text" data-bind="textInput: $root.TimeSheet().EditableCellText, visible: $root.TimeSheet().EditableCalendarItemDay() == $data, event: { keydown: $root.TimeSheet().CellKeyDown }" />
+                            </td>
+                            <!-- /ko -->
+                            <td data-bind="if: TotalManhoursByDaysInMinutes() > 0">
+                                <span data-bind="text: TotalManhoursByDaysString, css: {'c-orange' : TimeSheet.ManhoursNormInMinutes < TotalManhoursByDaysInMinutes()}" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="ui-dialog-buttonset" data-bind="visible: SheetMode() == true && $parent.CanChangeTable() == true">
+            <button type="button" class="ui-button ui-button-text-only mv20" data-bind="click: $parent.cmd_AddWork, visibleOperation: $parent.CanEdit() && $parent.SelectedItems().length == 0, operationID: 314">
+                <span class="ui-button-text" data-bind="restext: 'TM_TimeSheet_AddWork'" />
+            </button>
+            <button type="button" class="ui-button ui-button-text-only mv20" data-bind="click: $parent.cmd_AddWorkAs, visibleOperation: $parent.CanEdit() && $parent.SelectedItems().length == 1, operationID: 314">
+                <span class="ui-button-text" data-bind="restext: 'TM_TimeSheet_AddWorkAs'" />
+            </button>
+            <button type="button" class="ui-button ui-button-text-only mv20" data-bind="click: $parent.cmd_RemoveWork, visibleOperation: $parent.CanEdit() && $parent.SelectedItems().length > 0, operationID: 316">
+                <span class="ui-button-text" data-bind="restext: 'TM_TimeSheet_RemoveWork'" />
+            </button>
+            <button type="button" class="ui-button ui-button-text-only mv20" data-bind="click: $parent.cmd_OpenWork, visibleOperation: $parent.SelectedItems().length == 1, operationID: 317">
+                <span class="ui-button-text" data-bind="restext: 'TM_TimeSheet_OpenWork'" />
+            </button>
+            <button type="button" class="ui-button ui-button-text-only mv20" data-bind="click: $parent.cmd_OpenObject, visible: $parent.SelectedItems().length == 1">
+                <span class="ui-button-text" data-bind="restext: 'TM_TimeSheet_OpenObject'" />
+            </button>
+            <!-- ko if: UserInfo() != null -->
+            <button type="button" class="ui-button ui-button-text-only mv20 right" data-bind="click: $parent.BackToTimeSheetTotalClick">
+                <span class="ui-button-text" data-bind="restext: 'TM_ButtonBackToTimeSheetTotal'" />
+            </button>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

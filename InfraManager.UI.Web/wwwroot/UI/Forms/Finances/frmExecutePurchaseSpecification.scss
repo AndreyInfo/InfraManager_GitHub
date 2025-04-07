@@ -1,0 +1,47 @@
+﻿@import "../../../Styles/general";
+
+.frmExecutePurchaseSpecification {
+    overflow: hidden;
+    position: relative;
+    display: table;
+    width: 100%;
+    padding: 10px 20px;
+
+    .fieldCaption {
+        color: $gray-text-color;
+        font-size: 11px;
+    }
+
+    .fieldControl {
+        margin-bottom: 10px;
+        position: relative;
+        overflow: auto;
+        word-break: break-word;
+        display: block;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.border {
+            border: 1px solid $border-gray-color;
+            line-height: 26px;
+
+            &.combobox > .control {
+                border: none;
+            }
+        }
+
+        &.bold {
+            font-weight: bold;
+        }
+
+        &.combobox {
+            width: initial;
+
+            input {
+                outline: none;
+            }
+        }
+    }
+}

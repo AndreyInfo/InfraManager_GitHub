@@ -1,0 +1,329 @@
+﻿
+.table__actions-asset .button .button-chain {
+    background: url('../UI/Lists/Asset/Icons/button_chain.png') no-repeat;
+}
+
+.table__actions-asset .button .button-remove {
+    background: url('../UI/Lists/Asset/Icons/button_remove.png') no-repeat;
+}
+
+.table__actions-asset .button .button-asset-operations {
+    background: url('../UI/Lists/Asset/Icons/button_asset_operations.png') no-repeat;
+}
+
+
+.b-content-table__utilizer {
+    background: url(../UI/Lists/Asset/Icons/utilizer_client.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__utilizer {
+    background: url(../UI/Lists/Asset/Icons/utilizer_client_blue.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__utilizer_active {
+    background: url(../UI/Lists/Asset/Icons/utilizer_client_blue.png) no-repeat center;
+}
+
+.b-content-table__utilizer_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__utilizercomplete {
+    background: url(../UI/Lists/Asset/Icons/utilizer_complete.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__utilizercomplete {
+    background: url(../UI/Lists/Asset/Icons/utilizer_complete_blue.svg) no-repeat center;
+    opacity: .50;
+    background-size: contain;
+}
+
+.b-content-table__utilizercomplete_active {
+    background: url(../UI/Lists/Asset/Icons/utilizer_complete_blue.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__utilizercomplete_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__hardware {
+    background: url(../UI/Lists/Asset/Icons/hardware_gray.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__hardware {
+    background: url(../UI/Lists/Asset/Icons/hardware_blue.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__hardware_active {
+    background: url(../UI/Lists/Asset/Icons/hardware_blue.png) no-repeat center;
+}
+
+.b-content-table__hardware_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__myObjects {
+    background: url(../UI/Lists/Asset/Icons/my_objects_gray.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__myObjects {
+    background: url(../UI/Lists/Asset/Icons/my_objects_blue.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__myObjects_active {
+    background: url(../UI/Lists/Asset/Icons/my_objects_blue.png) no-repeat center;
+}
+
+.b-content-table__myObjects_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__discarded {
+    background: url(../UI/Lists/Asset/Icons/discarded_gray.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__discarded {
+    background: url(../UI/Lists/Asset/Icons/discarded_blue.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__discarded_active {
+    background: url(../UI/Lists/Asset/Icons/discarded_blue.png) no-repeat center;
+}
+
+.b-content-table__discarded_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__assetRepair {
+    background: url(../UI/Lists/Asset/Icons/asset_repair_gray.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__assetRepair {
+    background: url(../UI/Lists/Asset/Icons/asset_repair_blue.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__assetRepair_active {
+    background: url(../UI/Lists/Asset/Icons/asset_repair_blue.png) no-repeat center;
+}
+
+.b-content-table__assetRepair_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__consumables {
+    background: url(../UI/Lists/Asset/Icons/consumables_gray.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__consumables {
+    background: url(../UI/Lists/Asset/Icons/consumables_blue.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__consumables_active {
+    background: url(../UI/Lists/Asset/Icons/consumables_blue.png) no-repeat center;
+}
+
+.b-content-table__consumables_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__shopCalls {
+    background: url(../UI/Lists/Asset/Icons/shop_calls_gray.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__shopCalls {
+    background: url(../UI/Lists/Asset/Icons/shop_calls_blue.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__shopCalls_active {
+    background: url(../UI/Lists/Asset/Icons/shop_calls_blue.png) no-repeat center;
+}
+
+.b-content-table__shopCalls_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__softwareLicense {
+    background: url(../UI/Lists/Asset/Icons/license_software_gray.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__softwareLicense {
+    background: url(../UI/Lists/Asset/Icons/license_software_blue.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__softwareLicense_active {
+    background: url(../UI/Lists/Asset/Icons/license_software_blue.png) no-repeat center;
+}
+
+.b-content-table__softwareLicense_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__softwareDistribution {
+    background: url(../UI/Lists/Asset/Icons/software_distribution_gray.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__softwareDistribution {
+    background: url(../UI/Lists/Asset/Icons/software_distribution_blue.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__softwareDistribution_active {
+    background: url(../UI/Lists/Asset/Icons/software_distribution_blue.png) no-repeat center;
+}
+
+.b-content-table__softwareDistribution_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__contracts {
+    background: url(../UI/Lists/Asset/Icons/contracts_gray.png) no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__contracts {
+    background: url(../UI/Lists/Asset/Icons/contracts_blue.png) no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__contracts_active {
+    background: url(../UI/Lists/Asset/Icons/contracts_blue.png) no-repeat center;
+}
+
+.b-content-table__inventory_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__inventory {
+    background: url(../UI/Lists/Asset/Icons/inventory_gray.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__inventory {
+    background: url(../UI/Lists/Asset/Icons/inventory_blue.svg) no-repeat center;
+    opacity: .50;
+    background-size: contain;
+}
+
+
+.b-content-table__inventory_active {
+    background: url(../UI/Lists/Asset/Icons/inventory_blue.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__inventory_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+
+.b-content-table__configurationUnit {
+    background: url(../UI/Lists/Asset/Icons/icon_network_unit_grey.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__configurationUnit {
+    background: url(../UI/Lists/Asset/Icons/icon_network_unit_blue.svg) no-repeat center;
+    opacity: .50;
+    background-size: contain;
+}
+
+
+.b-content-table__configurationUnit_active {
+    background: url(../UI/Lists/Asset/Icons/icon_network_unit_blue.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__configurationUnit_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__cluster {
+    background: url(../UI/Lists/Asset/Icons/cluster_gray.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__cluster {
+    background: url(../UI/Lists/Asset/Icons/cluster_blue.svg) no-repeat center;
+    opacity: .50;
+    background-size: contain;
+}
+
+
+.b-content-table__cluster_active {
+    background: url(../UI/Lists/Asset/Icons/cluster_blue.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__cluster_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+
+.b-content-table__logicObject {
+    background: url(../UI/Lists/Asset/Icons/VMicon_passive.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__logicObject {
+    background: url(../UI/Lists/Asset/Icons/VMicon_active.svg) no-repeat center;
+    opacity: .50;
+    background-size: contain;
+}
+
+
+.b-content-table__logicObject_active {
+    background: url(../UI/Lists/Asset/Icons/VMicon_active.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__logicObject_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__dataEntity {
+    background: url(../UI/Lists/Asset/Icons/data_entity_passive.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__dataEntity {
+    background: url(../UI/Lists/Asset/Icons/data_entity_active.svg) no-repeat center;
+    opacity: .50;
+    background-size: contain;
+}
+
+.b-content-table__dataEntity_active {
+    background: url(../UI/Lists/Asset/Icons/data_entity_active.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__dataEntity_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__softwareInstallation {
+    background: url(../UI/Lists/Asset/Icons/software_installation_passive.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__softwareInstallation {
+    background: url(../UI/Lists/Asset/Icons/software_installation_active.svg) no-repeat center;
+    opacity: .50;
+    background-size: contain;
+}
+
+.b-content-table__softwareInstallation_active {
+    background: url(../UI/Lists/Asset/Icons/software_installation_active.svg) no-repeat center;
+    background-size: contain;
+}
+
+.b-content-table__softwareInstallation_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}

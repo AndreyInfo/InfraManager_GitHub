@@ -1,0 +1,7 @@
+ALTER TABLE IF EXISTS im.service_catalogue_import_setting DROP CONSTRAINT IF EXISTS fk_service_catalogue_import_setting_service_catalogue_import_cs;
+
+ALTER TABLE service_catalogue_import_setting
+ADD CONSTRAINT fk_service_catalogue_import_setting_service_catalogue_import_cs
+FOREIGN KEY (service_catalogue_import_csv_configuration_id)
+REFERENCES service_catalogue_import_csv_configuration(id)
+ON DELETE SET NULL; 

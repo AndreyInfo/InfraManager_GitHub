@@ -1,0 +1,86 @@
+﻿<div class="h100" data-bind="with: Calendar">
+    <div class="h100" data-bind="with: Model, afterUpdateBlock: ModelAfterRender">
+        <div class="c-general f-big f-bold mb20">
+            <div class="c-first">
+                <div class="ts-search" />
+            </div>
+            <div class="c-second">
+                <div class="c-user" data-bind="if: UserInfo() != null">
+                    <div class="c-userInfo" data-bind="template: { name: 'User/SimpleUser', data: UserInfo }" />
+                </div>
+                <div class="c-period">
+                    <span data-bind="restext: 'TM_PeriodCaption'" />
+                    <span class="ml10" data-bind="text: IntervalName" />
+                    <div class="ml10 leftArrow" data-bind="click: $parent.PreviousCalendarClick, enable: $parent.Model() != null" />
+                    <span data-bind="text: DateIntervalString" />
+                    <div class="rightArrow" data-bind="click: $parent.NextCalendarClick, enable: $parent.Model() != null" />
+                </div>
+                <div class="c-norm c-gray">
+                    <span data-bind="restext: 'TM_ManhoursNormCaption'" />
+                    <span class="ml10" data-bind="text: ManhoursNormString" />
+                    <span class="ml10" data-bind="restext: 'TM_Hours'" />
+                </div>
+            </div>
+        </div>
+        <div class="c-tableHeader" >
+            <table class="c-table mt20" border="1">
+                <colgroup>
+                    <col class="th-hours" />                    
+                    <!-- ko foreach: DayList -->
+                    <col class="th-date" />
+                    <!-- /ko -->
+                </colgroup>
+                <thead>
+                    <tr class="f-bold">
+                        <th class="th-hours c-firstCell" />
+                        <!-- ko foreach: DayList -->
+                        <th class="th-date" data-bind="css: {holiday : $data.ManhoursNormInMinutes() == 0 }">
+                            <div class="f-bold c-blue" data-bind="text: DayOfWeekString" />
+                            <div class="f-bold c-blue" data-bind="text: DateString" />
+                        </th>
+                        <!-- /ko -->
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="table-scroll c-tableScroll" data-bind="event: { scroll: $parent.OnScroll }">
+            <table class="c-table" border="1">
+                <colgroup>
+                    <col class="th-hours" />
+                    <!-- ko foreach: DayList -->
+                    <col class="th-date" />
+                    <!-- /ko -->
+                </colgroup>
+                <tbody data-bind="foreach: {data: ItemList, afterRender: $parent.ModelAfterRender}">
+                    <tr data-bind="attr: {id : ElementID}">
+                        <td class="c-hours c-blue">
+                            <span data-bind="text: HourString" />
+                        </td>
+                        <!-- ko foreach: DayList -->
+                        <td data-bind="css: {'holiday' : IsWorkTime() == false, 'checked' : Checked, 'active' : Exclusion() != null}, with: Exclusion, tooltip: TooltipMessage, tooltipMultiline: true, event: { mousedown: $root.Calendar().CellMouseDown, mouseup: $root.Calendar().CellMouseUp, mouseover: $root.Calendar().CellMouseOver }">
+                            <span data-bind="css: {'exclusionHoliday' : IsWorkPeriod == false, 'exclusionWork' : IsWorkPeriod == true}" />
+                            <span data-bind="text: ExclusionName" />
+                        </td>
+                        <!-- /ko -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ui-dialog-buttonset">
+            <button type="button" class="ui-button ui-button-text-only mv20" data-bind="click: $parent.cmd_AddExclusion, operationID: 676">
+                <span class="ui-button-text" data-bind="restext: 'TM_Calendar_AddExclusion'" />
+            </button>
+            <button type="button" class="ui-button ui-button-text-only mv20" data-bind="click: $parent.cmd_RemoveExclusion, visibleOperation: $parent.SelectedExclusions().length > 0, operationID: 677">
+                <span class="ui-button-text" data-bind="restext: 'TM_Calendar_RemoveExclusion'" />
+            </button>
+            <button type="button" class="ui-button ui-button-text-only mv20" data-bind="click: $parent.cmd_OpenExclusion, visibleOperation: $parent.SelectedExclusions().length == 1, operationID: 675">
+                <span class="ui-button-text" data-bind="restext: 'TM_Calendar_OpenExclusion'" />
+            </button>
+            <!-- ko if: UserInfo() != null -->
+            <button type="button" class="ui-button ui-button-text-only mv20 right" data-bind="click: $parent.BackToTimeSheetTotalClick">
+                <span class="ui-button-text" data-bind="restext: 'TM_ButtonBackToTimeSheetTotal'" />
+            </button>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

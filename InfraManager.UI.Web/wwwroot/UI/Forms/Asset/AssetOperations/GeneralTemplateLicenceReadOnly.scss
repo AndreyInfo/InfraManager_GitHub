@@ -1,0 +1,176 @@
+@import "../../../../Styles/general";
+@import "GeneralFormStyle";
+
+.GeneralTemplateLicence {
+    .pairFields {
+        margin-bottom: 0;
+        overflow: hidden;
+        float: none;
+        position: relative;
+    }
+
+
+    .marginLeftRight {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    .pairFields .withoutIcon {
+        float: left;
+    }
+
+    .pairFields .icon {
+        float: right;
+        /*position: relative;*/
+        pointer-events: none;
+    }
+
+    .pairFields .icon span {
+        overflow: hidden;
+        width: 24px;
+        height: 24px;
+        background-size: cover !important;
+        display: block;
+    }
+
+    .pairFields > .icon.active {
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    .ajaxElement .pairFields > .icon.active {
+        cursor: default;
+        pointer-events: none;
+    }
+
+    .pairFields > .icon.active:hover {
+        background-color: whitesmoke;
+    }
+
+    .pairFields .editor {
+        float: left;
+        position: relative;
+        overflow: auto;
+        min-height: 36px;
+        word-break: break-all;
+        width: 85%;
+    }
+
+    .pairFields .editor .searcherHaspAdapterInput {
+        width: 100%;
+        background-image: url(../../../../images/controls/searchPlaceHolder.png);
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+        text-indent: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .pairFields .editor.breakWord {
+        word-break: break-word;
+    }
+
+    .pairFields .editor.big {
+        padding: 0;
+    }
+
+    .pairFields .editor.general {
+        padding-top: 5px;
+        float: left;
+        width: 85%
+    }
+
+    .pairFields .editor:after {
+        clear: both;
+    }
+
+    .pairFields > .editor.nowrap, .pairFields > .editor .nowrap {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .pairFields > .editor.border {
+        border: 1px solid lightgray;
+        padding: 7px;
+        width: 100%;
+    }
+
+    .pairFields > .editor .border {
+        border: 1px solid lightgray;
+        padding: 2px 7px;
+    }
+
+    .pairFields > .editor .textBox {
+        min-height: 26px;
+    }
+
+    textarea:focus, input:focus, .searcherHaspAdapterInput:focus {
+        outline: none;
+        border: 2px solid #81AEF0;
+    }
+
+    .callObjectIcon span {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/call_object_icon_passive.svg') no-repeat;
+    }
+
+    .callObjectIcon.active span {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/call_object_icon_active.svg') no-repeat;
+    }
+
+    .marginBottom {
+        margin-bottom: 15px;
+    }
+
+    .fieldCaption {
+        color: $gray-text-color;
+        font-size: 11px;
+    }
+
+    .fieldValue {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .parametersUpdate {
+        background: $lightblue-background-color;
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+
+    .parametersUpdateText {
+        @extend .im-bold-text;
+        padding-right: 10px;
+    }
+
+    .clickableTextField {
+        color: #41AAED;
+        cursor: pointer;
+    }
+
+    .generalTemplateBot {
+        margin-bottom: 21px;
+    }
+
+    .generalTemplateReasonField {
+        margin-top: 14px;
+    }
+
+    .generalTemplateRowInfo {
+        margin-top: 6px;
+    }
+
+    .generalTemplateTop {
+        margin-top: 10px;
+    }
+
+    .generalTemplateText {
+        color: #000000;
+    }
+
+    .generalTemplateMaxWidth {
+        max-width: 163px; //figma disign
+    }
+}

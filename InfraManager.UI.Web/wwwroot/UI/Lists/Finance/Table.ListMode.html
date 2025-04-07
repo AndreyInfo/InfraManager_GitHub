@@ -1,0 +1,26 @@
+﻿<div class="b-content-table__left-Header" data-bind="restext: 'TooltipFinance'"></div>
+<div class="b-content-table__left-ScrollBlock" data-bind="visible: ScrollButtonsVisible">
+    <div class="b-content-table__left-ScrollUp" data-bind="click: OnScrollUpClick"></div>
+</div>
+<div class="b-content-table__left-FirstGap" data-bind="visible: !ScrollButtonsVisible()"></div>
+<div class="b-content-table__left">
+    <span id="listModeOrders" class="b-content-table__workplaceIconGroup" style="display:none;" data-bind="click: ShowActivesRequest">
+        <a  class="b-content-table__workplaceIcon" style="display:block;" data-bind="css: ActivesRequestClass"></a>
+        <div class="b-content-table__workplaceIcon-header" style="display:block;" data-bind="restext: 'FinanceOrdersView'"></div>
+    </span>
+    <span id="listModeBuying" class="b-content-table__workplaceIconGroup" style="display:none;" data-bind="click: ShowPurchase">
+        <a class="b-content-table__workplaceIcon" style="display:block;" data-bind="css: PurchaseClass"></a>
+        <div class="b-content-table__workplaceIcon-header" style="display:block;" data-bind="restext: 'FinanceBuyingView'"></div>
+    </span>
+    <!--<span id="listModeProjects" class="b-content-table__workplaceIconGroup" style="display:none;" data-bind="click: ShowProjects">
+        <a class="b-content-table__workplaceIcon" style="display:block;" data-bind="css: ProjectsClass"></a>
+        <div class="b-content-table__workplaceIcon-header" style="display:block;" data-bind="restext: 'FinanceProjectsView'"></div>
+    </span>-->
+    <span id="listModeBudgets" class="b-content-table__workplaceIconGroup" style="display:none;" data-bind="click: ShowBudgets">
+        <a class="b-content-table__workplaceIcon" style="display:block;" data-bind="css: BudgetClass"></a>
+        <div class="b-content-table__workplaceIcon-header" style="display:block;" data-bind="restext: 'FinanceBudgetView'"></div>
+    </span>
+</div>
+<div class="b-content-table__left-ScrollBlock" data-bind="visible: ScrollButtonsVisible">
+    <div class="b-content-table__left-ScrollDown" data-bind="click: OnScrollDownClick"></div>
+</div>

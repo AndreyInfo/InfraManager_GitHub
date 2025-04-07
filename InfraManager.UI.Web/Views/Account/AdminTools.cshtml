@@ -1,0 +1,13 @@
+﻿<div id="adminTools" data-bind="template: {name: '../UI/Lists/Account/AdminTools', afterRender: afterRender}"></div>
+
+<script type="text/javascript">
+    @section MainScript {
+    require(['jquery', 'knockout', 'ui_lists/Account/AdminTools'], function ($, ko, vm) {
+            var mod = new vm.ViewModel();
+            mod.load();
+            ko.applyBindings(mod, document.getElementById('adminTools'));
+            //
+            hideSpinner($('.b-main')[0]);
+    });
+    }
+</script>

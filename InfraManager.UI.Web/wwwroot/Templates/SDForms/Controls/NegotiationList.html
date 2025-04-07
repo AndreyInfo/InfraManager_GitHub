@@ -1,0 +1,65 @@
+﻿<div class="tabCaption im-big-header im-list-header">
+    <span data-bind="restext: 'Negotiations'"></span>
+    <span class="tabCaption-icon-plus" data-bind="click: function() { $control.imList.ExecuteOperation(getTextResource('AddNegotiation')) }, css: { 'active' : $root.CanEdit }, tooltip: getTextResource('AddNegotiation')"></span>
+</div>
+<div class="negotiations__list tabContent im-list" data-bind="style: {bottom: ($control.imList.SelectedItemsCount() > 0) && $root.CanEdit()  == true ? '60px' : '0'}">
+    <!-- ko foreach: $control.imList.List -->
+    <div class="im-list-item-wrapper">
+        <div class="im-list-item">
+            <div class="im-list-item-chb-column">
+                <input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected, visible: $root.CanEdit" />
+            </div>
+            <div class="im-list-item-icon-column">
+                <div data-bind="css: StateImgClass, click: function() { if ($data.Status() == 0) { $parent.$control.imList.UncheckAll(); $data.Selected(true); $parent.$control.imList.ExecuteOperation(getTextResource('NegotiationStart')); } }"></div>
+            </div>
+            <div class="im-list-item-main-column im-list-item-main-not-fixed-column">
+                <div class="im-list-item-main-firstrow" data-bind="longNameTooltip: Theme, longNameTooltipTarget: '.negotiation-main-header', css: { 'cursor-pointer': $root.CanEdit }, click: $parent.$control.ShowObjectForm">
+                    <span class="negotiation-main-header" data-bind="text: Theme"></span>
+                </div>
+                <div class="im-list-item-main-column im-list-item-main-not-fixed-column">
+                    <span class="im-list-row-item negotiation-status-text"><span data-bind="restext: 'NegotiationStatus'"></span>:&thinsp; <span data-bind="css: StyleStatusString, text: StatusString"></span>&thinsp;<span class=" = negotiation-status-text-status" data-bind="text : (UtcDateVoteEnd() != '' ? ' (' + UtcDateVoteStart() + ') ' : ' ')"></span></span>
+                    <span class="im-list-row-item negotiation-status-text"></span>
+                    <span class="im-list-row-item negotiation-mode-text"><span data-bind="restext: 'NegotiationMode'"></span>: <span class="negotiation-mode-text-black" data-bind="text: ModeString"></span></span>
+                    <div class="im-list-item-inline-form">
+                        <!-- ko if: Status() == 0 -->
+                        <span class="im-list-row-item negotiation-started-text"><span data-bind="restext: 'NegotiationDateStart'"></span>: <span class="negotiation-mode-text-black" data-bind="text:('-')"></span></span>
+                        <!-- /ko -->                      
+                        <!-- ko if:  Status() != 0 -->
+                        <span class="im-list-row-item negotiation-started-text"><span data-bind="restext: 'NegotiationDateStart'"></span>: <span class="negotiation-mode-text-black" data-bind="text: UtcDateVoteStart"></span></span>
+                        <!-- /ko -->
+                        <span class="im-list-row-item negotiation-votecount-text"><span data-bind="restext:'NegotiationVotedCount'"></span>:&thinsp;<span class="negotiation-votecount-text-count" data-bind="text: VotedCount"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="im-list-item-info-column im-list-item-info-not-fixed-column cursor-pointer">
+                <div data-bind="css: ExpandButtomArrow, click: ExpandCollapseClick"></div>
+            </div>
+            <div class="im-list-item-start-column im-list-item-start-not-fixed-column cursor-pointer">
+                <button type="button" class="negotiation-ui-button" role="button" data-bind="visible: VisibleStartButton, click: ClickStartButton"><span class="ui-button-text" data-bind="restext: 'NegotiationToBegin' "></span></button>
+            </div>
+            <div class="im-list-item-menu-column im-list-item-menu-not-fixed-column cursor-pointer">
+                <div class="negotiation-menu-icon" data-bind="click: showContextMenu"></div>
+                <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+            </div>
+        </div>
+         <div class="negotiation-userlist" data-bind="visible: IsExpanded, template: { name: 'Negotiation/NegotiationUserList', data: {$userList: UserList, $actionContainer: $data, $extendedMode: false} }" />
+        </div>
+    <!-- /ko -->
+    <!-- ko if: $control.imList.List().length == 0 -->
+    <center><span class="im-list-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+    <!-- /ko -->
+</div>
+<!--когда панели появятся автоматом должен установиться отступ tabContent от нижнего края посредствам ko-->
+<div class="negotiations__actions im-list__actions" data-bind="visible: ($control.imList.SelectedItemsCount() > 0) && $root.CanEdit()">
+    <div class="im-list__actions-wrapper">
+        <div class="negotiations__actions-list im-list__actions-list" data-bind="foreach: $control.imList.OperationList">
+            <button class="button button_b-ctrl_note button_size_M button_type_normal im-list__actions-button" data-bind="visible: IsVisible, click: OnClick">
+                <div class="button__label" data-bind="text: Text"></div>
+            </button>
+        </div>
+        <div class="im-list__right-panel">
+            <div class="negotiations__actions-count im-list__actions-count"><span data-bind="restext: 'Choosen'"></span>: <span data-bind="text: $control.imList.SelectedItemsCount"></span></div>
+            <div class="negotiations__actions-close im-list__actions-close"><a data-bind="restext: 'UndoCheck', click: $control.imList.UncheckAll"></a></div>
+        </div>
+    </div>
+</div>

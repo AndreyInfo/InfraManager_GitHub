@@ -1,0 +1,30 @@
+﻿<div class="frmCostNDS">
+    <div class="leftSide">
+        <div class="fieldCaption" data-bind="restext: 'CostNDS'"></div>
+        <div class="fieldControl nud">
+            <input class="cost" type="text" maxlength="10" data-bind="textInput: cost" />
+        </div>
+        <div class="fieldCaption" data-bind="restext: 'CostNDS_NDSType'"></div>
+        <div class="fieldControl border combobox" data-bind="combobox: { dataSource: ndsTypeDataSource }, comboboxValue: ndsType" />
+        <div data-bind="visible: ndsTypeID() != 1">
+            <div class="fieldCaption" data-bind="restext: 'CostNDS_NDSPercent'"></div>
+            <div class="fieldControl border combobox" data-bind="combobox: { dataSource: ndsPercentDataSource }, comboboxValue: ndsPercent" />
+            <div class="fieldCaption" data-bind="restext: 'CostNDS_NDSCustomValue', visible: ndsPercent() && ndsPercent().ID == 0"></div>
+            <div class="fieldControl nud" data-bind="visible: ndsPercent() && ndsPercent().ID == 0">
+                <input class="ndsCustomValue" type="text" maxlength="10" data-bind="textInput: ndsCustomValue" />
+            </div>
+        </div>
+        <!--ko if: timePeriod() != null-->
+        <div class="fieldCaption" data-bind="restext: 'CostNDS_PaymentFrequency'"></div>
+        <div class="fieldControl border combobox" data-bind="combobox: { dataSource: timePeriodDataSource }, comboboxValue: timePeriod" />
+        <!--/ko-->
+    </div>
+    <div class="rightSide">
+        <div class="fieldCaption" data-bind="restext: 'CostNDS_TotalSumWithoutNDS'"></div>
+        <div class="fieldControl bold" data-bind="text: costWithoutNDS"></div>
+        <div class="fieldCaption" data-bind="restext: 'CostNDS_TotalSumWithNDS'"></div>
+        <div class="fieldControl bold" data-bind="text: costWithNDS"></div>
+        <div class="fieldCaption" data-bind="restext: 'CostNDS_NDSSum'"></div>
+        <div class="fieldControl bold" data-bind="text: ndsSum"></div>
+    </div>
+</div>

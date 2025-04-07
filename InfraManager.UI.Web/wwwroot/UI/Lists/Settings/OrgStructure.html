@@ -1,0 +1,9 @@
+﻿<div class="b-content-dictionaries-container-orgstructure" data-bind="with: OrgStructure, afterUpdateBlock: OrgStructure().ModelAfterRender">
+    <div class="leftSide" data-bind="splitter: { ChangeFunc: resizeSplitter, MinimalSize: minSplitterWidth, MaximumSize: maxSplitterWidth, Name: 'DictionariesOrgStructure', Direction: 'right' }, style: {'width': splitterDistance() + 'px'}, event: {'contextmenu' : ContextMenuRequested }">
+        <div class="dictionaries-orgstructure-tree"></div>
+        <div class="dictionaries-orgstructure-tree-contextmenu" data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+    </div>
+    <div class="rightSide" data-bind="style: {'left': splitterDistance() + 'px'}">
+        <div class="dictionaries-orgstructure-main" data-bind="template: {name: ViewTemplateName, data: Model}"></div>
+    </div>
+</div>

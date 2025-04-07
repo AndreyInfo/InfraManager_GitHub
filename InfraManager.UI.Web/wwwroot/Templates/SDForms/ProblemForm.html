@@ -1,0 +1,232 @@
+﻿<div class="b-requestDetail im-base-text">
+    <div class="b-requestDetail-left" data-bind="with: problem, afterUpdateBlock: renderProblemComplete">
+        <div class="b-requestDetail-menu clearfix" data-request-menu>
+            <div class="b-requestDetail-menu__item b-requestDetail-menu__priority leftToolbarButtons" data-bind="css: { 'b-requestDetail-menu__priority-readonly' : $parent.IsReadOnly() == true }">
+                <div class="priority-header" data-bind="tooltip: getTextResource('ProblemPriority')">
+                    <div class="menuBlock">
+                        <span data-bind="text: PriorityName"></span>
+                    </div>
+                    <!-- ko ifnot: $parent.IsReadOnly -->
+                    <span class="priority-expander"></span>
+                    <!-- /ko -->
+                </div>
+                <span class="priority-panel" data-bind="stopBinding: true"></span>
+            </div>
+
+            <!-- ko if: $parent.workflowControl() != null -->
+            <div class="workflow" data-bind="template: {name: '../UI/Controls/WorkflowControl', data: { $tooltip: getTextResource('ProblemState'), $entity: $data, $control: $parent.workflowControl() }, afterRender: $parent.SizeChanged }" />
+            <!-- /ko -->
+            <div class="b-requestDetail-menu____menucontrol_item-icon b-requestDetail-menu__item-icon1 b-requestDetail-menu__item-control cursor-pointer leftToolbarButtons" data-bind="click: $parent.CustomControlClick, css: {active : $parent.CustomControl() == true}, tooltip: getTextResource('OnControl')"><span></span></div>
+            <div class="b-requestDetail-menu__item-icon menucontrol b-requestDetail-menu__menucontrol-icon b-requestDetail-menu__item-control cursor-pointer leftToolbarButtons" data-bind="click: $parent.showContextMenu"><span></span>
+            <div data-bind="koContextMenu: {controlInitialized: $parent.contextMenuInit, opening: $parent.contextMenuOpening}"></div></div>
+            <div class="b-requestDetail-menu__item-icon messagepro b-requestDetail-menu__item-control cursor-pointer leftToolbarButtons" data-bind="click: $parent.SendMail"><span></span></div>
+            <!-- ko ifnot: $parent.IsReadOnly -->
+            <div class="b-requestDetail-menu__item-icon b-requestDetail-menu__item-icon2 b-requestDetail-menu__item-actions cursor-pointer leftToolbarButtons" data-bind="click: $parent.additionalClick" style="display:none;"><span></span></div>
+            <!-- /ko -->
+            <div class="b-requestDetail-menu__item b-requestDetail-menu__modified rightToolbarButtons im-gray-text" data-bind="text: getTextResource('LastChange') + ' ' + $parent.DateModifyCalculated()" />
+        </div>
+        <div class="fieldPair b-requestDetail__title-header">
+            <div class="icon fieldProblemSummary" data-bind="css: { 'active' : $parent.CanEdit }, click: $parent.EditSummary, tooltip: getTextResource('Summary')"><span /></div>
+            <div class="editor border nowrap im-big-header" data-bind="text: Summary, longNameTooltip: Summary" />
+        </div>
+        <div class="form-tabs" data-form-tabs>
+            <div class="b-requestDetail__mainParameters" data-bind="visible: $parent.mode() == $parent.modes.main, style: {height: $root.TabHeight}">
+                <div class="horizontalContainer">
+                    <div class="horizontalContainer-leftPart">
+                        <div class="b-requestDetail__descr im-big-header"><span data-bind="restext: 'Description'" /><span data-bind="css: $parent.IsDescriptionContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $parent.ToggleDescriptionContainer, tooltip: $parent.IsDescriptionContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span></div>
+                        <div data-bind="visible: $parent.IsDescriptionContainerVisible">
+                            <div class="fieldPair">
+                                <div class="icon fieldDescription active" data-bind="click: $parent.EditDescription, tooltip: getTextResource('Description')"><span /></div>
+                                <div class="editor border html slide" data-bind="html: HTMLDescription" />
+                                <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')" />
+                            </div>
+                            <div class="fieldPair">
+                                <div class="icon b-requestDetail__files-addBtn" data-bind="css: { 'active' : $parent.CanEdit }"><span /></div>
+                                <div class="editor b-requestDetail__files documentList" />
+                            </div>
+                        </div>
+                        <div class="b-requestDetail__descr im-big-header"><span data-bind="restext: 'Cause'" /><span data-bind="css: $parent.IsCauseContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $parent.ToggleCauseContainer, tooltip: $parent.IsCauseContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span></div>
+                        <div data-bind="visible: $parent.IsCauseContainerVisible">
+                            <div class="fieldPair">
+                                <div class="icon fieldShortCause" data-bind="css: { 'active' : $parent.CanEdit }, click: $parent.EditShortCause, tooltip: getTextResource('ShortCause')"><span /></div>
+                                <div class="editor" style="padding-top:4px;">
+                                    <div class="im-blue-text" style="float:left;padding-top:4px;margin-right:10px;" data-bind="restext: 'ShortCause'" />
+                                    <div class="border nowrap textBox" data-bind="text: ProblemCauseName" />
+                                </div>
+                            </div>
+                            <div class="fieldPair">
+                                <div class="icon fieldCause active" data-bind="click: $parent.EditCause, tooltip: getTextResource('Cause')"><span /></div>
+                                <div class="editor border html slide" data-bind="html: HTMLCause" />
+                                <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontalContainer-rightPart">
+                        <div class="fieldPair">
+                            <div class="icon fieldProblemType" data-bind="css: { 'active' : $parent.CanEdit }, click: $parent.EditProblemType, tooltip: getTextResource('ProblemType')"><span /></div>
+                            <div class="editor nowrap" data-bind="text: TypeName, tooltip: getTextResource('ProblemType')" />
+                        </div>
+                        <div class="fieldPair">
+                            <div class="icon fieldDatePromised" data-bind="css: { 'active' : $parent.CanEdit }, click: $parent.EditDatePromised, tooltip: getTextResource('ProblemDatePromise')"><span /></div>
+                            <div class="editor" data-bind="text: getTextResource('Before') + ' ' + $parent.DatePromisedCalculated(), tooltip: getTextResource('ProblemDatePromise')" />
+                        </div>
+                        <div class="fieldPair">
+                            <div class="icon fieldManhours active" data-bind="operationID: 317, click: $parent.EditManhoursWork, tooltip: getTextResource('ManhoursWorkTooltip')"><span /></div>
+                            <div class="editor nowrap">
+                                <div style="float:left" data-bind="tooltip: getTextResource('Spent')">
+                                    <span data-bind="text: ManHours" />
+                                </div>
+                                <div class="manhoursNorm im-gray-text" style="float:right;margin-right:5px;" data-bind="css: { 'cursor-pointer' : $parent.CanEdit }, click: $parent.EditManhoursNorm">
+                                    <span data-bind="restext: 'Norm'" /> <span data-bind="text: ManhoursNormString" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- data-bind="if: ServiceID() != null || $parent.CanEdit()" -->
+                        <div class="fieldPair">
+                            <div class="icon fieldService"
+                                 data-bind="css: { 'active' : $parent.CanEdit },
+                                    style: {'margin-top' : ServiceID() == null ? 0 : '8px'},
+                                    click: $parent.EditServiceItemAttendance, tooltip: getTextResource('Service')">
+                                <span />
+                            </div>
+                            <div class="editor breakWord">
+                                <div><span data-bind="text: ServiceCategoryName, tooltip: getTextResource('CallServiceCategory')" /></div>
+                                <div><span class="im-bold-text" data-bind="text: ServiceName, tooltip: getTextResource('CallService')" /></div>
+                            </div>
+                        </div>
+
+                        <div class="b-requestDetail__table">
+                            <div class="form-users-block">
+                                <div data-bind="template: { name: 'User/FormUser', if: InitiatorLoaded(), data: Initiator }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !InitiatorLoaded(), data: Initiator }"></div>
+
+                                <div data-bind="template: { name: 'User/FormUser', if: OwnerLoaded(), data: Owner }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !OwnerLoaded(), data: Owner }"></div>
+
+                                <div data-bind="template: { name: 'User/FormUser', if: QueueLoaded(), data: Queue }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !QueueLoaded(), data: Queue }"></div>
+
+                                <div data-bind="template: { name: 'User/FormUser', if: ExecutorLoaded(), data: Executor }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: !ExecutorLoaded(), data: Executor }"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="b-requestDetail__descr im-big-header"><span data-bind="restext: 'Solution'" /><span data-bind="css: $parent.IsSolutionContainerVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $parent.ToggleSolutionContainer, tooltip: $parent.IsSolutionContainerVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span></div>
+                <div data-bind="visible: $parent.IsSolutionContainerVisible" class="form-footer">
+                    <div class="fieldPair">
+                        <div class="icon fieldAlternariveSolution active" data-bind="click: $parent.EditFix, tooltip: getTextResource('Fix')"><span /></div>
+                        <div class="editor">
+                            <div class="im-blue-text" data-bind="restext: 'Fix'" />
+                            <div class="border textBox slide" data-bind="html: HTMLFix" />
+                            <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')" />
+                        </div>
+                    </div>
+                    <div class="fieldPair">
+                        <div class="icon fieldSolution active" data-bind="click: $parent.EditSolution, tooltip: getTextResource('Solution')"><span /></div>
+                        <div class="editor border html slide" data-bind="html: HTMLSolution" />
+                        <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')" />
+                    </div>
+                    <div class="solution-kb__b" data-bind="with: $root.kbaRefList">
+                        <!-- ko if: ($root.CanEdit() || imList.List().length > 0) -->
+                        <div class="fieldPair">
+                            <div class="withoutIcon solution-kb-header" data-bind="restext: 'KBArticleFormCaption'"></div>
+                        </div>
+                        <div class="fieldPair">
+                            <div class="icon fieldKBPanel" data-bind="css: { 'active' : $root.CanEdit() }, click: $root.HideShowLeftPanel, tooltip: getTextResource('ChooseReadySolution')"><span /></div>
+                            <div class="solution-kb-list" data-bind="foreach: imList.List">
+                                <div class="solution-kb-list-item">
+                                    <span class="solution-kb-list-item-text" data-bind="text: Name, click: $root.kbaRefList.ShowObjectForm"></span>
+                                    <!-- ko if: $root.CanEdit -->
+                                    <a class="solution-kb-icon-remove" data-bind="click: $parent.UserRemove, click: $root.kbaRefList.RemoveKBAReference"></a>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                            <!-- ko ifnot: imList.List().length > 0 -->
+                            <center class="solution-kb-list-noitems" data-bind="restext: 'NoKBAReference'"></center>
+                            <!-- /ko -->
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+            <div class="tape__b" data-bind="visible: $parent.mode() == $parent.modes.tape, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/Tape', data: { $control: $root.tapeControl } }" />
+            <div class="woRef__b" data-bind="visible: $parent.mode() == $parent.modes.workorders, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/WorkOrderList', data: { $control: $root.workOrderList, $header: 'problem' } }" />
+            <div class="cRef__b" data-bind="visible: $parent.mode() == $parent.modes.calls, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/CallList', data: { $control: $root.callList, $mode: 'problem', $header: 'problem'  } }" />
+
+            <div
+                 class="mRef__b"
+                 data-table-container
+                 data-bind="
+                    visible: $parent.mode() == $parent.modes.massIncidents, 
+                    style: {height: $root.TabHeight},
+                    template: {name: 'SDForms/References/ReferencesTab', data: $root.massIncidentList }
+                 " 
+            ></div>
+
+            <div class="links__b" data-bind="visible: $parent.mode() == $parent.modes.links, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/LinkList', data: { $serviceButtonVisible: false, $control: $root.linkList } }" />
+            <div class="negotiations__b" data-bind="visible: $parent.mode() == $parent.modes.negotiation, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/NegotiationList', data: { $control: $root.negotiationList } }" />
+            <!--ko foreach: $parent.DynamicOptionsService.FormTabs -->
+            <div data-bind="visible: $parents[1].mode() == $parents[1].modes.parameterPrefix + $data.Tab.ID,
+                 template: {name: './Shared/DynamicOptionsService/Index', afterRender: $parents[1].DynamicOptionsService.AfterRender }">
+            </div>
+            <!-- /ko -->
+            <div class="userFields__b" data-bind="visible: $parent.mode() == $parent.modes.userFields, style: {height: $root.TabHeight}, template: {name: 'SDForms/Controls/UserFields', data: $root.UserFields() }" />
+        </div>
+    </div>
+    <div class="b-requestDetail-right">
+        <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.main); $root.SizeChanged(); }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : mode() != modes.main, 'b-requestDetail__icon1-active' : mode() == modes.main }, click: ClickMain"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabGeneral'"></div>
+        </div>
+        <!--ko foreach: DynamicOptionsService.FormTabs -->
+        <div class="b-requestDetail__icon-wrap b-requestDetail__tab dynamic-options-icon-wrap" data-bind="click: $parent.SetTab.bind($data), css: {'dynamic-options-icon-wrap_active': $parent.mode() == $parent.modes.parameterPrefix + $data.Tab.ID}">
+            <a class="dynamic-options-icon" data-bind="text: $index() + 1"></a>
+            <div class="b-content-table__workplaceIcon-header dynamic-options-icon-title" data-bind="text: $data.Tab.Name"></div>
+        </div>
+        <!-- /ko -->
+        <div class="b-requestDetail__icon-wrap" data-bind="click: TapeClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon2' : mode() != modes.tape, 'b-requestDetail__icon2-active' : mode() == modes.tape }">
+                <span class="b-requestDetail__icon-itemscount" data-bind="text: tapeControl.UnreadNoteCount, visible: tapeControl.UnreadNoteCount() != null, css: { 'b-requestDetail__icon-itemscount-attention' : tapeControl.HaveUnread() }"></span>
+            </a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabTape'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.workorders); $root.SizeChanged(); }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon3' : mode() != modes.workorders, 'b-requestDetail__icon3-active' : mode() == modes.workorders }">
+                <span class="b-requestDetail__icon-itemscount" data-bind="text: workOrderList.ItemsCount, visible: workOrderList.ItemsCount() != null"></span>
+            </a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabWOReference'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.calls); $root.SizeChanged(); }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon8' : mode() != modes.calls, 'b-requestDetail__icon8-active' : mode() == modes.calls }">
+                <span class="b-requestDetail__icon-itemscount" data-bind="text: callList.ItemsCount, visible: callList.ItemsCount() != null"></span>
+            </a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabCallReference'"></div>
+        </div>
+
+        <div class="b-requestDetail__icon-wrap b-content-table__workplaceIconGroup" data-bind="click: function() { mode(modes.massIncidents); $root.SizeChanged(); }, css: { 'b-requestDetail__icon-active': mode() == modes.massIncidents }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-content-table__mass-incident' : mode() != modes.massIncidents, 'b-content-table__mass-incident_active' : mode() == modes.massIncidents }">
+                <span class="b-requestDetail__icon-itemscount" data-bind="visible: false"></span>
+            </a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'MassIncident_AllMassIncidentsReportTitle'"></div>
+        </div>
+
+        <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.negotiation); $root.SizeChanged(); }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon5' : mode() != modes.negotiation, 'b-requestDetail__icon5-active' : mode() == modes.negotiation }">
+                <span class="b-requestDetail__icon-itemscount" data-bind="text: negotiationList.ItemsCount, visible: negotiationList.ItemsCount() != null, css: { 'b-requestDetail__icon-itemscount-attention' : negotiationList.HaveUnvoted() }"></span>
+            </a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabNegotiations'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="operationID: 650, click: function() { mode(modes.links); $root.SizeChanged(); }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon6' : mode() != modes.links, 'b-requestDetail__icon6-active' : mode() == modes.links }">
+                <span class="b-requestDetail__icon-itemscount" data-bind="text: linkList.ItemsCount, visible: linkList.ItemsCount() != null"></span>
+            </a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabInfrastructure'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap b-requestDetail__icon-problems" data-bind="click: function() { mode(modes.userFields); $root.SizeChanged(); }">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : mode() != modes.userFields, 'b-requestDetail__icon1-active' : mode() == modes.userFields }">
+            </a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'UserFieldsGroupName'"></div>
+        </div>
+    </div>
+</div>

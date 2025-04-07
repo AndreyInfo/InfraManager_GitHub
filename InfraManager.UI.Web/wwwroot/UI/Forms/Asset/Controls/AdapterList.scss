@@ -1,0 +1,174 @@
+﻿.adapterList {
+
+    table {
+        table-layout: fixed;
+    }
+
+    .row {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+     
+    th.check-box {
+        width: 30px;
+        height: 30px;
+        padding: 7px;
+        display: inline-block;
+    }
+
+    .tabPage {
+        padding-left: 25px;
+    }
+
+    td.check-box {
+        width: 30px;
+        height: 30px;
+        padding: 7px;
+        display: inline-block;
+    }
+
+    td.check-box:hover {
+        background: unset;
+        cursor: default;
+    }
+
+    th.check-box:hover {
+        background: unset;
+        cursor: default;
+    }
+
+    .tableHeader {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    th {
+        border-bottom: 1px solid $border-gray-color;
+        border-top: 1px solid $border-gray-color;
+        border-left: 1px dotted $table-border-gray-color;
+        //border-right: 1px dotted $table-border-gray-color;
+        cursor: pointer;
+        white-space: nowrap;
+        padding: 10px 12px;
+        text-align: center;
+        position: relative;
+        text-overflow: ellipsis;
+        //
+        height: 30px;
+        padding: 4px;
+    }
+
+    th.cursor-pointer:hover {
+        cursor: pointer;
+        background: $lightblue-background-color;
+    }
+
+    tr.cursor-pointer:hover {
+        cursor: pointer;
+        background: $lightblue-background-color;
+    }
+
+    tr.active {
+        background: $active-background-color;
+    }
+
+    tr.modified {
+        background: $table-row-modified-color;
+    }
+
+    tr.highlight {
+        background: $table-row-highlight-color;
+    }
+
+    td {
+        white-space: nowrap;
+        padding: 10px 12px;
+        text-align: left;
+        border-top: 1px dotted #e9ecee;
+        //border-right: 1px dotted #e9ecee;
+        border-left: 1px dotted #e9ecee;
+        overflow: hidden;
+        //
+        height: 29px;
+        padding: 4px;
+    }
+
+    td:last-child {
+        border-right: 1px dotted #e9ecee;
+    }
+
+    th:last-child {
+        border-right: 1px dotted #e9ecee;
+    }
+
+    .check-box-column {
+        padding-left: 10px;
+        width: 40px;
+    }
+
+    .check-box {
+        vertical-align: middle;
+    }
+     
+    .table-margine {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .tabCaption {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 15px;
+    }
+
+    .tabContent {
+        position: relative;
+        top: 0;
+    }
+
+    .columnLabel {
+        padding-right: 10px;
+    }
+
+    .actions {
+        position: relative;
+        height: 60px;
+        overflow: auto;
+    }
+
+    .actions-wrapper {
+        position: relative;
+        margin-top: 10px;
+        background-color: $actions-panel-background-color;
+        height: calc(100% - 10px);
+    }
+
+    .actions-list {
+        position: absolute;
+        left: 0;
+        right: 200px;
+    }
+
+    .actions-rightPanel {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 200px;
+        padding: 10px 0px;
+    }
+
+    .actions-close {
+        @extend .im-base-text;
+        color: $darkblue-text-color;
+        float: right;
+        margin-right: 15px;
+    }
+
+    .actions-count {
+        @extend .im-bold-text;
+        margin-left: 5px;
+        float: left;
+    }
+}

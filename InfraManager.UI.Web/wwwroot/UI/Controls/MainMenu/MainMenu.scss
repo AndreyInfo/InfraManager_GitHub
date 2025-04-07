@@ -1,0 +1,865 @@
+﻿@import "../../../Styles/general";
+
+.mainMenuWrapper {
+    height: 128px;
+    background: $service-catalog-dark-gray;
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    white-space: nowrap;
+    //
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: space-between;
+    -ms-flex-pack: justify;
+    align-items: center;
+    -ms-flex-align: center;
+}
+
+.mainMenuWrapper.minimalMenu {
+    height: 64px;
+}
+
+.mainMenuCurrentPage {
+    @extend .im-small-text;
+    background-color: $service-catalog-dark-gray;
+    position: absolute;
+    top: 128px;
+    left: 0px;
+    right: 0px;
+    height: 16px;
+    line-height: 15px;
+    padding-left: 20px;
+    color: $white-text-color;
+}
+
+.mainMenuCurrentPage.minimalMenu {
+    top: 64px;
+}
+
+.mainMenuCompany {
+    order: 1;
+    -ms-flex-order: 1;
+    max-height: 128px;
+    min-width: 300px;
+    max-width: 300px;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 5px 10px;
+    //
+    .mainMenuCompanyLogo {
+        max-width: 82px;
+        max-height: calc(128px - 10px);
+        display: inline-block;
+        vertical-align: middle;
+
+        &.empty {
+            width: 0;
+            height: 0;
+        }
+
+        &.priority {
+            max-width: calc(300px - 20px);
+            max-height: calc(128px - 10px);
+        }
+    }
+
+    .mainMenuCompanyText {
+        @extend .im-big-header;
+        word-break: break-word;
+        white-space: pre-line;
+        color: $mainmenu-text-color;
+        margin-left: 15px;
+        display: inline-block;
+        vertical-align: middle;
+        max-height: calc(128px - 10px);
+        max-width: calc(300px - 20px - 15px - 82px);
+
+        &.empty {
+            width: 0;
+            height: 0;
+            margin-left: 0 !important;
+            overflow: hidden;
+        }
+
+        &.priority {
+            margin-left: 0 !important;
+        }
+    }
+
+    &:hover .mainMenuCompanyText {
+        color: $mainmenu-selected-color;
+    }
+}
+
+.mainMenuCenter {
+    order: 2;
+    -ms-flex-order: 2;
+    border-right: 1px solid $mainmenu-selected-color;
+    border-left: 1px solid $mainmenu-selected-color;
+    height: 100%;
+}
+
+.mainMenuBlueActionsList {
+    padding-top: 19px;
+    padding-bottom: 19px;
+    padding-left: 24px;
+    display: inline-block;
+    height: 100%;
+}
+
+.mainMenuBlueAction {
+    display: inline-block;
+    min-width: 121px;
+    max-width: 121px;
+    height: 90px;
+    margin-right: 24px;
+    background-color: $mainmenu-bluebutton-color;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.mainMenuBlueAction:hover {
+    background-color: $mainmenu-bluebutton-hover;
+}
+
+.mainMenuBlueAction-Icon {
+    margin-right: 44px;
+    margin-left: 44px;
+    margin-top: 19px;
+    width: 32px;
+    height: 32px;
+}
+
+.mainMenuBlueAction-Text {
+    @extend .im-base-text;
+    color: $white-text-color;
+    text-align: center;
+    margin-top: 12px;
+    line-height: 16px;
+}
+
+.mainMenuActionsList {
+    height: 100%;
+    border-left: 1px solid $mainmenu-selected-color;
+    display: inline-block;
+}
+
+.mainMenuAction {
+    display: inline-block;
+    min-width: 128px;
+    max-width: 128px;
+    height: 128px;
+    margin-right: 1px;
+    background-color: $service-catalog-dark-gray;
+    cursor: pointer;
+    position: relative;
+}
+
+.mainMenuAction-Icon {
+    margin-right: 38px;
+    margin-left: 38px;
+    margin-top: 30px;
+    width: 52px;
+    height: 39px;
+}
+
+.mainMenuAction-Text {
+    @extend .im-base-text;
+    color: $mainmenu-text-color;
+    text-align: center;
+    margin-top: 12px;
+    line-height: 16px;
+}
+
+.mainMenuAction:hover, .mainMenuAction.active, .mainMenuAction.menuexpanded{
+    background-color: $mainmenu-color;
+}
+
+.mainMenuAction:hover .mainMenuAction-Text:not(.mainMenuAction-submenuItem-Text), .mainMenuAction.menuexpanded {
+    color: $mainmenu-selected-color;
+}
+
+.mainMenuAction-submenu {
+    position: absolute;
+    top: calc(128px + 5px);
+    right: 0px;
+    width: 300px;
+    background-color: $service-catalog-dark-gray;
+    z-index: 99;
+}
+
+.mainMenuBlueAction-submenu {
+    @extend .mainMenuAction-submenu;
+    right: unset;
+    left: 0px;
+    top: calc(128px - 18px + 5px);
+}
+
+.mainMenuAction-submenuItem {
+    border-bottom: 1px dotted $mainmenu-text-color;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: flex-start;
+    -ms-flex-pack: start;
+    align-items: center;
+    -ms-flex-align: center;
+}
+
+.mainMenuAction-submenuItem-Icon {
+    margin-right: 19px;
+    margin-left: 19px;
+    margin-top: 23px;
+    margin-bottom: 23px;
+    width: 32px;
+    height: 24px;
+}
+
+.mainMenuAction-submenuItem-Text {
+    @extend .im-base-text;
+    margin-right: 15px;
+    margin-top: 27px;
+    margin-bottom: 27px;
+    color: $mainmenu-text-color;
+    text-align: left;
+    word-break: break-word;
+    white-space: initial;
+    overflow: hidden;
+    width: calc(300px - 19px - 19px - 32px - 5px); //Ширина поля - марджины и ширина иконки - 5
+    //
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    justify-content: center;
+    -ms-flex-pack: center;
+    align-items: flex-end;
+    -ms-flex-align: end;
+}
+
+.disabled {
+    cursor: default !important;
+}
+
+
+.mainMenuAction-submenuItem-Text div {
+    width: 100%;
+    line-height: 16px;
+}
+
+.disabled .mainMenuAction-submenuItem-Text div {
+    color: gray !important;
+}
+
+.mainMenuAction-submenuItem.active:not(.disabled) {
+    background-color: $mainmenu-color;
+}
+
+.mainMenuAction-submenuItem.active .mainMenuAction-submenuItem-Text :not(.disabled) {
+    color: $mainmenu-text-color;
+}
+
+.mainMenuAction-submenuItem:hover:not(.disabled) {
+    background-color: $mainmenu-color;
+}
+
+.mainMenuAction-submenuItem:hover .mainMenuAction-submenuItem-Text :not(.disabled) {
+    color: $mainmenu-selected-color;
+}
+
+.mainMenuUserBlock {
+    order: 3;
+    -ms-flex-order: 3;
+    height: 100%;
+    min-width: 300px;
+    max-width: 300px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    padding-left: 17px;
+    cursor: pointer;
+    position: relative;
+    //
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: flex-end;
+    -ms-flex-pack: end;
+    align-items: center;
+    -ms-flex-align: center;
+}
+
+.mainMenuUserBlock.shortBlock {
+    min-width: 80px;
+    max-width: 80px;
+}
+
+.mainMenuUserBlock-Text {
+    order: 1;
+    -ms-flex-order: 1;
+    @extend .im-base-text;
+    color: $mainmenu-text-color;
+    text-align: right;
+    word-break: break-word;
+    white-space: initial;
+    height: calc(128px - 28px - 28px);
+    overflow: hidden;
+    //
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    justify-content: center;
+    -ms-flex-pack: center;
+    align-items: flex-end;
+    -ms-flex-align: end;
+}
+
+.mainMenuUserBlock-Text div {
+    width: 100%;
+}
+
+.mainMenuUserBlock-Icon {
+    order: 2;
+    -ms-flex-order: 2;
+    margin: 20px;
+    margin-right: 25px;
+    min-width: 39px;
+    max-width: 39px;
+    height: 39px;
+    background: url('../UI/Controls/MainMenu/Icons/user.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuUserBlock-Icon.noTextLeft {
+    margin-left: 0px;
+}
+
+.mainMenuUserBlock:hover .mainMenuUserBlock-Text {
+    color: $mainmenu-selected-color;
+}
+
+.mainMenuUserBlock:hover .mainMenuUserBlock-Icon {
+    background: url('../UI/Controls/MainMenu/Icons/user_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuUserBlock-submenu {
+    position: absolute;
+    top: calc(128px + 5px);
+    width: 300px;
+    right: 5px;
+    background-color: $service-catalog-dark-gray;
+    z-index: 99;
+}
+
+.mainMenuUserBlock-submenuItem {
+    @extend .im-base-text;
+    border-bottom: 1px dotted $mainmenu-text-color;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    background-color: $mainmenu-gray-color;
+    color: $service-catalog-dark-gray;
+    text-align: center;
+    line-height: 16px;
+}
+
+.mainMenuUserBlock-submenuItem:hover {
+    background-color: $mainmenu-gray-color;
+    color: $service-catalog-dark-gray;
+    font-weight: bold;
+}
+
+.mainMenuBtn-Assets {
+    background: url('../UI/Controls/MainMenu/Icons/Assets.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction:hover .mainMenuBtn-Assets:not(.mainMenuAction-submenuItem-Icon),
+.mainMenuAction-submenuItem:hover .mainMenuBtn-Assets {
+    background: url('../UI/Controls/MainMenu/Icons/Assets_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-Catalogue {
+    background: url('../UI/Controls/MainMenu/Icons/Catalogue.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction:hover .mainMenuBtn-Catalogue:not(.mainMenuAction-submenuItem-Icon),
+.mainMenuAction-submenuItem:hover .mainMenuBtn-Catalogue {
+    background: url('../UI/Controls/MainMenu/Icons/Catalogue_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-KB {
+    background: url('../UI/Controls/MainMenu/Icons/KnBase.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction:hover .mainMenuBtn-KB:not(.mainMenuAction-submenuItem-Icon),
+.mainMenuAction-submenuItem:hover .mainMenuBtn-KB {
+    background: url('../UI/Controls/MainMenu/Icons/KnBase_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-Dashboards {
+    background: url('../UI/Controls/MainMenu/Icons/Statistics.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction:hover .mainMenuBtn-Dashboards:not(.mainMenuAction-submenuItem-Icon),
+.mainMenuAction-submenuItem:hover .mainMenuBtn-Dashboards {
+    background: url('../UI/Controls/MainMenu/Icons/Statistics_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-Tasks {
+    background: url('../UI/Controls/MainMenu/Icons/Tasks.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction:hover .mainMenuBtn-Tasks:not(.mainMenuAction-submenuItem-Icon),
+.mainMenuAction-submenuItem:hover .mainMenuBtn-Tasks {
+    background: url('../UI/Controls/MainMenu/Icons/Tasks_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-Time {
+    background: url('../UI/Controls/MainMenu/Icons/Time.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction:hover .mainMenuBtn-Time:not(.mainMenuAction-submenuItem-Icon),
+.mainMenuAction-submenuItem:hover .mainMenuBtn-Time {
+    background: url('../UI/Controls/MainMenu/Icons/Time_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-Finance {
+    background: url('../UI/Controls/MainMenu/Icons/Finance.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction:hover .mainMenuBtn-Finance:not(.mainMenuAction-submenuItem-Icon),
+.mainMenuAction-submenuItem:hover .mainMenuBtn-Finance {
+    background: url('../UI/Controls/MainMenu/Icons/Finance_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-More {
+    background: url('../UI/Controls/MainMenu/Icons/More.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction:hover .mainMenuBtn-More {
+    background: url('../UI/Controls/MainMenu/Icons/More_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBlueBtn-Create {
+    background: url('../UI/Controls/MainMenu/Icons/Create.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBlueBtn-FindClient {
+    background: url('../UI/Controls/MainMenu/Icons/Find_client.svg') no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.mainMenuBlueBtn-Search {
+    background: url('../UI/Controls/MainMenu/Icons/Search.svg') no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.mainMenuBtn-CreateCall {
+    background: url('../UI/Controls/MainMenu/Icons/Create_task.svg') no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.mainMenuAction-submenuItem:hover .mainMenuBtn-CreateCall {
+    background: url('../UI/Controls/MainMenu/Icons/Create_task_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-CreateRFC {
+    background: url('../UI/Controls/MainMenu/Icons/Create_rfc.svg') no-repeat;
+    background-size: contain;
+} 
+
+.mainMenuAction-submenuItem:hover .mainMenuBtn-CreateRFC {
+    background: url('../UI/Controls/MainMenu/Icons/Create_rfc_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-CreateMassIncident {
+    background: url('../UI/Controls/MainMenu/Icons/Create_mi.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction-submenuItem:hover .mainMenuBtn-CreateMassIncident {
+    background: url('../UI/Controls/MainMenu/Icons/Create_mi_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-CreateWO {
+    background: url('../UI/Controls/MainMenu/Icons/Create_work.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction-submenuItem:hover .mainMenuBtn-CreateWO {
+    background: url('../UI/Controls/MainMenu/Icons/Create_work_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-CreateProblem {
+    background: url('../UI/Controls/MainMenu/Icons/Create_problem.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction-submenuItem:hover .mainMenuBtn-CreateProblem {
+    background: url('../UI/Controls/MainMenu/Icons/Create_problem_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-Admin {
+    background: url('../UI/Controls/MainMenu/Icons/Shield.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction-submenuItem:hover .mainMenuBtn-Admin {
+    background: url('../UI/Controls/MainMenu/Icons/Shield_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-ConnectionsManagement {
+    background: url('../UI/Controls/MainMenu/Icons/Connections_management.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenu-About {
+    display: flex;
+    justify-content: center;
+    cursor: default;
+    margin: 5px 0;
+}
+
+.mainMenu-About
+.mainMenu-About-Icon {
+    background: url('../UI/Controls/MainMenu/Icons/logo.svg') no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 17px;
+    padding: 0 10px;
+}
+
+.mainMenu-About
+.mainMenu-About-Text {
+    color: $mainmenu-text-color;
+}
+
+.mainMenuBtn-SettingWeb {
+    background: url('../UI/Controls/MainMenu/Icons/Settings_web.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-Settings {
+    background: url('../UI/Controls/MainMenu/Icons/Profile.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuAction-submenuItem:hover .mainMenuBtn-Settings {
+    background: url('../UI/Controls/MainMenu/Icons/Profile_focus.svg') no-repeat;
+    background-size: contain;
+}
+
+.mainMenuBtn-DirectorySettings {
+    background: url('../UI/Controls/MainMenu/Icons/Directory_settings.svg') no-repeat;
+    background-size: contain;
+}
+
+@media screen and (min-width: 1360px) and (max-width: 1674px) {
+    .mainMenuWrapper {
+        height: 98px;
+    }
+
+    .mainMenuCurrentPage {
+        top: 98px;
+    }
+
+    .mainMenuCompany {
+        padding: 3px 7px;
+        max-height: 98px;
+
+        .mainMenuCompanyText {
+            font-size: 16px;
+            margin-left: 12px;
+            max-height: calc(98px - 6px);
+            max-width: calc(300px - 14px - 12px - 85px);
+        }
+
+        .mainMenuCompanyLogo {
+            max-width: 85px;
+            max-height: calc(98px - 6px);
+
+            &.priority {
+                max-width: calc(300px - 14px) !important;
+                max-height: calc(98px - 6px) !important;
+            }
+        }
+    }
+
+    .mainMenuBlueActionsList {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 19px;
+    }
+
+    .mainMenuBlueAction {
+        min-width: 110px;
+        max-width: 110px;
+        height: 68px; //хер знает, должно быть 70, а выравнивает неверно
+        margin-right: 19px;
+        border-radius: 8px;
+    }
+
+    .mainMenuBlueAction-Icon {
+        margin-right: 42px;
+        margin-left: 42px;
+        margin-top: 14px;
+        width: 26px;
+        height: 26px;
+    }
+
+    .mainMenuBlueAction-Text {
+        margin-top: 10px;
+        line-height: 13px;
+    }
+
+    .mainMenuAction {
+        min-width: 110px;
+        max-width: 110px;
+        height: 98px;
+    }
+
+    .mainMenuAction-Icon {
+        margin-right: 34px;
+        margin-left: 34px;
+        margin-top: 24px;
+        width: 42px;
+        height: 31px;
+    }
+
+    .mainMenuAction-Text {
+        margin-top: 10px;
+        line-height: 13px;
+    }
+
+    .mainMenuAction-submenu {
+        top: calc(98px + 5px);
+    }
+
+    .mainMenuBlueAction-submenu {
+        top: calc(98px - 14px + 5px);
+    }
+
+    .mainMenuAction-submenuItem-Icon {
+        margin-right: 15px;
+        margin-left: 15px;
+        margin-top: 22px;
+        margin-bottom: 22px;
+        width: 26px;
+        height: 19px;
+    }
+
+    .mainMenuAction-submenuItem-Text {
+        margin-right: 12px;
+        margin-top: 21px;
+        margin-bottom: 21px;
+        width: calc(300px - 15px - 15px - 25px - 5px); //Ширина поля - марджины и ширина иконки - 5
+    }
+
+    .mainMenuAction-submenuItem-Text div {
+        line-height: 13px;
+    }
+
+    .mainMenuUserBlock {
+        min-width: 240px;
+        max-width: 240px;
+        padding-top: 22px;
+        padding-bottom: 22px;
+        padding-left: 14px;
+    }
+
+    .mainMenuUserBlock.shortBlock {
+        min-width: 60px;
+        max-width: 60px;
+    }
+
+    .mainMenuUserBlock-Text {
+        height: calc(98px - 22px - 22px);
+    }
+
+    .mainMenuUserBlock-Icon {
+        margin: 16px;
+        margin-right: 25px;
+        min-width: 31px;
+        max-width: 31px;
+        height: 31px;
+    }
+
+    .mainMenuUserBlock-Icon.noTextLeft {
+        margin-left: 0px;
+    }
+
+    .mainMenuUserBlock-submenu {
+        top: calc(98px + 5px);
+        right: 4px;
+    }
+
+    .mainMenuUserBlock-submenuItem {
+        padding-right: 12px;
+        padding-left: 12px;
+        padding-top: 21px;
+        padding-bottom: 21px;
+        line-height: 13px;
+    }
+}
+
+.minimalMenu {
+    .mainMenuCompany {
+        padding: 2px 5px;
+        max-height: 64px;
+
+        .mainMenuCompanyText {
+            font-size: 12px;
+            margin-left: 8px;
+            max-height: calc(64px - 4px);
+            max-width: calc(300px - 10px - 8px - 90px);
+        }
+
+        .mainMenuCompanyLogo {
+            max-width: 90px;
+            max-height: calc(64px - 4px);
+
+            &.priority {
+                max-width: calc(300px - 10px) !important;
+                max-height: calc(64px - 4px) !important;
+            }
+        }
+    }
+
+    .mainMenuBlueActionsList {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 22px;
+    }
+
+    .mainMenuBlueAction {
+        min-width: 62px;
+        max-width: 62px;
+        height: 40px;
+        margin-right: 22px;
+        border-radius: 6px;
+    }
+
+    .mainMenuBlueAction-Icon {
+        margin-right: 15px;
+        margin-left: 15px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .mainMenuAction-submenu {
+        top: calc(64px + 5px);
+    }
+
+    .mainMenuBlueAction-submenu {
+        top: calc(64px - 12px + 5px);
+    }
+
+    .mainMenuAction-submenuItem-Icon {
+        margin-right: 19px;
+        margin-left: 19px;
+        margin-top: 23px;
+        margin-bottom: 23px;
+        width: 32px;
+        height: 24px;
+    }
+
+    .mainMenuAction-submenuItem-Text {
+        margin-right: 15px;
+        margin-top: 27px;
+        margin-bottom: 27px;
+        width: calc(300px - 19px - 19px - 32px - 5px); //Ширина поля - марджины и ширина иконки - 5
+    }
+
+    .mainMenuAction-submenuItem-Text div {
+        line-height: 16px;
+    }
+
+    .mainMenuUserBlock {
+        min-width: 300px;
+        max-width: 300px;
+        padding: 0px;
+    }
+
+    .mainMenuUserBlock-Icon {
+        margin: 20px;
+        margin-right: 25px;
+        min-width: 24px;
+        max-width: 24px;
+        height: 24px;
+        background: url('../UI/Controls/MainMenu/Icons/MM.svg') no-repeat;
+        background-size: contain;
+    }
+
+    .mainMenuUserBlock-Icon.noTextLeft {
+        margin-left: 0px;
+    }
+
+    .mainMenuUserBlock:hover .mainMenuUserBlock-Icon {
+        background: url('../UI/Controls/MainMenu/Icons/MM_focus.svg') no-repeat;
+        background-size: contain;
+    }
+
+    .mainMenuUserBlock-submenu {
+        top: calc(64px + 5px);
+        right: 4px;
+    }
+
+    .mainMenuUserBlock-submenuItem {
+        padding-right: 15px;
+        padding-left: 15px;
+        padding-top: 27px;
+        padding-bottom: 27px;
+        line-height: 16px;
+    }
+}

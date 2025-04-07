@@ -1,0 +1,1 @@
+ALTER TABLE dbo.[Values] ALTER COLUMN Value nvarchar(4000) NULL

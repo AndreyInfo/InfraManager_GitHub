@@ -1,0 +1,211 @@
+﻿<div class="baseContent__items  kbaContent_">
+    <div class="kbaContentleft_">
+        <div class="KbHeaderBlock_">
+            <div class="cap_academicSingle_" />
+            <div class="kba-number im-big-header" data-bind="text: NumberToShow, visible: $parent.mode() === 'properties'" />
+            <div class="kba-name im-big-header">
+                <input class="kba-name-input" type="text" maxlength="250" data-bind="textInput: Name, resattr: { placeholder : 'KBAEnterName' }, css: {'invalid' : Name().length == 0}, disable: !$parent.IsEditMode()" />
+            </div>
+        </div>
+        <div class="blockContent_">
+
+            <div class="descriptionText_">
+                <div class="headText_ left_" data-bind="restext: 'Description'"></div>
+                <div class="openEditor right_" data-bind="restext: 'KB_OpenEditor', visible: $parent.IsEditMode, click: $parent.EditDescription"></div>
+            </div>
+            <div class="KBADescription_ htmlEditor-extensionContainerFull"></div>
+
+            <div class="solutionText_">
+                <div class="headText_ left_" data-bind="restext: 'Solution'"></div>
+                <div class="openEditor right_" data-bind="restext: 'KB_OpenEditor', visible: $parent.IsEditMode, click: $parent.EditSolution"></div>
+            </div>
+            <div class="KBASolution_ htmlEditor-extensionContainerFull"></div>
+
+            <div class="workaroundText_">
+                <div class="headText_ left_" data-bind="restext: 'Workaround'"></div>
+                <div class="openEditor right_" data-bind="restext: 'KB_OpenEditor', visible: $parent.IsEditMode, click: $parent.EditWorkaround"></div>
+            </div>
+            <div class="KBAWorkaround_ htmlEditor-extensionContainerFull"> </div>
+
+
+            <div class="orgstructure-text-with-header orgstructure-section-start" data-bind="visible: !!$parent.Attachments() && $parent.mode() === 'properties'">
+                <span class="filesText headText" data-bind="restext: 'OrgStructureFilesTitle'"></span>
+                <div data-bind="template: {name: '../UI/Lists/Settings/OrgStructure.Attachments' , data: $parent }"></div>
+            </div>
+
+            <div class="orgstructure-text-with-header orgstructure-section-start" data-bind="visible: $parent.mode() === 'properties'">
+                <div data-bind="visible: $parent.IsEditMode()">
+                    <div class="rightPanelItems filesText headText" data-bind="text: getTextResource('KBARelatedArticles')"></div>
+                    <div data-bind="foreach: $parent.kbArticle().KBArticleDependencyList">
+                        <div class="kba-text-forlist">
+                            <div class="kba-text-list cursor-pointer" data-bind="click: $parents[1].OpenKBArticleDependency, text: $data.KBArticleDependencyName, style: { 'color' : '#41aaed' ,'padding-top': '5px'}"></div>
+                            <!-- ko if:  $data.KBArticleDependencyID != null -->
+                            <div class="search-results-control-clearkba cursor-pointer" data-bind="click: $parents[1].RemoveKBArticleDependency"></div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+                <div data-bind="visible: !$parent.IsEditMode()">
+                    <!-- ko if:  $parent.kbArticle().KBArticleDependencyList().length > 0 -->
+                    <div class="rightPanelItems filesText headText" data-bind="text: getTextResource('KBARelatedArticles')"></div>
+                    <div data-bind="foreach: $parent.kbArticle().KBArticleDependencyList">
+                        <div class="kba-text-forlist">
+                            <span class="kba-text-list cursor-pointer" data-bind="click: $parents[1].OpenKBArticleDependency, text: $data.KBArticleDependencyName , style: { 'color' : '#41aaed' ,'padding-top': '5px'}"></span>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <button class="link-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="visible: $parent.IsEditMode(), click: $parent.AddKBArticleDependency">
+                    <span class="ui-button-text link-text-button" data-bind="restext: 'KBALinkArticles'"></span>
+                </button>
+            </div>
+                <div class="footerBackBlock" data-bind="if: $root.backToList, visible: !$parent.IsEditMode()">
+                    <div class="btn_kba backIcon" data-bind="text: getTextResource('Back'), click: $root.backToList"></div>
+                </div>
+            </div>
+    </div>
+    <div class="kbaContentRightBlock_">
+        <div class="rightSidePadding">
+            <div class="kbaRightIcons" data-bind="visible: $parent.mode() === 'properties'">
+                <span data-bind="click: $parent.PrintKba, attr: { title: getTextResource('Print') }, visible: $parent.ShowPrintBtn" class="printIcon"></span>
+                <span data-bind="click: $parent.SendEmail, attr: { title: getTextResource('Send_by_mail') }" class="messageIcon"></span>
+                <span data-bind="click: $parent.ExportDocFile, attr: { title: getTextResource('Upload_files') }" class="exportIcon"></span>
+                <span data-bind="click: $parent.CopyLink, attr: { title: getTextResource('CopyLink') }" class="copyIcon"></span>
+            </div>
+            <div class="rightPanelTilte" data-bind="visible: $parent.mode() === 'properties'">
+                <!--<span class="rightPanelItems" data-bind="text: getTextResource('Posted')"></span>
+        <span class="rightPanelItems" data-bind="text: AuthorFullName"> </span>-->
+
+                <div class="assetReg-mResponsible" data-bind="with: $parent">
+                    <div data-bind="template: { name: 'User/FormUser', if: UserLoaded(), data: User }"></div>
+                    <div class="hideUserIcon" data-bind="template: { name: 'User/FormUserEmpty', if: !UserLoaded(), data: User }"></div>
+                </div>
+
+            </div>
+            <div class="rightPanelTilte" data-bind="visible: $parent.mode() === 'properties'">
+                <span class="rightPanelItems" data-bind="text: getTextResource('PublicationDate')"></span>
+                <span class="rightPanelItems" data-bind="text: DateCreation"> </span>
+            </div>
+            <div class="rightPanelTilte" data-bind="visible: $parent.mode() === 'properties'">
+                <span class="rightPanelItems" data-bind="text: getTextResource('KBADataLastEdit')"></span>
+                <span class="rightPanelItems" data-bind="text: DateModified"> </span>
+            </div>
+            <div class="rightPanelTilte">
+                <div data-bind="visible: !$parent.IsEditMode()">
+                    <span class="rightPanelItems" data-bind="text: getTextResource('StatusOfArticle')"></span>
+                    <span class="rightPanelItems" data-bind="text: StatusName"> </span>
+                </div>
+                <div data-bind="visible: $parent.IsEditMode">
+                    <div class="rightPanelItems" data-bind="restext: 'StatusOfArticle'"></div>
+                    <div class="kba-status-combobox combobox" data-bind="combobox: { dataSource: $parent.getStatusComboItems }, comboboxValue: $parent.selectedStatus, style: { 'pointer-events': $parent.CanEdit() ? 'auto' : 'none' }"></div>
+                </div>
+            </div>
+            <div class="rightPanelTilte">
+                <div data-bind="visible: !$parent.IsEditMode()">
+                    <span class="rightPanelItems" data-bind="text: getTextResource('TypeOfArticle')"></span>
+                    <span class="rightPanelItems" data-bind="text: TypeName"> </span>
+                </div>
+                <div data-bind="visible: $parent.IsEditMode">
+                    <div class="rightPanelItems" data-bind="restext: 'TypeOfArticle'"></div>
+                    <div class="kba-type-combobox combobox" data-bind="combobox: { dataSource: $parent.getTypeComboItems }, comboboxValue: $parent.selectedType, style: { 'pointer-events': $parent.CanEdit() ? 'auto' : 'none' }"></div>
+                </div>
+            </div>
+            <div class="rightPanelTilte">
+                <div data-bind="visible: $parent.IsEditMode()">
+                    <div class="rightPanelItems kba-text-bolder" data-bind="restext: 'KBA_ReadArticles'"></div>
+                    <div class="kba-access-combobox combobox" data-bind="combobox: { dataSource: $parent.getAccessComboItems }, comboboxValue: $parent.selectedAccess, style: { 'pointer-events': $parent.CanEdit() ? 'auto' : 'none' }"></div>
+                </div>
+                <div data-bind="visible: !$parent.IsEditMode()">
+                    <span class="rightPanelItems" data-bind="text: getTextResource('KBA_ReadArticles') + ':'"></span>
+                    <span class="rightPanelItems" data-bind="text: AccessName"> </span>
+                </div>
+            </div>
+            <div>
+                <div data-bind="visible: $parent.IsEditMode() && $parent.AccessRestricted">
+                    <div class="kba-text-list cursor-pointer" data-bind="text: getTextResource('KBA_ListAdmittedPersons'), style: { 'color' : '#79dcf4' ,'padding-top': '1px'}, click: $parent.EditKBAUserList " />
+                </div>
+            </div>
+
+            <div class="rightPanelTilte" data-bind="visible: $parent.IsEditMode()">
+                <div class="fieldHeader fieldHeader-blue" data-bind="text: getTextResource('Kba_Expert'), style: { 'color' : '#79dcf4' ,'margin-left': '3px'} " />
+                <div class="assetReg-locationControl td-width form-user-header">
+                    <div data-bind="template: { name: 'User/FormUser', if: ExpertLoaded(), data: Expert }"></div>
+                    <div data-bind="template: { name: 'User/FormUserEmpty', if: !ExpertLoaded(), data: Expert }"></div>
+                </div>
+            </div>
+            <div class="rightPanelTilte" data-bind="visible: !$parent.IsEditMode() && $parent.mode() === 'properties' ">
+                <!-- ko if: ExpertID() != null -->
+                <div class="fieldHeader fieldHeader-blue" data-bind="text: getTextResource('Kba_Expert'), style: { 'color' : '#79dcf4' ,'margin-left': '3px'} " />
+                <div class="assetReg-locationControl td-width form-user-header">
+                    <div data-bind="template: { name: 'User/FormUser', if: ExpertLoaded(), data: Expert }"></div>
+                    <div data-bind="template: { name: 'User/FormUserEmpty', if: !ExpertLoaded(), data: Expert }"></div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: ExpertID() == null -->
+                <div class="fieldHeader fieldHeader-blue" data-bind="text: getTextResource('Kba_Expert'), style: { 'color' : '#79dcf4' ,'margin-left': '3px'} " />
+                <div class="form-user-empty-readonly" data-bind="restext: 'ValueNotSet'"></div>
+                <!-- /ko -->
+            </div>
+            <div class="rightPanelTilte" data-bind="visible: $parent.IsEditMode()">
+                <div class="fieldHeader" data-bind="restext: 'Kba_ValidUntil'"></div>
+                <div class="assetReg-locationControl">
+                    <div class="dateTimeControlImage floatLeft active" data-bind="css: { 'active' : $parent.IsEditMode() }, style: { 'margin-bottom': '5px' }, click: $parent.EditDateValidUntil"><span /></div>
+                    <div class="asset-text-field floatLeft device-width-right cursor-pointer border nowrap" data-bind="text: DateValidUntil , style: { 'display': 'inline-block', 'width': '120px' }, css: {'clickable':  $parent.IsEditMode()}, click: $parent.EditDateValidUntil"></div>
+                </div>
+            </div>
+            <div class="rightPanelTilte" data-bind="visible: !$parent.IsEditMode() && $parent.mode() === 'properties'">
+                <div class="rightPanelItems" data-bind="restext: 'Kba_ValidUntil'"></div>
+                <div class="assetReg-locationControl">
+                    <div class="dateTimeControlImage floatLeft active" data-bind="css: { 'active' : $parent.IsEditMode() } , style: { 'margin-bottom': '5px' ,  'margin-left': '0px'},"><span /></div>
+                    <div class="asset-text-field-readonly floatLeft device-width-right nowrap" data-bind="text: DateValidUntil, style: { 'display': 'inline-block' , 'width': '120px' , 'font-size': '11px'}"></div>
+                </div>
+            </div>
+
+            <div class="rightPanelTilte rightPanelTag">
+                <span class="rightPanelItems im-big-text" data-bind="text: getTextResource('Tags')"></span>
+            </div>
+            <div class="tegContent rightPanel" data-bind="visible: !$parent.IsEditMode(), foreach: Tags">
+                <div class="teg" style="color: #333333" data-bind="text: $data"></div>
+            </div>
+
+            <div class="tagPanel" data-bind="visible: $parent.IsEditMode">
+                <textarea class="tags" data-bind="textInput: TagsString"></textarea>
+            </div>
+
+            <div class="rightPanelTilte" data-bind="visible: $parent.mode() === 'properties'">
+                <span class="rightPanelItems" data-bind="text: getTextResource('UsefulArticle')"></span>
+                <span class="rightPanelItems" data-bind="text: Rated"> </span>
+            </div>
+            <div class="rightPanelTilte" data-bind="visible: $parent.mode() === 'properties'">
+                <span class="rightPanelItems" data-bind="text: getTextResource('Views')"></span>
+                <span class="rightPanelItems" data-bind="text: Readed"> </span>
+            </div>
+            <div class="rightPanelTilte" data-bind="visible: $parent.mode() === 'properties'">
+                <span class="rightPanelItems" data-bind="text: getTextResource('KBAApplications')"></span>
+                <span class="rightPanelItems" data-bind="text: Used"> </span>
+            </div>
+        </div>
+
+            <div class="rightPanelTilte" data-bind="visible: !$parent.IsEditMode() && $parent.CanEdit() && $parent.mode() === 'properties'">
+                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: $parent.EditArticleClick">
+                    <!--<span class="ui-button-text" data-bind="restext: 'KB_EditArticle'"></span>-->
+                    <span class="ui-button-text" data-bind="restext: 'KB_EditArticle'"></span>
+                </button>
+            </div>
+
+            <div class="rightPanelTilte" data-bind="visible: $parent.mode() === 'add' &&  $parent.showCreateButton() === true">
+                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: $parent.SaveEditClick">
+                    <span class="ui-button-text" data-bind="restext: 'Add_article'"></span>
+                </button>
+            </div>
+
+            <div class="rightPanelTilte" data-bind="visible: $parent.IsEditMode()&& $parent.CanEdit() && $parent.mode() === 'properties'">
+                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: $parent.SaveEditClick">
+                    <span class="ui-button-text" data-bind="restext: 'OrgStructureSave'"></span>
+                </button>
+                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: $parent.CancelClick">
+                    <span class="ui-button-text" data-bind="restext: 'OrgStructureCancel'"></span>
+                </button>
+            </div>
+        </div>
+</div>

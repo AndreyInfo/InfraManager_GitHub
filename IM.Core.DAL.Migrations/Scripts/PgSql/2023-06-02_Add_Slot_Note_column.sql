@@ -1,0 +1,1 @@
+﻿alter table slot add column if not exists note varchar(250) not null default '';

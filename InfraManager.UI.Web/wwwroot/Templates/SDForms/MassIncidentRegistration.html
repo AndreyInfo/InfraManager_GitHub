@@ -1,0 +1,222 @@
+﻿<div class="b-requestDetail im-base-text">
+    <div class="b-requestDetail-left">
+        <div class="b-requestDetail-menu clearfix">
+            <div class="b-requestDetail-menu__item b-requestDetail-menu__priority leftToolbarButtons" data-drop-down-wrapper-priority>
+                <div class="priority-header" data-bind="tooltip: getTextResource('ProblemPriority')" drop-down-handler>
+                    <span data-bind="text: PriorityName" />
+                    <span class="priority-expander" />
+                </div>
+                <span class="priority-panel priority-panel_center" data-bind="stopBinding: true" drop-down-list />
+            </div>
+            <div class="b-requestDetail-menu__item b-requestDetail-menu__priority leftToolbarButtons" data-drop-down-wrapper-criticality>
+                <div class="priority-header" data-bind="tooltip: getTextResource('Criticality')" drop-down-handler>
+                    <span data-bind="text: CriticalityName" />
+                    <span class="priority-expander" />
+                </div>
+                <span class="priority-panel priority-panel_center" data-bind="stopBinding: true" drop-down-list/>
+            </div>
+        </div>
+        <div class="fieldPair b-requestDetail__title-header">
+            <div class="icon iconSvgMask fieldMiSummary active" data-bind="tooltip: getTextResource('Summary')"><span /></div>
+            <div class="editor big">
+                <input type="text" class="border bigField im-big-header firstFocus" maxlength="500"
+                       data-bind="textInput: Name, longNameTooltip: Name, attr: { placeholder: getTextResource('PromptProblemSummary') }, css: {'invalid' : Name().length == 0}" />
+            </div>
+        </div>
+        <div class="b-requestDetail__tabsContainer" data-form-tabs>
+            <div class="b-requestDetail__mainParameters" data-bind="visible: mode() == modes.main">
+                <div class="horizontalContainer">
+                    <div class="horizontalContainer__wrapper">
+                        <div class="horizontalContainer-leftPart">
+                            <div class="b-requestDetail__descr im-big-header">
+                                <span data-bind="restext: 'Description'"></span>
+                                <span data-bind="css: ServiceContainer() && ServiceContainer().IsVisible()
+                                      ? 'arrow-up active' : 'arrow-down active',
+                                      click: ServiceContainer() && ServiceContainer().OnToggle,
+                                      tooltip: ServiceContainer() && ServiceContainer().IsVisible()
+                                      ? getTextResource('Collapse') : getTextResource('Expand')">
+                                    <span></span>
+                                </span>
+                            </div>
+
+                            <div class="horizontalContainer__body" data-bind="visible: ServiceContainer() && ServiceContainer().IsVisible()">
+                                <div class="fieldPair">
+                                    <div class="icon fieldDescription active" data-bind="click: EditDescription, tooltip: getTextResource('Description')"><span></span></div>
+                                    <div class="editor border html slide fullDescription"></div>
+                                </div>
+                                <div class="slider" onclick="$(this).prev().find('.slide').removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')"></div>
+                            </div>
+
+                            <div class="horizontalContainer__documents">
+                                <div class="fieldPair">
+                                    <div class="icon b-requestDetail__files-addBtn active"><span></span></div>
+                                    <div class="editor b-requestDetail__files documentList"></div>
+                                </div>
+                            </div>
+
+                            <div class="b-requestDetail__descr im-big-header">
+                                <span data-bind="restext: 'Cause'"></span>
+                                <span data-bind="css: ParamsContainer() && ParamsContainer().IsVisible()
+                                      ? 'arrow-up active' : 'arrow-down active',
+                                      click: ParamsContainer() && ParamsContainer().OnToggle,
+                                      tooltip: ParamsContainer() && ParamsContainer().IsVisible() ? getTextResource('Collapse') : getTextResource('Expand')">
+                                    <span></span>
+                                </span>
+                            </div>
+
+                            <div class="horizontalContainer__body" data-bind="visible: ParamsContainer() && ParamsContainer().IsVisible()">
+                                <ul class="inputs-form-list">
+                                    <li class="inputs-form-list__item">
+                                        <div class="field-container">
+                                            <div class="fieldPair">
+                                                <div class="icon icon_small iconSvgMask fieldCauseCircle active" data-bind="tooltip: getTextResource('MassiveIncidentShortCause')"><span></span></div>
+                                                <div class="editor fill combobox shortCause" data-bind="combobox: { dataSource: CauseSelectHelper.getItemList, placeholder: getTextResource('MassiveIncidentShortCause') }, comboboxValue: CauseSelectHelper.SelectedItem"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="inputs-form-list__item">
+                                        <div class="fieldPair">
+                                            <div class="icon iconSvgMask fieldCauseCircle active" data-bind="click: EditCause, tooltip: getTextResource('MassiveIncidentCause')"><span></span></div>
+                                            <div class="editor border fill html slide cause" style="padding:2px;"></div>
+                                            <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="b-requestDetail__descr im-big-header">
+                                <span data-bind="restext: 'Solution'"></span>
+                                <span data-bind="css: SolutionContainer() && SolutionContainer().IsVisible()
+                                      ? 'arrow-up active' : 'arrow-down active',
+                                      click: SolutionContainer() && SolutionContainer().OnToggle,
+                                      tooltip: SolutionContainer() && SolutionContainer().IsVisible() ? getTextResource('Collapse') : getTextResource('Expand')">
+                                    <span></span>
+                                </span>
+                            </div>
+
+                            <div class="horizontalContainer__body" data-bind="visible: SolutionContainer() && SolutionContainer().IsVisible()">
+                                <ul class="inputs-form-list">
+                                    <li class="inputs-form-list__item">
+                                        <div class="fieldPair">
+                                            <div class="icon fieldSolution active" data-bind="click: EditSolution, tooltip: getTextResource('MassIncident_Solution')"><span></span></div>
+                                            <div class="editor border fill html slide solution" style="padding:2px;"></div>
+                                            <div class="slider" onclick="$(this).prev().removeClass('slide'); $(this).hide();" data-bind="tooltip: getTextResource('Expand')"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="horizontalContainer-rightPart">
+                            <ul class="inputs-form-list">
+                                <li class="inputs-form-list__item">
+                                    <div class="field-container">
+                                        <div class="fieldPair">
+                                            <div class="icon fieldService active tooltipstered" data-bind="tooltip: getTextResource('CallServiceItemOrAttendance')"><span></span></div>
+                                            <div class="editor general">
+                                                <input type="text" class="border searcherInput serviceItemAttendance"
+                                                       data-bind="textInput: ServiceItemAttendanceFullName, longNameTooltip: ServiceItemAttendanceFullName, attr: { placeholder: getTextResource('PromptService') }, css: {'invalid' : ServiceItemAttendanceFullName().length == 0}" />
+                                            </div>
+                                            <span data-bind="css: AdditionalServiceContainer() && AdditionalServiceContainer().IsVisible() 
+                                                  ? 'arrow-up active' : 'arrow-down active', 
+                                                  click: AdditionalServiceContainer() && AdditionalServiceContainer().OnToggle, 
+                                                  tooltip: AdditionalServiceContainer() && AdditionalServiceContainer().IsVisible() 
+                                                  ? getTextResource('Collapse') : getTextResource('Expand')">
+                                                <span></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="inputs-form-list__item" data-bind="visible: AdditionalServiceContainer() && AdditionalServiceContainer().IsVisible()">
+                                    <div class="field-container">
+                                        <div class="fieldPair">
+                                            <div class="icon">
+                                                <span></span>
+                                            </div>
+                                            <div class="additional-services-container">
+                                                <div class="additional-services-title" data-bind="text: getTextResource('MassIncident_AffectedServicesLabel') + ':'"></div>
+                                                <ul class="additional-services-list" data-bind="foreach: AdditionalServices, css: {'additional-services-list_empty': !AdditionalServices().length}">
+                                                    <li class="additional-services-list__item">
+                                                        <div class="additional-services-list__item-content" data-bind="text: Value"></div>
+                                                        <i class="additional-services-list__item-icon" data-bind="click: $parent.RemoveAdditionalService"></i>
+                                                    </li>
+                                                </ul>
+                                                <div class="fieldPair">
+                                                    <button class="additional-services-add" data-bind="click: AddAdditionalService">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="inputs-form-list__item">
+                                    <div class="field-container">
+                                        <div class="fieldPair">
+                                            <div class="icon iconSvgMask fieldMiType active" data-bind="tooltip: getTextResource('MassIncidentTypeLabel')"><span></span></div>
+                                            <div class="editor nowrap fill combobox receiptType"
+                                                 data-bind="combobox: { dataSource: TypeSelectHelper.getItemList, placeholder: getTextResource('MassIncidentTypeLabel') },
+                                                     comboboxValue: TypeSelectHelper.SelectedItem, css: {'invalid' : TypeSelectHelper.SelectedItem() == null}"></div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="inputs-form-list__item">
+                                    <div class="field-container">
+                                        <div class="fieldPair">
+                                            <div class="icon iconSvgMask fieldReceiptType active tooltipstered" data-bind="tooltip: getTextResource('MassIncidentInformationChannelLabel')"><span></span></div>
+                                            <div class="editor nowrap fill combobox informationChannel"
+                                                 data-bind="combobox: { dataSource: InformationChannelSelectHelper.getItemList, placeholder: getTextResource('MassIncidentInformationChannelLabel') },
+                                                     comboboxValue: InformationChannelSelectHelper.SelectedItem, css: {'invalid' : InformationChannelSelectHelper.SelectedItem() == null}"></div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="inputs-form-list__item">
+                                    <div class="field-container">
+                                        <div class="fieldPair">
+                                            <div class="icon iconSvgMask fieldTechnicalCategory active" data-bind="tooltip: getTextResource('MassIncidentTechnicalFailureCategoryLabel'), click: editTechFailureCategory"><span></span></div>
+                                            <div class="editor nowrap tooltipstered general techFailureCategory" data-bind="text: techFailureCategory.name, longNameTooltip: techFailureCategory.name"></div>                                                    
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="form-users-block">
+                                <div data-bind="template: { name: 'User/FormUser', if: Initiator() && InitiatorLoaded(), data: Initiator }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Initiator() && !InitiatorLoaded(), data: Initiator }"></div>
+
+                                <div data-bind="template: { name: 'User/FormUser', if: Owner() && OwnerLoaded(), data: Owner }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Owner() && !OwnerLoaded(), data: Owner }"></div>
+
+                                <div data-bind="template: { name: 'User/FormUser', if: Queue() && QueueLoaded(), data: Queue }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Queue() && !QueueLoaded(), data: Queue }"></div>
+
+                                <div data-bind="template: { name: 'User/FormUser', if: Executor() && ExecutorLoaded(), data: Executor }"></div>
+                                <div data-bind="template: { name: 'User/FormUserEmpty', if: Executor() && !ExecutorLoaded(), data: Executor }"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--ko foreach: DynamicOptionsService.FormTabs -->
+            <div data-bind="visible: $parent.mode() == $parent.modes.parameterPrefix + $data.Tab.ID,
+                 template: {name: './Shared/DynamicOptionsService/Index', afterRender: $parent.DynamicOptionsService.AfterRender }">
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    <div class="b-requestDetail-right">
+        <div class="b-requestDetail__icon-wrap" data-bind="click: function() { mode(modes.main); }">
+            <a class="b-requestDetail__icon b-requestDetail__icon1-active" data-bind="css: { 'b-requestDetail__icon1' : mode() != modes.main, 'b-requestDetail__icon1-active' : mode() == modes.main }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabGeneral'">Общее</div>
+        </div>
+
+        <!--ko foreach: DynamicOptionsService.FormTabs -->
+        <div class="b-requestDetail__icon-wrap b-requestDetail__tab dynamic-options-icon-wrap" data-bind="click: $parent.SetTab.bind($data), css: {'dynamic-options-icon-wrap_active': $parent.mode() == $parent.modes.parameterPrefix + $data.Tab.ID}">
+            <a class="dynamic-options-icon" data-bind="text: $index() + 1"></a>
+            <div class="b-content-table__workplaceIcon-header dynamic-options-icon-title" data-bind="text: $data.Tab.Name"></div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

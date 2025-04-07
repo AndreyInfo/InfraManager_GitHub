@@ -1,0 +1,120 @@
+﻿<div class="ui-input-wrapper">
+    <!-- ko if: SpecialFields.Label  -->
+    <div class="ui-input-wrapper__title" data-bind="text: SpecialFields.Label"></div>
+    <!-- /ko -->
+    <div class="ui-input-wrapper__btn iconSvgMask" data-bind="css: { 'ui-dynamic-readonly': KoUseDynamicReadonly, 'active': !KoUseDynamicReadonly() }">
+        <span data-bind="click: OnAddRow" class="add-item-icon table-icon"></span>
+        <span data-bind="click: RemoveRow, visible: IsShowRemoveButton" class="remove-item-icon table-icon"></span>
+    </div>
+
+
+    <!-- ko if: SpecialFields.Transposed  -->
+    <div class="table-content">
+        <table
+           class="table-transposed"
+           data-bind="attr: {'data-custom-id': ID}"
+    >
+        <tbody>
+            <tr class="table-transposed__row">
+                <th class="table-transposed__col">
+                    <input class="checkbox" type="checkbox" data-bind="checked: HeaderRow().Checked" />
+                </th>
+                <!-- ko foreach: RowList -->
+                <th class="table-transposed__col">
+                    <input class="checkbox" type="checkbox" data-bind="checked: $data.Checked" />
+                </th>
+                <!-- /ko -->
+            </tr>
+            <!-- ko foreach: ListByArray(HeaderRow().RowItem) -->
+            <tr class="table-transposed__row">
+                <td class="table-transposed__col"
+                   data-bind="visible: $data.ChildField.KoUseDynamicShow"
+                >
+                    <div class="captionContainer">
+                        <div class="captionText"
+                             data-bind="html: $data.Label" />
+                    </div>
+                </td>
+                <!-- ko foreach: $parent.RowList -->
+                <td class="table-transposed__col table-transposed__col_value"
+                    data-bind="click: $parents[1].EditValue.bind(this, $data.RowItem[$parentContext.$index()]),
+                        css: { 'table-invalid-row': $data.RowItem[$parentContext.$index()].IsInvalid },
+                        style: { width: (100 / $parents[1].RowList().length) + '%'},
+                        visible: $data.RowItem[$parentContext.$index()].ChildField.KoUseDynamicShow
+                    ">
+                    <div class="captionContainer">
+                        <div class="captionText" data-bind="html: $data.RowItem[$parentContext.$index()].Value"></div>
+                    </div>
+                </td>
+                <!-- /ko -->
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko ifnot: SpecialFields.Transposed  -->
+    <div class="ko_ListView dynamic-table">
+        <div class="tableContainer">
+            <div class="table-content">
+                <table
+                    class="table"
+                    data-bind="style: {width: TotalWidth() + 'px'},
+                       css: { 'ui-dynamic-readonly': KoUseDynamicReadonly, 'table-invalid': KoUseDynamicRequired },
+                       attr: {'data-custom-id': ID}"
+                >
+                    <colgroup>
+                        <col class="colCheck" />
+                        <!-- ko foreach: ListByArray(HeaderRow().RowItem) -->
+                        <col data-bind="style: {width: $data.Width() + 'px'}, visible: $data.ChildField.KoUseDynamicShow" />
+                        <!-- /ko -->
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="checkBoxContainer table-content__column">
+                                <input class="checkbox" type="checkbox" data-bind="checked: HeaderRow().Checked" />
+                            </th>
+                            <!-- ko foreach: ListByArray(HeaderRow().RowItem) -->
+                            <th class="table-content__column"
+                                data-bind="visible: $data.ChildField.KoUseDynamicShow"    
+                            >
+                                <div class="captionContainer">
+                                    <div class="captionText"
+                                         data-bind="html: $data.Label" />
+                                </div>
+                                <div class="columnResizeThumb"
+                                     data-bind="css: {'visible': $data.ShowResizeThumb() == true },
+                                         event: {
+                                            mouseenter: $parent.EnableResizeThumb,
+                                            mouseout: $parent.DisableResizeThumb,
+                                            mousedown: $parent.ThumbResizeCatch
+                                         }" />
+                            </th>
+                            <!-- /ko -->
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: RowList">
+                        <tr>
+                            <td class="checkBoxContainer table-content__column">
+                                <input class="checkbox" type="checkbox" data-bind="checked: $data.Checked" />
+                            </td>
+                            <!-- ko foreach: $data.RowItem -->
+                            <td class="table-content__column"
+                                data-bind="click: $parents[1].EditValue, css: { 'table-invalid-row': $data.IsInvalid }, visible: $data.ChildField.KoUseDynamicShow">
+                                <div class="captionContainer" 
+                                     data-bind="style: {
+                                        textAlign: $data.ChildField.IsTextLeft() ? 'end' : '' }"
+                                >
+                                    <div class="captionText" data-bind="html: $data.Value"></div>
+                                </div>
+                            </td>
+                            <!-- /ko -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>

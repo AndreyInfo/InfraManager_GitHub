@@ -1,0 +1,46 @@
+﻿.frmLicenceConsumption {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    .dataBlock {
+        height: 100%;
+    }
+
+    .tableData {
+        height: 100%;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0;
+        margin-left: 20px;
+    }
+
+    .licence-consumption_searchText {
+        @extend .asset-link_searchText;
+    }
+
+    .licence-consumption_searchText-clearfield {
+        @extend .asset-link_searchText-clearfield;
+    }
+
+    .licence-consumption_tableWrapper {
+        @extend .asset-link_tableWrapper;
+        bottom: 25px !important;
+    }
+
+    .licence-consumption_paramsColumn {
+        @extend .asset-link_paramsColumn;
+    }
+
+    .licence-consumption_columnsButton {
+        @extend .asset-link_columnsButton;
+    }
+
+    .licence-consumption_tableColumn {
+        @extend .asset-link_tableColumn;
+    }
+}

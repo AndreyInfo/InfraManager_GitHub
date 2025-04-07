@@ -1,0 +1,46 @@
+﻿<div class="b-requestCreate-left" data-bind="visible: TipicalCallsVisible() || TipicalItemAttendanceListVisible() || KBArticlesVisible()">
+    <div class="helpPanel_calls" data-bind="visible: TipicalCallsVisible">
+        <h2 class="b-requestCreate-left__title" data-bind="restext: 'HelpPanel_Calls'" />
+        <div class="scrollBar b-requestCreate-left__container">
+            <div data-bind="foreach: TipicalCalls">
+                <div class="b-requestCreate-left__item cursor-pointer" data-bind="click: UseCallClick">
+                    <h3 class="b-requestCreate-left__item-title" data-bind="text: '№' + Number + ' ' + CallSummaryName" />
+                    <div class="b-requestCreate-left__item-category" data-bind="text: ServiceItemAttendanceFullName" />
+                    <div class="b-requestCreate-left__item-descr">
+                        <div data-bind="text: Description" style="max-height:30px;overflow:hidden" />
+                        <a class="link-highlight" data-bind="restext: 'LinkNameForDescription', click: ShowCallClick, clickBubble: false" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="helpPanel_services" data-bind="visible: TipicalItemAttendanceListVisible">
+        <h2 class="b-requestCreate-left__title" data-bind="restext: 'HelpPanel_Services'" />
+        <div class="scrollBar b-requestCreate-left__container">
+            <div data-bind="foreach: TipicalItemAttendanceList">
+                <div class="b-requestCreate-left__item cursor-pointer" data-bind="click: UseItemAttendanceClick">
+                    <h3 class="b-requestCreate-left__item-title" data-bind="text: Name" />
+                    <div class="b-requestCreate-left__item-category" data-bind="text: ServiceName" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="helpPanel_kb" data-bind="visible: KBArticlesVisible">
+        <h2 class="b-requestCreate-left__title" data-bind="restext: 'HelpPanel_KBArticles'" />
+        <div class="scrollBar b-requestCreate-left__container">
+            <div data-bind="foreach: KBArticles">
+                <div class="b-requestCreate-left__item cursor-pointer" data-bind="click: UseKBArticleClick">
+                    <h3 class="b-requestCreate-left__item-title" data-bind="text: Name" />
+                    <div class="b-requestCreate-left__item-category" data-bind="text: TagString" />
+                    <div class="b-requestCreate-left__item-descr">
+                        <div data-bind="text: Description" style="max-height:30px;overflow:hidden" />
+                        <a class="link-highlight" data-bind="restext: 'LinkNameForDescription', click: ShowKBArticleClick, clickBubble: false" />
+                        <a class="link-highlight" style="float:right" data-bind="restext: 'UseKBArticle', click: RegisterCallByKBArticleClick, clickBubble: false" />                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

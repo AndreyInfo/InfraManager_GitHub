@@ -1,0 +1,1 @@
+  ALTER TABLE [Здание] ALTER COLUMN [Строение] VARCHAR (5);

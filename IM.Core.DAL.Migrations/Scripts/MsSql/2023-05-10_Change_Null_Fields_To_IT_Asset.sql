@@ -1,0 +1,35 @@
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+   WHERE [TABLE_SCHEMA] = 'dbo' AND [TABLE_NAME] = 'ITAssetImportSetting' AND [COLUMN_NAME] = 'ITAssetImportCSVConfigurationID' AND [IS_NULLABLE] = 'NO')
+
+	BEGIN
+
+		ALTER TABLE [dbo].[ITAssetImportSetting] ALTER COLUMN [ITAssetImportCSVConfigurationID] UNIQUEIDENTIFIER NULL;
+
+	END
+	
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+   WHERE [TABLE_SCHEMA] = 'dbo' AND [TABLE_NAME] = 'ITAssetImportSetting' AND [COLUMN_NAME] = 'NetworkAndTerminalIdenParam' AND [IS_NULLABLE] = 'YES')
+
+	BEGIN
+
+		ALTER TABLE [dbo].[ITAssetImportSetting] ALTER COLUMN [NetworkAndTerminalIdenParam] tinyint NOT NULL;
+
+	END
+	
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+   WHERE [TABLE_SCHEMA] = 'dbo' AND [TABLE_NAME] = 'ITAssetImportSetting' AND [COLUMN_NAME] = 'AdapterAndPeripheralIdenParam' AND [IS_NULLABLE] = 'YES')
+
+	BEGIN
+
+		ALTER TABLE [dbo].[ITAssetImportSetting] ALTER COLUMN [AdapterAndPeripheralIdenParam] tinyint NOT NULL;
+
+	END
+	
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+   WHERE [TABLE_SCHEMA] = 'dbo' AND [TABLE_NAME] = 'ITAssetImportSetting' AND [COLUMN_NAME] = 'CUIdenParam' AND [IS_NULLABLE] = 'YES')
+
+	BEGIN
+
+		ALTER TABLE [dbo].[ITAssetImportSetting] ALTER COLUMN [CUIdenParam] tinyint NOT NULL;
+
+	END

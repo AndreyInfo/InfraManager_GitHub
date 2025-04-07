@@ -1,0 +1,4 @@
+IF COL_LENGTH('SLA','FormID') IS NULL
+BEGIN
+	ALTER TABLE SLA ADD FormID uniqueidentifier NULL
+END

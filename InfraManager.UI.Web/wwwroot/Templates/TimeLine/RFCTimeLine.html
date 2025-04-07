@@ -1,0 +1,84 @@
+﻿<div class="tl-arrow-wrapper">
+    <!--ko if: FieldNameForModify() == null -->
+    <div class="tl-modify tl-modify-start">
+        <div class="tl-tube"></div>
+        <div class="tl-modify-icon"></div>
+        <div class="tl-modify-text">
+            <span data-bind="text: UtcDateModified.LocalName"></span>
+            <span data-bind="text: UtcDateModified.LocalDate"></span>
+        </div>
+    </div>
+    <!-- /ko -->
+    <div class="tl-date-block" data-bind="with: UtcDateDetected">
+        <div class="tl-tube"></div>
+        <div class="tl-circle" data-bind="css: { 'tl-circle-empty' : IsEmpty(), 'cursor-pointer' : $parent.CanEdit() }, click: $parent.EditDateDetected"></div>
+        <div class="tl-text" data-bind="click: $parent.EditDateDetected, css: { 'cursor-pointer' : $parent.CanEdit() }">
+            <div class="tl-caption" data-bind="text: LocalName, css: { 'tl-caption-empty' : IsEmpty() }"></div>
+            <div class="tl-date" data-bind="text: LocalDate"></div>
+        </div>
+    </div>
+    <!--ko if: FieldNameForModify() == 'UtcDateDetected' -->
+    <div class="tl-modify">
+        <div class="tl-tube"></div>
+        <div class="tl-modify-icon"></div>
+        <div class="tl-modify-text">
+            <span data-bind="text: UtcDateModified.LocalName"></span>
+            <span data-bind="text: UtcDateModified.LocalDate"></span>
+        </div>
+    </div>
+    <!-- /ko -->
+    <div class="tl-date-block" data-bind="with: UtcDateStarted">
+        <div class="tl-tube"></div>
+        <div class="tl-circle" data-bind="css: { 'tl-circle-empty' : IsEmpty(), 'cursor-pointer' : $parent.CanEdit() }, click: $parent.EditDateStarted"></div>
+        <div class="tl-text" data-bind="click: $parent.EditDateStarted, css: { 'cursor-pointer' : $parent.CanEdit() }">
+            <div class="tl-caption" data-bind="text: LocalName, css: { 'tl-caption-empty' : IsEmpty() }"></div>
+            <div class="tl-date" data-bind="text: LocalDate"></div>
+        </div>
+    </div>
+    <!--ko if: FieldNameForModify() == 'UtcDateStarted' -->
+    <div class="tl-modify">
+        <div class="tl-tube"></div>
+        <div class="tl-modify-icon"></div>
+        <div class="tl-modify-text">
+            <span data-bind="text: UtcDateModified.LocalName"></span>
+            <span data-bind="text: UtcDateModified.LocalDate"></span>
+        </div>
+    </div>
+    <!-- /ko -->
+    <div class="tl-date-block" data-bind="with: UtcDatePromised">
+        <div class="tl-tube"></div>
+        <div class="tl-circle" data-bind="css: { 'tl-circle-empty' : IsEmpty(), 'cursor-pointer' : $parent.CanEdit() }, click: $parent.EditDatePromised"></div>
+        <div class="tl-text" data-bind="click: $parent.EditDatePromised, css: { 'cursor-pointer' : $parent.CanEdit() }">
+            <div class="tl-caption" data-bind="text: LocalName, css: { 'tl-caption-empty' : IsEmpty() }"></div>
+            <div class="tl-date" data-bind="text: LocalDate"></div>
+        </div>
+    </div>
+    <!--ko if: FieldNameForModify() == 'UtcDatePromised' -->
+    <div class="tl-modify">
+        <div class="tl-tube"></div>
+        <div class="tl-modify-icon"></div>
+        <div class="tl-modify-text">
+            <span data-bind="text: UtcDateModified.LocalName"></span>
+            <span data-bind="text: UtcDateModified.LocalDate"></span>
+        </div>
+    </div>
+    <!-- /ko -->
+    <div class="tl-date-block" data-bind="with: UtcDateClosed">
+        <div class="tl-tube"></div>
+        <div class="tl-circle" data-bind="css: { 'tl-circle-empty' : IsEmpty(), 'cursor-pointer' : $parent.CanEdit() }, click: $parent.EditDateClosed"></div>
+        <div class="tl-text" data-bind="click: $parent.EditDateClosed, css: { 'cursor-pointer' : $parent.CanEdit() }">
+            <div class="tl-caption" data-bind="text: LocalName, css: { 'tl-caption-empty' : IsEmpty() }"></div>
+            <div class="tl-date" data-bind="text: LocalDate"></div>
+        </div>
+    </div>
+    <!--ko if: FieldNameForModify() == 'UtcDateClosed' -->
+    <div class="tl-modify tl-modify-end">
+        <div class="tl-tube"></div>
+        <div class="tl-modify-icon"></div>
+        <div class="tl-modify-text">
+            <span data-bind="text: UtcDateModified.LocalName"></span>
+            <span data-bind="text: UtcDateModified.LocalDate"></span>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>

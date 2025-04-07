@@ -1,0 +1,127 @@
+﻿                                <!-- ko if:  $control.assetModel() != null -->
+
+<div class="info" style="padding-left:33px">
+    <div class="network-device-mainTab-left-side">
+        <div class="characteristics-model">
+            <div class="im-big-header" data-bind="text: ''" />
+            <table class="network-device-table-margineTop">
+                <tbody>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Инв. номер'" /></td>
+                        <td class="network-device-table-row im-bold-text"><!--<input style="border:none" type="text" data-bind="value: $control.assetModel().InvNumber()" />--></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<div class="inqury"> <input style="border:none;width:200px" type="text" data-bind="value: $control.assetModel().asset.Inqury" /></div>-->
+        </div>
+        <div class="network-device-location-header">
+            <div class="im-big-header" data-bind="text: 'Модель'" />
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Модель'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().Name" /></td>
+                        <td style="width:200px;padding-left: 140px;padding-right: 100px;" class="network-device-table-row c-lite-gray"><span data-bind="text:'Модуль'" /></td>
+                        <td class="network-device-table-row c-blue checkbox-pair">
+                            <!--<div class="storage c-lite-gray" data-bind="text:'На складе'"></div>-->
+                            <input class="on-storage" type="checkbox" data-bind="checked: false">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Категория'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().CategoryName" /></td>
+                        <td class="network-device-table-row c-lite-gray" style="width:200px;padding-left: 140px;padding-right: 100px;"><span data-bind="text:'Код модели'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().ProductNumber" /></td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Тип'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().TypeName" /></td>
+                        <td class="network-device-table-row c-lite-gray" style="width:200px;padding-left: 140px;padding-right: 100px;"><span data-bind="text:'OID'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().OID" /></td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Код модели'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().Code" /></td>
+                        <td class="network-device-table-row c-lite-gray" style="width:200px;padding-left: 140px;padding-right: 100px;"><span data-bind="text:'Производитель'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().ManufacturerName" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="network-device-location-header">
+            <div class="im-big-header" data-bind="text: 'Дополнительные поля модели'" />
+            <table class="network-device-table-margineTop">
+                <tbody>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Пользовательское поле 1'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: ''" /></td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Пользовательское поле 2'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: ''" /></td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Пользовательское поле 3'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: ''" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="network-device-location-header">
+            <div class="im-big-header" data-bind="text: 'Физические характеристики'" />
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Высота, мм'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().Height" /></td>
+                        <td style="width:326px;padding-left: 140px;" class="network-device-table-row c-lite-gray"><span data-bind="text:'Монтируется в стойке'" /></td>
+                        <td class="network-device-table-row c-blue">
+                            <input class="on-storage" type="checkbox" data-bind="checked: $control.assetModel().IsRackMount">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Ширина, мм'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().Width" /></td>
+                        <td class="network-device-table-row c-lite-gray" style="width:326px;padding-left: 140px;"><span data-bind="text:'Энергопотребление, Вт'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: ''" /></td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Глубина, мм'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().Depth" /></td>
+                        <td class="network-device-table-row c-lite-gray" style="width:326px;padding-left: 140px;"><span data-bind="text:'Дата изготовления'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: ''" /></td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Типоразмер корпуса'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: ''" /></td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Вес, кг'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: ''" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="network-device-location-header">
+            <div class="im-big-header" data-bind="text: 'Технические характеристики'" />
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="width:200px" class="network-device-table-row c-lite-gray"><span data-bind="text:'Размер ОЗУ, ГБ'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().DateRecieved" /></td>
+                        <td style="width:326px;padding-left: 140px;" class="network-device-table-row c-lite-gray"><span data-bind="text:'Версия BIOS'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().DateRecieved" /></td>
+                    </tr>
+                    <tr>
+                        <td class="network-device-table-row c-lite-gray"><span data-bind="text:'Дисковое пространство, ГБ'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().SupplierName" /></td>
+                        <td class="network-device-table-row c-lite-gray" style="width:326px;padding-left: 140px;"><span data-bind="text:'Модель BIOS'" /></td>
+                        <td class="network-device-table-row c-blue"><input style="border:none" type="text" data-bind="value: $control.assetModel().SupplierName" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- /ko -->
+

@@ -1,0 +1,25 @@
+﻿<div class="frmSearch asset-link-main">
+    <div class="asset-link-menu">
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: selectSDSearcher, css: { 'active' : isSDSearcherSelected }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'SDSearch'"></div>
+        </div>
+        <div class="asset-link-divider" data-bind="operationID: 650"></div>
+        <div class="asset-link-menubutton" data-bind="operationID: 650, click: selectAssetSearcher, css: { 'active' : isAssetSearcherSelected }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'AssetSearch'"></div>
+        </div>
+        <div class="asset-link-lastelement"></div>
+    </div>
+    <div class="asset-link-body">
+        <span class="fill" data-bind="if: SDSearcherReady">
+            <div class="asset-link-parameters" data-bind="visible: currentMode() == modes.SDSearcher">
+                <div class="fill-height" data-bind="template: { name: 'Search/SearchForm', data: modelSDSearcher, afterRender: modelSDSearcher().AfterRender }"></div>
+            </div>
+        </span>
+        <span data-bind="if: AssetSearcherReady">
+            <div class="asset-link-parameters" data-bind="visible: currentMode() == modes.AssetSearcher && modelAssetSearcher() != null">
+                <div data-bind="template: { name: '../UI/Forms/Search/Controls/AssetSearch', data: modelAssetSearcher, afterRender: modelAssetSearcher().AfterRender }"></div>
+            </div>
+        </span>
+    </div>
+</div>

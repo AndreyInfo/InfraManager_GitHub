@@ -1,0 +1,361 @@
+﻿.b-content-table-search__kba {
+    background: url('../UI/Lists/SD/Icons/kbArticle.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__kba:hover {
+    background: url('../UI/Lists/SD/Icons/kbArticle_active.png') no-repeat;
+    opacity: .50;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__kba_active {
+    background: url('../UI/Lists/SD/Icons/kbArticle_active.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__all {
+    background: url('../UI/Lists/SD/Icons/all.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-top: 20px;
+    padding-left: 36px;
+    /* padding: 36px; */
+    padding-bottom: 36px;
+}
+
+.b-content-table-search__all:hover {
+    background: url('../UI/Lists/SD/Icons/all_active.png') no-repeat;
+    opacity: .50;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.b-content-table__all-search_active {
+    background: url('../UI/Lists/SD/Icons/all_active.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.b-content-table-search__call {
+    background: url('../UI/Lists/SD/Icons/calls.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__call:hover {
+    background: url('../UI/Lists/SD/Icons/calls_active.png') no-repeat;
+    opacity: .50;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__call_active {
+    background: url('../UI/Lists/SD/Icons/calls_active.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__workorder {
+    background: url('../UI/Lists/SD/Icons/workOrders.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__workorder:hover {
+    background: url('../UI/Lists/SD/Icons/workOrders_active.png') no-repeat;
+    opacity: .50;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__workorder_active {
+    background: url('../UI/Lists/SD/Icons/workOrders_active.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__problem {
+    background: url('../UI/Lists/SD/Icons/problems.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__problem:hover {
+    background: url('../UI/Lists/SD/Icons/problems_active.png') no-repeat;
+    opacity: .50;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.b-content-table-search__problem_active {
+    background: url('../UI/Lists/SD/Icons/problems_active.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.kba-icon {
+    background: url('../UI/Lists/SD/Icons/kbArticle.png') no-repeat;
+    width: 36px;
+    height: 36px;
+}
+
+
+
+.icon-extended-search__call {
+    background: url('../UI/Lists/SD/Icons/calls.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 45px;
+    margin-right: 10px;
+    margin-top: 20px;
+    padding-left: 36px;
+    padding-bottom: 36px;
+}
+
+.icon-extended-search__workorder {
+    background: url('../UI/Lists/SD/Icons/workOrders.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 45px;
+    margin-right: 10px;
+    margin-top: 20px;
+    padding-left: 36px;
+    padding-bottom: 36px;
+}
+
+.icon-extended-search__problem {
+    background: url('../UI/Lists/SD/Icons/problems.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 45px;
+    margin-right: 10px;
+    margin-top: 20px;
+    padding-left: 36px;
+    padding-bottom: 36px;
+}
+
+.icon-extended-search__kba {
+    background: url('../UI/Lists/SD/Icons/kbArticle.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 45px;
+    margin-right: 10px;
+    margin-top: 20px;
+    padding-left: 36px;
+    padding-bottom: 36px;
+}
+
+.icon-extended-search__mass_incident {
+    background: url('../UI/Lists/SD/Icons/mass-incident.png') no-repeat;
+    width: 36px;
+    height: 36px;
+    margin-left: 45px;
+    margin-right: 10px;
+    margin-top: 20px;
+    padding-left: 36px;
+    padding-bottom: 36px;
+}
+
+
+.b-content-table__myworkplace {
+    background: url('../UI/Lists/SD/Icons/myWorkplaceNew.png') no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__myworkplace {
+    background: url('../UI/Lists/SD/Icons/myWorkplaceNew_active.png') no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__myworkplace_active {
+    background: url('../UI/Lists/SD/Icons/myWorkplaceNew_active.png') no-repeat center;
+}
+
+.b-content-table__myworkplace_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__customcontrol {
+    background: url('../UI/Lists/SD/Icons/objectsAtCustomControl.png') no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__customcontrol {
+    background: url('../UI/Lists/SD/Icons/objectsAtCustomControl_active.png') no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__customcontrol_active {
+    background: url('../UI/Lists/SD/Icons/objectsAtCustomControl_active.png') no-repeat center;
+}
+
+.b-content-table__customcontrol_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__call {
+    background: url('../UI/Lists/SD/Icons/calls.png') no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__call {
+    background: url('../UI/Lists/SD/Icons/calls_active.png') no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__call_active {
+    background: url('../UI/Lists/SD/Icons/calls_active.png') no-repeat center;
+}
+
+.b-content-table__litecall_active {
+    background: url('../UI/Lists/SD/Icons/liteCalls_active.png') no-repeat center;
+}
+
+.b-content-table__mass-incident {
+    background: url('../UI/Lists/SD/Icons/mass-incident.png') no-repeat center;
+}
+
+.b-content-table__mass-incident_active {
+    background: url('../UI/Lists/SD/Icons/mass-incident_active.png') no-repeat center;
+}
+
+.b-content-table__mass-incident_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__mass-incident {
+    background: url('../UI/Lists/SD/Icons/mass-incident_active.png') no-repeat center;
+    opacity: .5;
+}
+
+.b-content-table__call_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__rfc {
+    background: url('../UI/Lists/SD/Icons/RFC_list_passive.svg') no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__rfc {
+    background: url('../UI/Lists/SD/Icons/RFC_list_active.svg') no-repeat center;
+    opacity: .50;
+}
+ 
+.b-content-table__rfc_active {
+    background: url('../UI/Lists/SD/Icons/RFC_list_active.svg') no-repeat center;
+}
+
+.b-content-table__rfc_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__workorder {
+    background: url('../UI/Lists/SD/Icons/workOrders.png') no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__workorder {
+    background: url('../UI/Lists/SD/Icons/workOrders_active.png') no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__workorder_active {
+    background: url('../UI/Lists/SD/Icons/workOrders_active.png') no-repeat center;
+}
+
+.b-content-table__workorder_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__problem {
+    background: url('../UI/Lists/SD/Icons/problems.png') no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__problem {
+    background: url('../UI/Lists/SD/Icons/problems_active.png') no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__problem_active {
+    background: url('../UI/Lists/SD/Icons/problems_active.png') no-repeat center;
+}
+
+.b-content-table__problem_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__negotiation {
+    background: url('../UI/Lists/SD/Icons/objectsWithMyNegotiations.png') no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__negotiation {
+    background: url('../UI/Lists/SD/Icons/objectsWithMyNegotiations_active.png') no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__negotiation_active {
+    background: url('../UI/Lists/SD/Icons/objectsWithMyNegotiations_active.png') no-repeat center;
+}
+
+.b-content-table__negotiation_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}
+
+.b-content-table__mycalls {
+    background: url('../UI/Lists/SD/Icons/myCalls.png') no-repeat center;
+}
+
+.b-content-table__workplaceIconGroup:hover .b-content-table__mycalls {
+    background: url('../UI/Lists/SD/Icons/myCalls_active.png') no-repeat center;
+    opacity: .50;
+}
+
+.b-content-table__mycalls_active {
+    background: url('../UI/Lists/SD/Icons/myCalls_active.png') no-repeat center;
+}
+
+.b-content-table__mycalls_active + div {
+    @extend .b-content-table__base-highlihted-text;
+}

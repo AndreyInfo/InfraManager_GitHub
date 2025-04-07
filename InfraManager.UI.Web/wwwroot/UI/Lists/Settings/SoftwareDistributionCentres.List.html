@@ -1,0 +1,6 @@
+﻿<div class="treeControlWrapper">
+    <div class="treeControlHeader" data-bind="css: TitleStyle, visible: TitleBlockVisible">
+        <div class="treeControlHeader-text" data-bind="text: Title"></div>
+    </div>
+    <div class="treeControlItems" data-bind="template: { name: '../UI/Lists/Settings/SoftwareDistributionCentres.ListItem', foreach: dataSource.items }"></div>
+</div>

@@ -1,0 +1,117 @@
+﻿<div class="actives-location-main" data-bind="splitter: { ChangeFunc: $control.ResizeFunction, MinimalSize: $control.minHeight, MaximumSize: $control.maxHeight, Name: 'AdapterList', Direction: 'bottom' }">
+    <div class="actives-location-header">
+        <span data-bind="restext: 'AssetNotLocated'" />
+        <span class="caption-arrow">
+            <span data-bind="css: $control.locationControlIsExpanded() == true ? 'arrow-up-white' : 'arrow-down-white', click: $control.LocationExpandCollapseClick, tooltip: $control.locationControlIsExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+                <span></span>
+            </span>
+        </span>
+    </div>
+    <div class="actives-location-leftPanel" data-bind="style: {height: $control.LeftPanelHeight() + 'px'}">
+        <div class="actives-location-params-header" data-bind="restext: 'LocationParameters'" />
+        <table class="actives-location-params-table">
+            <colgroup>
+                <col>
+                <col>
+            </colgroup>
+            <tbody>
+                <tr data-bind="visible: $control.hasContracts() == false">
+                    <td colspan="2" class="actives-location-params-table-text" data-bind="restext: 'GoodsInvoiceStorageLocation'"></td>
+                </tr>
+                <tr data-bind="visible: $control.hasContracts() == false">
+                    <td colspan="2" class="invoice-locateAsset-table-control">
+                        <div>
+                            <input type="text" class="searcherInput invoice-asset-storage" data-bind="textInput: $control.StorageName, longNameTooltip: $control.StorageName, disable: !$control.StorageLocationEnabled()" />
+                        </div>
+                    </td>
+                </tr>
+                <tr data-bind="visible: $control.hasContracts() == false">
+                    <td colspan="2" class="actives-location-params-table-text required" data-bind="restext: 'LocationCaption'"></td>
+                </tr>
+                <tr data-bind="visible: $control.hasContracts() == false">
+                    <td colspan="2" class="invoice-locateAsset-table-control invoice-table-sdc">
+                        <div>
+                            <input type="text" class="searcherInput invoice-asset-location " data-bind="textInput: $control.LocationName, longNameTooltip: $control.LocationName" />
+                        </div>
+                    </td>
+                </tr>
+                <!--ko if: functionsAvailability && functionsAvailability.SoftwareDistributionCentres -->
+                <tr data-bind="visible: $control.activesLocationLink.isLicense() == true">
+                    <td colspan="2" class="actives-location-params-table-text required td-width" data-bind="restext: 'DictionariesTabDistributionCentre'"></td>
+                </tr>
+                <tr data-bind="visible: $control.activesLocationLink.isLicense() == true">
+                    <td colspan="2" class="invoice-table-sdc invoice-locateAsset-table-control ">
+                        <div class="invoice-table-sdc combobox comboBoxEditor sublicense-comboBoxEditor-sdc" data-bind="combobox: { dataSource: $control.getListOfSDC }, comboboxValue: $control.targetSoftwareDistributionCentre" />
+                    </td>
+                </tr>
+                <!--/ko-->
+                <tr data-bind="visible: $control.hasContracts() == false &&  $control.activesLocationLink.isLicense() == false ">
+                    <td class="actives-location-params-table-text" data-bind="restext: 'WarrantyDateTill'"></td>
+                    <td class="invoice-locateAsset-table-control date-warranty"></td>
+                </tr>
+                <tr data-bind="visible: $control.activesLocationLink.isLicense() == false">
+                    <td class="actives-location-params-table-text" data-bind="restext: 'AssetNumber_ServiceCenterName'"></td>
+                    <td class="invoice-locateAsset-table-control service-center-combobox combobox" data-bind="combobox: { dataSource: $control.getServiceCenterComboItems}, comboboxValue: $control.selectedServiceCenterItem"></td>
+                </tr>
+                <tr class="actives-location-inventoryNumber" data-bind="visible: $control.hasContracts() == false && $control.hasMaterial() == false">
+                    <td class="actives-location-params-table-text" data-bind="restext: 'AssetRegistrationGenerateInvNumber'"></td>
+                    <td class="invoice-locateAsset-table-control"><input class="actives-location-params-table-control-input" type="checkbox" data-bind="checked: $control.GenerateInvNumber" /></td>
+                </tr>
+                <tr class="actives-location-inventoryNumber" data-bind="visible: $control.hasContracts() == false && $control.hasMaterial() == false">
+                    <td class="actives-location-params-table-text" data-bind="restext: 'AssetRegistrationGenerateCode'"></td>
+                    <td class="invoice-locateAsset-table-control"><input class="actives-location-params-table-control-input" type="checkbox" data-bind="checked: $control.GenerateCode" /></td>
+                </tr>
+                <!--<tr>
+        <td class="actives-location-params-table-text" data-bind="text: 'МОЛ'"></td>
+        <td class="invoice-locateAsset-table-control"><input class="actives-location-params-table-control-input" type="text" /></td>
+    </tr>
+    <tr>
+        <td class="actives-location-params-table-text" data-bind="text: 'Основание назначения МОЛ'"></td>
+        <td class="invoice-locateAsset-table-control"><input class="actives-location-params-table-control-input" type="text" /></td>
+
+    </tr>
+    <tr>
+        <td class="actives-location-params-table-text" data-bind="text: 'Дата назначения МОЛ'"></td>
+        <td class="invoice-locateAsset-table-control"><input class="actives-location-params-table-control-input" type="text" /></td>
+    </tr>-->
+                <tr data-bind="visible: $control.hasContracts() == true && $control.hasNoContracts() == false">
+                    <td class="actives-location-params-table-text required" data-bind="restext: 'Contract_StartDate'"></td>
+                    <td class="invoice-locateAsset-table-control date-start"></td>
+                </tr>
+                <tr data-bind="visible: $control.hasContracts() == true && $control.hasNoContracts() == false">
+                    <td class="actives-location-params-table-text required" data-bind="restext: 'Contract_EndDate'"></td>
+                    <td class="invoice-locateAsset-table-control date-end"></td>
+                </tr>
+                <tr data-bind="visible: $control.hasContracts() == true && $control.hasNoContracts() == false">
+                    <td class="actives-location-params-table-text" data-bind="restext: 'Contract_Manager'"></td>
+                    <td class="invoice-locateAsset-table-control">
+                        <div>
+                            <input type="text" class="searcherInput invoice-contract-manager" data-bind="textInput: $control.ManagerName, longNameTooltip: $control.ManagerName" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="parameters" data-bind="template: {name: '../UI/Controls/Parameters/Lists/AssetLocation.Parameters', data : $control }" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="actives-location-rightPanel">
+        <div class="pu_specifications__b" data-bind="style: {height: $control.LeftPanelHeight() + 'px'}, template: {name: 'FinanceForms/ActivesLocation/MainForm', data: $control.activesLocationLink  }" />
+    </div>
+</div>
+<div class="actives-located-main">
+    <div class="actives-location-header">
+        <span data-bind="restext: 'AssetLocated'" />
+        <span class="caption-arrow">
+            <span data-bind="css: $control.locatedControlIsExpanded() == true ? 'arrow-up-white' : 'arrow-down-white', click: $control.LocatedExpandCollapseClick, tooltip: $control.locatedControlIsExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+                <span></span>
+            </span>
+        </span>
+    </div>
+    <div class="actives-location-rightPanel">
+        <div class="pu_specifications__b" data-bind="style: {height: $control.LocatedHeight() + 'px'}, template: {name: 'FinanceForms/ActivesLocated/MainForm', data: $control.activesLocatedLink  }" />
+    </div>
+</div>

@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX if not exists ui_workplace_name_into_room on workplace(name, room_id);

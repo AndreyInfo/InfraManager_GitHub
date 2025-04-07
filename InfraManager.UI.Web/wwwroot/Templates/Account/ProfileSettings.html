@@ -1,0 +1,58 @@
+﻿<div class="profileSettings">
+    <h2 data-bind="restext: 'ProfileSettings'" />
+    <hr />
+    <div class="container">
+        <table>
+            <tr class="userLanguage">
+                <td>
+                    <span style="margin-right:10px;" data-bind="restext: 'Language'" />
+                </td>
+                <td>
+                    <div class="combobox" data-bind="combobox: { dataSource: getLanguageList, rowTemplate: 'SelectControl/ComboBoxRowLanguage' }, comboboxValue: SelectedLanguage"></div>
+                </td>
+            </tr>
+            <!-- ko if: false -->
+            <tr class="incomingCallProcessing">
+                <td colspan="2">
+                    <input type="checkbox" data-bind="checked: IncomingCallProcessing" /> <span data-bind="restext: 'TelephonySettings_AutoSearchClientWhenIncomingCall'" />
+                </td>
+            </tr>
+            <!-- /ko -->
+            <!-- ko if: UseCompactMenuOnly() != null -->
+            <tr class="useCompactMenuOnly">
+                <td colspan="2">
+                    <input type="checkbox" data-bind="checked: UseCompactMenuOnly" /> <span data-bind="restext: 'HideShowMenuText', click: ClickUseCompactMenuOnly" />
+                </td>
+            </tr>
+            <!-- /ko -->
+            <tr class="listViewSettings">
+                <td colspan="2">
+                    <div data-bind="restext: 'ListView_SettingsCaption'"></div>
+                    <hr />
+                </td>
+            </tr>
+            <tr class="listViewSettings">
+                <td colspan="2">
+                    <input type="checkbox" data-bind="checked: ListView_CompactMode" /> <span data-bind="restext: 'ListView_LittlePaddings'" />
+                </td>
+            </tr>
+            <tr class="listViewSettings">
+                <td colspan="2">
+                    <input type="checkbox" data-bind="checked: ListView_GridLines" /> <span data-bind="restext: 'ListView_ShowBorders'" />
+                </td>
+            </tr>
+            <tr class="listViewSettings">
+                <td colspan="2">
+                    <input type="checkbox" data-bind="checked: ListView_Multicolor" /> <span data-bind="restext: 'ListView_Multicolors'" />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <button type="button" class="ui-button ui-button-text-only" style="margin-left:0px;" data-bind="click: ResetUserSettingsClick">
+            <span class="ui-button-text" data-bind="restext: 'ButtonResetUserSettings'" />
+        </button>
+    </div>
+    <div class="container">
+        <span id="UserDeputyTable" data-bind="template: {name: 'Account/DeputyTable', afterRender: AfterRender}"></span>
+    </div>
+</div>

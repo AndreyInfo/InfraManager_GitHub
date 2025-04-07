@@ -1,0 +1,83 @@
+﻿@import "../../Styles/general";
+$checked-color: $blue-text-color;
+$unchecked-color: $border-gray-color;
+
+.slider-checkbox {
+    position: relative;
+    overflow: inherit !important;
+
+    input {
+        margin: 0px;
+        padding: 0;
+        cursor: pointer;
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        filter: alpha(opacity=0);
+        -moz-opacity: 0;
+        -khtml-opacity: 0;
+        opacity: 0;
+        position: absolute;
+        z-index: 1;
+        top: 0px;
+        left: 0px;
+        background: red;
+        width: 38px;
+        height: 20px;
+        vertical-align: middle;
+
+        &:checked + .label {
+            &:before {
+                content: "";
+                padding-left: 6px;
+            }
+
+            &:after {
+                background-color: $checked-color;
+                left: 21px;
+            }
+        }
+    }
+
+    .label {
+        position: relative;
+        padding-left: 46px;
+        padding-top: 2px;
+        font-weight: normal;
+
+        &:before, &:after {
+            position: absolute;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, left 0.3s;
+        }
+
+        &:before {
+            content: "";
+            color: #fff;
+            box-sizing: border-box;
+            padding-left: 23px;
+            font-size: 12px;
+            line-height: 17px;
+            left: 0px;
+            top: 0px;
+            height: 19px;
+            width: 38px;
+            border: 1px solid $unchecked-color;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        &:after {
+            content: "";
+            letter-spacing: 20px;
+            background-color: $unchecked-color;
+            left: 2px;
+            top: 2px;
+            height: 15px;
+            width: 15px;
+        }
+    }
+}

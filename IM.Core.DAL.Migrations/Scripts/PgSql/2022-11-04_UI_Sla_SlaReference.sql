@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX if not exists ui_sla_slaReference on sla_reference (object_id, sla_id);

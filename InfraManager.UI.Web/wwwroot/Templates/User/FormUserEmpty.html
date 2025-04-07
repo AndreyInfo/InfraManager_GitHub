@@ -1,0 +1,12 @@
+﻿<div class="form-user-container" data-bind="if: $data != null && $data.ShowLeftSide != null && $data.ShowTypeName != null">
+    <div class="form-user-leftside" data-bind="visible: ShowLeftSide"></div>
+    <div class="form-user-rightside">
+        <div class="form-user-header" data-bind="text: TypeName, visible: ShowTypeName"></div>
+        <!-- ko if: CanEdit -->
+        <input class="form-user-empty-tb searcherInput" type="text" readonly="readonly" data-bind="resattr: { placeholder : 'ChooseNewValue' }, click: EditClick" />
+        <!-- /ko -->
+        <!-- ko ifnot: CanEdit -->
+        <div class="form-user-empty-readonly" data-bind="restext: 'ValueNotSet'"></div>
+        <!-- /ko -->
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿<div class="ui-input-wrapper">
+    <!-- ko if: SpecialFields.Label  -->
+    <div class="ui-input-wrapper__title" data-bind="text: SpecialFields.Label"></div>
+    <!-- /ko -->
+
+    <div class="dynamic-options__more-values" data-templates-wrapper>
+        <ul class="dynamic-options__wrapper-inputs" data-inputs-wrapper data-bind="foreach: KoUseValues">
+            <li class="dynamic-options__wrapper-item" data-wrapper-value>
+                <!-- ko if: $parent.SpecialFields.UseSearch -->
+                <div class="callClientSearchForm__searcher" data-bind="css: { 'ui-dynamic-readonly': $parent.KoUseDynamicReadonly }">
+                    <input type="text" class="text-input searcherInput"
+                           data-bind="
+                                    value: Value().Name(),
+                                    resattr: {
+                                        placeholder : 'SearchEmpty'
+                                    },
+                                    attr: {
+                                        'data-custom-id': ID
+                                    },
+                                    css: {
+                                        'ui-input_error': IsInvalid
+                                    }" />
+                </div>
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.SpecialFields.UseSearch -->
+                <div class="seachClientComboBox combobox comboBoxEditor comboboxPosition"
+                     data-bind="combobox: { dataSource: $parent.KoUseSelectData },
+                                comboboxValue: Value,
+                                css: {
+                                    'ui-dynamic-readonly': $parent.KoUseDynamicReadonly,
+                                    'invalid' : IsInvalid
+                                },
+                                attr: {
+                                    'data-custom-id': ID
+                                }" />
+                <!-- /ko -->
+                <!-- ko if: $index() > 0 -->
+                <button type="button"
+                        class="ui-button-remove"
+                        data-bind="click: $parent.KoUseRemoveValue">
+                </button>
+                <!-- /ko -->
+            </li>
+        </ul>
+
+        <div class="dynamic-options__buttons">
+            <!-- ko if: SpecialFields.MoreValues &&  !KoUseDynamicReadonly() -->
+            <button
+                    type="button"
+                    class="dynamic-options__buttons-item ui-button-add"
+                    data-bind="click: KoUseCloneElementUser,
+                    css: { 'ui-dynamic-readonly': IsDisabledMultipleValues() },
+                    attr: { disabled: IsDisabledMultipleValues() }">
+            </button>
+            <!-- /ko -->
+            <!-- ko if: ShowTooltipByHoverTitle() -->
+            <i class="ui-icon-question dynamic-options__buttons-item" data-bind="tooltip: ShowTooltipByHoverTitle(), tooltipDelay: TooltipDelay">
+                <img src="/images/icons/question.svg" />
+            </i>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

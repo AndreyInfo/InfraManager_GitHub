@@ -1,0 +1,22 @@
+﻿<div class="callClientSearchForm__searcher">
+    <input type="text" class="text-input searcherInput" data-bind="value: Phrase(), resattr: {placeholder : 'SearchEmpty'}, event: {keyup: OnEnter}" />
+</div>
+<!-- ko if: ClientObj() != null -->
+<div class="call-client-control">
+    <span class="im-list-row-item client">
+    <span data-bind="template: { name: 'User/FormUserSearch', data: ClientObj }"></span></span>
+    <a class="blue-btn b-requestDetail__addCallBtn" data-bind="restext: 'ButtonCreateCall', click: CallRegistrationClick, operationID: 309"></a>
+</div>
+<div class="clientObjectsWrapper">
+    <!-- ko if: callList() != null -->
+    <div class="foundClientCalls" data-bind="style: {height: callHeight}">
+        <div data-bind="template: {name: 'ClientSearch/ClientSearchCallTable'}" />
+    </div>
+    <!-- /ko -->
+    <!-- ko if: assetList() != null -->
+    <div class="clientDependencies" data-bind="style: {height: assetHeight}">
+        <div data-bind="template: {name: 'ClientSearch/ClientSearchAssetTable'}" />
+ </div>
+    <!-- /ko -->
+</div>
+<!-- /ko -->

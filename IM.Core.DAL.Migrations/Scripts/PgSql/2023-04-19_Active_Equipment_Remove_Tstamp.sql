@@ -1,0 +1,1 @@
+ALTER TABLE IF EXISTS im.active_equipment DROP COLUMN IF EXISTS tstamp

@@ -1,0 +1,47 @@
+﻿<div class="frmUserSendEmail">
+    <div class="assetReg-locationHeader required" data-bind="restext:'SendMailToAddresses'" />
+    <div class="assetReg-locationControl">
+        <div class="input-control">
+            <div class="assetReg-location sizeaddress" data-bind="text: ToAddresses, resattr: { placeholder : 'ChooseNewValue' }" />
+            <div class="ars-link_searchText-clearfield cursor-pointer" data-bind="click: ClearToAddresses, visible: ToAddresses().length != 0" style=""></div>
+        </div>
+        <div class="addAddress" data-bind="restext: 'AddAddress', click: AddToAddressEmail" />
+    </div>
+
+    <div class="assetReg-locationHeader " data-bind="restext:'SendMailHiddenCopy'" />
+    <div class="assetReg-locationControl">
+        <div class="input-control">
+            <div class="assetReg-location sizeaddress" data-bind="text: BccAddresses, resattr: { placeholder : 'ChooseNewValue' }" />
+            <div class="ars-link_searchText-clearfield cursor-pointer" data-bind="click: ClearBccAddresses, visible: BccAddresses().length != 0" style=""></div>
+        </div>
+        <div class="addAddress" data-bind="restext: 'AddAddress', click: AddBccAddressEmail" />
+    </div>
+
+    <div class="assetReg-locationHeader required" data-bind="restext: 'SendMailSubject'" />
+    <div class="assetReg-locationControl">
+        <input type="text" class="assetReg-location" maxlength="250" data-bind="textInput: Subject, resattr: { placeholder : 'FilterEnterValue' }" />
+    </div>
+
+    <!--ko if: canNote()-->
+    <div class="message-block" data-bind="restext: 'SendAs'"></div>
+    <div class="form_radio_group_mail">
+        <div class="form_radio_group_mail-item">
+            <input id="radio-1" type="radio" name="radio" value="1" data-bind="checked: IsMassegeRadio">
+            <label for="radio-1" data-bind="restext: 'Message'"></label>
+        </div>
+        <div class="form_radio_group_mail-item">
+            <input id="radio-2" type="radio" name="radio" value="0" data-bind="checked: IsMassegeRadio">
+            <label for="radio-2" data-bind="restext: 'Note' "></label>
+        </div>
+    </div>
+    <!--/ko-->
+    <div class="assetReg-locationHeader im-middle-header-text" data-bind="restext: 'Attachments'" />
+    <div class="fieldPair">
+        <div class="icon b-requestDetail__files-addBtn active"><span /></div>
+        <div class="editor b-requestDetail__files documentList" />
+    </div>
+
+    <div class="assetReg-locationHeader im-middle-header-text" data-bind="restext: 'SendMailBody'" />
+    <div class="mailBody htmlEditor-extensionContainerFull">
+    </div>
+</div>

@@ -1,0 +1,6 @@
+﻿<div class="goods-invoice-link_tableWrapper" style="top:30px;">
+    <div class="asset-link_tableColumn" data-bind="if: isLoaded">
+        <div class="specificationList" style="height:calc(100% - 40px);" data-bind="koListView: {settingsName: viewName, controlInitialized: listViewInit, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: listViewRowClick, contextMenu: listViewContextMenu, getObjectID: getObjectID}"></div>
+        <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+    </div>
+</div>

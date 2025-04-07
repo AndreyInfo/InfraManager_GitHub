@@ -1,0 +1,362 @@
+﻿@import "../../../Styles/general";
+
+.frmAssetRegistration {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .icon > span.descriptionIcon {
+        background: url(../images/fields/description.png) no-repeat;
+    }
+
+    .icon.active {
+        & > span.descriptionIcon {
+            background: url(../images/fields/description_active.png) no-repeat;
+        }
+    }
+
+    .content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 120px;
+
+        .subjectRow {
+            padding-top: 9px;
+        }
+
+        .outerIconAndControl {
+            margin-left: 10px;
+            margin-right: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+            overflow: hidden;
+            float: none;
+            position: relative;
+
+            & > .icon {
+                cursor: pointer;
+                pointer-events: none;
+                float: left;
+                position: relative;
+                margin-right: 10px;
+                border-radius: 20px;
+                padding: 6px;
+
+                &:hover {
+                    background-color: whitesmoke;
+                }
+
+                &.active {
+                    pointer-events: all;
+                }
+
+                span {
+                    width: 24px;
+                    height: 24px;
+                    background-size: cover !important;
+                    display: block;
+                }
+            }
+
+            & > .control {
+                position: relative;
+                overflow: auto;
+                height: 36px;
+                line-height: 26px;
+                word-break: break-all;
+
+                &.documentList {
+                    height: initial;
+                }
+
+                > input {
+                    width: 100%;
+                    padding: 4px 7px;
+                    border: none;
+                    outline: none;
+                }
+
+                &.border {
+                    border: 1px solid $border-gray-color;
+                }
+
+                &.nowrap {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                &.invalid {
+                    background-color: $invalid-background-color;
+                }
+            }
+        }
+
+        .tabGeneral {
+            overflow: hidden;
+            position: relative;
+            display: table;
+            width: 100%;
+
+            > .leftSide {
+                width: 200px;
+                min-width: 200px;
+                max-width: 500px;
+                height: 100%;
+                display: table-cell;
+                vertical-align: top;
+            }
+
+            > .rightSide {
+                height: 100%;
+                display: table-cell;
+                min-width: 300px;
+                vertical-align: top;
+            }
+
+            .fieldCaption {
+                color: $gray-text-color;
+                font-size: 11px;
+                margin-left: 25px;
+                margin-right: 25px;
+
+                &.blue {
+                    color: $blue-text-color;
+                    font-size: inherit;
+                }
+            }
+
+            .caption {
+                margin-left: 25px;
+                margin-right: 25px;
+
+                &.mt10 {
+                    margin-top: 10px;
+                }
+            }
+
+            .fieldControl {
+                margin-left: 25px;
+                margin-right: 25px;
+                margin-bottom: 10px;
+                position: relative;
+                overflow: auto;
+                word-break: break-word;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                > input {
+                    width: 100%;
+                    padding: 4px 7px;
+                    border: none;
+                    outline: none;
+                    text-overflow: ellipsis;
+                    background-color: transparent !important;
+
+                    &.productCatalogue, &.manufacturer, &.supplier, &.financeCenter, &.initiator {
+                        width: calc(100% - 20px);
+                    }
+                }
+
+                &.border {
+                    border: 1px solid $border-gray-color;
+                    line-height: 26px;
+                }
+
+                &.nowrap {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                &.multiline {
+                    > * {
+                        width: 100%;
+                        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+                        -moz-box-sizing: border-box; /* Firefox, other Gecko */
+                        box-sizing: border-box; /* Opera/IE 8+ */
+                        resize: none;
+                        height: 100px;
+                        border: none;
+                        outline: none;
+                        padding: 2px 7px;
+                    }
+                }
+
+                &.bold {
+                    font-weight: bold;
+                }
+
+                &.clickable {
+                    cursor: pointer;
+                    padding: 0 7px;
+                }
+
+                &.nud {
+                    overflow: hidden;
+
+                    > .stepper-wrap {
+                        width: calc(100% - 15px);
+
+                        > input {
+                            width: 100%;
+                            border: 1px solid $border-gray-color;
+                            line-height: 26px;
+                            padding: 0 7px;
+                            outline: none;
+                            height: 28px;
+                        }
+                    }
+                }
+            }
+
+            .sumBlock {
+                background: $lightblue-background-color;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+
+        .tabActive {
+            margin-top: 10px;
+            margin-right: 0;
+            margin-bottom: 10px;
+            overflow: auto;
+            position: relative;
+
+            .tabPage {
+                &.ml {
+                    margin-left: 25px;
+                }
+
+                &.h100 {
+                    height: 100%;
+                }
+
+                .caption {
+                    margin-bottom: 10px;
+                }
+
+                &.noscroll {
+                    overflow: hidden;
+                }
+
+                .b-requestDetail_table {
+                    margin-right: 0;
+                    width: calc(100% - 13px);
+                }
+            }
+        }
+    }
+
+    .tabPages {
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+        width: 120px;
+        height: 100%;
+
+        .tabButton {
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 15px;
+            margin-top: 5px;
+
+            .tabButtonIcon {
+                display: inline-block;
+                width: 38px;
+                height: 38px;
+                background-size: cover !important;
+                position: relative;
+
+                &.parameterListTab {
+                    background: url('../images/controls/tabPages/parametrs.png') no-repeat;
+                }
+
+                &.generalTab {
+                    background: url(../images/controls/tabPages/general.png) no-repeat;
+                }
+
+                &.assetFieldsTab {
+                    background: url('../images/AssetForms/Property_pass.png') no-repeat;
+                }
+
+                &.attachmentsTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/files_passive.svg') no-repeat;
+                }
+
+                span {
+                    color: #bdd1db;
+                    font-size: 16px;
+                    width: 38px;
+                    height: 38px;
+                    text-align: center;
+                    line-height: 38px;
+                    vertical-align: middle;
+                }
+            }
+
+            .tabButttonCaption {
+                font-size: 11px;
+                white-space: normal;
+                word-break: break-word;
+                max-height: 22px;
+                overflow: hidden;
+                color: $left-menu-gray-color;
+            }
+        }
+
+        .tabButton.active, .tabButton:hover {
+            .tabButtonIcon {
+                &.parameterListTab {
+                    background: url('../images/controls/tabPages/parametrs_active.png') no-repeat;
+                }
+
+                &.generalTab {
+                    background: url('../images/controls/tabPages/general_active.png') no-repeat;
+                }
+
+                &.assetFieldsTab {
+                    background: url('../images/AssetForms/Property_act.png') no-repeat;
+                }
+
+                &.attachmentsTab {
+                    background: url('../UI/Forms/Asset/Contracts/Icons/files_active.svg') no-repeat;
+                }
+
+                span {
+                    color: $blue-text-color;
+                }
+            }
+
+            .tabButttonCaption {
+                color: $blue-text-color;
+            }
+        }
+
+        .tabButton:hover {
+            .tabButtonIcon {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .asset-note {
+       resize: none;
+       overflow: auto;
+       line-height: unset;
+    }
+
+    .asset-text-field-header {
+        padding:5px;
+    }
+
+    .pad {
+        padding-left:20px;
+    }
+
+}

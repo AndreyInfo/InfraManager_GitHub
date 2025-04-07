@@ -1,0 +1,12 @@
+﻿<div class="adapterList" data-bind="splitter: IsSplitterVisible() == true ? { ChangeFunc: ResizeFunction, MinimalSize: MinHeight, MaximumSize: MaxHeight, Name: 'AdapterList', Direction: 'bottom' } : {}">
+    <div class="tabCaption im-big-header">
+        <span data-bind="restext: 'Asset_AdapterListHeader'" />
+        <span data-bind="visible: IsSplitterVisible(), css: IsExpanded() == true ? 'arrow-up active' : 'arrow-down active', click: ExpandCollapseClick"><span /></span>
+    </div>
+    <div data-bind="visible: IsExpanded()">
+        <div class="tabPage ml h100" data-bind="with: $root.adapterList">
+            <div data-bind="style: {'height': Height() + 'px'}, attr: {'id': listViewID}, koListView: {settingsName: 'AdapterReference', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false}"></div>
+            <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+        </div>
+    </div>
+</div>

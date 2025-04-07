@@ -1,0 +1,176 @@
+﻿<div class="spec_form">
+    <div class="invoiceSpec_form-numberBlock">
+        <div class="invoiceSpec_form-number-header" data-bind="restext: 'InvoiceSpecification_Number'"></div>
+        <div class="invoiceSpec_form-number-data">
+            <input type="text" class="invoiceSpec_form-number-TextField" data-bind="textInput: SpecificationNumber" />
+        </div>
+    </div>
+
+    <div class="invoiceSpec_form-nameBlock">
+        <div class="invoiceSpec_form-name-header" data-bind="restext: 'InvoiceSpecification_Name'"></div>
+        <div class="invoiceSpec_form-name-data">
+            <input type="text" class="invoiceSpec_form-name-TextField" data-bind="textInput: CargoName" />
+        </div>
+    </div>
+
+    <div class="spec_form-dataBlock">
+        <div class="spec_form-dataLeftColumnBlock">
+            <div class="spec_form-modelName">
+                <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_Model'"></div>
+                <div class="spec_form-data spec_form-bigHeader finance-purchase-field" data-bind="text: ModelFullName, click: SelectModel"></div>
+            </div>
+            <div class="spec_form-productNumber">
+                <div class="spec_form-header" data-bind="restext: 'SpecificationForm_ProductNumber'"></div>
+                <div class="spec_form-data" data-bind="text: ModelProductNumber"></div>
+            </div>
+            <div class="spec_form-manufacturerName">
+                <div class="spec_form-header" data-bind="restext: 'SpecificationForm_Manufacturer'"></div>
+                <div class="spec_form-data" data-bind="text: ModelManufacturerName"></div>
+            </div>
+            <div class="spec_form-typeName">
+                <div class="spec_form-header" data-bind="restext: 'SpecificationForm_TypeName'"></div>
+                <div class="spec_form-data" data-bind="text: ModelTypeName"></div>
+            </div>
+            <div class="spec_form-noteBlock">
+                <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_Note'"></div>
+                <div class="spec_form-data">
+                    <input type="text" class="spec_form-note-TextField" data-bind="textInput: Note" />
+                </div>
+            </div>
+        </div>
+        <div class="spec_form-dataRightColumnBlock">
+            <div class="spec_form-dataRightColumnStart">
+                <div class="spec_form-RightFirstColumn">
+                    <div class="spec_form-countBlock">
+                        <div class="spec_form-header" data-bind="restext: 'SpecificationForm_Count'"></div>
+                        <div class="spec_form-data spec_form-count-TextField" data-bind="text: Count"/>
+                    </div>
+                    <div class="spec_form-priceBlock">
+                        <div class="spec_form-header" data-bind="restext: 'SpecificationForm_PriceForOne'"></div>
+                        <div class="spec_form-data">
+                            <input type="text" class="spec_form-price-TextField" data-bind="textInput: PriceInput" />
+                        </div>
+                    </div>
+                    <div class="spec_form-NDSBlock">
+                        <div class="spec_form-header" data-bind="restext: 'SpecificationForm_Vat'"></div>
+                        <div class="spec_form-data">
+                            <div class="spec_form-nds-dd combobox" data-bind="combobox: { dataSource: getNDSTypeList }, comboboxValue: SelectedNDSType"></div>
+                            <!-- ko if: IsNeedShowPercentBlock -->
+                            <div class="spec_form-ndsPercents" data-bind="foreach: NDSPercentList, css: { 'blured' : IsNeedBlurPercentList }">
+                                <!-- ko if: ID !== '0' -->
+                                <div class="spec_form-NDSPercent-item" data-bind="text: (Name + '%'), css: { 'active' : $data == $parent.SelectedNDSPercent() }, click: $parent.OnPercentSelected"></div>
+                                <!-- /ko -->
+                            </div>
+
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+                <div class="spec_form-RightSecondColumn">
+                    <div class="spec_form-unitBlock">
+                        <div class="spec_form-header" data-bind="restext: 'PurchaseSpecification_Unit'"></div>
+                        <div class="spec_form-data">
+                            <div class="spec_form-unit-dd combobox" data-bind="combobox: { dataSource: getUnitList }, comboboxValue: SelectedUnit"></div>
+                        </div>
+                    </div>
+                    <!-- ko if: IsNeedShowPercentBlock -->
+                    <div class="spec_form-NDSCustomBlock" data-bind="css: { 'blured' : IsNeedBlurCustomNDSBlock }">
+                        <div class="spec_form-header" data-bind="restext: 'SpecificationForm_AnotherSum'"></div>
+                        <div class="spec_form-data">
+                            <input type="text" class="spec_form-NDS-TextField" data-bind="textInput: NDSCustomValueInput" />
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="spec_form-costBlock">
+                <div class="spec_form-costWithout">
+                    <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_CostWithoutNDS'"></div>
+                    <div class="spec_form-data" data-bind="text: TotalValuesString().CostWithoutNDS"></div>
+                </div>
+                <div class="spec_form-costNDS">
+                    <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_SumNDS'"></div>
+                    <div class="spec_form-data" data-bind="text: TotalValuesString().SumNDS"></div>
+                </div>
+                <div class="spec_form-costWith">
+                    <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_CostWithNDS'"></div>
+                    <div class="spec_form-data" data-bind="text: TotalValuesString().CostWithNDS"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="spec_form-arsListBlock">
+        <div class="spec_form-list-header"><span data-bind="text: 'Строки спецификации на закупку'"></span></div>
+        <span class="caption-arrow">
+            <span data-bind="css: ARSListExpanded() == true ? 'arrow-up-white' : 'arrow-down-white', click: ExpandCollapseARSList, tooltip: ARSListExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+                <span></span>
+            </span>
+        </span>
+    </div>
+    <div class="spec_form-arsBody" data-bind="visible: ARSListExpanded">
+        <div class="spec_form-list" data-bind="visible: (ARSList().length > 0)">
+            <table class="imList-table">
+                <colgroup>
+                    <col span="10" style="width: 180px" />
+                </colgroup>
+                <thead>
+                    <tr class="imList-tableHeaderRow">
+                        <!--<th class="imList-tableHeaderCheckBox"></th>-->
+                        <th data-bind="restext: 'ActivesRequestSpecification_OrderNumber'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_Model'"></th>
+                        <th data-bind="restext: 'PurchaseSpecification_ModelTypeName'"></th>
+                        <th data-bind="restext: 'PurchaseSpecification_Unit'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_Count'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_PriceWithoutNDS'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_PriceWithNDS'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_NDSinfo'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_Note'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_State'"></th>
+                        <th data-bind="restext: 'PurchaseSpecification_Delivered'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_CostWithNDS'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_CostWithoutNDS'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_SumNDS'"></th>
+                        <th data-bind="restext: 'PurchaseSpecification_ActiveRequestCount'"></th>
+                    </tr>
+                </thead>
+                <!--<tfoot>
+                    <tr class="imList-tableFooterRow">
+                        <td colspan="8" style="text-align: right" data-bind="restext: 'TotalSummaryHeader'"></td>
+                        <td class="imList-rightCell" data-bind="text: ARSList_TotalCostWithNDSString()"></td>
+                        <td class="imList-rightCell" data-bind="text: ARSList_TotalCostWithoutNDSString()"></td>
+                        <td class="imList-rightCell" data-bind="text: ARSList_TotalSumNDSString()"></td>
+                    </tr>
+                </tfoot>-->
+                <tbody>
+                    <!-- ko foreach: ARSList -->
+                    <tr class="imList-tableRow">
+                        <!--<td class="imList-tableCheckBox">
+                            <input type="checkbox" class="im-list-item__chb" data-bind="checked: Selected, visible: $root.CanEdit" />
+                        </td>-->
+                        <!--<td class="imList-clickableCell" data-bind="text: OrderNumber, click: $parent.$control.ShowObjectForm"></td>-->
+                        <td class="imList-clickableCell" data-bind="text: OrderNumber"></td>
+                        <td class="imList-clickableCell" data-bind="text: ProductCatalogModelFullName"></td>
+                        <td data-bind="text: ProductCatalogTypeName"></td>
+                        <td data-bind="text: UnitName"></td>
+                        <td data-bind="text: Count"></td>
+                        <td class="imList-rightCell" data-bind="text: PriceWithoutNDSString"></td>
+                        <td class="imList-rightCell" data-bind="text: PriceWithNDSString"></td>
+                        <td data-bind="text: NDSInfo"></td>
+                        <td data-bind="text: Note"></td>
+                        <td data-bind="text: StateString"></td>
+                        <td data-bind="text: DeliveredComputed"></td>
+                        <td class="imList-rightCell" data-bind="text: CostWithNDSString"></td>
+                        <td class="imList-rightCell" data-bind="text: CostWithoutNDSString"></td>
+                        <td class="imList-rightCell" data-bind="text: SumNDSString"></td>
+                        <td data-bind="text: ActiveRequestComputed"></td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+        <!-- ko if: ARSList().length == 0 -->
+        <center><span class="spec_form-list-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+        <!-- /ko -->
+    </div>
+</div>

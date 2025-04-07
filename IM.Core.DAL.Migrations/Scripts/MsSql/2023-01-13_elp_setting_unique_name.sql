@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX ELPSetting_Name_idx ON ELPSetting (Name);

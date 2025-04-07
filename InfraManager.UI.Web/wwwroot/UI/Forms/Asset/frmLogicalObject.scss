@@ -1,0 +1,635 @@
+﻿@import "../../../Styles/general";
+
+.none-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.logicFieldForm {
+    .parameters__b .tabCaption {
+        margin: 0;
+    }
+
+    .callObjectIcon {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/call_object_icon_passive.svg') no-repeat;
+        width: 25px;
+        height: 25px;
+    }
+
+    .callObjectIcon.active {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/call_object_icon_active.svg') no-repeat;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .asset-text-field.device-width {
+        width: calc(100% - 40px);
+        margin-right: 10px;
+        margin-bottom: 15px;
+    }
+
+    .floatLeft {
+        float: left;
+    }
+
+    .show-asset-icon {
+        background: url('../UI/Forms/Asset/SoftwareLicence/Icons/call_object_icon_active.svg') no-repeat;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .form-user-rightside, .form-user-empty-tb, .td-width {
+        width: 100%;
+    }
+
+    .parameters__b .tabContent {
+        top: 20px;
+    }
+
+    .b-content-table__workplaceIcon-header {
+        @extend .im-small-text;
+        color: $left-menu-gray-color;
+        text-align: center;
+        white-space: normal;
+        word-break: break-word;
+        display: block;
+    }
+
+    .b-requestDetail-left {
+        word-wrap: break-word;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 105px;
+    }
+
+    .b-requestDetail-right {
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+        width: 105px;
+        height: 100%;
+    }
+
+    .b-requestDetail__table {
+        width: 100%;
+        position: relative;
+        padding-right: 1px;
+        padding-bottom: 10px;
+    }
+
+    .b-requestDetail__icon-wrap {
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
+
+    .asset-utilize-icon {
+        background: url(../images/AssetForms/Property_pass.png) no-repeat;
+        width: 38px;
+        height: 38px;
+    }
+
+    .asset-utilize-icon:hover {
+        background: url(../images/AssetForms/Property_act.png) no-repeat;
+        width: 38px;
+        height: 38px;
+        opacity: .50;
+    }
+
+    .asset-utilize-icon-active {
+        background: url(../images/AssetForms/Property_act.png) no-repeat;
+        width: 38px;
+        height: 38px;
+    }
+
+    .asset-utilize-icon-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .asset-port-slot-icon {
+        background: url(../images/AssetForms/Ports_slots_pass.png) no-repeat;
+        width: 38px;
+        height: 38px;
+    }
+
+    .asset-port-slot-icon:hover {
+        background: url(../images/AssetForms/Ports_slots_act.png) no-repeat;
+        width: 38px;
+        height: 38px;
+        opacity: .50;
+    }
+
+    .asset-port-slot-icon-active {
+        background: url(../images/AssetForms/Ports_slots_act.png) no-repeat;
+        width: 38px;
+        height: 38px;
+    }
+
+    .asset-port-slot-icon-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .asset-attachments-icon {
+        background: url('../UI/Forms/Asset/Contracts/Icons/files_passive.svg') no-repeat;
+        width: 38px;
+        height: 38px;
+        background-size: cover !important;
+    }
+
+    .asset-attachments-icon:hover {
+        background: url('../UI/Forms/Asset/Contracts/Icons/files_active.svg') no-repeat;
+        width: 38px;
+        height: 38px;
+        background-size: cover !important;
+        opacity: .50;
+    }
+
+    .asset-attachments-icon-active {
+        background: url('../UI/Forms/Asset/Contracts/Icons/files_active.svg') no-repeat;
+        width: 38px;
+        height: 38px;
+        background-size: cover !important;
+    }
+
+    .asset-attachments-icon-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .asset-components-icon {
+        background: url('../UI/Forms/Asset/Models/Icons/Icon_components_passive.svg') no-repeat;
+        width: 38px;
+        height: 38px;
+        background-size: cover !important;
+    }
+
+    .asset-components-icon:hover {
+        background: url('../UI/Forms/Asset/Models/Icons/Icon_components_active.svg') no-repeat;
+        width: 38px;
+        height: 38px;
+        background-size: cover !important;
+        opacity: .50;
+    }
+
+    .asset-components-icon-active {
+        background: url('../UI/Forms/Asset/Models/Icons/Icon_components_active.svg') no-repeat;
+        width: 38px;
+        height: 38px;
+        background-size: cover !important;
+    }
+
+    .asset-components-icon-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .asset-installation-icon {
+        background: url(../images/AssetForms/Installations_pass.png) no-repeat;
+        width: 38px;
+        height: 38px;
+    }
+
+    .asset-installation-icon:hover {
+        background: url(../images/AssetForms/Installations_act.png) no-repeat;
+        width: 38px;
+        height: 38px;
+        opacity: .50;
+    }
+
+    .asset-installation-icon-active {
+        background: url(../images/AssetForms/Installations_act.png) no-repeat;
+        width: 38px;
+        height: 38px;
+    }
+
+    .asset-installation-icon-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .b-requestDetail__icon1-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .active .b-content-table__workplaceIcon-header {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .asset-links-icon-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .b-requestDetail__icon2-active + div {
+        @extend .b-content-table__base-highlihted-text;
+    }
+
+    .b-requestDetail__icon-wrap:hover {
+
+        .b-content-table__workplaceIcon-header {
+            @extend .b-content-table__base-highlihted-text;
+            cursor: pointer;
+        }
+
+        .asset-installation-icon {
+            background: url(../images/AssetForms/Installations_act.png) no-repeat;
+            opacity: .50;
+        }
+
+        .asset-port-slot-icon {
+            background: url(../images/AssetForms/Ports_slots_act.png) no-repeat;
+            opacity: .50;
+        }
+
+        .asset-utilize-icon {
+            background: url(../images/AssetForms/Property_act.png) no-repeat;
+            opacity: .50;
+        }
+
+        .asset-links-icon {
+            background: url(../images/AssetForms/links_active.png) no-repeat;
+            opacity: .50;
+        }
+
+        .asset-components-icon {
+            background: url('../UI/Forms/Asset/Models/Icons/Icon_components_active.svg') no-repeat;
+            opacity: .50;
+            background-size: cover !important;
+        }
+    }
+
+    .network-device-title .network_unit_blue-icon {
+        display: inline-block;
+        position: relative;
+        top: 16px;
+        left: 8px;
+    }
+
+    .network-device-title .host_blue-icon {
+        display: inline-block;
+        position: relative;
+        top: 7px;
+        left: 0px;
+    }
+
+    .menu__item-header .menuBlockIsWorking {
+        max-width: unset;
+    }
+
+    .icon-container {
+        width: 43px;
+        height: 34px;
+        display: inline-block;
+        position: relative;
+        top: 10px;
+        left: 0px;
+    }
+
+    .host_blue-icon {
+        background: url(../images/AssetForms/frm_host_blue.svg) no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+
+    .host_gray-icon {
+        background: url(../images/AssetForms/frm_host_gray.svg) no-repeat;
+        width: 43px;
+        height: 34px;
+    }
+    //419
+    .treeNodeIcon-host {
+        background: url("../images/controls/navigator/icon_host_network_blue.svg") no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+    //409
+    .treeNodeIcon-icon-network-node-Ke {
+        background: url("../images/controls/navigator/icon_network_blue.svg") no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+    //410
+    .treeNodeIcon-icon-commutator {
+        background: url("../images/controls/navigator/icon_commutator_blue.svg") no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+    //411
+    .treeNodeIcon-icon-router-configuration {
+        background: url("../images/controls/navigator/icon_router_network_blue.svg") no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+    //412
+    .treeNodeIcon-print-server {
+        background: url("../images/controls/navigator/icon_printserver_blue.svg") no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+    //413
+    .treeNodeIcon-icon-data-storage {
+        background: url("../images/controls/navigator/icon_DB_network_blue.svg") no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+    //414
+    .treeNodeIcon-icon-win-server {
+        background: url("../images/controls/navigator/icon_winserver_blue.svg") no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+
+    .network_unit_blue-icon {
+        background: url(../images/AssetForms/frm_network_unit_blue.svg) no-repeat;
+        width: 43px;
+        height: 30px;
+    }
+
+    .network_unit_gray-icon {
+        background: url(../images/AssetForms/frm_network_unit_gray.svg) no-repeat;
+        width: 43px;
+        height: 30px;
+    }
+
+    .clear-fix {
+        clear: both;
+    }
+
+    .assetReg-locationControl {
+        margin-bottom: 15px;
+        min-height: 27px;
+    }
+
+
+
+    .b-requestDetail__title-header-nd {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        margin-right: 0px;
+    }
+
+    .network-device-title .field-pair {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .network-device-title {
+        margin-left: 10px;
+    }
+
+
+    .network-device-title .model-network-icon {
+        display: inline-block;
+        position: relative;
+        top: 8px;
+    }
+
+
+    .fieldHeader {
+        font-family: $base-font;
+        font-weight: normal;
+        font-size: 12px;
+        color: $orgstructure-text-header-color;
+    }
+
+    .asset-text-field-header {
+        position: absolute;
+        padding: 5px;
+        width: calc(100% - 67px);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        top: 11px;
+        height: 32px;
+    }
+
+    .network-deivce-classifier {
+        position: relative;
+    }
+
+    .network-device-category {
+        @extend .im-base-text;
+        color: $service-catalog-light-gray;
+        padding-top: 5px;
+        padding-left: 60px;
+        display: inline-block;
+        position: relative;
+        //
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    .network-device-location {
+        color: $service-catalog-light-gray;
+        padding-left: 60px;
+        display: inline-block;
+        position: relative;
+        //
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+
+    .network-device-model {
+        display: inline-block;
+        color: $blue-text-color;
+        //font-size: 15px;
+    }
+
+
+    .network-device-mainTab-left-side {
+        display: inline-block;
+        width: calc(50% - 20px);
+    }
+
+
+
+    .network-device-mainTab-right-side {
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        width: calc(50% - 10px);
+    }
+
+    .network-device-location-header {
+        margin-top: 25px;
+        position: relative;
+    }
+
+
+
+    .network-device-code-header {
+        background: $lightblue-background-color;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 25px;
+    }
+
+    .network-device-table-editable-row {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .network-device-table-row {
+        @extend .network-device-table-editable-row;
+        width: 120px;
+    }
+
+    .network-device-table-margineTop {
+        margin-top: 5px;
+    }
+
+
+    .asset-text-field {
+        border: 1px solid $border-gray-color;
+        line-height: 25px;
+        min-height: 25px;
+        position: relative;
+        padding-left: 10px;
+        /*white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;*/
+        background: $white-background-color;
+        width: 100%;
+    }
+
+    .asset-text-field-readonly {
+        @extend .asset-text-field;
+        border: unset;
+        background: unset;
+    }
+
+    .network-device-table-margineTop .form-user-container {
+        padding: 0;
+    }
+
+    .network-device-table-margineTop .form-user-empty-tb {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .network-device-table-margineTop .form-user-info {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .network-device-table-margineTop .form-user-phone {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .network-device-table-margineTop .form-user-dopinfo {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .b-requestDetail-menu__inqury-date {
+        position: relative;
+        padding-left: 10px;
+        max-width: 350px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .searcherInput {
+        background-image: url(../images/controls/searchPlaceHolder.png);
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+        text-indent: 20px;
+        color: darkgray;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    div:empty:before {
+        content: attr(placeholder);
+        color: darkgray;
+    }
+
+    span:empty:before {
+        content: attr(placeholder);
+        color: darkgray;
+    }
+
+    .searcherInput:not(:empty) {
+        background-image: none;
+        text-indent: 3px;
+        @extend .im-base-text;
+    }
+
+    .outerIconAndControl {
+        margin-left: 10px;
+        margin-right: 0;
+        margin-top: 10px;
+        margin-bottom: 0;
+        overflow: hidden;
+        float: none;
+        position: relative;
+
+        & > .icon {
+            cursor: pointer;
+            pointer-events: none;
+            float: left;
+            position: relative;
+            margin-right: 10px;
+            border-radius: 20px;
+            padding: 6px;
+
+            &:hover {
+                background-color: whitesmoke;
+            }
+
+            &.active {
+                pointer-events: all;
+            }
+
+            span {
+                width: 24px;
+                height: 24px;
+                background-size: cover !important;
+                display: block;
+            }
+        }
+
+        & > .control {
+            position: relative;
+            overflow: auto;
+            min-height: 36px;
+            padding-top: 9px;
+            word-break: break-all;
+
+            &.border {
+                border: 1px solid $border-gray-color;
+                padding: 7px;
+            }
+
+            &.nowrap {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+    }
+}

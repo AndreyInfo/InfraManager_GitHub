@@ -1,0 +1,29 @@
+﻿<div class="b-requestCreate-left" data-bind="visible: TipicalWorkOrdersVisible() || WorkOrderTemplateListVisible()">
+    <div class="helpPanel_workOrders" data-bind="visible: TipicalWorkOrdersVisible">
+        <h2 class="b-requestCreate-left__title" data-bind="restext: 'HelpPanel_WorkOrders'" />
+        <div class="scrollBar b-requestCreate-left__container">
+            <div data-bind="foreach: TipicalWorkOrders">
+                <div class="b-requestCreate-left__item cursor-pointer" data-bind="click: UseClick">
+                    <h3 class="b-requestCreate-left__item-title" data-bind="text: '№' + Number + ' ' + Name" />
+                    <div class="b-requestCreate-left__item-descr">
+                        <div data-bind="text: Description" style="max-height:30px;overflow:hidden" />
+                        <a class="link-highlight" data-bind="restext: 'LinkNameForDescription', click: ShowWorkOrderClick, clickBubble: false" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="helpPanel_templates" data-bind="visible: WorkOrderTemplateListVisible">
+        <h2 class="b-requestCreate-left__title" data-bind="restext: 'HelpPanel_WorkOrderTemplates'" />
+        <div class="scrollBar b-requestCreate-left__container">
+            <div data-bind="foreach: WorkOrderTemplateList">
+                <div class="b-requestCreate-left__item cursor-pointer" data-bind="click: UseClick">
+                    <h3 class="b-requestCreate-left__item-title" data-bind="text: Name" />
+                    <div class="b-requestCreate-left__item-descr">
+                        <div data-bind="text: Description" style="max-height:30px;overflow:hidden" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

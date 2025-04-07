@@ -1,0 +1,30 @@
+﻿<div class="parametersUpdate" data-bind="with: $root.UpdateCharacteristics">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+            <div class="parametersUpdateText" data-bind="restext: 'UpdateCharacteristics'"></div>
+        </div>
+        <div class="col-xs-12">
+            <!--Срок продление подписки -->
+            <div class="fieldCaption" data-bind="restext: 'SubscriptionRenewalPeriod'"></div>
+            <div class="fieldValue" data-bind="text: LimitInDays()"></div>
+        </div>
+        <div class="col-xs-12">
+            <!--Дата окончания лицензии -->
+            <div class="fieldCaption" data-bind="restext: 'LicenseExpirationDate'"></div>
+            <div class="row no-gutters">
+                <div data-bind="text: EndDateParent()"></div>
+                <div class="icon arrow col-md-1" data-bind="css: { 'active' : IsEqualTime }"> </div>
+                <div data-bind="text: EndDate()"></div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <!--Количество прав -->
+            <div class="fieldCaption" data-bind="restext: 'AmountOfRights'"></div>
+            <div class="row no-gutters">
+                <div data-bind="text: BalanceParent()"></div>
+                <div class="icon arrow col-md-1" data-bind="css: { 'active' : IsEqual }"> </div>
+                <div data-bind="text: Balance()"></div>
+            </div>
+        </div>
+    </div>
+</div>

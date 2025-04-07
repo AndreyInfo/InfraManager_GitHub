@@ -1,0 +1,18 @@
+﻿<div class="b-content-table__settings">
+    <div class="tableSettingsControl">
+        <a class="close-icon" data-bind="click: HidePanel" />
+        <span class="nub"></span>
+    </div>
+    <div class="b-content-table__settings-container">
+        <table class="b-content-table__settings-table">
+            <tbody data-bind="foreach: columnList">
+                <tr>
+                    <td><input type="checkbox" data-bind="checked: Visible"></td>
+                    <td class="b-content-table__settings-table-name" data-bind="text: Text"></td>
+                    <td data-bind="if: showUp"><a data-bind="click: $parent.MoveUp"><span class="table_arrow_up" /></a></td>
+                    <td data-bind="if: showDown"><a data-bind="click: $parent.MoveDown"><span class="table_arrow_down" /></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+</div>

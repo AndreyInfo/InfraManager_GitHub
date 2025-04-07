@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX if not exists ui_service_attendance_name_into_service on service_attendance(name, service_id);

@@ -1,0 +1,881 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.WebAPIClient\\InfraManager.WebAPIClient.csproj": {}
+  },
+  "projects": {
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Entities\\IM.Core.DAL.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Entities\\IM.Core.DAL.Entities.csproj",
+        "projectName": "IM.Core.DAL.Entities",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Entities\\IM.Core.DAL.Entities.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core\\IM.Core.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core\\IM.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Interfaces\\IM.Core.DAL.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Interfaces\\IM.Core.DAL.Interfaces.csproj",
+        "projectName": "IM.Core.DAL.Interfaces",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Interfaces\\IM.Core.DAL.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Entities\\IM.Core.DAL.Entities.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Entities\\IM.Core.DAL.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DM.BLL.Interfaces\\IM.Core.DM.BLL.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DM.BLL.Interfaces\\IM.Core.DM.BLL.Interfaces.csproj",
+        "projectName": "IM.Core.DM.BLL.Interfaces",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DM.BLL.Interfaces\\IM.Core.DM.BLL.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DM.BLL.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.WebApi.Contracts\\IM.Core.WebApi.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.WebApi.Contracts\\IM.Core.WebApi.Contracts.csproj",
+        "projectName": "IM.Core.WebApi.Contracts",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.WebApi.Contracts\\IM.Core.WebApi.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.WebApi.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core\\IM.Core.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core\\IM.Core.csproj"
+              },
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\Inframanager.BLL.Library.Abstraction\\Inframanager.BLL.Library.Abstraction.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\Inframanager.BLL.Library.Abstraction\\Inframanager.BLL.Library.Abstraction.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core\\IM.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core\\IM.Core.csproj",
+        "projectName": "IM.Core",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core\\IM.Core.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\Inframanager.BLL.Library.Abstraction\\Inframanager.BLL.Library.Abstraction.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\Inframanager.BLL.Library.Abstraction\\Inframanager.BLL.Library.Abstraction.csproj",
+        "projectName": "Inframanager.BLL.Library.Abstraction",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\Inframanager.BLL.Library.Abstraction\\Inframanager.BLL.Library.Abstraction.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\Inframanager.BLL.Library.Abstraction\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Entities\\IM.Core.DAL.Entities.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Entities\\IM.Core.DAL.Entities.csproj"
+              },
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Interfaces\\IM.Core.DAL.Interfaces.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DAL.Interfaces\\IM.Core.DAL.Interfaces.csproj"
+              },
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core\\IM.Core.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core\\IM.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DAL\\InfraManager.DAL.csproj": {
+      "version": "6.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DAL\\InfraManager.DAL.csproj",
+        "projectName": "InfraManager.DAL",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DAL\\InfraManager.DAL.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DM.BLL.Interfaces\\IM.Core.DM.BLL.Interfaces.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.DM.BLL.Interfaces\\IM.Core.DM.BLL.Interfaces.csproj"
+              },
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager\\InfraManager.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager\\InfraManager.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Npgsql": {
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DTL.Workflow\\InfraManager.DTL.Workflow.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DTL.Workflow\\InfraManager.DTL.Workflow.csproj",
+        "projectName": "InfraManager.DTL.Workflow",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DTL.Workflow\\InfraManager.DTL.Workflow.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DTL.Workflow\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ResourcesArea\\InfraManager.ResourcesArea.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ResourcesArea\\InfraManager.ResourcesArea.csproj",
+        "projectName": "InfraManager.ResourcesArea",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ResourcesArea\\InfraManager.ResourcesArea.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ResourcesArea\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ServiceBase\\InfraManager.ServiceBase.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ServiceBase\\InfraManager.ServiceBase.csproj",
+        "projectName": "InfraManager.ServiceBase",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ServiceBase\\InfraManager.ServiceBase.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ServiceBase\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DAL\\InfraManager.DAL.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DAL\\InfraManager.DAL.csproj"
+              },
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DTL.Workflow\\InfraManager.DTL.Workflow.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.DTL.Workflow\\InfraManager.DTL.Workflow.csproj"
+              },
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager\\InfraManager.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager\\InfraManager.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.CSharp": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "System.ServiceModel.Primitives": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.WebAPIClient\\InfraManager.WebAPIClient.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.WebAPIClient\\InfraManager.WebAPIClient.csproj",
+        "projectName": "InfraManager.WebAPIClient",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.WebAPIClient\\InfraManager.WebAPIClient.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.WebAPIClient\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.WebApi.Contracts\\IM.Core.WebApi.Contracts.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\IM.Core.WebApi.Contracts\\IM.Core.WebApi.Contracts.csproj"
+              },
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ServiceBase\\InfraManager.ServiceBase.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ServiceBase\\InfraManager.ServiceBase.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Net.Http.Headers": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.20.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager\\InfraManager.csproj": {
+      "version": "6.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager\\InfraManager.csproj",
+        "projectName": "InfraManager",
+        "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager\\InfraManager.csproj",
+        "packagesPath": "C:\\Users\\Master\\.nuget\\packages\\",
+        "outputPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ResourcesArea\\InfraManager.ResourcesArea.csproj": {
+                "projectPath": "C:\\_SystemData\\IM\\InfraManager\\Projects\\CrossPlatform\\InfraManager.ResourcesArea\\InfraManager.ResourcesArea.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[2.80.4, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.Diagnostics.EventLog": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.IO.FileSystem.AccessControl": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.Reflection.Emit.Lightweight": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+﻿<div class="connectionInfo">
+    <span class="caption" data-bind="restext: 'AdminTools_ActiveSessionCount'"></span><span class="value" data-bind="text: activeSessionCount"></span>
+    <span class="caption" data-bind="restext: 'AdminTools_ActiveConcurrentSessionCount'"></span><span class="value" data-bind="text: activeConcurrentSessionCount"></span>
+    <span class="caption" data-bind="restext: 'AdminTools_ActivePersonalSessionCount'"></span><span class="value" data-bind="text: activePersonalSessionCount"></span>
+    <span class="caption" data-bind="restext: 'AdminTools_AvailableConcurrentSessionCount'"></span><span class="value" data-bind="text: availableConcurrentSessionCount"></span>
+    <span class="caption" data-bind="restext: 'AdminTools_AvailablePersonalSessionCount'"></span><span class="value" data-bind="text: availablePersonalSessionCount"></span>
+    <span class="i_in_circle" data-bind="tooltip: getTextResource('AdminTools_RuleOfSession'), tooltipShowImmediately: true">i</span>
+</div>
+
+<div class="tabControl">
+    <div class="tabControl_header">
+        <div class="spaceHolder" />
+        <div class="tabButton" data-bind="restext: 'AdminTools_Sessions', click: sessionClick, css: {'active' : mode() == modes.sessions}" />
+        <div class="spaceHolder" />
+        <div class="tabButton" data-bind="restext: 'AdminTools_SessionHistory', click: sessionHistoryClick, css: {'active' : mode() == modes.history}" />
+        <div class="spaceHolder" />
+        <div class="tabButton" data-bind="restext: 'AdminTools_PersonalLicence', click: personalLicenceClick, css: {'active' : mode() == modes.personalLicence}" />
+        <div class="spaceHolder" />
+        <div class="tabButton" data-bind="restext: 'AdminTools_ActiveSessions', click: activeSessionClick, css: {'active' : mode() == modes.activeSessions}" />
+        <div class="spaceHolder" />
+    </div>
+
+    <div class="tabPage tpSessions" data-bind="css: {'active' : mode() == modes.sessions}">
+        <span class="sessionFilterText" data-bind="restext: 'AdminTools_SessionFilter'"></span>
+        <div class="lvSession" data-bind="koListView: {settingsName: '', controlInitialized: sessionTable.lv_Init, controlRendered: sessionTable.lv_Render, retrieveVirtualItems: sessionTable.lv_RetrieveVirtualItems, virtualMode: true, itemClick: sessionTable.lv_RowClick, contextMenu: sessionTable_ContextMenu, getObjectID: sessionTable.getObjectID}"></div>
+        <div class="lvSessionContextMenu" data-bind="koContextMenu: {controlInitialized: sessionTableContextMenu.cm_Init, opening: sessionTableContextMenu.cm_Opening}"></div>
+    </div>
+
+    <div class="tabPage tpSessionHistory" data-bind="css: {'active' : mode() == modes.history}">
+        <span class="outdatedText" data-bind="restext: 'AdminTools_SessionHistoryTable_ListOutdated', css: {active : sessionHistoryTable.listIsOutDated()}"></span>
+        <div class="lvSessionHistory" data-bind="koListView: {settingsName: '', controlInitialized: sessionHistoryTable.lv_Init, controlRendered: sessionHistoryTable.lv_Render, retrieveVirtualItems: sessionHistoryTable.lv_RetrieveVirtualItems, virtualMode: true, itemClick: sessionHistoryTable.lv_RowClick}"></div>
+    </div>
+
+    <div class="tabPage tpPersonalLicence" data-bind="css: {'active' : mode() == modes.personalLicence}">
+        <div class="lvPersonalLicence" data-bind="koListView: {settingsName: '', controlInitialized: personalLicenceTable.lv_Init, controlRendered: personalLicenceTable.lv_Render, retrieveItems: personalLicenceTable.lv_RetrieveItems, virtualMode: false, itemClick: personalLicenceTable.lv_RowClick, contextMenu: personalLicenceTable_ContextMenu, getObjectID: personalLicenceTable.getObjectID}"></div>
+        <div class="lvPersonalLicenceContextMenu" data-bind="koContextMenu: {controlInitialized: personalLicenceTableContextMenu.cm_Init, opening: personalLicenceTableContextMenu.cm_Opening}"></div>
+    </div>
+
+    <div class="tabPage tpActiveSessions" data-bind="css: {'active' : mode() == modes.activeSessions}">
+        <div class="dashboardView__dashboard_activeSessions" data-bind="style: {'top': activeSessionsDashboard.Top() + 'px'}"></div>
+    </div>
+</div>

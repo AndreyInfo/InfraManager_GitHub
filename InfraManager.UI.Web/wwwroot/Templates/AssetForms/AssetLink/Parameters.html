@@ -1,0 +1,53 @@
+﻿<div class="asset-link_searchText">
+    <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: SearchText, event: { keypress: SearchKeyPressed }">
+    <div class="asset-link_searchText-clearfield cursor-pointer" data-bind="click: EraseTextClick, visible: !IsSearchTextEmpty()"></div>
+</div>
+<div class="asset-link_tableWrapper">
+    <span class="asset-link_tableSearchColumns" data-bind="if: startLoadingColumns">
+        <span data-bind="template: { name: 'Table/Columns', afterRender: columnsModel.AfterRender, data: columnsModel }"></span>
+    </span>
+    <div class="asset-link_paramsColumn">
+        <div class="asset-link_paramsColumnType">
+            <div data-bind="template: { name: '../Templates/Navigator/TreeViewControl', data: TypeTreeControl }"></div>
+        </div>
+        <div data-bind="visible: visibleInfo()">
+            <div class="text-asset-searcher-style" data-bind="text: getTextResource('ProductCatalogueModel_TypeName')"> </div>
+            <div class="selectedCategoryNode im-list-item-wrapper">
+                <div data-bind="with: SelectedType">
+                    <span class="selected-text-asset-searcher-style" data-bind="text: text"> </span>
+                </div>
+                <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedTypeClick" />
+            </div>
+            <!-- ko if: (SelectedModels() != null && SelectedModels().length > 0) -->
+            <div class="text-asset-searcher-style" data-bind="text: getTextResource('Model')"> </div>
+            <div class="selectedTypesNode im-list-item-wrapper" data-bind="foreach:SelectedModels">
+                <div>
+                    <div class="selected-text-asset-searcher-style" data-bind="text: text"></div>
+                    <div class="selected-text-erase-style cursor-pointer" data-bind="click: $parent.EraseSelectedModelClick" />
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+
+        <div class="asset-link_paramsColumnLocation">
+            <div data-bind="template: { name: '../Templates/Navigator/TreeViewControl', data: LocationTreeControl }"></div>
+        </div>
+        <div data-bind="visible: visibleLocation()">
+            <div class="selected-text-asset-searcher-style" data-bind="text: SelectedTextLocation"></div>
+            <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedLocationClick" />
+        </div>
+
+        <div class="regionFilterTree-orgstructure orgStructureAssetSearch">
+            <div data-bind="template: { name: '../Templates/Navigator/TreeViewControl', data: OrgStructureTreeControl }"></div>
+        </div>
+        <div data-bind="visible: visibleOrgStructure()">
+            <div class="selected-text-asset-searcher-style" data-bind="text: SelectedTextOrgStructure"></div>
+            <div class="selected-text-erase-style cursor-pointer" data-bind="click: EraseSelectedOrgStructureClick" />
+        </div>
+
+    </div>
+    <div class="asset-link_tableColumn">
+        <div id="regionAssetSearch" style="height:100%" class="region-Table" data-bind="koListView: {settingsName: 'AssetSearch', controlInitialized: listViewInit, retrieveVirtualItems: listViewRetrieveVirtualItems, virtualMode: true, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false }"></div>
+    </div>
+</div>
+

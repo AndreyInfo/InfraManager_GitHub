@@ -1,0 +1,350 @@
+﻿@model InfraManager.UI.Web.Models.ConfigModel
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@using Resources = InfraManager.ResourcesArea.Resources
+@inject IHtmlLocalizer<Resources> localizer
+
+@{
+    Layout = "~/Views/Shared/LiteLayout.cshtml";
+}
+@using (Html.BeginForm("SetLanguage", "Config", FormMethod.Post))
+{
+    <div class="languageSet-auth">
+        <button type="submit" class="language-ru" name="cultureName" value="ru-RU" onclick="onStartRequest();" />
+        <button type="submit" class="language-en" name="cultureName" value="en-US" onclick="onStartRequest();" />
+    </div>
+}
+
+<style>
+    .set {
+        margin-top: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+
+        .set div label {
+            width: 120px;
+            margin-right: 10px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .set div input {
+            width: 200px;
+            display: inline-block;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        .set label {
+            margin-right: 20px;
+        }
+
+        .set textarea {
+            width: 100%;
+            height: 400px;
+        }
+
+        .set .wcf label:first-child {
+            font-weight: bold;
+            margin-left: 0;
+            width: 160px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+        }
+
+        .set .wcf label {
+            width: inherit;
+            margin-left: 10px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .set .wcf input {
+            width: 100px;
+        }
+
+            .set .wcf input[type="checkbox] {
+                margin-left: 10px;
+                width: inherit;
+            }
+
+        .set .wcf label:last-child {
+            margin-left: 0;
+        }
+
+    .resource {
+        margin-top: 10px;
+        display: block;
+    }
+
+        .resource textarea {
+            height: 100px;
+            width: 100%;
+        }
+
+    hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<link href="@Url.Content("/Styles/sweet-alert.css")" type="text/css" rel="stylesheet">
+<script src="@Url.Content("/Scripts/vendor/jquery-2.1.1.js")" type="text/javascript"></script>
+<script src="@Url.Content("/Scripts/vendor/sweet-alert.js")" type="text/javascript"></script>
+
+<div style="margin-top:20px;margin-left:20px;margin-right:20px">
+    <button type="button" class="ui-button ui-button-text-only" style="position:fixed;right:0px; top:62px;" onclick="signOut();">
+        <span class="ui-button-text">@localizer[Resources.SignOut]</span>
+    </button>
+
+    <h2>@localizer[Resources.ApplicationSetting].Value</h2>
+    <hr />
+
+    @using (Html.BeginForm("Settings", "Config", FormMethod.Post, new { id = "mainForm" }))
+    {
+        <h3>@Html.Label(string.Empty, @localizer[Resources.ConfigChangeCredentialsTitle].Value)</h3>
+        <div class="set">
+            <div>
+                @Html.Label(localizer[Resources.UserLogin].Value + ":")@Html.TextBoxFor(m => m.WebSettings.AdminLogin)
+            </div>
+            <div>
+                @Html.Label(localizer[Resources.UserPassword].Value + ":")@Html.PasswordFor(m => m.WebSettings.AdminPassword)
+            </div>
+        </div>
+
+        <h3>@Html.Label(string.Empty, @localizer[Resources.AuthenticationModes].Value)</h3>
+        <div class="set">
+            @Html.CheckBoxFor(m => m.WebSettings.WindowsAuthenticationEnabled)@Html.Label(localizer[Resources.AuthMode_Windows].Value)
+            @Html.CheckBoxFor(m => m.WebSettings.LoginAuthenticationEnabled)@Html.Label(localizer[Resources.AuthMode_Login].Value)
+            @Html.CheckBoxFor(m => m.WebSettings.LoginHashAuthenticationEnabled)@Html.Label(localizer[Resources.AuthMode_LoginHash].Value)
+            @Html.CheckBoxFor(m => m.WebSettings.LoginPasswordAuthenticationEnabled)@Html.Label(localizer[Resources.AuthMode_LoginPassword].Value)
+        </div>
+
+        <h3>@Html.Label(string.Empty, localizer[Resources.Logging].Value)</h3>
+        <div class="set">
+            @*@Html.CheckBoxFor(m => m.LoggerSettings.VerboseIsEnabled)@Html.Label(@InfraManager.ResourcesArea.Resources.LogMode_Verbose)
+                @Html.CheckBoxFor(m => m.LoggerSettings.DebugIsEnabled)@Html.Label(@InfraManager.ResourcesArea.Resources.LogMode_Debug)*@
+            @Html.CheckBoxFor(m => m.LoggerSettings.TraceIsEnabled)@Html.Label(localizer[Resources.LogMode_Trace].Value)
+            @*@Html.CheckBoxFor(m => m.LoggerSettings.InfoIsEnabled)@Html.Label(@InfraManager.ResourcesArea.Resources.LogMode_Info)*@
+            @Html.CheckBoxFor(m => m.LoggerSettings.WarningIsEnabled)@Html.Label(localizer[Resources.LogMode_Warning].Value)
+            @Html.CheckBoxFor(m => m.LoggerSettings.ErrorIsEnabled)@Html.Label(localizer[Resources.LogMode_Error].Value)
+            @Html.CheckBoxFor(m => m.LoggerSettings.CriticalIsEnabled)@Html.Label(localizer[Resources.LogMode_Critical].Value)
+            @*@Html.CheckBoxFor(m => m.LoggerSettings.FatalIsEnabled)@Html.Label(@InfraManager.ResourcesArea.Resources.LogMode_Fatal)*@
+        </div>
+
+        <h3>@Html.Label(string.Empty, localizer[Resources.ServerSettings].Value)</h3>
+        <div class="set">
+            @Html.CheckBoxFor(m => m.CompilationSettings.IsDebugEnabled)@Html.Label(localizer[Resources.DebugMode].Value)
+            <div class="wcf" style="margin-top:10px">
+                @Html.Label(string.Empty, localizer[Resources.ServiceMail].Value)
+                @Html.Label(string.Empty, localizer[Resources.Settings_HostName].Value)
+                @Html.TextBoxFor(m => m.MailServiceSettings.HostName, new { id = "mailHost" })
+                @Html.Label(string.Empty, localizer[Resources.Settings_Port].Value)
+                @Html.TextBoxFor(m => m.MailServiceSettings.Port, new { id = "mailPort" })
+                @Html.CheckBoxFor(m => m.MailServiceSettings.IsSecure)
+                @Html.Label(localizer[Resources.Settings_Secure].Value)
+            </div>
+            <div class="wcf">
+                @Html.Label(string.Empty, localizer[Resources.ServiceMonitoring].Value)
+                @Html.Label(string.Empty, localizer[Resources.Settings_HostName].Value)
+                @Html.TextBoxFor(m => m.MonitoringServiceSettings.HostName, new { id = "monitoringHost" })
+                @Html.Label(string.Empty, localizer[Resources.Settings_Port].Value)
+                @Html.TextBoxFor(m => m.MonitoringServiceSettings.Port, new { id = "monitoringPort" })
+                @Html.CheckBoxFor(m => m.MonitoringServiceSettings.IsSecure)
+                @Html.Label(localizer[Resources.Settings_Secure].Value)
+            </div>
+            <div class="wcf">
+                @Html.Label(string.Empty, localizer[Resources.ServiceSearch].Value)
+                @Html.Label(string.Empty, localizer[Resources.Settings_HostName].Value)
+                @Html.TextBoxFor(m => m.SearchServiceSettings.HostName, new { id = "searchHost" })
+                @Html.Label(string.Empty, localizer[Resources.Settings_Port].Value)
+                @Html.TextBoxFor(m => m.SearchServiceSettings.Port, new { id = "searchPort" })
+                @Html.CheckBoxFor(m => m.SearchServiceSettings.IsSecure)
+                @Html.Label(localizer[Resources.Settings_Secure].Value)
+            </div>
+            <div class="wcf">
+                @Html.Label(string.Empty, localizer[Resources.ServiceSchedule].Value)
+                @Html.Label(string.Empty, localizer[Resources.Settings_HostName].Value)
+                @Html.TextBoxFor(m => m.ScheduleServiceSettings.HostName, new { id = "scheduleHost" })
+                @Html.Label(string.Empty, localizer[Resources.Settings_Port].Value)
+                @Html.TextBoxFor(m => m.ScheduleServiceSettings.Port, new { id = "schedulePort" })
+                @Html.CheckBoxFor(m => m.ScheduleServiceSettings.IsSecure)
+                @Html.Label(localizer[Resources.Settings_Secure].Value)
+            </div>
+            <div class="wcf">
+                @Html.Label(string.Empty, localizer[Resources.ServiceWorkflow].Value)
+                @Html.Label(string.Empty, localizer[Resources.Settings_HostName].Value)
+                @Html.TextBoxFor(m => m.WorkflowServiceSettings.HostName, new { id = "workflowHost" })
+                @Html.Label(string.Empty, localizer[Resources.Settings_Port].Value)
+                @Html.TextBoxFor(m => m.WorkflowServiceSettings.Port, new { id = "workflowPort" })
+                @Html.CheckBoxFor(m => m.WorkflowServiceSettings.IsSecure)
+                @Html.Label(localizer[Resources.Settings_Secure].Value)
+            </div>
+            <div class="wcf" id="timeManagement" style="display:none;">
+                @Html.Label(string.Empty, localizer[Resources.ServiceTelephony].Value)
+                @Html.Label(string.Empty, localizer[Resources.Settings_HostName].Value)
+                @Html.TextBoxFor(m => m.TelephonyServiceSettings.HostName, new { id = "telephonyHost" })
+                @Html.Label(string.Empty, localizer[Resources.Settings_Port].Value)
+                @Html.TextBoxFor(m => m.TelephonyServiceSettings.Port, new { id = "telephonyPort" })
+                @Html.CheckBoxFor(m => m.TelephonyServiceSettings.IsSecure)
+                @Html.Label(localizer[Resources.Settings_Secure].Value)
+            </div>
+            <div class="wcf" id="webMobile">
+                @Html.Label(string.Empty, localizer[Resources.WebMobile].Value)
+                @Html.Label(string.Empty, localizer[Resources.Settings_HostName].Value)
+                @Html.TextBoxFor(m => m.WebMobileSettings.HostName, new { id = "webMobileHost" })
+                @Html.Label(string.Empty, localizer[Resources.Settings_Port].Value)
+                @Html.TextBoxFor(m => m.WebMobileSettings.Port, new { id = "webMobilePort" })
+                @Html.CheckBoxFor(m => m.WebMobileSettings.IsSecure)
+                @Html.Label(localizer[Resources.Settings_Secure].Value)
+            </div>
+            <span class="resource">
+                @Html.Label(string.Empty, localizer[Resources.ResourceOverrideTitle].Value)
+                @Html.TextAreaFor(m => m.ResourcesAreaSettings.Overrides)
+                @Html.Label(string.Empty, "<template>:=<ResourceName>&<cultureName>&<value>{;<template>}", new { style = "font-style:italic;color:gray;display:block;" })
+                @Html.Label(string.Empty, "MainLinkName&ru-RU&Любой текст;MainLinkName&en-US&Some text", new { style = "font-style:italic;color:gray;display:block;" })
+            </span>
+        </div>
+
+        <h3>@Html.Label(string.Empty, localizer[Resources.LogoTitle].Value)</h3>
+        <div class="set">
+            <div>
+                @Html.Label(string.Empty, localizer[Resources.LogoBrowserTitle].Value)@Html.Label(string.Empty, " / images/favicon.ico", new { style = "font-style:italic;color:gray;" })
+                @Html.TextBoxFor(m => m.WebSettings.ImagePath_Browser)
+            </div>
+            <div>
+                @Html.Label(string.Empty, localizer[Resources.LogoMenuTitle].Value)@Html.Label(string.Empty, " / images/logo.png", new { style = "font-style:italic;color:gray;" })
+                @Html.TextBoxFor(m => m.WebSettings.ImagePath_Menu)
+            </div>
+            <div>
+                @Html.Label(string.Empty, localizer[Resources.LogoLoginTitle].Value)@Html.Label(string.Empty, " / images/logo_big.png", new { style = "font-style:italic;color:gray;" })
+                @Html.TextBoxFor(m => m.WebSettings.ImagePath_Login)
+            </div>
+        </div>
+
+        <h3>@Html.Label(string.Empty, localizer[Resources.CallSettings].Value)</h3>
+        <div class="set">
+            @Html.CheckBoxFor(m => m.WebSettings.HardToChooseButtonVisible)@Html.Label(localizer[Resources.ButtonHardToChooseVisible].Value)
+            <br />
+            @Html.CheckBoxFor(m => m.WebSettings.VisibleNotAvailableServiceBySla)@Html.Label(localizer[Resources.NotAvailableServiceVisibility].Value)
+        </div>
+
+        <h3>@Html.Label(string.Empty, localizer[Resources.WorkOrderSettings].Value)</h3>
+        <div class="set">
+            @Html.CheckBoxFor(m => m.WebSettings.WorkOrderRegistration_UseTypeSelectionDialog)@Html.Label(localizer[Resources.WorkOrderRegistration_UseTypeSelectionDialogText].Value)
+        </div>
+
+        <button type="submit" class="ui-button ui-button-text-only" onclick="saveSettings();">
+            <span class="ui-button-text">@localizer[Resources.ButtonSave].Value</span>
+        </button>
+        <hr />
+
+        <h3 style="display: inline">@Html.Label(string.Empty, localizer[Resources.ServerLogTitle].Value)</h3>
+        <button type="button" class="ui-button ui-button-text-only" onclick="clearServerLog();">
+            <span class="ui-button-text">@localizer[Resources.ButtonClear].Value</span>
+        </button>
+        <div class="set">
+            @Html.TextAreaFor(m => m.WebLog)
+        </div>
+        <hr />
+
+        <h3 style="display: inline">@Html.Label(string.Empty, localizer[Resources.ClientLogTitle].Value)</h3>
+        <button type="button" class="ui-button ui-button-text-only" onclick="clearClientLog();">
+            <span class="ui-button-text">@localizer[Resources.ButtonClear].Value</span>
+        </button>
+        <div class="set">
+            <textarea id="ClientLog"></textarea>
+        </div>
+        <hr />
+    }
+</div>
+
+
+<script type="text/javascript">
+    @if (InfraManager.Web.BLL.Global.IsTelephonyEnabled)
+    {
+        @Html.Raw("$('#timeManagement').show()");
+    }
+    //
+    var log = localStorage.getItem('_LOG_');
+    if (log) {
+        document.getElementById("ClientLog").innerHTML = log;
+    };
+    //
+    $('#mainForm').submit(function () {
+        var checkHost = function (val) {
+            if (val.length == 0)
+                return false;
+            else
+                return true;
+        };
+        var checkPort = function (val) {
+            var intVal = parseInt(val)
+            if (val == '' || val != intVal || intVal == NaN || intVal < 0 || intVal > 65535)
+                return false;
+            else
+                return true;
+        };
+        if (!checkHost($('#mailHost').val()) || !checkPort($('#mailPort').val()) ||
+            !checkHost($('#monitoringHost').val()) || !checkPort($('#monitoringPort').val()) ||
+            !checkHost($('#searchHost').val()) || !checkPort($('#searchPort').val()) ||
+            !checkHost($('#scheduleHost').val()) || !checkPort($('#schedulePort').val()) ||
+            !checkHost($('#workflowHost').val()) || !checkPort($('#workflowPort').val()) ||
+            !checkHost($('#telephonyHost').val()) || !checkPort($('#telephonyPort').val())
+            ) {
+            hideSpinner();
+            swal('@InfraManager.ResourcesArea.Resources.ErrorCaption', '@InfraManager.ResourcesArea.Resources.BadWCFSettrings', 'error');
+            return false;
+        }
+        //
+        return true;
+    });
+    var saveSettings = function () {
+        localStorage.removeItem('imagePath_expiresIn');
+        localStorage.removeItem('imagePath_browser');
+        localStorage.removeItem('imagePath_login');
+        localStorage.removeItem('imagePath_menu');
+        onStartRequest();
+    };
+    var clearClientLog = function () {
+        onStartRequest();
+        localStorage.setItem('_LOG_', '');
+        window.location.reload(true);
+    };
+    var clearServerLog = function () {
+        onStartRequest();
+        $.ajax({
+            url: '/configApi/ClearServerLog',
+            method: 'POST',
+            success: function (response) {
+                if (response == true) {
+                    window.location.reload(true);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                swal('@InfraManager.ResourcesArea.Resources.ErrorCaption', '@InfraManager.ResourcesArea.Resources.AjaxError', 'error');
+            }
+        });
+    };
+    var signOut = function () {
+        onStartRequest();
+        $.ajax({
+            url: '/configApi/SignOut',
+            method: 'POST',
+            success: function (response) {
+                if (response == true) {
+                    window.location.reload(true);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                swal('@InfraManager.ResourcesArea.Resources.ErrorCaption', '@InfraManager.ResourcesArea.Resources.AjaxError', 'error');
+            }
+        });
+    };
+</script>

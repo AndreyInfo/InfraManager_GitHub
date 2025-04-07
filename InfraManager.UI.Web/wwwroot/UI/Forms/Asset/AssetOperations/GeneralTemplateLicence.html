@@ -1,0 +1,69 @@
+﻿<div class="GeneralTemplateLicence" data-bind="with: template">
+    <div class="container-fluid">
+        <!--Обновляемая лицензия-->
+        <div class="col-xs-12">
+            <div class="fieldCaption" data-bind="restext: 'UpdatedLicense'"></div>
+        </div>
+        <div class="col-xs-12">
+            <!-- ko if: IsParentSelectable() -->
+            <div class="pairFields">
+                <div class="editor general">
+                    <label for="searcherParentSoftwareLicenceElem"></label><input id="searcherParentSoftwareLicenceElem" type="text" 
+                                                                                  class="border searcherHaspAdapterInput" data-bind="textInput: ParentSoftwareLicenceName, click: EditParentSoftwareLicence, longNameTooltip: ParentSoftwareLicenceName, attr: { placeholder: getTextResource('Select') }, css: { 'cursor-pointer': CanEdit }"
+                                                                                  readonly="readonly">
+                    <div id="eraser_ParentSoftwareLicence" class="search-results-control-clearfield cursor-pointer" style="top:45%"
+                         data-bind="click: ClearParentSoftwareLicence, visible: IsParentSoftwareLicenceExists, css: { 'cursor-pointer': CanEdit}"></div>
+                </div>
+                <div class="icon callObjectIcon" data-bind="css: { 'active' : IsParentSoftwareLicenceExists }, tooltip: getTextResource('SoftwareLicence_ParentSoftwareLicence'), click: OpenParentSoftwareLicenceForm"><span /></div>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: !IsParentSelectable()  -->
+            <div class="fieldValue lines clickableTextField" data-bind="text: ParentSoftwareLicenceName(), click: OpenParentSoftwareLicenceForm"></div>
+            <!-- /ko -->
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <!--Дата вступления в силу -->
+                <div class="fieldCaption" data-bind="restext: 'EffectiveDate'"></div>
+            </div>
+            <div class="col-sm-6">
+                <!--Тип обновления -->
+                <div class="fieldCaption" data-bind="restext: 'TypeOfUpdate'"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <!--Дата вступления в силу -->
+                <div class="effective-date"></div>
+                <div class="fieldValue" data-bind="text: EffectiveDate()"></div>
+            </div>
+            <div class="col-sm-6">
+                <!--Тип обновления -->
+                <div class="fieldValue" data-bind="text: ProductType()"></div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <!--Основание -->
+            <div class="fieldCaption" data-bind="restext: 'ReasonForChange'"></div>
+        </div>
+        <div class="col-xs-12">
+            <!-- ko if: IsChildSelectable() -->
+            <div class="pairFields">
+                <div class="editor general">
+                    <label for="searcherChildSoftwareLicenceElem"></label><input id="searcherChildSoftwareLicenceElem" type="text" class="border searcherHaspAdapterInput" data-bind="textInput: Reason, click: EditParentSoftwareLicence, longNameTooltip: Reason, attr: { placeholder: getTextResource('Select') }, css: { 'cursor-pointer': CanEdit }"
+                                                                                 readonly="readonly">
+                    <div id="eraser_ChildSoftwareLicence" class="search-results-control-clearfield cursor-pointer" style="top:45%"
+                    data-bind="click: ClearChildSoftwareLicence, visible: IsChildSoftwareLicenceExists, css: { 'cursor-pointer': CanEdit }"></div>
+                </div>
+                <div class="icon callObjectIcon" 
+                     data-bind="css: { 'active' : IsChildSoftwareLicenceExists }, tooltip: getTextResource('SoftwareLicence_ParentSoftwareLicence'), click: OpenCorrespondingObjectForm"><span /></div>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: !IsChildSelectable()  -->
+            <div class="fieldValue clickableTextField" data-bind="text: Reason(), click: OpenCorrespondingObjectForm"></div>
+            <!-- /ko -->
+        </div>
+        <div data-bind="template: {name: $parent.UpdateCharacteristics().Template,  afterRender: $parent.UpdateCharacteristics().AfterRender}"></div>
+    </div>
+</div>
+

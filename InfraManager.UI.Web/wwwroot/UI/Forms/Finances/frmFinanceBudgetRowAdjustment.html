@@ -1,0 +1,110 @@
+﻿<div class="frmFinanceBudgetRowAdjustment">
+    <table class="formElements">
+        <colgroup>
+            <col class="columnCaption" />
+            <col class="columnEditor" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <td><label data-bind="restext: 'FinanceBudgetRowAdjustment_Date'"></label></td>
+                <td>
+                    <input class="date" type="text" data-bind="value: DateString, enable: CanEdit" />
+                </td>
+            </tr>
+            <tr>
+                <td><label data-bind="restext: 'FinanceBudgetRowAdjustment_Type'"></label></td>
+                <td><input disabled data-bind="value: TypeString" /></td>
+            </tr>
+            <tr>
+                <td><label data-bind="restext: 'Initiator'"></label></td>
+                <td data-bind="css: {'disable' : CanEdit() == false}"><input type="text" class="initiator" data-bind="value: InitiatorFullName, enable: CanEdit" /></td>
+            </tr>
+            <!-- ko if: OldIdentifier() != null -->
+            <tr>
+                <td><label data-bind="restext: 'FinanceBudgetRowAdjustment_OldRow'"></label></td>
+                <td>
+                    <table class="costLine">
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td><label data-bind="restext: 'Identifier'"></label></td>
+                                <td><label data-bind="restext: 'Name'"></label></td>
+                                <td><label data-bind="restext: 'FinanceBudgetRow_TotalSum'"></label></td>
+                                <td><label data-bind="restext: 'FinanceBudgetRow_Sum1'"></label></td>
+                                <td><label data-bind="restext: 'FinanceBudgetRow_Sum2'"></label></td>
+                                <td><label data-bind="restext: 'FinanceBudgetRow_Sum3'"></label></td>
+                                <td><label data-bind="restext: 'FinanceBudgetRow_Sum4'"></label></td>
+                            </tr>
+                            <tr>
+                                <td data-bind="text: OldIdentifier"></td>
+                                <td data-bind="text: OldName"></td>
+                                <td data-bind="text: OldTotalSum"></td>
+                                <td data-bind="text: OldSum1"></td>
+                                <td data-bind="text: OldSum2"></td>
+                                <td data-bind="text: OldSum3"></td>
+                                <td data-bind="text: OldSum4"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <!-- /ko -->
+            <!-- ko if: NewIdentifier() != null -->
+            <tr>
+                <td><label data-bind="restext: 'FinanceBudgetRowAdjustment_NewRow'"></label></td>
+                <td>
+                    <table class="costLine">
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                            <col />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td><label data-bind="restext: 'Identifier'"></label></td>
+                                <td><label data-bind="restext: 'Name'"></label></td>
+                                <td><label data-bind="restext: 'FinanceBudgetRow_TotalSum'"></label></td>
+                                <td><label data-bind="restext: 'FinanceBudgetRow_Sum1'"></label></td>
+                                <td><label data-bind="restext: 'FinanceBudgetRow_Sum2'"></label></td>
+                                <td><label data-bind="restext: 'FinanceBudgetRow_Sum3'"></label></td>
+                                <td><label data-bind="restext: 'FinanceBudgetRow_Sum4'"></label></td>
+                            </tr>
+                            <tr>
+                                <td data-bind="text: NewIdentifier"></td>
+                                <td data-bind="text: NewName"></td>
+                                <td data-bind="text: NewTotalSum"></td>
+                                <td data-bind="text: NewSum1"></td>
+                                <td data-bind="text: NewSum2"></td>
+                                <td data-bind="text: NewSum3"></td>
+                                <td data-bind="text: NewSum4"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <!-- /ko -->
+            <tr>
+                <td><label data-bind="restext: 'FinanceBudgetRowAdjustment_Note'"></label></td>
+                <td>
+                    <textarea type="text" maxlength="500" data-bind="textInput: Note, enable: CanEdit" />
+                </td>
+            </tr>
+            <tr style="height:auto">
+                <td><div class="bAddDocument" data-bind="visible: CanEdit"></div></td>
+                <td><div class="documentList" /></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

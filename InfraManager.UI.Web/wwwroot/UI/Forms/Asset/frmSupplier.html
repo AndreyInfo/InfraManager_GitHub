@@ -1,0 +1,14 @@
+﻿<div class="frmSupplier">
+    <!--ko if: object()-->
+    <div class="content">
+        <div class="tabActive" data-bind="template: {name: tabActive().Template}, afterUpdateBlock: afterRender">
+        </div>
+    </div>
+    <!--/ko-->
+    <div class="tabPages" data-bind="foreach: tabList">
+        <div class="tabButton" data-bind="visible: $data.IsVisible, click: $parent.selectTabClick, css: {'active' : $parent.tabActive() === $data, 'invalid' : $parent.tabActive().IsValid && $parent.tabActive().IsValid() == false}">
+            <div class="tabButtonIcon" data-bind="css: $data.IconCSS" />
+            <div class="tabButttonCaption" data-bind="text: $data.Name" />
+        </div>
+    </div>
+</div>

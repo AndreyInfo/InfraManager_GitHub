@@ -1,0 +1,75 @@
+﻿<!-- ko if: rowList().length == 0 && !isLoading() -->
+<div class="listEmpty">
+    <span data-bind="restext: 'ListIsEmpty'" />
+</div>
+<!-- /ko -->
+<div class="b-content-table__right">
+    <div class="tableHeader">
+        <!-- ko if: rowList().length > 0 -->
+        <table class="b-content-table__table" data-bind="style: {width: TableWidth() + 'px'}">
+            <colgroup>
+                <col style="width: 38px" />
+                <!-- ko foreach: columnList -->
+                <!-- ko if: $data.Visible -->
+                <col data-bind="style: {width: Width()+'px'}" />
+                <!-- /ko -->
+                <!-- /ko -->
+            </colgroup>
+            <thead>
+                <tr>
+                    <th class="b-content-table__th">
+                        <input class="b-content-table__th-checkbox" type="checkbox" data-bind="click: SelectAllClick" />
+                    </th>
+                    <!-- ko foreach: columnList -->
+                    <!-- ko if: $data.Visible -->
+                    <th class="b-content-table__th cursor-pointer" data-bind="css: {'b-content-table__table-sorted': SortAsc() != null ? true : false}, event: { mouseenter: checkShowTooltip}, click: ColumnClick, style: {cursor : $parent.moveTrumbData() != null ? 'e-resize' : ''}">
+                        <div class="columnContainer">
+                            <div class="columnLabel" data-bind="text: Text" />
+                            <div class="columnSortArrow" data-bind="if: SortAsc() != null, css: {'table_arrow_up': SortAsc() == true, 'table_arrow_down': SortAsc() == false}" />
+                        </div>
+                        <div class="columnResizeThumb" data-bind="style: {background: $data.showResizeThumb() == true ? 'darkgray' : ''}, event: { mouseenter: enableResizeThumb, mouseout: disableResizeThumb, mousedown: $parent.thumbResizeCatch }" />
+                    </th>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </tr>
+            </thead>
+        </table>
+        <!-- /ko -->
+    </div>
+    <div class="tableScroll">
+        <!-- ko if: rowList().length > 0 -->
+        <table class="b-content-table__table" data-bind="style: {width: TableWidth() + 'px', 'border-bottom-color': isAppendRequestAvailable() == true ? 'red' : ''}, afterUpdateBlock: RenderTableComplete">
+            <colgroup>
+                <col style="width: 38px" />
+                <!-- ko foreach: columnList -->
+                <!-- ko if: $data.Visible -->
+                <col data-bind="style: {width: Width()+'px'}" />
+                <!-- /ko -->
+                <!-- /ko -->
+            </colgroup>
+            <tbody data-bind="foreach: rowList">
+                <tr data-bind="attr: {id: ID}, css: {'active' : Checked}">
+                    <td><input type="checkbox" data-bind="checked: Checked" /></td>
+                    <!-- ko foreach: Cells -->
+                    <!-- ko if: $data.Column.Visible -->
+                    <td class="relative" data-bind="click: $parent.ShowForm, style: {cursor : $parent.moveTrumbData() != null ? 'e-resize' : ''}, longNameTooltip: Text">
+                        <!-- ko if: ImageSource -->
+                        <img data-bind="attr: {src: ImageSource}" />
+                        <!-- /ko -->
+                        <span data-bind="text: Text"></span>
+                        <div class="columnResizeThumb" data-bind="visible: $data.Column.showResizeThumb" />
+                    </td>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </tr>
+            </tbody>
+        </table>
+        <div class="loadingFooter" data-bind="visible: isAppendRequestAvailable" />
+        <!-- /ko -->
+    </div>
+</div>
+<!-- ko if: selectedItemsModel() != null -->
+<div data-bind="with: selectedItemsModel">
+    <div class="regionTableSelectedItems" data-bind="template: { name: $parent.selectedItemsTemplate, afterRender: $parent.RenderTableComplete }"></div>
+</div>
+<!-- /ko -->

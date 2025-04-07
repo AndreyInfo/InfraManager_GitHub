@@ -1,0 +1,11 @@
+﻿<div class="frmLicenceReturning">
+    <div class="dataBlock">
+        <div class="licence-returning_tableWrapper">
+            <div class="tableData" data-bind="koListView: {settingsName: 'AssertReturning', controlInitialized:lvInit, retrieveVirtualItems: lvRetrieveVirtualItems, virtualMode: true, itemClick: lvRowClick,drawCell: listViewDrawCell}"></div>
+        </div>
+        <div class="footer">
+            <div style="display: inline; float: left;" class="fieldCaption" data-bind="restext: 'TotalReturnRights'"></div>
+            <div style="display: inline; float: left;" class="fieldValue" data-bind="text: getReferenceCount()"></div>
+        </div>
+    </div>
+</div>

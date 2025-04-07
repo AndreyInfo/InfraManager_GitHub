@@ -1,0 +1,1 @@
+ALTER TABLE im.values ALTER COLUMN value DROP NOT NULL;

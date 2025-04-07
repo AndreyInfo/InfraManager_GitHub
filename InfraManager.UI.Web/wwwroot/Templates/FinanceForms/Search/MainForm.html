@@ -1,0 +1,28 @@
+﻿<div class="ars-link-main">
+    <div class="ars-link-menu">
+        <div class="ars-link-divider"></div>
+        <div class="ars-link-menubutton" data-bind="click: selectParameterSelector, css: { 'active' : isParameterSelected }">
+            <div class="ars-link-menubutton-text" data-bind="restext: 'AssetLinkHeaderParameters'"></div>
+        </div>
+        <div class="ars-link-divider"></div>
+        <div class="ars-link-menubutton ars-link-choosenbutton" data-bind="click: selectChoosen, visible: isChoosenVisible, css: { 'active' : isChoosenSelected }">
+            <div class="ars-link-menubutton-text">
+                <span data-bind="restext: 'AssetLinkHeaderChoosen'"></span>
+                <span data-bind="text: ChoosenCounterText"></span>
+            </div>
+        </div>
+        <div class="ars-link-lastelement"></div>
+    </div>
+    <div class="ars-link-body">
+        <span data-bind="if: ParameterReady">
+            <div class="ars-link-parameters" data-bind="visible: currentMode() == modes.ParameterSelector && modelParameterSelector() != null">
+                <div data-bind="template: { name: 'FinanceForms/Search/Parameters', data: modelParameterSelector, afterRender: modelParameterSelector().AfterRender }"></div>
+            </div>
+        </span>
+        <span data-bind="if: ChoosenReady">
+            <div class="ars-link-choosen" data-bind="visible: currentMode() == modes.Choosen && modelChoosen() != null">
+                <div data-bind="template: { name: 'FinanceForms/Search/Choosen', data: modelChoosen }"></div>
+            </div>
+        </span>
+    </div>
+</div>

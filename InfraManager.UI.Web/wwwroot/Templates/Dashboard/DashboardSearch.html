@@ -1,0 +1,49 @@
+﻿<div class="dashboardView__wrapper">
+    <div class="dashboard-navigator-header" data-bind="visible: NavigatorVisible()">
+        <span data-bind="restext: 'DashboardNavigator'" />
+        <span class="dashboard-navigator-pin-container pin-icon" data-bind="click: HideNavigator, tooltip: getTextResource('Dashboard_HideNavigator')" />
+    </div>
+    <div class="dashboard-navigator-hidden" data-bind="visible: !NavigatorVisible()">
+        <div class="dashboard-navigator-show" data-bind="restext: 'DashboardNavigator', click: ShowNavigator" />
+    </div>
+    <div class="dashboardView__tree">
+        <!-- ko if: rootList().length == 0 -->
+        <div class="listEmpty">
+            <span data-bind="restext: 'ListIsEmpty'" />
+        </div>
+        <!-- /ko -->
+        <!-- ko if: rootList().length > 0 -->
+        <span data-bind="template: { name: 'dashboardTreeItem', foreach: rootList }" />
+        <!-- /ko -->
+    </div>
+    <div class="dashboardView__dashboard"></div>
+</div>
+
+<script id="dashboardTreeItem" type="text/html">
+    <!--  ko if: Parent == null -->
+    <div class="b-blueMenu__item" data-bind="css: {'b-blueMenu__item-closed': !Expanded(), 'b-blueMenu__item-opened': Expanded()}">
+        <a class="b-blueMenu__item-link" data-bind="click: ClickItem, css: {'b-blueMenu__item-link-sub': Selected }, event: { mouseenter: CheckShowTooltipMessage }">
+            <div class="dashboard-folder-name">
+                <span data-bind="text: Name"></span>
+            </div>
+            <div class="dashboard-folder-arrow">
+                <!--  ko if: Expanded() --><span class="arrowUp-white"></span><!-- /ko -->
+                <!--  ko if: CanExpand --> <span class="arrowDown-white"></span> <!-- /ko -->
+            </div>
+        </a>
+        <div data-bind="template: { name: 'dashboardTreeItem', foreach: visibleList }"></div>
+    </div>
+    <!-- /ko -->
+    <!--  ko ifnot: Parent == null -->
+    <div class="b-blueMenu__item-subitems" data-bind="css: {'b-blueMenu__item-closed': !Expanded(), 'b-blueMenu__item-opened': Expanded()}">
+        <a class="b-blueMenu__item-subitem" data-bind="click: ClickItem, css: {'b-blueMenu__item-link-sub': Selected }, event: { mouseenter: CheckShowTooltipMessage }">
+            <div class="text-overflow-ellipsis" data-bind="style: {'margin-left': (Deep*10 + 'px')}">
+                <span data-bind="text: Name"></span>
+            </div>
+            <!--  ko if: Expanded() --><span class="arrowUp-white"></span><!-- /ko -->
+            <!--  ko if: CanExpand --> <span class="arrowDown-white"></span> <!-- /ko -->
+        </a>
+        <div data-bind="template: { name: 'dashboardTreeItem', foreach: visibleList }"></div>
+    </div>
+    <!-- /ko -->
+</script>

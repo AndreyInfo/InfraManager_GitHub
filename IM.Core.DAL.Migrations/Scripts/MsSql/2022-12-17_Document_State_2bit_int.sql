@@ -1,0 +1,1 @@
+alter table [dbo].[Document] alter column [DocumentState] smallint not null

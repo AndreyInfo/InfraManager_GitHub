@@ -1,0 +1,8 @@
+﻿<div id="scBrowser" class="scModule">
+    <div class="sc-views" data-bind="template: { name: 'ServiceCatalogue/scMode', afterRender: AfterRenderMode }"></div>
+    <div class="sc-search" data-bind="template: { name: 'ServiceCatalogue/SearchControl' }, visible: VisibleServiceCategoryList().length > 0, style: {'padding-left': IsFullCatalogueActive() || IsSLACatalogueActive() ? '337px' : '120px' }"></div>
+    <div class="sc-categories" data-bind="template: {name: 'ServiceCatalogue/scCategories' }, visible: IsFullCatalogueActive() || IsSLACatalogueActive()"></div>
+    <div class="sc-path-text" data-bind="text: SelectedItemPath(), visible: !CategoryListVisible() && !IsFavoritesActive()"></div>
+    <div class="sc-main" data-bind="template: { name: ViewTemplateName }, style: {bottom: IsHelpVisible() ? '100px' : '0'}"></div>
+    <div class="sc-help" data-bind="template: { name: 'ServiceCatalogue/HelpPanel' }, visible: IsHelpActive"></div>
+</div>

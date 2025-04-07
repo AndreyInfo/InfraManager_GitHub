@@ -1,0 +1,12 @@
+﻿<div class="frmELPTask_ChooseVendor">
+
+    <div class="ChooseVendor_searchText">
+        <input type="text" class="text-input searcherInput" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: $root.lvSearchText" />
+        <div class="ChooseVendor_searchText-clearfield cursor-pointer" data-bind="click: $root.eraseTextClick, visible: !$root.isSearchTextEmpty()" style=""></div>
+    </div>
+        <div class="ChooseVendor_tableWrapper">
+            <div class="ChooseVendor_tableColumn">
+                <div class="tableData" data-bind="koListView: {settingsName: 'ELPTaskVendorList', controlInitialized:lvInit, retrieveVirtualItems: lvRetrieveVirtualItems, virtualMode: true, itemClick: lvRowClick}"></div>
+            </div>
+        </div>
+</div>

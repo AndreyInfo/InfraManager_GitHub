@@ -1,0 +1,7 @@
+﻿<div class="sc_hieararchyBlock" data-bind="with: SelectedServiceCategory">
+    <div class="sc_hieararchyServiceList" data-bind="foreach: VisibleServiceList">
+        <div class="sc_hieararchyServiceHeader" data-bind="click: $root.OnServiceClick">
+            <div class="sc_hieararchyServiceHeaderText" data-bind="text: PrefixName($index() + 1)"></div>            
+        </div>
+    </div>
+</div>

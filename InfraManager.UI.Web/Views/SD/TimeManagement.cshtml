@@ -1,0 +1,24 @@
+﻿<style>
+    .b-main {
+        overflow: hidden;
+    }
+</style>
+
+<div class="tmModule">
+    <div class="tm-views" data-bind="template: {name: 'TimeManagement/tmMode', afterRender: AfterRenderMode}"></div>
+    <div class="tm-main" data-bind="template: {name: ViewTemplateName}"></div>
+</div>
+
+<script type="text/javascript">
+    @section MainScript {    
+    require(['jquery', 'knockout'], function ($, ko) {
+            require(['models/TimeManagement/TimeManagement'], function (vm) {
+                hideSpinner($('.b-main')[0]);
+                //
+                var mod = new vm.ViewModel();
+                ko.applyBindings(mod, document.getElementsByClassName('tmModule')[0]);
+                mod.Load();
+            });
+    });
+    }
+</script>

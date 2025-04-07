@@ -1,0 +1,189 @@
+﻿<div class="configurationUnitForm b-requestDetail im-base-text" style="overflow-x: hidden;">
+    <div class="b-requestDetail-left" data-bind="with: configurationUnit">
+        <div class="b-requestDetail-menu clearfix">
+            <!-- ko if: $parent.AssetOperationControl() != null -->
+            <div class="workflow" data-bind="template: {name: '../UI/Forms/Asset/Controls/AssetOperationsControl', data: { $entity: $data, $control: $parent.AssetOperationControl() } }" />
+            <!-- /ko -->
+        </div>
+        <div class="fieldPair b-requestDetail__title-header-nd">
+            <div class="network-device-title">
+                <div class="field-pair">
+                    <div class="icon-container">
+                        <div data-bind="css: IconCss()" />
+                    </div>
+                    <span class="im-big-header asset-text-field-header" data-bind="text: Name, css: { 'cursor-pointer': $root.CanEdit() && CanEditName(), 'asset-border': CanEditName() }, click: $root.EditName" />
+                    <div class="network-device-model-header">
+                        <div class="network-device-category" />
+                    </div>
+                    <!--<div class="network-device-location" data-bind="text: FullLocation(), visible: ShowFullLocation()" />-->
+                </div>
+            </div>
+        </div>
+        <div class="b-requestDetail__mainParameters" data-bind="visible: $parent.mode() == $parent.modes.main, style: {height: $root.TabHeight}">
+            <div class="network-device-mainTab">
+                <div class="network-device-mainTab-left-side">
+                    <div class="network-device-characteristics">
+                        <div class="im-big-header" data-bind="restext: 'TabGeneral'" />
+                        <div class="network-device-table-margineTop table-fixed">
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="text: NameResource" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: Name, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditName" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext: 'IPAddress'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: IPAddress, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditIPAddress" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext: 'Asset_IPMask'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: IPMask, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditIPMask" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <!--data-bind="visible: IsNetworkDevice()"-->
+                                <div class="fieldHeader" data-bind="restext:'InfrastructureSegment'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: InfrastructureSegmentName, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditInfrastructureSegment" />
+                                </div>
+                            </div>
+                            <div class="td-width" data-bind="visible: IsNetworkDevice()">
+                                <div class="fieldHeader" data-bind="restext:'Criticality'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: CriticalityName, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditCriticality" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'Criticality'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: CriticalityName, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditCriticality" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'AssetNumber_TypeName'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="text: ProductCatalogTypeName" />
+                                </div>
+                            </div>
+                            <div class="td-width" data-bind="visible: IsHost()">
+                                <div class="fieldHeader" data-bind="restext:'Cluster'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="css: { 'cursor-pointer': $root.CanEdit }, text: ClusterName, click: $root.EditCluster" />
+                                </div>
+                            </div>
+                            <div class="td-width" data-bind="visible: IsHost()">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_VCenter'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="css: { 'cursor-pointer': $root.CanEdit }, text: VCenter, click: $root.EditVCenter" />
+                                </div>
+                            </div>
+                            <div class="td-width" data-bind="visible: IsHost()">
+                                <div class="fieldHeader" data-bind="restext:'DataCenter'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field" data-bind="css: { 'cursor-pointer': $root.CanEdit }, text: DataCenter, click: $root.EditDataCenter" />
+                                </div>
+                            </div>
+                            <div class="td-width" data-bind="visible: IsNetworkDevice()">
+                                <div class="fieldHeader fieldHeader-blue" data-bind="restext:'ConfigurationUnit_Administrator'" />
+                                <div class="assetReg-locationControl td-width">
+                                    <div data-bind="template: { name: 'User/FormUser', if: AdministratorLoaded(), data: Administrator }"></div>
+                                    <div data-bind="template: { name: 'User/FormUserEmpty', if: !AdministratorLoaded(), data: Administrator }"></div>
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_Comment'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field asset-note" data-bind="resattr: { placeholder : 'FilterEnterValue' }, text: Note, css: { 'cursor-pointer': $root.CanEdit }, click: $root.EditNote" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="network-device-mainTab-right-side">
+                    <div class="network-device-code-header">
+                        <div class="im-big-header" data-bind="restext: 'LocateAsset'" />
+                        <div class="network-device-table-margineTop table-fixed">
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'Device'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="asset-text-field floatLeft device-width" data-bind="text: FullName" />
+                                    <div class="show-asset-icon floatLeft" data-bind="click: $root.ShowDeviceForm"><span /></div>
+                                </div>
+                            </div>
+                            <div class="td-width clear-fix">
+                                <div class="fieldHeader" data-bind="restext:'Asset_SerialNumber'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="searcherInput" data-bind="text: SerialNumber" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'LocationCaption'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="searcherInput" data-bind="text: FullLocation()" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'AssetPowerConsumption'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="searcherInput" data-bind="text: PowerConsumption" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_CpuModel'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="searcherInput" data-bind="text: Cpu" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_CpuNumber'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="searcherInput" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_CoreNumber'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="searcherInput" />
+                                </div>
+                            </div>
+                            <div class="td-width">
+                                <div class="fieldHeader" data-bind="restext:'ConfigurationUnit_RAM'" />
+                                <div class="assetReg-locationControl">
+                                    <div class="searcherInput" data-bind="text: TotalSlotMemory" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="links__b" data-bind="visible: $parent.mode() == $parent.modes.clusterVM, style: {height: $root.TabHeight}, template: {name: $root.clusterVMForTable.Template, data: { $control: $root.clusterVMForTable }}" />
+        <div class="ndRef__b" data-bind="visible: $parent.mode() == $parent.modes.history, style: {height: $root.TabHeight}, template: {name: 'AssetForms/History', data: { $control: $root.assetHistory } }" />
+        <div class="ndRef__b asset-attacments outerIconAndControl" data-bind="visible: $parent.mode() == $parent.modes.attachments, style: {height: $root.TabHeight}">
+            <div class="icon b-requestDetail__files-addBtn" data-bind="css: {'active': $root.CanEdit}"><span></span></div>
+            <div class="control documentList"></div>
+        </div>
+    </div>
+    <div class="b-requestDetail-right" data-bind="with: configurationUnit">
+        <div class="b-requestDetail__icon-wrap" data-bind="click: $root.MainClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon1' : $parent.mode() != $parent.modes.main, 'b-requestDetail__icon1-active' : $parent.mode() == $parent.modes.main }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabGeneral'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap_clusterVM" data-bind="click: $root.VMClick, visible:  $root.isHost()">
+            <a class="b-requestDetail__icon" data-bind="css: { 'icon_virtual_machines_passive' : $parent.mode() != $parent.modes.clusterVM, 'icon_virtual_machines_active' : $parent.mode() == $parent.modes.clusterVM }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'Asset_VM'">
+            </div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click:  $root.HistoryClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'b-requestDetail__icon2' : $parent.mode() != $parent.modes.history, 'b-requestDetail__icon2-active' : $parent.mode() == $parent.modes.history }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'TabTape'"></div>
+        </div>
+        <div class="b-requestDetail__icon-wrap" data-bind="click: $root.AttachmentsClick">
+            <a class="b-requestDetail__icon" data-bind="css: { 'asset-attachments-icon' : $parent.mode() != $parent.modes.attachments, 'asset-attachments-icon-active' : $parent.mode() == $parent.modes.attachments }"></a>
+            <div class="b-content-table__workplaceIcon-header" data-bind="restext: 'Attachments'"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿@import "../../../../Styles/general";
+@import "GeneralFormStyle";
+.frmSoftwareTableSelector {
+  
+  .searchText {
+    @extend .asset-link_searchText;
+  }
+  
+  textarea:focus, input:focus, .searcherInput:focus, .text-input:focus{
+    outline: none;
+    border: 2px solid #81AEF0;
+  }
+  
+  .tableData {
+    height: 100%;
+  }
+}

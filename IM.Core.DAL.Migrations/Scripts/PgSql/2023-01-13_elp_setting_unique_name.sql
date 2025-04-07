@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX IF NOT EXISTS elp_setting_name_idx ON elp_setting (name);

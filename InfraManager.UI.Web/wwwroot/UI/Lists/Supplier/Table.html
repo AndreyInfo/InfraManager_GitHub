@@ -1,0 +1,6 @@
+﻿<div class="tabPage ml h100" data-bind="with: tabActive">
+    <div class="im-big-header caption" data-bind="restext: 'Contract_AssetMaintenance_ListCaption'"></div>
+
+    <div style="height: calc(100% - 30px);" data-bind="attr: {'id': listViewID}, koListView: {settingsName: 'AssetMaintenance', controlInitialized: listViewInit, retrieveItems: listViewRetrieveItems, virtualMode: false, itemClick: listViewRowClick, contextMenu: listViewContextMenu, autoDispose: false}"></div>
+    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+</div>

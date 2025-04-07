@@ -1,0 +1,294 @@
+﻿@import "../../../Styles/general";
+
+.b-content-dictionaries-container-orgstructure {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    > .leftSide {
+        position: absolute;
+        left: 0;
+        width: 100px;
+        top: 0;
+        bottom: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    > .rightSide {
+        border-left: 1px solid $table-border-gray-color;
+        position: absolute;
+        left: 100px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+.dictionaries-orgstructure-tree {
+    margin: 28px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+
+    .treeNodeWrapper {
+        width: 100%;
+    }
+
+    .treeNodeHeaderWrapper {
+        width: 100%;
+    }
+
+    .treeNodeText {
+        flex-grow: 1;
+        -ms-flex-positive: 1;
+    }
+
+    .treeNode.selectedNode .treeNodeHeaderWrapper, .treeNodeHeaderWrapper:hover {
+        background-color: $lightblue-background-color;
+    }
+
+    .treeNodeContextMenuButton {
+        width: 18px;
+        height: 18px;
+        background: url(../UI/Lists/Settings/Icons/context_menu.svg) no-repeat;
+        background-size: 18px 18px;
+        visibility: inherit;
+        margin-right: 5pt;
+        flex-shrink: 0;
+    }
+}
+
+.dictionaries-orgstructure-main {
+    min-width: 600px;
+    max-width: 1100px;
+    padding: 28px;
+    padding-bottom: 0px;
+    line-height: normal;
+    overflow: visible;
+}
+
+.orgstructure-navigation-bar {
+    margin-right: 100px;
+}
+
+.orgstructure-navigation-bar-item {
+    @extend .im-base-text;
+}
+
+.orgstructure-navigation-bar-item-text, .orgstructure-navigation-bar-item-separator {
+    color: $orgstructure-navigation-text-color;
+}
+
+.orgstructure-navigation-bar-item-text.active:hover {
+    color: $orgstructure-navigation-text-hover-color;
+    cursor: pointer;
+}
+
+.orgstructure-text-with-image {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: flex-start;
+    -ms-flex-pack: start;
+    align-items: center;
+    -ms-flex-align: center;
+}
+
+.orgstructure-header-icon-wrapper {
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: center;
+    -ms-flex-pack: center;
+    align-items: center;
+    -ms-flex-align: center;
+    width: 40px;
+    height: 40px;
+}
+
+.orgstructure-header-icon {
+    min-width: 23px;
+    min-height: 23px;
+}
+
+.orgstructure-header-name {
+    @extend .im-base-text;
+    color: $orgstructure-header-text-color !important;
+    font-size: 22px !important;
+}
+
+.orgstructure-textarea {
+    @extend .im-base-text;
+    overflow: hidden;
+    padding: 2px;
+    outline: none;
+    border-width: 1px !important;
+    border-color: $orgstructure-unfocused-field-border-color !important;
+    resize: none;
+    min-height: 22px;
+    height: auto;
+    width: auto;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.orgstructure-textarea:focus {
+    border-width: 2px !important;
+    border-color: $orgstructure-focused-field-border-color !important;
+}
+
+.orgstructure-textarea.disabled {
+    border-width: 1px !important;
+    border-color: $orgstructure-disabled-field-border-color !important;
+    background-color: $orgstructure-disabled-field-background-color !important;
+}
+
+.orgstructure-header-level-icon {
+    margin-left: 5px;
+}
+
+.orgstructure-header-name-editor {
+    width: 100%;
+}
+
+.orgstructure-text-with-header {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    justify-content: center;
+    -ms-flex-pack: center;
+    align-items: stretch;
+    -ms-flex-align: stretch;
+}
+
+.orgstructure-section-start {
+    margin-top: 16px;
+}
+
+.orgstructure-text-header {
+    @extend .im-base-text;
+    color: $orgstructure-text-header-color !important;
+    font-size: 11px !important;
+    margin-bottom: 4px;
+    margin-top: 8px;
+}
+
+.orgstructure-text-section-header {
+    @extend .im-base-text;
+    color: $orgstructure-text-section-color !important;
+    font-size: 18px !important;
+}
+
+.orgstructure-header-level-name {
+    @extend .im-base-text;
+    color: $orgstructure-text-base-color !important;
+    font-weight: bold !important;
+}
+
+.orgstructure-edit-text {
+    @extend .im-base-text;
+    color: $orgstructure-edit-link-color !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    vertical-align: top;
+}
+
+.orgstructure-buttons {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: flex-end;
+    -ms-flex-pack: end;
+    align-items: center;
+    -ms-flex-align: center;
+}
+
+.orgstructure-checkbox-wrapper {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: flex-start;
+    -ms-flex-pack: start;
+    align-items: center;
+    -ms-flex-align: center;
+    margin-top: 8px;
+}
+
+.orgstructure-checkbox {
+    margin-right: 4px;
+}
+
+.organization-list, .subdivision-list {
+    .ko_ListView {
+        .tableContainer {
+            &._gridLines {
+                .table {
+                    border-right: 1px solid transparent !important;
+
+                    tr {
+                        th {
+                            border-left: 1px solid transparent !important;
+                        }
+                    }
+                }
+
+                table td {
+                    border-left: 1px solid transparent !important;
+                }
+            }
+
+            .table {
+                width: 100% !important;
+
+                tr {
+                    td {
+                        &:first-child {
+                            text-align: left;
+                        }
+
+                        &:last-child {
+                            width: 100% !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.organization-list_searchText {
+    /*margin: 0px 20px;*/
+    position: relative;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 60px;
+}
+
+.organization-list_searchText-clearfield {
+    right: 6px;
+    top: 30px;
+    transform: translateY(-50%);
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background: url(../images/icons.png) -84px -76px no-repeat;
+}

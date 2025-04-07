@@ -1,0 +1,131 @@
+﻿.expression-editor {
+    .statements-area {
+        float: left;
+        width: 40%;
+        height: calc(100% - 68px);
+        padding: 25px;
+    }
+
+    .text {
+        font-family: Arial;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .selectable {
+        cursor: pointer;
+    }
+
+    .statements-line {
+        padding-top: 10px;
+        line-height: 25px !important;
+    }
+
+    .label {
+        color: #9D9E9E;
+        font-weight: normal;
+    }
+
+    .statements-header {
+        font-weight: bold;
+        line-height: 25px !important;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    .editor-area {
+        margin-left: 40%;
+        height: calc(100% - 68px);
+    }
+
+    .editor-label {
+        padding-top: 20px;
+    }
+
+    .editor-div {
+        background-color: #F2FAFD;
+        padding: 25px;
+    }
+
+    #expression {
+        padding-top: 5px;
+        width: 100%;
+        height: 188px;
+    }
+
+    .operators-area {
+        padding-top: 20px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 25px;
+    }
+
+    .operators-list {
+        padding-top: 10px;
+    }
+
+    .operator {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        background-size: contain;
+        border-radius: 3px;
+    }
+
+    .plus {
+        background-image: url('../UI/Controls/ExpressionEditor/Icons/plus.png');
+    }
+
+    .minus {
+        background-image: url('../UI/Controls/ExpressionEditor/Icons/minus.png');
+    }
+
+    .multiplier {
+        background-image: url('../UI/Controls/ExpressionEditor/Icons/multiplier.png');
+    }
+
+    .division {
+        background-image: url('../UI/Controls/ExpressionEditor/Icons/division.png');
+    }
+
+    .division-remainder {
+        background-image: url('../UI/Controls/ExpressionEditor/Icons/division_remainder.png');
+    }
+
+    .validation-area {
+        margin-top: 20px;
+        background-image: url('../UI/Controls/ExpressionEditor/Icons/error.png');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    .validation-error {
+        color: #EFA7A7;
+        margin-left: 20px;
+    }
+
+    .buttons-area {
+        display: flex;
+        display: -ms-flexbox;
+        flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-direction: row;
+        -ms-flex-direction: row;
+        justify-content: flex-end;
+        -ms-flex-pack: end;
+        align-items: center;
+        -ms-flex-align: center;
+        position: absolute;
+        bottom: 0;
+        padding-bottom: 15px;
+        padding-right: 25px;
+        right: 0px;
+    }
+
+    .ui-button-cancel {
+        background-color: var(--color-gray);
+    }
+}

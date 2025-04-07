@@ -1,0 +1,76 @@
+﻿<div class="mainMenuWrapper" data-bind="css: { 'minimalMenu': IsMinimalMode }">
+    <div class="mainMenuCompany" data-bind="click: LogoClick">
+        <img class="mainMenuCompanyLogo" data-bind="attr: { src: MainLogoSrc }, css: { empty: MainLogoSrc() == 'null', priority: getTextResource('MainLinkName').trim().length == 0 }" />
+        <div class="mainMenuCompanyText" data-bind="restext: 'MainLinkName', css: { empty: getTextResource('MainLinkName').trim().length == 0, priority: MainLogoSrc() == 'null' }" />
+    </div>
+    <div class="mainMenuCenter" data-bind="visible: isLoaded">
+        <div class="mainMenuBlueActionsList" data-bind="foreach: blueActionsList">
+            <div class="mainMenuBlueAction" data-bind="click: ClickAction, visible: Visible, css: { 'active': IsSelected() }, tooltip: Tooltip">
+                <div class="mainMenuBlueAction-Icon" data-bind="css: IconClass"></div>
+                <div class="mainMenuBlueAction-Text" data-bind="text: Name, visible: $parent.IsMinimalMode() == false"></div>
+                <div class="mainMenuBlueAction-submenu" style="display: none" data-bind="foreach: SubMenuList">
+                    <div class="mainMenuAction-submenuItem" data-bind="click: ClickAction, css: { 'active': IsSelected() }">
+                        <div class="mainMenuAction-submenuItem-Icon" data-bind="css: IconClass"></div>
+                        <div class="mainMenuAction-submenuItem-Text">
+                            <div data-bind="text: Name, longNameTooltip: Name"></div>
+                            <!-- ko if: Details -->
+                            <div data-bind="text: Details, longNameTooltip: Details"></div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ko ifnot: IsMinimalMode -->
+        <div class="mainMenuActionsList" data-bind="foreach: showedActionsList">
+            <div class="mainMenuAction" data-bind="click: ClickAction, css: { 'active': IsSelected() }">
+                <div class="mainMenuAction-Icon" data-bind="css: IconClass"></div>
+                <div class="mainMenuAction-Text" data-bind="text: Name"></div>
+                <div class="mainMenuAction-submenu" style="display: none" data-bind="foreach: SubMenuList">
+                    <div class="mainMenuAction-submenuItem" data-bind="click: ClickAction, css: { 'active': IsSelected() }">
+                        <div class="mainMenuAction-submenuItem-Icon" data-bind="css: IconClass"></div>
+                        <div class="mainMenuAction-submenuItem-Text">
+                            <div data-bind="text: Name, longNameTooltip: Name"></div>
+                            <!-- ko if: Details -->
+                            <div data-bind="text: Details, longNameTooltip: Details"></div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>    
+    <div class="mainMenuUserBlock" data-bind="click: ShowProfileOptionsClick, css: { 'shortBlock': (HideUserName() && !IsMinimalMode()) }, visible: isLoaded">
+        <!-- ko ifnot: IsMinimalMode -->
+        <div class="mainMenuUserBlock-Text" data-bind="visible: !HideUserName()">
+            <div data-bind="text: userFullName, longNameTooltip: userFullName"></div>
+            <div data-bind="text: userPositionName, longNameTooltip: userPositionName"></div>
+        </div>
+        <!-- /ko -->
+        <div class="mainMenuUserBlock-Icon" data-bind="css: { 'noTextLeft' : HideUserName() }"></div>
+        <div class="mainMenuUserBlock-submenu" style="display: none">
+            <span data-bind="foreach: profileActions">
+                <div class="mainMenuAction-submenuItem" data-bind="click: ClickAction, css: { 'active': IsSelected(), 'disabled': !Enable() }">
+                    <div class="mainMenuAction-submenuItem-Icon" data-bind="css: IconClass"></div>
+                    <div class="mainMenuAction-submenuItem-Text">
+                        <div data-bind="text: Name, longNameTooltip: Name"></div>
+                        <!-- ko if: Details -->
+                        <div data-bind="text: Details, longNameTooltip: Details"></div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </span>
+            <span data-bind="with: exitButton">
+                <div class="mainMenuUserBlock-submenuItem" data-bind="text: Name, click: ClickAction, css: { 'active': IsSelected() }"></div>
+            </span>
+            <span>
+                <div class="mainMenu-About">
+                    <div class="mainMenu-About-Icon"></div>
+                    <div class="mainMenu-About-Text" data-bind="text: appAbout"></div>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
+<!--<div class="mainMenuCurrentPage" style="display: none" data-bind="text: CurrentPageName, css: { 'minimalMenu': IsMinimalMode }"></div>-->

@@ -1,0 +1,153 @@
+﻿<div class="tabPage" data-bind="with: tabActive, afterUpdateBlock: tabActive().AfterRender">
+
+    <div class="tabSettings" tabindex="0">
+
+        <div class="part_left_25">
+            <!-- Объект лицензирования -->
+            <div class="licenceObject-div">
+                <span class="fieldCaption" data-bind="restext:'LicenceScheme_Form_SettingsTab_LicenceObject'" />
+
+                <!-- ko if: $parent.isAddNewLicenceScheme -->
+                <div class="editor nowrap fill combobox editLicenceObject" 
+                    data-bind="combobox: { dataSource: EditLicenceObjectHelper.getItemList, 
+                        placeholder: getTextResource('LicenceScheme_Form_SettingsTab_LicenceObject') }, 
+                        comboboxValue: EditLicenceObjectHelper.SelectedItem, 
+                        css: {'invalid' : EditLicenceObjectHelper.SelectedItem == null}" />
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.isAddNewLicenceScheme -->
+                <div class="combobox">
+                    <div class="control">
+                        <input type="text" class="textField" data-bind="value: $parent.object().LicensingObjectTypeLabel, click: EditLicenceObject, css: {'clickable': $parent.CanEdit()}" readonly="" tabindex="0">
+                        <span class="dropdownButton" data-bind="disable: !$parent.CanEdit(), click: EditLicenceObject"></span>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+
+            <!-- Требуемое кол-во прав на объект -->
+            <div class="licenseCountPerObject-div">
+                <span class="fieldCaption" data-bind="restext:'LicenceScheme_Form_SettingsTab_LicenseCountPerObject'" />
+                <div class="fieldControl border multiline" data-bind="text: $parent.object().LicenseCountPerObject, click: editLicenseCountPerObject, css: {'clickable': $parent.CanEdit()}"></div>
+            </div>
+
+            <!-- Привязывать права к объектам -->
+            <div class="bindRightsToObjects-div">
+                <div class="fieldControl slider-checkbox">
+                    <input type="checkbox" id="IsLinkLicenseToObjectCheckbox" class="pronongation-input" data-bind="checked: $parent.object().IsLinkLicenseToObjectEnabled, style:{ 'pointer-events' :$parent.CanEdit() == false ? 'none' : 'auto'}, click: EditIsLinkLicenseToObject" />
+                    <label class="label" style="font-weight: normal" data-bind="restext:'LicenceScheme_Form_SettingsTab_BindRightsToObjects'"></label>
+                </div>
+            </div>
+
+            <!-- Лицензировать доступ пользователей -->
+            <div class="licenseUserAccess-div">
+                <div class="fieldControl slider-checkbox">
+                    <input type="checkbox" id="IsLinkLicenseToUserCheckbox" class="pronongation-input" data-bind="checked: $parent.object().IsLinkLicenseToUserEnabled, style:{ 'pointer-events' :$parent.CanEdit() == false ? 'none' : 'auto'}, click: EditIsLinkLicenseToUser" />
+                    <label class="label" style="font-weight: normal;" data-bind="restext:'LicenceScheme_Form_SettingsTab_LicenseUserAccess'"></label>
+                </div>
+            </div>
+
+            <!-- Лицензировать все хосты кластера (для кластеров) -->
+            <div class="licenseAllClusterHosts-div">
+                <div class="fieldControl slider-checkbox">
+                    <input type="checkbox" id="IsLicenseAllHostsCheckbox" class="pronongation-input" data-bind="checked: $parent.object().IsLicenseAllHostsEnabled, style:{ 'pointer-events' :$parent.CanEdit() == false ? 'none' : 'auto'}, click: EditIsLicenseAllHosts" />
+                    <label class="label" style="font-weight: normal;" data-bind="restext:'LicenceScheme_Form_SettingsTab_LicenseAllClusterHosts'"></label>
+                </div>
+            </div>
+
+            <!-- Допустимое число инсталляций на сервере -->
+            <div class="allowedNumberOfInstallationsOnTheServer-div">
+                <span class="fieldCaption" data-bind="restext:'LicenceScheme_Form_SettingsTab_InstallationLimits'" />
+                <div class="nowrap">
+                    <div class="inline_block">
+                        <input type="radio" class="input_clickable input_radio" name="InstallationLimitUnlimitRadio"  value="0" data-bind="checked: $parent.object().InstallationLimitUnlimit, disable: !$parent.object().CanEdit()" />
+                    </div>
+
+                    <!-- ko if: $parent.isAddNewLicenceScheme -->
+                    <div class="fieldControl nud number_box inline_block">
+                        <input class="installationLimits " type="text" maxlength="3" data-bind="value: $parent.object().InstallationLimits, disable: $parent.object().InstallationLimitUnlimit() != 0" style="margin: 0px;">
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $parent.isAddNewLicenceScheme -->
+                    <div class="inline_block">
+                        <input class="installationLimits border fieldControl nowrap clickable number_box" readonly="readonly" type="text" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().InstallationLimits, disable: $parent.object().InstallationLimitUnlimit()!= 0, css: {'cursor-pointer': $parent.CanEdit() == false}, click: EditInstallationLimits" /> 
+                    </div>
+                    <!-- /ko -->
+
+                    <div class="inline_block">
+                        <span class="radio_two">
+                            <input type="radio" class="input_radio" id="InstallationLimitUnlimitRadioTrue" name="InstallationLimitUnlimitRadio" value="1" data-bind="checked: $parent.object().InstallationLimitUnlimit, disable: !$parent.object().CanEdit(), click: EditInstallationLimitUnlimit" />
+                            <label class="label input_radio" for="InstallationLimitUnlimitRadioTrue" data-bind="restext:'LicenceScheme_Form_SettingsTab_InstallationLimitUnlimitRadio'"></label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Число инсталляций на виртуальных машинах -->
+            <div class="numberOfInstallationsOnVirtualMachines-div">
+                <span class="fieldCaption" data-bind="restext:'LicenceScheme_Form_SettingsTab_InstallationLimitPerVM'" />
+                <div class="nowrap">
+                    <div class="radio inline_block">
+                        <input type="radio" class="input_clickable input_radio" id="AllowInstallOnVM_0" name="numberOfInstallationsOnVirtualMachines" value="0" data-bind="checked: $parent.object().AllowInstallOnVM, disable: !$parent.object().CanEdit(), click: EditInstallationLimitPerVMUnlimit" />
+                        <label class="label input_radio" for="AllowInstallOnVM_0" data-bind="restext:'LicenceScheme_Form_SettingsTab_InstallationLimitPerVM_No'"></label>
+                    </div>
+
+
+                    <div class="inline_block">
+                        <input type="radio" class="input_clickable input_radio inline_block" style="cursor: pointer" name="numberOfInstallationsOnVirtualMachines" value="2" data-bind="checked: $parent.object().AllowInstallOnVM, disable: !$parent.object().CanEdit()" />
+                    </div>
+
+                    <!-- ko if: $parent.isAddNewLicenceScheme -->
+                    <div class="fieldControl nud number_box inline_block radio">
+                        <input class="InstallationLimitPerVM inline_block" type="text" maxlength="3" data-bind="value: $parent.object().InstallationLimitPerVM, disable: $parent.object().AllowInstallOnVM() != 2" style="margin: 0px;">
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $parent.isAddNewLicenceScheme -->
+                    <div class="inline_block">
+                        <span class="radio">
+                            <input class="InstallationLimitPerVM border fieldControl nowrap clickable number_box" readonly="readonly" type="text" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().InstallationLimitPerVM(), disable: $parent.object().AllowInstallOnVM() != 2, css: {'cursor-pointer': $parent.CanEdit() == false}, click: EditInstallationLimitPerVM" />
+                        </span>
+                    </div>
+                    <!-- /ko -->
+
+                    <div class="inline_block radio">
+                        <span class="radio">
+                            <input type="radio" class="input_clickable input_radio" id="AllowInstallOnVM_3" name="numberOfInstallationsOnVirtualMachines" value="1" data-bind="checked: $parent.object().AllowInstallOnVM, disable: !$parent.object().CanEdit(), click: EditInstallationLimitPerVMUnlimit" />
+                            <label class="label input_radio" for="AllowInstallOnVM_3" data-bind="restext:'LicenceScheme_Form_SettingsTab_InstallationLimitPerVMUnlimited'"></label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правила определения дополнительных прав и инсталляций -->
+        <div class="rulesForDeterminingAdditionalRightsAndInstallations">
+
+            <div class="part_left_25 part_right_25">
+
+                <span class="label_bold" data-bind="restext:'LicenceScheme_Form_SettingsTab_RulesForDeterminingAdditionalRightsAndInstallations'" />
+
+                <!-- Количество дополнительных прав -->
+                <div class="AdditionalRights">
+                    <!--Описание-->
+                    <span class="fieldCaption" data-bind="restext:'LicenceScheme_Form_SettingsTab_AdditionalRights'" />
+                    <div class="fieldControl border multiline" data-bind="text: $parent.object().AdditionalRights, click: editAdditionalRights, css: {'clickable': $parent.CanEdit()}"></div>
+                </div>
+
+                <!-- Размер увеличения числа инсталляций на виртуальных машинах -->
+                <div class="increaseForVM">
+                    <span class="fieldCaption" data-bind="restext:'LicenceScheme_Form_SettingsTab_IncreaseForVM'" /> <br />
+                    <!-- ko if: $parent.isAddNewLicenceScheme -->
+                    <div class="fieldControl nud number_box">
+                        <input class="IncreaseForVMStepper inline_block" type="text" maxlength="3" data-bind="value: $parent.object().IncreaseForVM">
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $parent.isAddNewLicenceScheme -->
+                    <div class="fieldControl nud number_box">
+                        <input class="IncreaseForVMStepper border fieldControl clickable number_box" readonly="readonly" type="text" data-bind="resattr: { placeholder : 'FilterEnterValue' }, textInput: $parent.object().IncreaseForVM(), css: {'cursor-pointer': $parent.CanEdit() == false}, click: EditIncreaseForVM" />
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

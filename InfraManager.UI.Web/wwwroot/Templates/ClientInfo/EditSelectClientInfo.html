@@ -1,0 +1,47 @@
+﻿<div class="client-edit-form">
+    <div class="form-searcher-container">
+        <div class="form-search-client-leftside">
+            <div data-bind="css: 'form-user-icon'"></div>
+        </div>
+        <div class="form-user-change-rightside">
+            <div class="mustSetVal text-field-searcher" data-bind="text: FamilyField"></div>
+            <input type="text" class="text-input sdTextEditor FamilyEditor seachClientInfoFields" data-bind="attr: { placeholder: placeholderName }" />
+            <div class="mustSetVal text-field-searcher" data-bind="text: NameField"></div>
+            <input type="text" class="text-input sdTextEditor NameEditor seachClientInfoFields" data-bind="attr: { placeholder: placeholderName }" />
+            <div class="text-field-searcher" data-bind="text: PatronymicField"></div>
+            <input type="text" class="text-input sdTextEditor PatronymicEditor seachClientInfoFields" />
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="text-field-searcher" data-bind="text: PositionField"></div>
+            <div class="seachClientComboBox combobox comboBoxEditor comboboxPosition " data-bind="combobox: { dataSource: getComboBoxValueList }, comboboxValue: comboBoxSelectedValue" />
+        </div>
+        <div class="clientDivisionInfo">
+            <div class="text-field-searcher" data-bind="text: SubDivisionField"></div>
+            <input class="text-input cursor-pointer sdTextEditor clickable seachClientInfoFields searcherInput  text-field-Organization" readonly="readonly" data-bind="attr: { placeholder: fieldFriendlyName}, click: $root.EditSubDivision" />
+        </div>
+        <div class="clientRoomInfo">
+            <div class="text-field-searcher" data-bind="text: LocationField"></div>
+            <input class="text-input cursor-pointer sdTextEditor text-field-room clickable seachClientInfoFields searcherInput" readonly="readonly" data-bind="attr: { placeholder: fieldFriendlyName}, click: $root.EditLocation" />
+        </div>
+        <div>
+            <div class="text-field-searcher" data-bind="text: PhoneField"></div>
+            <input type="text" class="text-input sdTextEditor PhoneEditor seachClientInfoFields" />
+
+        </div>
+        <div>
+            <div class="text-field-searcher" data-bind="text: SecondPhoneField"></div>
+            <input type="text" class="text-input sdTextEditor SecondPhoneEditor seachClientInfoFields" />
+
+        </div>
+        <div>
+            <div class="text-field-searcher " data-bind="text: InPhoneField"></div>
+            <input type="text" class="text-input sdTextEditor InPhoneEditor seachClientInfoFields" />
+        </div>
+        <div>
+            <div class="text-field-searcher " data-bind="text: EmailField"></div>
+            <input type="text" class="text-input sdTextEditor EmailEditor seachClientInfoFields" />
+        </div>
+    </div>
+</div>

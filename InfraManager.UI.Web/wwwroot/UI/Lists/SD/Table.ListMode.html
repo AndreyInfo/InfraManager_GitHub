@@ -1,0 +1,64 @@
+﻿<div class="b-content-table__left-Header" data-bind="restext: 'TooltipMyWorkplace'"></div>
+<div class="b-content-table__left-ScrollBlock" data-bind="visible: ScrollButtonsVisible">
+    <div class="b-content-table__left-ScrollUp" data-bind="click: OnScrollUpClick"></div>
+</div>
+<div class="b-content-table__left-FirstGap" data-bind="visible: !ScrollButtonsVisible()"></div>
+<div class="b-content-table__left">
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowMyWorkplace">
+        <a id="listModeMyWorkplace" class="b-content-table__workplaceIcon" data-bind="css: MyWorkplaceClass, if: $root.ready() && tableModel.modifiedObjectCount()>0">
+            <span data-bind="text: tableModel.modifiedObjectCountString, visible: $root.viewName() == 'CommonForTable', click: tableModel.loadModifiedObjects" />
+        </a>
+        <div id="listModeMyWorkplaceText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'List_MyWorkplace'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowCalls">
+        <a id="listModeCalls" class="b-content-table__workplaceIcon" data-bind="css: CallClass, if: $root.ready() && tableModel.modifiedObjectCount()>0">
+            <span data-bind="text: tableModel.modifiedObjectCountString, visible: $root.viewName() == 'CallForTable', click: tableModel.loadModifiedObjects" />
+        </a>
+        <div id="listModeCallsText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'List_Calls'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowMassIncidents">
+        <a id="listModeMassIncidents" class="b-content-table__workplaceIcon b-content-table__mass-incident" data-bind="css: MassIncidentClass, if: $root.ready() && tableModel.modifiedObjectCount()>0">
+            <span data-bind="text: tableModel.modifiedObjectCountString, visible: $root.viewName() == 'AllMassIncidentsList', click: tableModel.loadModifiedObjects" />
+        </a>
+        <div id="listModeMassIncidentsText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'MassIncident_AllMassIncidentsReportTitle'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowWorkOrders">
+        <a id="listModeWorkOrders" class="b-content-table__workplaceIcon" data-bind="css: WorkOrderClass, if: $root.ready() && tableModel.modifiedObjectCount()>0">
+            <span data-bind="text: tableModel.modifiedObjectCountString, visible: $root.viewName() == 'WorkOrderForTable', click: tableModel.loadModifiedObjects" />
+        </a>
+        <div id="listModeWorkOrdersText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'List_WorkOrders'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowProblems">
+        <a id="listModeProblems" class="b-content-table__workplaceIcon" data-bind="css: ProblemClass, if: $root.ready() && tableModel.modifiedObjectCount()>0">
+            <span data-bind="text: tableModel.modifiedObjectCountString, visible: $root.viewName() == 'ProblemForTable', click: tableModel.loadModifiedObjects" />
+        </a>
+        <div id="listModeProblemsText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'List_Problems'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowRFCs">
+        <a id="listModeRFCs" class="b-content-table__workplaceIcon" data-bind="css: RFCClass, if: $root.ready() && tableModel.modifiedObjectCount()>0">
+            <span data-bind="text: tableModel.modifiedObjectCountString, visible: $root.viewName() == 'RFCForTable', click: tableModel.loadModifiedObjects" />
+        </a>
+        <div id="listModeRFCText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'List_RFCs'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup b-content-table__workplaceIcon_space" data-bind="click: ShowMyCalls">
+        <a id="listModeMyCalls" class="b-content-table__workplaceIcon" data-bind="css: MyCallClass, if: $root.ready() && tableModel.modifiedObjectCount()>0">
+            <span data-bind="text: tableModel.modifiedObjectCountString, visible: $root.viewName() == 'ClientCallForTable', click: tableModel.loadModifiedObjects" />
+        </a>
+        <div id="listModeMyCallsText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'List_MyCalls'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowNegotiations">
+        <a id="listModeNegotiations" class="b-content-table__workplaceIcon" data-bind="css: NegotiationClass, if: $root.ready() && tableModel.modifiedObjectCount()>0">
+            <span data-bind="text: tableModel.modifiedObjectCountString, visible: $root.viewName() == 'NegotiationForTable', click: tableModel.loadModifiedObjects" />
+        </a>
+        <div id="listModeNegotiationsText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'ObjectsWithNegotiations'"></div>
+    </span>
+    <span class="b-content-table__workplaceIconGroup" data-bind="click: ShowCustomControl">
+        <a id="listModeCustomControl" class="b-content-table__workplaceIcon" data-bind="css: CustomControlClass, if: $root.ready() && tableModel.modifiedObjectCount()>0">
+            <span data-bind="text: tableModel.modifiedObjectCountString, visible: $root.viewName() == 'CustomControlForTable', click: tableModel.loadModifiedObjects" />
+        </a>
+        <div id="listModeCustomControlText" class="b-content-table__workplaceIcon-header" data-bind="restext: 'CustomControl'"></div>
+    </span>
+</div>
+    <div class="b-content-table__left-ScrollBlock" data-bind="visible: ScrollButtonsVisible">
+        <div class="b-content-table__left-ScrollDown" data-bind="click: OnScrollDownClick"></div>
+    </div>

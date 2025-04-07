@@ -1,0 +1,8 @@
+﻿<div class="b-requestCreate-input-wrap">
+    <input type="file" class="fileInput">
+    <progress data-bind="attr: {value: $data.ProgressValue}, visible: ($data.ProgressVisible() == true)" max="100" style="width: 80px;margin: 10px 5px 10px 0;" />
+    <input type="button" class="gray-btn parameterButton" style="margin: 10px 0;" data-bind="click: $data.Parameter.UploadClick, visible: $data.Value() == null && $data.Parameter.ReadOnly() == false && $data.IsLoaded() == true && $data.ProgressVisible() == false, resattr: {value: 'Upload'}, tooltip: $data.ValidationError, css: {'b-requestCreate-extra__input-error' : $data.IsInvalid() == true}" />
+
+    <input type="button" class="gray-btn parameterButton" style="margin: 10px 0;" data-bind="click: $data.Parameter.DownloadClick, visible: $data.Value() != null && $data.IsLoaded() == true, attr: {value : $data.ValueString}, tooltip: $data.ValidationError, css: {'b-requestCreate-extra__input-error' : $data.IsInvalid() == true}" />
+    <div class="search-results-control-clearfield cursor-pointer parameterRemoveButton" data-bind="click: $data.Parameter.RemoveClick, visible: $data.Value() != null && $data.Parameter.ReadOnly() == false && $data.IsLoaded() == true" />
+</div>

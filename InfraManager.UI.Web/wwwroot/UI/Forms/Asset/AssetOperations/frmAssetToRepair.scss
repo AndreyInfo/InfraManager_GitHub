@@ -1,0 +1,89 @@
+﻿.assetToRepairForm {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    .assetReg-causeHeader {
+        font-weight: bold;
+    }
+
+    .assetRepair-cause {
+        border: 1px solid #c1cfd9;
+        min-height: 26px;
+        width: 100%;
+        padding: 2px 7px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .marginBottom {
+        margin-bottom: 15px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    td {
+        width: 50%;
+    }
+
+    .contextMenu-inner-asset {
+        position: relative;
+        top: -125px;
+        left: 410px;
+    }
+
+    .asset-registration-founding-container {
+        height: 30px;
+    }
+
+    .plus {
+        position: relative;
+        top: 8px;
+        margin-left: 5px;
+    }
+
+    .tabCaption-icon-plus.active {
+        margin-left: 5px;
+    }
+
+    .dateTimeControlImage {
+        margin-left: 0;
+    }
+
+    .report {
+        width: 120px;
+    }
+
+    .reportPrint-checkbox {
+        position: relative;
+        top: 2px;
+        pointer-events: none;
+    }
+
+    .withAdapters {
+        width: 180px;
+    }
+
+    .withAdapters-checkbox {
+        position: relative;
+        top: 2px;
+        pointer-events: none;
+    }
+
+
+    .withPeripherals {
+        width: 230px;
+    }
+
+    .withPeripherals-checkbox {
+        position: relative;
+        top: 2px;
+        pointer-events: none;
+    }
+}

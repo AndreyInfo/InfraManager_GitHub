@@ -1,0 +1,110 @@
+﻿<h4 class="tabCaption im-big-header" data-bind="text: $parent.ParameterListGroupName()"></h4>
+<div class="tabContent">
+    <table class="b-requestDetail_table">
+        <colgroup>
+            <col class="paramColIcon" />
+            <col class="paramColCaption" />
+            <col class="paramColEditor" />
+        </colgroup>
+        <tbody data-bind="foreach: $parent.ParameterList">
+            <!--ko if: $data.Type == -1 -->
+            <tr>
+                <td colspan="3">
+                    <div class="parameterSeparator" data-bind="text: $data.Name" />
+                    <hr />
+                </td>
+            </tr>
+            <!-- /ko -->
+            <!--ko if: $data.Type != -1 && $data.Type != 13-->
+            <tr>
+                <td><div class="icon" data-bind="css: $data.CssClassFunc, click: function() { $data.ShowEditor($root.objectClassID); }"><span /></div></td>
+                <td class="caption im-blue-text" data-bind="text: Name+': '" />
+                <td data-bind="foreach: $data.Editors">
+                    <!--ko if: $data.Parameter.Type != 0 && ($data.Parameter.Type != 11 || $data.Value() == null) && $data.Parameter.Type != 15 && $data.Parameter.Type != 9 -->
+                    <div class="editor" data-bind="text: $data.GetValueString, click: function() { $parent.ShowEditor($root.objectClassID); }, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true && $data.Parameter.Type != 3, 'cursor-pointer': $parent.ReadOnly() == false}"></div>
+                    <!-- /ko -->
+                    <!--ko if: $data.Parameter.Type == 15 || $data.Parameter.Type == 9 -->
+                    <div class="paramFieldSizeWithIcon">
+                        <div class="paramFieldSizeEditors" data-bind="text: $data.GetValueString, click: function() { $parent.ShowEditor($root.objectClassID); }, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true && $data.Parameter.Type != 3, 'cursor-pointer': $parent.ReadOnly() == false}"></div>
+                        <div class="paramicon paramСardOpenObject" data-bind="css: {'active' : $data.Parameter.IsCheck() == true && $data.Value() != null }, click:  $data.Parameter.OpenForm" />
+                    </div>
+                    <!-- /ko -->
+                    <!--ko if: $data.Parameter.Type == 0-->
+                    <input type="checkbox" class="parameterCheckBox" data-bind="click: function() { $data.Parameter.SilentSaveValue($root.$region, $root.objectClassID); return true; }, disable: $data.Parameter.ReadOnly || !$data.IsLoaded, checked3: $data.Value, allowInterminate: !$data.Parameter.IsValueRequired, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true}" />
+                    <!-- /ko -->
+                    <!--ko if: $data.Parameter.Type == 11 && $data.Value() != null-->
+                    <div class="parameterButtonInLine">
+                        <input type="button" class="gray-btn parameterButton" data-bind="click: $data.Parameter.DownloadClick, attr: {value : $data.ValueString}, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true}" />
+                    </div>
+                    <!-- /ko -->
+                </td>
+            </tr>
+            <!-- /ko -->
+            <!--ko if: $data.Type == 13 && IsInversion == false-->
+            <tr>
+                <td colspan="3" style="max-width:0">
+                    <div class="paramTableCotainer" data-bind="css: CssTableClass">
+                        <div class="tableCaptionContainer">
+                            <div class="icon active" data-bind="css: $data.CssClassFunc"><span /></div>
+                            <span class="caption im-blue-text" data-bind="text: Name+': '" />
+                        </div>
+                        <div class="buttonsContainer" data-bind="visible: $data.ReadOnly() == false && $data.LockRowsCount == false">
+                            <div class="addRowButton" data-bind="click: function() { $data.AddNewEditor(); $data.SilentSaveValue($root.$region, $root.objectClassID); return true; }"></div>
+                            <div class="removeRowButton" data-bind="click: function() { $data.RemoveEditorClick(); $data.SilentSaveValue($root.$region, $root.objectClassID); return true; }, visible: CkeckedEditors().length > 0"></div>
+                        </div>
+                        <div class="tableScrollContainer">
+                            <table class="tableStructure" data-bind="style: {width: $data.WidthCSS}, css: {'invalid' : $data.IsValueRequired == true && $data.ParameterValueIsReadOnly == false && $data.Editors().length == 0}">
+                                <colgroup>
+                                    <col class="colCheck" />
+                                    <!--ko foreach: $data.ParameterTemplateList-->
+                                    <col data-bind="style: {width: $data.WidthCSS}, visible: $data.WebVisibility || !$parent.ClientMode()" />
+                                    <!-- /ko -->
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" data-bind="checked: CheckAll" />
+                                        </th>
+                                        <!--ko foreach: $data.ParameterTemplateList-->
+                                        <th data-bind="css: {'numeric' : $data.Type == 1}, visible: $data.WebVisibility || !$parent.ClientMode()">
+                                            <span data-bind="text: $data.Name"></span>
+                                            <div class="columnResizeThumb" data-bind="style: {background: $data.ResizeThumbVisible() == true ? 'darkgray' : 'none'}, event: { mouseenter: $parent.EnableResizeThumb, mouseout: $parent.DisableResizeThumb, mousedown: $parent.ThumbResizeCatch }" />
+                                        </th>
+                                        <!-- /ko -->
+                                    </tr>
+                                </thead>
+                                <tbody class="mainBody" data-bind="foreach: { data: $data.Editors, as: 'editor' }">
+                                    <tr data-bind="css: {'checked' : Checked}">
+                                        <td>
+                                            <input type="checkbox" data-bind="checked: Checked" />
+                                        </td>
+                                        <!--ko foreach: editor.RowParameterList-->
+                                        <td data-bind="foreach: $data.Editors, visible: $data.WebVisibility || !$data.ClientMode(), css: {'clicable': $parent.Parameter.ReadOnly() == false, 'readonly': $data.ParameterValueIsReadOnly() == true, 'numeric' : $data.ParameterTemplate.Type == 1, 'invalid' : $data.ValidationError() != '' && $data.ParameterTemplate.Type != 3}, tooltip: $data.ValidationError, click: function() { $data.ShowEditor($root.objectClassID); return true; }">
+                                            <!--ko if: $data.Parameter.Type != 0 && ($data.Parameter.Type != 11 || $data.Value() == null) && $data.GetValueString() !== ''-->
+                                            <div class="viewer" data-bind="text: $data.GetValueString, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true && $data.Parameter.Type != 3, 'readonly': $data.Parameter.ReadOnly() == true}"></div>
+                                            <!-- /ko -->
+                                            <!--ko if: $data.Parameter.Type == 0-->
+                                            <input type="checkbox" class="parameterCheckBox" data-bind="click: function() { $data.Parameter.SilentSaveValue($root.$region, $root.objectClassID); return true; }, clickBubble: false, disable: $data.Parameter.ReadOnly || !$data.IsLoaded, checked3: $data.Value, allowInterminate: !$data.Parameter.IsValueRequired, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true, 'readonly': $data.Parameter.ReadOnly() == true}" />
+                                            <!-- /ko -->
+                                            <!--ko if: $data.Parameter.Type == 11 && $data.Value() != null-->
+                                            <input type="button" class="gray-btn parameterButton" data-bind="click: $data.Parameter.DownloadClick, clickBubble: false, attr: {value : $data.ValueString}, tooltip: $data.ValidationError, css: {'invalid' : $data.IsInvalid() == true}" />
+                                            <!-- /ko -->
+                                            <div class="columnResizeThumb" data-bind="visible: $data.Parameter.ParameterTemplate.ResizeThumbVisible" />
+                                        </td>
+                                        <!-- /ko -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <!-- /ko -->
+            <!--ko if: $data.Type == 13 && IsInversion == true-->
+            <tr data-bind="template: {name: '../UI/Controls/Parameters/Lists/InvertTableParameter',
+                            afterRender: $data.AddNewEditor2 }">                
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</div>

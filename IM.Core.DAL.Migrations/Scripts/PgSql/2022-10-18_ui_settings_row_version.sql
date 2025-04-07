@@ -1,0 +1,1 @@
+ALTER TABLE IF EXISTS im.ui_setting DROP COLUMN IF EXISTS row_version

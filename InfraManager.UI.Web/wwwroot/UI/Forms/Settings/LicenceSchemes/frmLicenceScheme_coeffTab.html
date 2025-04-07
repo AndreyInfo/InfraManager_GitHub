@@ -1,0 +1,14 @@
+﻿<div class="tabPage assetForm b-requestDetail im-base-text" data-bind="with: tabActive, afterUpdateBlock: tabActive().AfterRender">
+
+    <div class="tabCoefficients" tabindex="0">
+        <!-- Список -->
+        <div class="coefficients">
+            <div class="im-big-header caption">
+                <span data-bind="restext: 'SoftwareLicenceScheme_Coefficients'" />
+                <span class="tabCoefficients-icon-add" data-bind="click: function() { ViewSoftwareLicenceSchemeCoeffAdd() },  css: { 'active' : canEdit() }"></span>
+            </div>
+
+            <div data-bind="attr: {'id': coefficientsViewID}, koListView: {settingsName: 'SoftwareLicenseSchemeCoefficients', controlInitialized: coefficientsViewInit, retrieveItems: coefficientsRetrieveItems, virtualMode: false, contextMenu: coefficientsContextMenu, autoDispose: false, itemClick: null}"></div>
+            <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+        </div>
+    </div>

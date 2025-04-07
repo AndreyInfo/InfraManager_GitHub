@@ -1,0 +1,102 @@
+﻿<div class="b-content-table__filter-container">
+    <div class="b-content-table__filter-general" data-bind="visible: NeedShowTopPart">
+        <div class="withFinishedWorkflowWrapper">
+            <input type="checkbox" data-bind="checked: WithFinishedWorkflow" /> <span class="withFinishedWorkflowHeader" data-bind="restext: 'Filter_ShowWithFinishedWorkflow'" />
+        </div>
+        <div class="dtpAfterDateModified"></div>
+    </div>
+    <div class="b-content-table__filter-container-header">
+        <div class="table-filter-header_list-divider"></div>
+        <div class="table-filter-header_list" data-bind="css: { 'active' : filterMode() == mode.FiltersList }, click: OpenList">
+            <span class="table-filter-header-text" data-bind="restext: 'FilterTabSelection'"></span>
+        </div>
+        <div class="table-filter-header_list-divider"></div>
+        <!--ko if: currentFilter() == null || CanEditFilter()==true -->
+        <div class="table-filter-header_new" data-bind="css: { 'active' : filterMode() == mode.NewFilter }, click: OpenNew">
+            <span class="table-filter-header-text" data-bind="restext: 'FilterTabConstructor'"></span>
+        </div>
+        <div class="table-filter-header_list-divider"></div>
+        <!-- /ko -->
+    </div>
+    <div class="b-content-table__filter-container-body" data-bind="style: { top: CalculateBodyTopPosition, bottom: CalculateBodyBottomPosition }">
+        <div class="b-content-table__filter-container-filterList" data-bind="visible: filterMode() == mode.FiltersList">
+            <!--ko if: lastFiltersList().length > 0-->
+            <div class="filterGroupCaption" data-bind="restext: 'FilterGroupRecent'"></div>
+            <div class="lastFilterList-wrapper" data-bind="foreach: lastFiltersList">
+                <div class="filter-item" data-bind="text: Name, longNameTooltip: Name, css: {'selected' : Selected}, click: $parent.SelectFilterNotFromControl"></div>
+            </div>
+            <hr class="filterGroupSeparator" />
+            <!-- /ko -->
+            <!--ko if: userFilterList().length > 0-->
+            <div class="filterGroupCaption" data-bind="restext: 'FiltertTaskMyFilters'"></div>
+            <div class="filterGroupCaptionDescription" data-bind="restext: 'FiltertTaskSaved'"></div>
+            <div class="savedFilterList-wrapper" data-bind="foreach: userFilterList">
+                <div class="commonFilter-item" data-bind="css: {'selected' : Selected}, click: $parent.SelectFilter">
+                    <div class="textFilterItem" data-bind="text: Name, longNameTooltip: Name"></div>
+                    <div class="commonFilter-menu-icon active" data-bind="click: showFilterContextMenu"></div>
+                    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+                </div>
+            </div>
+            <hr class="filterGroupSeparator" />
+            <!-- /ko -->
+            <!--ko if: generalFilterListFilterList().length > 0 -->
+            <div class="filterGroupCaption" data-bind="restext: 'FiltertTaskCommonFilters'"></div>
+            <div class="filterGroupCaptionDescription" data-bind="restext: 'FiltertTaskConfigurable'"></div>
+            <div class="imbeddedFilterList-wrapper" data-bind="foreach:generalFilterListFilterList">
+                <div class="commonFilter-item" data-bind="css: {'selected' : Selected}, click: $parent.SelectFilter">
+                    <div class="textFilterItem" data-bind="text: Name, longNameTooltip: Name"></div>
+                    <div class="commonFilter-menu-icon active" data-bind="visible: MenuIconVisible,click: showFilterContextMenu"></div>
+                    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+                </div>
+            </div>
+            <hr class="filterGroupSeparator" />
+            <!-- /ko -->
+            <!--ko if: standartFilterList().length > 0 && grantedOperationWithView()-->
+            <div class="filterGroupCaption" data-bind="restext: 'FilterTaskOthersFilters'"></div>
+            <div class="filterGroupCaptionDescription" data-bind="restext: 'FilterTaskBuiltIntoSystem'"></div>
+            <div class="imbeddedFilterList-wrapper" data-bind="foreach:standartFilterList">
+                <div class="commonFilter-item" data-bind="css: {'selected' : Selected}, click: $parent.SelectFilter">
+                    <div class="textFilterItem" data-bind="text: Name, longNameTooltip: Name"></div>
+                    <div class="commonFilter-menu-icon active" data-bind="visible: MenuIconVisible,click: showFilterContextMenu"></div>
+                    <div data-bind="koContextMenu: {controlInitialized: contextMenuInit, opening: contextMenuOpening}"></div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="b-content-table__filter-container-newFilter" data-bind="if: filterMode() == mode.NewFilter && newFilterModel() != null && (currentFilter() == null || currentFilter().Name() == getTextResource('_ALL_') && currentFilter().Standart)">
+            <div data-bind="template: { name: 'Filter/FilterElement', data: newFilterModel }"></div>
+        </div>
+        <div class="b-content-table__filter-container-filterView" data-bind="if: filterMode() == mode.NewFilter && currentFilter() != null && !currentFilter().Standart && editFilterModel() != null">
+            <div data-bind="template: { name: 'Filter/FilterElement', data: editFilterModel }"></div>
+        </div>
+    </div>
+    <div class="filter-container-buttons" data-bind="visible: NeedShowBottomPart">
+        <!-- ko if: filterMode() == mode.FiltersList -->
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: CreateNewClick, visible: CreateNewVisible">
+            <span class="ui-button-text" data-bind="restext: 'FilterCreate', longNameTooltip: getTextResource('FilterCreate')"></span>
+        </button>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: ResetClick, visible: ResetVisible">
+            <span class="ui-button-text" data-bind="restext: '_ALL_', longNameTooltip: getTextResource('_ALL_')"></span>
+        </button>
+        <!-- /ko -->
+        <!-- ko if: filterMode() == mode.NewFilter && newFilterModel() != null && (currentFilter() == null || currentFilter().Name() == getTextResource('_ALL_') && currentFilter().Standart)-->
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: NewFilterSaveClick, visible: NewFilterSaveVisible">
+            <span class="ui-button-text" data-bind="restext: 'FilterActionSaveAndApply', longNameTooltip: getTextResource('FilterActionSaveAndApply')"></span>
+        </button>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: NewFilterClearClick, visible: NewFilterClearVisible">
+            <span class="ui-button-text" data-bind="restext: 'FilterActionClear', longNameTooltip: getTextResource('FilterActionClear')"></span>
+        </button>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-button-gray" data-bind="click: NewFilterCancelClick, visible: NewFilterCancelVisible">
+            <span class="ui-button-text" data-bind="restext: 'FilterActionCancel', longNameTooltip: getTextResource('FilterActionCancel')"></span>
+        </button>
+        <!-- /ko -->
+        <!-- ko if: filterMode() == mode.NewFilter && editFilterModel() != null && currentFilter() != null && !currentFilter().Standart -->     
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: SaveEditClick, visible: SaveEditVisible">
+            <span class="ui-button-text" data-bind="restext: 'FilterActionSaveAndApply', longNameTooltip: getTextResource('FilterActionSaveAndApply')"></span>
+        </button>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-bind="click: ResetClick, visible: ResetVisible">
+            <span class="ui-button-text" data-bind="restext: '_ALL_', longNameTooltip: getTextResource('_ALL_')"></span>
+        </button>
+        <!-- /ko -->
+    </div>
+</div>

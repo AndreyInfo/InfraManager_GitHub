@@ -1,0 +1,39 @@
+﻿<div tabindex="0" class="frmAgreement">
+    <!--ko if: object()-->
+    <div class="content">
+        <div class="stateRow">
+            <div class="item">
+                <span data-bind="text: object().stateName, tooltip: getTextResource('Contract_State')"></span>
+            </div>
+        </div>
+        <div class="identificationRow">
+            <div class="outerIconAndControl">
+                <div class="icon" data-bind="css: {'active': canEdit}, click: editDescription, tooltip: getTextResource('Contract_Description')"><span class="descriptionIcon"></span></div>
+                <!--ko if: object().id() != null-->
+                <div class="control border nowrap im-big-header" data-bind="text: object().description, longNameTooltip: object().description"></div>
+                <!--/ko-->
+                <!--ko if: object().id() == null-->
+                <div class="control border nowrap im-big-header">
+                    <input type="text" maxlength="1000" data-bind="textInput: object().description, longNameTooltip: object().description" />
+                </div>
+                <!--/ko-->
+            </div>
+            <div class="outerIconAndControl" data-bind="if: object().contract() != null">
+                <div class="productCatalogTypeField" data-bind="text: object().contract().ProductCatalogTypeName, tooltip: getTextResource('Contract_Type')"></div>
+            </div>
+        </div>
+        <div class="tabActive" data-bind="template: {name: tabActive().Template}">
+        </div>
+    </div>
+    <!--/ko-->
+    <div class="tabPages" data-bind="foreach: tabList">
+        <div class="tabButton" data-bind="visible: $data.IsVisible, click: $parent.selectTabClick, css: {'active' : $parent.tabActive() === $data, 'invalid' : $parent.tabActive().IsValid && $parent.tabActive().IsValid() == false}">
+            <div class="tabButtonIcon" data-bind="css: $data.IconCSS">
+                <!--ko if: $data.Index-->
+                <span data-bind="text: $data.Index"></span>
+                <!--/ko-->
+            </div>
+            <div class="tabButttonCaption" data-bind="text: $data.Name" />
+        </div>
+    </div>
+</div>

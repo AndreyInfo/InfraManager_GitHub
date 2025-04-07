@@ -1,0 +1,291 @@
+﻿<div class="spec_form">
+    <div class="spec_form-dataBlock">
+        <div class="spec_form-dataLeftColumnBlock">
+            <!--<div class="spec_form-modelName">
+                <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_Model'"></div>
+                <div class="spec_form-data spec_form-bigHeader" data-bind="text: ModelFullName"></div>
+            </div>-->
+            <div class="spec_form-modelName">
+                <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_Model'"></div>
+                <div class="spec_form-data spec_form-bigHeader invoice-model cursor-pointer" data-bind="text: ModelFullName,click: SelectModel"></div>
+            </div>
+            <div class="spec_form-productNumber">
+                <div class="spec_form-header" data-bind="restext: 'SpecificationForm_ProductNumber'"></div>
+                <div class="spec_form-data" data-bind="text: ModelProductNumber"></div>
+            </div>
+            <div class="spec_form-manufacturerName">
+                <div class="spec_form-header" data-bind="restext: 'SpecificationForm_Manufacturer'"></div>
+                <div class="spec_form-data" data-bind="text: ModelManufacturerName"></div>
+            </div>
+            <div class="spec_form-typeName">
+                <div class="spec_form-header" data-bind="restext: 'SpecificationForm_TypeName'"></div>
+                <div class="spec_form-data" data-bind="text: ModelTypeName"></div>
+            </div>
+            <div class="spec_form-noteBlock">
+                <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_Note'"></div>
+                <div class="spec_form-data">
+                    <textarea class="spec_form-note-TextField" maxlength="500" data-bind="textInput: Note, disable: !CanEdit() || !isOperationPurchaseSpecificationProperties()" />
+                </div>
+            </div>
+        </div>
+        <div class="spec_form-dataRightColumnBlock">
+            <div class="spec_form-dataRightColumnStart">
+                <div class="spec_form-RightFirstColumn">
+                    <div class="spec_form-countBlock">
+                        <div class="spec_form-header" data-bind="restext: 'SpecificationForm_Count'"></div>
+                        <div class="spec_form-data">
+                            <input type="text" class="spec_form-count-TextField" data-bind="value: Count, valueUpdate: 'input', disable: !CanEdit() || !CanEditCount() || !isOperationPurchaseSpecificationProperties()" />
+                        </div>
+                    </div>
+                    <div class="spec_form-priceBlock">
+                        <div class="spec_form-header" data-bind="restext: 'SpecificationForm_PriceForOne'"></div>
+                        <div class="spec_form-data">
+                            <input type="text" class="spec_form-price-TextField" data-bind="textInput: PriceInput, event: { focusout: textFieldFocusOut }, disable: !CanEdit() || !isOperationPurchaseSpecificationProperties()" />
+                        </div>
+                    </div>
+                    <div class="spec_form-NDSBlock">
+                        <div class="spec_form-header" data-bind="restext: 'SpecificationForm_Vat'"></div>
+                        <div class="spec_form-data">
+                            <div class="spec_form-nds-dd combobox" data-bind="combobox: { dataSource: getNDSTypeList }, comboboxValue: SelectedNDSType, style: { 'pointer-events': CanEdit() && isOperationPurchaseSpecificationProperties() ? 'auto' : 'none' }"></div>
+                            <!-- ko if: IsNeedShowPercentBlock -->
+                            <div class="spec_form-ndsPercents" data-bind="foreach: NDSPercentList, css: { 'blured' : IsNeedBlurPercentList }">
+                                <!-- ko if: ID !== '0' -->
+                                <div class="spec_form-NDSPercent-item" data-bind="text: (Name + '%'), css: { 'active' : $data == $parent.SelectedNDSPercent(), 'cursor-pointer' : $parent.CanEdit() && $parent.isOperationPurchaseSpecificationProperties() }, click: $parent.OnPercentSelected"></div>
+                                <!-- /ko -->
+                            </div>
+
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+                <div class="spec_form-RightSecondColumn">
+                    <div class="spec_form-unitBlock">
+                        <div class="spec_form-header" data-bind="restext: 'PurchaseSpecification_Unit'"></div>
+                        <div class="spec_form-data">
+                            <div class="spec_form-unit-dd combobox" data-bind="combobox: { dataSource: getUnitList }, comboboxValue: SelectedUnit, style: { 'pointer-events': CanEdit() && isOperationPurchaseSpecificationProperties()? 'auto' : 'none' }"></div>
+                        </div>
+                    </div>
+                    <!-- ko if: IsNeedShowPercentBlock -->
+                    <div class="spec_form-NDSCustomBlock" data-bind="css: { 'blured' : IsNeedBlurCustomNDSBlock }">
+                        <div class="spec_form-header" data-bind="restext: 'SpecificationForm_AnotherSum'"></div>
+                        <div class="spec_form-data">
+                            <input type="text" class="spec_form-NDS-TextField" data-bind="textInput: NDSCustomValueInput, event: { focusout: textFieldFocusOut }, disable: !CanEdit() || !isOperationPurchaseSpecificationProperties()" />
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="spec_form-costBlock">
+                <div class="spec_form-costWithout">
+                    <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_CostWithoutNDS'"></div>
+                    <div class="spec_form-data" data-bind="text: TotalValuesString().CostWithoutNDS"></div>
+                </div>
+                <div class="spec_form-costNDS">
+                    <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_SumNDS'"></div>
+                    <div class="spec_form-data" data-bind="text: TotalValuesString().SumNDS"></div>
+                </div>
+                <div class="spec_form-costWith">
+                    <div class="spec_form-header" data-bind="restext: 'ActivesRequestSpecification_CostWithNDS'"></div>
+                    <div class="spec_form-data" data-bind="text: TotalValuesString().CostWithNDS"></div>
+                </div>
+                <!--ko if: IsWorkOrderHasDetailBudget() == true  && isBudgetEnabled == true-->
+                <div class="spec_form-costFinanced" data-bind="operationID: 856">
+                    <div class="spec_form-header" data-bind="restext: 'FinanceBudgetRow_Financed'"></div>
+                    <div class="spec_form-data" data-bind="text: FinanceBudgetRowList_SumString"></div>
+                </div>
+                <div class="spec_form-costFinanced" data-bind="operationID: 856">
+                    <div class="spec_form-header" data-bind="restext: 'PurchaseSpecification_Financed'"></div>
+                    <div class="spec_form-data" data-bind="text: FinanceBudgetRowList_FinancePercentString"></div>
+                </div>
+                <!--/ko-->
+            </div>
+        </div>
+    </div>
+
+    <div class="asset-link-menu">
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: function() { SelectedTab(tabs.general); }, css: { 'active' : SelectedTab() == tabs.general }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'Tab_General'"></div>
+        </div>
+        <!--ko if: IsWorkOrderHasDetailBudget() == true && isBudgetEnabled == true-->
+        <div class="asset-link-divider" data-bind="operationID: 856"></div>
+        <div class="asset-link-menubutton" data-bind="operationID: 856, click: function() { SelectedTab(tabs.finance); }, css: { 'active' : SelectedTab() == tabs.finance }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'Tab_Finance'"></div>
+        </div>
+        <!--/ko-->
+        <div class="asset-link-lastelement"></div>
+    </div>
+
+    <!-- ko if: SelectedTab() == tabs.general -->
+    <div class="spec_form-arsListBlock">
+        <div class="spec_form-list-header"><span data-bind="restext: 'PurchaseSpecificationLinkedARS'"></span></div>
+        <span class="caption-arrow">
+            <span data-bind="css: ARSListExpanded() == true ? 'arrow-up-white' : 'arrow-down-white', click: ExpandCollapseARSList, tooltip: ARSListExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+                <span></span>
+            </span>
+        </span>
+    </div>
+    <div class="spec_form-arsBody" data-bind="visible: ARSListExpanded">
+        <div class="spec_form-list" data-bind="visible: (ARSList().length > 0)">
+            <table class="imList-table">
+                <colgroup>
+                    <col style="width: 50px" />
+                    <col span="10" style="width: 180px" />
+                </colgroup>
+                <thead>
+                    <tr class="imList-tableHeaderRow">
+                        <th data-bind="restext: 'ActivesRequestSpecification_OrderNumber'"></th>
+                        <th data-bind="restext: 'ARS_NumberWorkOrder'"></th>
+                        <th data-bind="restext: 'Cause'"></th>
+                        <th data-bind="restext: 'ProjectInitiator'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_Model'"></th>
+                        <!--<th data-bind="restext: 'ActivesRequestSpecification_PriceWithoutNDS'"></th>-->
+                        <th data-bind="restext: 'ActivesRequestSpecification_PriceWithNDS'"></th>
+                        <!--<th data-bind="restext: 'ActivesRequestSpecification_NDSinfo'"></th>-->
+                        <th data-bind="restext: 'Finance_Used'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_Count'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_Note'"></th>
+                        <!--<th data-bind="restext: 'ActivesRequestSpecification_State'"></th>-->
+                        <th data-bind="restext: 'ActivesRequestSpecification_CostWithNDS'"></th>
+                        <!--<th data-bind="restext: 'ActivesRequestSpecification_CostWithoutNDS'"></th>-->
+                        <!--<th data-bind="restext: 'ActivesRequestSpecification_SumNDS'"></th>-->
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr class="imList-tableFooterRow">
+                        <td colspan="9" style="text-align: right" data-bind="restext: 'TotalSummaryHeader'"></td>
+                        <td class="imList-rightCell" data-bind="text: ARSList_TotalCostWithNDSString()"></td>
+                        <!--<td class="imList-rightCell" data-bind="text: ARSList_TotalCostWithoutNDSString()"></td>-->
+                        <!--<td class="imList-rightCell" data-bind="text: ARSList_TotalSumNDSString()"></td>-->
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <!-- ko foreach: ARSList -->
+                    <tr class="imList-tableRow" data-bind="click: ShowForm">
+                        <td class="imList-clickableCell" data-bind="text: OrderNumber"></td>
+                        <td class="imList-clickableCell" data-bind="text: WorkOrderNumber"></td>
+                        <td data-bind="text: ReferenceObjectName"></td>
+                        <td data-bind="text: ActiveRequestResponsibleName"></td>
+                        <td data-bind="text: ProductCatalogModelFullName"></td>
+                        <!--<td class="imList-rightCell" data-bind="text: PriceWithoutNDSString"></td>-->
+                        <td class="imList-rightCell" data-bind="text: PriceWithNDSString"></td>
+                        <!--<td data-bind="text: NDSInfo"></td>-->
+                        <td data-bind="text: DependencyCountString, css: { 'cursor-pointer': $parent.CanEdit() && $parent.isOperationPurchaseSpecificationProperties()} "></td>
+                        <td class="spec_form-list-countBlock" data-bind="template: { afterRender: OnRender }, click: CountClick">
+                            <input type="text" class="imList-slider-TextField" data-bind="value: DependencyCount, valueUpdate: 'input'" />
+                        </td>
+                        <td data-bind="text: Note"></td>
+                        <!--<td data-bind="text: StateString"></td>-->
+                        <td class="imList-rightCell" data-bind="text: CostWithNDSString"></td>
+                        <!--<td class="imList-rightCell" data-bind="text: CostWithoutNDSString"></td>
+                        <td class="imList-rightCell" data-bind="text: SumNDSString"></td>-->
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+        <!-- ko if: ARSList().length == 0 -->
+        <center><span class="spec_form-list-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+        <!-- /ko -->
+    </div>
+    <div class="spec_form-invoiceBlock">
+        <div class="spec_form-list-header"><span data-bind="restext: 'PurchaseSpecificationLinkedINS'"></span></div>
+        <span class="caption-arrow">
+            <span data-bind="css: InvoiceListExpanded() == true ? 'arrow-up-white' : 'arrow-down-white', click: ExpandCollapseInvoiceList, tooltip: InvoiceListExpanded() == true ? getTextResource('Collapse') : getTextResource('Expand')">
+                <span></span>
+            </span>
+        </span>
+    </div>
+    <div class="spec_form-invoiceBody" data-bind="visible: InvoiceListExpanded">
+        <div class="spec_form-list" data-bind="visible: (InvoiceList().length > 0)">
+            <table class="imList-table">
+                <!--<colgroup>
+                    <col style="width: 50px" />
+                    <col style="width: 50px" />
+                    <col style="width: 50px" />
+                    <col style="width: 50px" />
+                </colgroup>-->
+                <thead>
+                    <tr class="imList-tableHeaderRow">
+                        <th data-bind="restext: 'ActivesRequestSpecification_OrderNumber'"></th>
+                        <th data-bind="restext: 'InvoiceSpecification_Name'"></th>
+                        <th data-bind="restext: 'SpecificationForm_PriceForOne'"></th>
+                        <th data-bind="restext: 'ActivesRequestSpecification_Count'"></th>
+                        <th data-bind="restext: 'GoodsInvoiceNumber'"></th>
+                        <th data-bind="restext: 'GoodsInvoiceDate'"></th>
+                        <th data-bind="restext: 'Consignor'"></th>
+                        <th data-bind="restext: 'Consignee'"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ko foreach: InvoiceList -->
+                    <tr class="imList-tableRow" data-bind="click: $parent.ShowInvoiceForm">
+                        <td class="imList-clickableCell" data-bind="text: OrderNumber"></td>
+                        <td data-bind="text: CargoName"></td>
+                        <td class="imList-rightCell" data-bind="text: Price"></td>
+                        <td data-bind="text: Count"></td>
+                        <td data-bind="text: InvoiceDocumentNumber"></td>
+                        <td data-bind="text: InvoiceUtcDateCreated"></td>
+                        <td data-bind="text: InvoiceConsignorName"></td>
+                        <td data-bind="text: InvoiceConsigneeName"></td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+        <!-- ko if: InvoiceList().length == 0 -->
+        <center><span class="spec_form-list-noitems" data-bind="restext: 'ListIsEmpty'"></span></center>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <!-- ko if: SelectedTab() == tabs.finance && isBudgetEnabled == true-->
+    <div>
+        <div class="goods-add" data-bind="restext: 'Add', click: FinanceBudgetRowList_AddClick , visible: CanEdit" ></div>
+        <div data-bind="visible: (FinanceBudgetRowList().length > 0)">
+            <table class="imList-table">
+                <colgroup>
+                    <col style="width: 30px" />
+                    <col style="width: 70px" />
+                    <col style="width: calc(100% - 620px)" />
+                    <col style="width: 200px" />
+                    <col style="width: 200px" />
+                    <col style="width: 120px" />
+                </colgroup>
+                <thead>
+                    <tr class="imList-tableHeaderRow">
+                        <th />
+                        <th data-bind="restext: 'Identifier'"></th>
+                        <th data-bind="restext: 'Name'"></th>
+                        <th data-bind="restext: 'FinanceBudgetRow_BudgetArticle'"></th>
+                        <th data-bind="restext: 'Initiator'"></th>
+                        <th class="imList-rightCell" data-bind="restext: 'FinanceBudgetRow_TotalSum'"></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr class="imList-tableFooterRow">
+                        <td colspan="5" style="text-align: right" data-bind="restext: 'TotalSummaryHeader'"></td>
+                        <td class="imList-rightCell" data-bind="text: FinanceBudgetRowList_SumString()"></td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <!-- ko foreach: FinanceBudgetRowList -->
+                    <tr class="imList-tableRow" data-bind="click: ShowForm">
+                        <td><div class="removeContainer"><button class="removeButton" data-bind="click: RemoveClick, visible: $parent.CanEdit" /></div></td>
+                        <td class="imList-clickableCell" data-bind="text: Identifier"></td>
+                        <td class="imList-clickableCell" data-bind="text: Name"></td>
+                        <td data-bind="text: BudgetFullName"></td>
+                        <td data-bind="text: InitiatorFullName"></td>
+                        <td class="financeBudgetRow_sum" data-bind="template: { afterRender: OnRender }, click: SumClick">
+                            <input type="text" class="imList-rightCell" style="width:120px;" data-bind="value: Sum, valueUpdate: 'input', enable: $parent.CanEdit" />
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+        <!-- ko if: FinanceBudgetRowList().length == 0 -->
+        <center><span data-bind="restext: 'ListIsEmpty'"></span></center>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+</div>

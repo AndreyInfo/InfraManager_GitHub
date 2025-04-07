@@ -1,0 +1,29 @@
+﻿<div class="sc_searchResults">
+    <div class="sc_sortingPanel">
+        <div class="sc_sortTypesPanel" data-bind="with: $root.SearchPanelType">
+            <div class="sc_sortPanelHeader" data-bind="text: CurrentSortTypeName, click: HideShowClick"></div>
+            <div class="sc_sortPanelHeaderButton" data-bind="click: HideShowClick, css: { 'expanded': IsShowed }"></div>
+            <div class="sc_sortTypesPanelWrapper" data-bind="template: { name: 'ServiceCatalogue/SearchPanelTypes' }, visible: IsShowed"></div>
+        </div>
+        <div class="sc_sortCategoriesPanel" data-bind="with: $root.SearchPanelCategory">
+            <div class="sc_sortPanelHeader" data-bind="text: CurrentSortCategoryName, click: HideShowClick"></div>
+            <div class="sc_sortPanelHeaderButton" data-bind="click: HideShowClick, css: { 'expanded': IsShowed }"></div>
+            <div class="sc_sortCategoriesPanelWrapper" data-bind="template: { name: 'ServiceCatalogue/SearchPanelCategories' }, visible: IsShowed"></div>
+        </div>
+    </div>
+    <div class="sc_searchResultsList" data-bind="foreach: ShowedFoundedServiceList">
+        <div class="sc_searchResultsName" data-bind="highlightText: Service.Name, searchTextArray: $root.SearchTextSplitted, click: $root.IsOnlyService() ? $root.OnServiceClick : null"></div>
+        <div class="sc_searchResultsPath" data-bind="text: Service.ServiceCategory.Name"></div>
+        <!-- ko if: NeedShowServiceNote -->
+        <div class="sc_searchResultsNote" data-bind="highlightText: Service.Note, searchTextArray: $root.SearchTextSplitted, highlightTextCut: true"></div>
+        <!-- /ko -->
+        <div class="sc_searchResultsSIA">
+            <!--ko if: NeedShowAttendanceBlock -->
+            <div class="sc_searchResultsAttendance" data-bind="template: { name: 'ServiceCatalogue/ServiceItemAttendanceListView', data: { $iconSource: '/images/controls/serviceCatalogue/serviceAttendanceList.png', $name: getTextResource('ServiceAttendances'), $isExpanded: Service.IsServiceAttendanceListExpanded, $list: Service.VisibleServiceAttendanceList, $showPath: false, $searchHighlight: true, $searchParams: $data } }, style: { width: NeedShowItemsBlock ? '' : '100%' }"></div>
+            <!-- /ko -->
+            <!--ko if: NeedShowItemsBlock -->
+            <div class="sc_searchResultsItems" data-bind="template: { name: 'ServiceCatalogue/ServiceItemAttendanceListView', data: { $iconSource: '/images/controls/serviceCatalogue/serviceItemList.png', $name: getTextResource('ServiceItems'), $isExpanded: Service.IsServiceItemListExpanded, $list: Service.VisibleServiceItemList, $showPath: false, $searchHighlight: true, $searchParams: $data } }, style: { width: NeedShowAttendanceBlock ? '' : '100%' }"></div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

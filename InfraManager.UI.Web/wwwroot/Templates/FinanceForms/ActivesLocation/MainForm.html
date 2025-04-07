@@ -1,0 +1,32 @@
+﻿<div class="asset-link-main">
+    <div class="asset-link-menu">
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton" data-bind="click: selectParameterSelector, css: { 'active' : isParameterSelected }">
+            <div class="asset-link-menubutton-text" data-bind="restext: 'InvoiceSpecificationSearchHeader'"></div>
+        </div>
+        <div class="asset-link-divider"></div>
+        <div class="asset-link-menubutton asset-link-choosenbutton" data-bind="click: selectChoosen, visible: isChoosenVisible, css: { 'active' : isChoosenSelected }">
+            <div class="asset-link-menubutton-text">
+                <span data-bind="restext: 'InvoiceSpecificationsChosen'"></span>
+                <span data-bind="text: ChoosenCounterText"></span>
+            </div>
+        </div>
+        <div class="asset-link-lastelement"></div>
+    </div>
+    <div class="asset-link-body" >
+        <span data-bind="if: ParameterReady">
+            <div class="asset-link-parameters" data-bind="visible: currentMode() == modes.ParameterSelector && modelParameterSelector() != null">
+                <div data-bind="template: { name: 'FinanceForms/ActivesLocation/Parameters', data: modelParameterSelector, afterRender: modelParameterSelector().AfterRender }"></div>
+            </div>
+        </span>
+        <span data-bind="if: ChoosenReady">
+            <div class="asset-link-choosen" data-bind="visible: currentMode() == modes.Choosen && modelChoosen() != null">
+                <div data-bind="template: { name: 'FinanceForms/ActivesLocation/Choosen', data: modelChoosen }"></div>
+            </div>
+        </span>
+    </div>
+    <div class="asset-locate-progressBarText" data-bind="restext: 'AssetIsLocating'" style="display: none" />
+    <div class="asset-locate-progressBarHider" style="display: none" />
+    <div class="asset-locate-progressBar" style="display: none" />
+    <div class="asset-locate-btn" data-bind="restext: 'LocateAsset', click: locateActives, visible: isChoosenVisible() && $root.CanEdit"/>
+</div>

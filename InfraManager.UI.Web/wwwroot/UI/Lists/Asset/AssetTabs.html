@@ -1,0 +1,9 @@
+﻿<div class="asset-details-tabs" data-bind="visible: State, foreach: tabList">
+    <div class="asset-details-tabs-divider"></div>
+    <div class="asset-details-tab" data-bind="css: { 'active': $parent.activeTab().Index == $data.Index }">
+        <span class="asset-details-tab-text" 
+              data-bind="restext: $data.Name, css: { 'active': $parent.activeTab().Index == $data.Index }, click: $parent.SetActive"></span>   
+        
+    </div>    
+    <div class="asset-details-tabs-divider-last"></div>
+</div>

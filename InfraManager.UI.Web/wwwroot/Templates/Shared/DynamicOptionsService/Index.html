@@ -1,0 +1,17 @@
+﻿<div class="dynamic-options" data-bind="attr: { 'data-prefix-mode': $root.modes ? $root.modes.parameterPrefix + $data.Tab.ID : null }">
+    <div class="dynamic-options__wrapper">
+        <ul class="dynamic-options__list" data-bind="foreach: TabElements">
+            <!-- ko if: Type == $root.DynamicOptionsService.TypesFields.Group  -->
+            <li class="dynamic-options__list-item dynamic-options__group" data-bind="if: Grouped.length">
+                <div class="dynamic-options__title dynamic-options__title_group" data-bind="text: SpecialFields.Label"></div>
+                <ul class="dynamic-options__list" data-bind="foreach: Grouped">
+                    <!-- ko template: { name: '/Shared/DynamicOptionsService/Templates/RenderElement' } -->
+                    <!-- /ko -->
+                </ul>
+            </li>
+            <!-- /ko -->
+            <!-- ko template: { name: '/Shared/DynamicOptionsService/Templates/RenderElement' } -->
+            <!-- /ko -->
+        </ul>
+    </div>
+</div>

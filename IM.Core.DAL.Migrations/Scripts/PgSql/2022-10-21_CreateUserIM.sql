@@ -1,0 +1,19 @@
+DO
+$$
+BEGIN
+   	IF NOT EXISTS (
+      SELECT FROM pg_catalog.pg_roles
+      WHERE  rolname = 'im') 
+	THEN
+      CREATE ROLE im WITH
+		LOGIN
+		SUPERUSER
+		CREATEDB
+		NOCREATEROLE
+		INHERIT
+		REPLICATION
+		CONNECTION LIMIT -1
+		PASSWORD 'jd89$32#90JHgwjn%MLwhb3b';
+   	END IF;
+END
+$$;

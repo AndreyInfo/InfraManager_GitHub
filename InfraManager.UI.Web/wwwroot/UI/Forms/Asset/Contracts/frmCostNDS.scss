@@ -1,0 +1,85 @@
+﻿@import "../../../../Styles/general";
+
+.frmCostNDS {
+    overflow: hidden;
+    position: relative;
+    display: table;
+    width: 100%;
+    padding: 10px 20px;
+    padding-right: 0;
+
+    > .leftSide {
+        width: 200px;
+        min-width: 200px;
+        max-width: 500px;
+        height: 100%;
+        display: table-cell;
+        vertical-align: top;
+        padding-right: 20px;
+    }
+
+    > .rightSide {
+        height: 100%;
+        display: table-cell;
+        width: 200px;
+        min-width: 180px;
+        vertical-align: top;
+        padding: 0 20px;
+        background: $lightblue-background-color;
+    }
+
+    .fieldCaption {
+        color: $gray-text-color;
+        font-size: 11px;
+    }
+
+    .fieldControl {
+        margin-bottom: 10px;
+        position: relative;
+        overflow: hidden;
+        word-break: break-word;
+        display: block;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.border {
+            border: 1px solid $border-gray-color;
+            line-height: 26px;
+
+            &.combobox > .control {
+                border: none;
+            }
+        }
+
+        &.bold {
+            font-weight: bold;
+        }
+
+        &.combobox {
+            width: 100%;
+        }
+
+        &.nud {
+            > .stepper-wrap {
+                width: calc(100% - 15px);
+
+                > input {
+                    width: 100%;
+                    border: 1px solid $border-gray-color;
+                    line-height: 26px;
+                    padding: 0 7px;
+                }
+            }
+        }
+
+        .cost {
+            height: 24px;
+        }
+
+        .ndsCustomValue {
+            height: 24px;
+        }
+    }
+}

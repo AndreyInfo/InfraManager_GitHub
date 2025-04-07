@@ -1,0 +1,84 @@
+﻿<div class="tape_combobox">
+    <div class="combobox" data-bind="combobox: { dataSource: $control.GetViewModeList }, comboboxValue: $control.SelectedViewMode"></div>
+</div>
+<span data-bind="if: ($control.SelectedViewMode().ID == $control.viewModes.discussions), afterUpdateBlock: $control.CalculateTopPosition">
+    <div class="tape__users__title">
+        <span data-bind="restext: 'Participants'"></span>
+        <span data-bind="css: $control.IsUserListVisible() == true ? 'arrow-up active' : 'arrow-down active', click: $control.ToggleUserList, tooltip: $control.IsUserListVisible() == true ? getTextResource('Collapse') : getTextResource('Expand')"><span /></span>
+    </div>
+    <div class="tape__users" data-bind="visible: $control.IsUserListVisible">
+        <div class="tape__users__list" data-bind="foreach: $control.UserList, afterUpdateBlock: $control.CalculateTopPosition">
+            <span class="tape__user" data-bind="template: { name: 'User/FormUser', data: $data, afterRender: $parent.CalculateTopPosition }"></span>
+        </div>
+    </div>
+</span>
+<div class="tabContent" style="overflow-y:auto;" data-bind="style: { bottom: $control.BottomTabContent, top: $control.TopTabContent }">
+    <span data-bind="if: ($control.SelectedViewMode().ID == $control.viewModes.discussions), afterUpdateBlock: $control.CalculateTopPosition">
+        <div class="tape__messages" data-bind="visible: $control.Tape().length > 0">
+            <!-- ko foreach: { data: $control.Tape } -->
+            <div class="tape__messages__i" data-bind="css: { 'tape__message-notreaded': !IsRead() }, event: { mouseover: $parent.$control.onMouseOver}">
+                <div class="avatar tape__messages__avatar">
+                    <!-- ko if: IsNote() -->
+                    <span class="avatar__icon avatar__icon_lock"></span>
+                    <!-- /ko -->
+                    <!-- ko ifnot: IsNote() -->
+                    <span class="avatar__icon avatar__icon_mail"></span>
+                    <!-- /ko -->
+                    <img src="/images/person_empty.png">
+                </div>
+                <div class="tape__messages__text" data-bind="html: Text"></div>
+                <div class="tape__messages__info">
+                    <span class="tape__messages__user" data-bind="text: AuthorFullName"></span>
+                    <span class="tape__messages__date" data-bind="text: LocalDate"></span>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </span>
+    <!-- ko if: ($control.SelectedViewMode().ID == $control.viewModes.history) -->
+    <div class="tape__history" data-bind="visible: $control.Tape().length > 0">
+        <!-- ko foreach: { data: $control.Tape } -->
+        <div class="tape__history__i">
+            <div class="tape__history__icon tape__history__icon_status"></div>
+            <div class="tape__history__text" data-bind="text: Text"></div>
+            <div class="tape__history__info">
+                <span class="tape__history__user" data-bind="text: AuthorFullName"></span>
+                <span class="tape__history__date" data-bind="text: LocalDate"></span>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <div class="tl-base-height" data-bind="visible: $control.SelectedViewMode().ID == $control.viewModes.timeline && $control.isTimeLineLoaded()">
+        <div class="tl-base tl-base-height" data-bind="template: {name: 'TimeLine/TimeLine', data: { $tlcontrol: $control.TimeLineControl() } }"></div>
+    </div>
+</div>
+<!-- ko if: $control.BottomTabContent -->
+<div class="tape__forms" data-bind="visible: $control.IsNeedBottomPanel">
+    <!-- ko if: $root.CanEdit-->
+    <div class="tape__b__ctrl__i" data-bind="visible: $control.SelectedEditorMode() != $control.editMode.note">
+        <button class="button button_b-ctrl_note button_size_M button_type_normal" data-bind="click: $control.CreateNoteClick"><span class="button__label" data-bind="restext: 'Note'"></span><span class="button__icon"></span></button>
+    </div>
+    <div class="tape__forms__h__i" data-bind="visible: $control.SelectedEditorMode() == $control.editMode.note">
+        <div class="tape__forms__h__sel tape__forms__h__sel_note"><span class="tape__forms__h__label" data-bind="restext: 'Note'"></span><span class="tape__forms__h__icon"></span></div>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: $root.objectClassID == 701 -->
+    <div class="tape__b__ctrl__i" data-bind="visible: $control.SelectedEditorMode() != $control.editMode.message">
+        <button class="button button_b-ctrl_message button_size_M button_type_normal" data-bind="click: $control.CreateMessageClick"><span class="button__label" data-bind="restext: 'Message'"></span><span class="button__icon"></span></button>
+    </div>
+    <div class="tape__forms__h__i" data-bind="visible: $control.SelectedEditorMode() == $control.editMode.message">
+        <div class="tape__forms__h__sel tape__forms__h__sel_message"><span class="tape__forms__h__label" data-bind="restext: 'Message'"></span><span class="tape__forms__h__icon"></span></div>
+    </div>
+    <!-- /ko -->
+    <div class="tape__forms__i" data-bind="style: { display: $control.SelectedEditorMode() == $control.editMode.none ? 'none' : 'inline-block'}" style="width: 100%;">
+        <div class="text-input htmlEditor-extensionContainer tape__editor" />
+    </div>
+    <div class="tape__forms__ctrl" data-bind="visible: $control.SelectedEditorMode() != $control.editMode.none">
+        <div class="tape__forms__ctrl__i tape__forms__ctrl__i_side"><a data-bind="restext: 'CancelButtonText', click: $control.CloseClick"></a></div>
+        <div class="tape__forms__ctrl__i tape__forms__ctrl__i_side">
+            <button class="button button_size_L button_type_action" data-bind="click: $control.AddNewNote"><span class="button__label" data-bind="text: $control.PromptText"></span></button>
+        </div>
+    </div>
+</div>
+<!-- /ko -->

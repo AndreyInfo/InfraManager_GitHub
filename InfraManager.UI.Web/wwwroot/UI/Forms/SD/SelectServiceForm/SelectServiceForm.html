@@ -1,0 +1,19 @@
+﻿<div class="select-service-form">
+    <div class="b-content-substitution-container-header">
+        <div class="substitution-header_list-divider"></div>
+        <div class="substitution-header_list" data-bind="css: { 'active': IsActiveTab('all') }, click: ChangeTab.bind(null, 'all')">
+            <span class="substitution-header-text" data-bind="restext: 'ServiceCatalogueBrowserCaption'"></span>
+        </div>
+        <div class="substitution-header_list-divider"></div>
+        <div class="substitution-header_list" data-bind="css: { 'active': IsActiveTab('selected') }, click: ChangeTab.bind(null, 'selected')">
+            <span class="substitution-header-text" data-bind="text: ServiceSelectedCountText"></span>
+        </div>
+        <div class="substitution-header_list-divider-last"></div>
+    </div>
+    <div class="b-content-substitution-container-body b-content-substitution-container-body_full">
+        <div class="searchField">
+            <input type="text" class="serviceSearcher" data-bind="resattr: { placeholder: 'SearchEmpty'}, textInput: searchText" />
+        </div>
+        <div class="tvWrapper" data-bind="template: { name: '../Templates/TristateTreeView/TreeNode', foreach: tree.nodes }"></div>
+    </div>
+</div>

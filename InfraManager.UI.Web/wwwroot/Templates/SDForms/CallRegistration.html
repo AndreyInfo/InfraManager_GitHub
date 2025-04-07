@@ -1,0 +1,47 @@
+﻿<div class="b-requestCreate clearfix">
+    <div class="b-createCall">
+        <div class="b-requestCreate-right_client_form">
+            <div class="b-requestCreate-right__item_client_form">
+                <div class="b-requestCreate-right__item-title required" data-bind="restext: 'CallSummaryCaption'" />
+                <div class="b-requestCreate-input-wrap callSummaryName">
+                    <input type="text" class="text-input searcherInput" data-bind="textInput: CallSummaryName, resattr: {placeholder : 'CallRegistration_CallSummaryPrompt'}" />
+                </div>
+            </div>
+            <div class="b-requestCreate-right__item_client_form ">
+                <div class="b-requestCreate-right__item-title required" data-bind="visible: SelectedCallType().IsRFC, restext: 'ServiceAttendanceCaption'" />
+                <div class="b-requestCreate-right__item-title required" data-bind="visible: !SelectedCallType().IsRFC, restext: 'ServiceItemCaption'" />
+                <div class="b-requestCreate-input-wrap serviceItemAttendance">
+                    <input type="text" class="text-input searcherInput" data-bind="value: ServiceItemAttendanceFullName, resattr: {placeholder : 'CallRegistration_ServiceItemAttendancePrompt'}" />
+                </div>
+            </div>
+            <div class="b-requestCreate-right__item_client_form ">
+                <div class="b-requestCreate-right__item-title" data-bind="restext: 'ClientCaption'" />
+                <div class="b-requestCreate-input-wrap clientField">
+                    <input type="text" class="text-input searcherInput" data-bind="value: SelectedClient() ? SelectedClient().FullName : '', resattr: {placeholder : 'CallRegistration_ClientPrompt'}" />
+                </div>
+            </div>
+            <!--ko if: ShowPlaceOfService()-->
+            <div class="b-requestCreate-right__item_client_form ">
+                <div class="b-requestCreate-right__item-title" data-bind="restext : 'PlaceOfService' "> </div>
+                <div class="b-requestCreate-input-wrap">
+                    <input type="text" class="text-input searcherInput" data-bind="attr: { placeholder:getTextResource('CallRegistration_PlaceOfService') }, click: EditLocation, textInput: ServicePlaceCallName" />
+                </div>
+            </div>
+            <!-- /ko -->
+            <div class="b-requestCreate-right__item_client_form ">
+                <div class="b-requestCreate-right__item-title" data-bind="restext: 'UrgencyCaption'" />
+                <div class="b-requestCreate-input-wrap">
+                    <div class="combobox clearfix urgency big" style="margin-top:10px" data-bind="combobox: { dataSource: getUrgencyList, placeholder: 'choose item' }, comboboxValue: SelectedUrgency"></div>
+                </div>
+            </div>
+            <div class="b-requestCreate-right__item_client_form ">
+                <div class="b-requestCreate-right__item-title" data-bind="restext: 'DescriptionCaption'" />
+                <div class="text-input description htmlEditor-container" />
+            </div>
+            <div class="fieldPair" style="margin:0">
+                <div class="icon b-requestDetail__files-addBtn active"><span /></div>
+                <div class="editor b-requestCreate-right__item_client_form  b-requestDetail__files documentList" />
+            </div>
+        </div>
+    </div>
+</div>
